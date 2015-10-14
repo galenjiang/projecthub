@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body ms-controller="user" class="ms-controller">
+<script type="text/javascript">
+  //这里给后端提供数据接口
+  var conf = {
+    username: {"id": "11", "name": "VaJoy"}
+  }
+</script>
+<header>
+  <span>{{username.name}}你好，欢迎来到账户中心</span>
+</header>
+<nav>
+  <ul>
+    <li><a href="#!/routerpartitials/mine">我的首页</a></li>
+    <li><a href="#!/routerpartitials/detail">账户详情</a></li>
+    <li><a href="#!/routerpartitials/recharge">我要充值</a></li>
+  </ul>
+</nav>
+<article ms-include-src="pageUrl">
+  内容...
+</article>
+<script src="../node_modules/requirejs/require.js" data-main="js/routermain"></script>
+
+</body>
+</html>
