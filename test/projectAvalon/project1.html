@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="user.css">
+    <script type="text/javascript" src="require.js" data-main="app" defer async="true" ></script>
+</head>
+<body ms-controller="user">
+<script>
+    var conf = {
+        username: {
+            id: "11",
+            name: "galen"
+}
+}
+</script>
+
+
+<header>
+<span>{{username.name}} 你好，欢迎来到账户中心</span>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#!/mine">首页</a></li>
+        <li><a href="#!/yours">账户详情</a></li>
+        <li><a href="#!/ours">我要充值</a></li>
+    </ul>
+</nav>
+    <article ms-include-src="pageUrl" data-include-loaded="rendered"></article>
+
+
+</body>
+</html>
