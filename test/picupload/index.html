@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>picture upload</title>
+  </head>
+  <body>
+    <form class="" action="index.html" method="post" id="form">
+      <input type="file" name="name" value="" id="file">
+      <input type="submit" name="name" value="提交">
+      <button type="button" name="button" id="btn2">获取对象</button>
+    </form>
+  </body>
+  <script type="text/javascript">
+    window.onload = function(){
+      var file = document.getElementById("file");
+      var btn2 = document.getElementById("btn2");
+      var form = document.getElementById("form");
+      btn2.onclick = function(){
+        for(var i = 0; i < form.length; i++){
+
+        console.log(form.elements[0].FileUpload);
+        }
+      }
+    }
+  </script>
+</html>
