@@ -170,6 +170,9 @@ gulp.task('copy', function () {
 })
 
 //监控
-gulp.task('default', ['watchjs', 'watchcss', 'watchsass', 'watchimage', 'watchcopy'])
+gulp.task('default', ['watchjs', 'watchcss', 'watchsass', 'watchimage'])
 //手动处理
-gulp.task("init",["uglifyjs","sasscss","image","copy"])
+gulp.task("init",["uglifyjs","sasscss","image"])
+
+//sass
+gulp.task("js",['uglifyjs'])

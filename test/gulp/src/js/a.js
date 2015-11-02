@@ -3,4 +3,4 @@ function demo (msg) {
     alert('--------\r\n' + msg + '\r\n--------')
 }
 
-demo('aa')
+demo('bb')
