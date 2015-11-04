@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>float3</title>
+    <style>
+        *{margin: 0; padding: 0; list-style: none;}
+        .wrapper{
+            width: 500px;
+            background-color: #ccc;
+            float: left;
+        }
+        .div1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            float: left;
+        }
+        .wrapper::after{
+            content: "";
+            clear: both;
+        }
+        .clearfix{
+            height: 0;
+            clear: both;
+        }
+        p{
+            text-align: wrapper;
+        }
+        .div2{
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="div1">123</div>
+        <p>环绕环绕环绕环绕环绕环绕环绕环绕环绕环绕环绕环绕环环绕环绕</p>huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan huan
+        <div class="div2">1</div>
+        <div class="div2">2</div>
+        <div class="div2">1</div>
+        <div class="div2">2</div>
+        <div class="div2">1</div>
+        <div class="div2">2</div>
+        huan huanhuan huanhuan huanhuan huanhuan huan
+        <p>环绕环绕环绕环绕</p>
+        <p>环绕环绕环绕环绕环绕环绕环绕环绕环绕环绕环绕环绕环环绕环绕</p>
+
+
+    </div>
+</body>
+</html>
