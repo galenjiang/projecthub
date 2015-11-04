@@ -1,46 +1,148 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <title>My project</title>
-  <meta name="viewport"content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
   <style>
-* { margin: 0; padding: 0; list-style: none; }
-html { font-size: 20px; }
-a { text-decoration: none; }
-.main_body { width: 16rem; background: #DFE1E1; }
-.main_body .header { width: 16rem; height: 5rem; overflow: hidden; }
-.main_body .header ul { width: 80rem; height: 5rem; overflow: hidden; -webkit-transform: translateX(0rem); }
-.main_body .header ul li { width: 16rem; height: 5rem; line-height: 5rem; font-size: 2rem; color: #fff; float: left; text-align: center; }
-.main_body .content_btn { background: #fff; padding: 0.5rem; overflow: hidden; }
-.main_body .content_btn a { color: #666; float: left; padding: 0.85rem; }
-.main_body .content_text { background: #fff; }
-.main_body .content_text ul { overflow: hidden; background: #fff; padding: 0.5rem; }
-.main_body .content_text ul li { width: 3.7rem; height: 3.7rem; border: 0.05rem solid #ccc; float: left; text-align: center; line-height: 3.95rem; font-size: 1.5rem; margin-left: -0.05rem; }
-.interval { margin-bottom: 0.5rem; }
-</style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    html {
+      font-size: 20px;
+    }
+    
+    a {
+      text-decoration: none;
+    }
+
+    .main_body {
+      width: 16rem;
+      background: #DFE1E1;
+    }
+
+    .main_body .header {
+      width: 16rem;
+      height: 5rem;
+      overflow: hidden;
+    }
+
+    .main_body .header ul {
+      width: 80rem;
+      height: 5rem;
+      overflow: hidden;
+      -webkit-transform: translateX(0rem);
+    }
+
+    .main_body .header ul li {
+      width: 16rem;
+      height: 5rem;
+      line-height: 5rem;
+      font-size: 2rem;
+      color: #fff;
+      float: left;
+      text-align: center;
+    }
+
+    .main_body .content_btn {
+      background: #fff;
+      padding: 0.5rem;
+      overflow: hidden;
+    }
+
+    .main_body .content_btn a {
+      color: #666;
+      float: left;
+      padding: 0.85rem;
+    }
+
+    .main_body .content_text {
+      background: #fff;
+    }
+
+    .main_body .content_text ul {
+      overflow: hidden;
+      background: #fff;
+      padding: 0.5rem;
+    }
+
+    .main_body .content_text ul li {
+      width: 3.7rem;
+      height: 3.7rem;
+      border: 0.05rem solid #ccc;
+      float: left;
+      text-align: center;
+      line-height: 3.95rem;
+      font-size: 1.5rem;
+      margin-left: -0.05rem;
+    }
+
+    .interval {
+      margin-bottom: 0.5rem;
+    }
+  </style>
   <script>
-window.onresize = window.onload = function () { document.documentElement.style.fontSize = 20 * window.screen.width / 320 + 'px'; }
-;
-document.addEventListener('DOMContentLoaded', function () { var oUl = document.querySelector('#banner ul'); var aLi = document.querySelectorAll('#banner ul li'); var x = 0;
-  oUl.addEventListener('touchstart', function (ev) { var disX = ev.targetTouches[0].clientX - x; oUl.style.WebkitTransition ='none'; var downX = ev.targetTouches[0].clientX; var downY = ev.targetTouches[0].clientY; var dir =''; var downScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    function fnMove(ev) { if (dir == '') { if (Math.abs(ev.targetTouches[0].clientX - downX) >= 3) { dir ='lr'; }
-        else if (Math.abs(ev.targetTouches[0].clientY - downY) >= 3) { dir ='ud'; }
-      }
-      else { if (dir == 'lr') { x = ev.targetTouches[0].clientX - disX; oUl.style.WebkitTransform ='translateX('+ x / (20 * window.screen.width / 320) + 'rem)'; }
-        else { var scrollTop = downScrollTop - ev.targetTouches[0].clientY + downY; document.documentElement.scrollTop = scrollTop; document.body.scrollTop = scrollTop; }
-      }
-    }
-    function fnEnd() { oUl.removeEventListener('touchmove', fnMove, false); oUl.removeEventListener('touchend', fnEnd, false);
-      if (dir == 'lr') { var n = Math.round(-x / aLi[0].offsetWidth); if (n < 0)                 n = 0; else if (n >= aLi.length)  n = aLi.length - 1; x = -aLi[0].offsetWidth * n; oUl.style.webkitTransition ='0.4s all ease'; oUl.style.webkitTransform ='translateX('+ x / (20 * window.screen.width / 320) + 'rem)'; }
-    }
-  oUl.addEventListener('touchmove', fnMove, false); oUl.addEventListener('touchend', fnEnd, false); ev.preventDefault(); }
-, false); }
-, false); </script>
+    window.onresize = window.onload = function() {
+      document.documentElement.style.fontSize = 20 * window.screen.width / 320 + 'px';
+    };
+    document.addEventListener('DOMContentLoaded', function() {
+      var oUl = document.querySelector('#banner ul');
+      var aLi = document.querySelectorAll('#banner ul li');
+      var x = 0;
+      oUl.addEventListener('touchstart', function(ev) {
+        var disX = ev.targetTouches[0].clientX - x;
+        oUl.style.WebkitTransition = 'none';
+        var downX = ev.targetTouches[0].clientX;
+        var downY = ev.targetTouches[0].clientY;
+        var dir = '';
+        var downScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+        function fnMove(ev) {
+          if (dir == '') {
+            if (Math.abs(ev.targetTouches[0].clientX - downX) >= 3) {
+              dir = 'lr';
+            } else if (Math.abs(ev.targetTouches[0].clientY - downY) >= 3) {
+              dir = 'ud';
+            }
+          } else {
+            if (dir == 'lr') {
+              x = ev.targetTouches[0].clientX - disX;
+              oUl.style.WebkitTransform = 'translateX(' + x / (20 * window.screen.width / 320) + 'rem)';
+            } else {
+              var scrollTop = downScrollTop - ev.targetTouches[0].clientY + downY;
+              document.documentElement.scrollTop = scrollTop;
+              document.body.scrollTop = scrollTop;
+            }
+          }
+        }
+
+        function fnEnd() {
+          oUl.removeEventListener('touchmove', fnMove, false);
+          oUl.removeEventListener('touchend', fnEnd, false);
+          if (dir == 'lr') {
+            var n = Math.round(-x / aLi[0].offsetWidth);
+            if (n < 0) n = 0;
+            else if (n >= aLi.length) n = aLi.length - 1;
+            x = -aLi[0].offsetWidth * n;
+            oUl.style.webkitTransition = '0.4s all ease';
+            oUl.style.webkitTransform = 'translateX(' + x / (20 * window.screen.width / 320) + 'rem)';
+          }
+        }
+        oUl.addEventListener('touchmove', fnMove, false);
+        oUl.addEventListener('touchend', fnEnd, false);
+        ev.preventDefault();
+      }, false);
+    }, false);
+  </script>
 </head>
+
 <body>
   <div class="main_body">
-    <div class="header"id="banner">
+    <div class="header" id="banner">
       <ul>
         <li style="background: #c19b63">1</li>
         <li style="background: #7ac134">2</li>
@@ -97,4 +199,5 @@ document.addEventListener('DOMContentLoaded', function () { var oUl = document.q
     </div>
   </div>
 </body>
+
 </html>
