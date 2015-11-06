@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.js"],"names":["window","onload"],"mappings":"AAAAA,OAAOC,OAAS","file":"index.js","sourcesContent":["window.onload = function(){};\r\n"],"sourceRoot":"/source/"}

@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA,KACE,eACA,SAAO,CAAA","file":"index.css","sourcesContent":["body {\r\n  font-size: 12px;\r\n  color: red; }\r\n"],"sourceRoot":"/source/"}
