@@ -1,4 +1,8 @@
-body{
-  font-size: 12px;
-  color: red;
+@charset "UTF-8";
+
+@import "./flex.scss";
+
+div {
+  @include justify-content-end;
+  @include flex-direction-column;
 }

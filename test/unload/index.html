@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <p>当您点击 <a href="http://w3school.com.cn">这个链接</a> 时，或者关闭窗口，会触发一个警告框。</p>
+
+  <!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.js">
+  </script> -->
+  <script type="text/javascript">
+  window.onbeforeunload   =   function(e){
+    console.log(e,event.screenX)
+        var   n   =   window.event.screenX   -   window.screenLeft;
+        var   b   =   n   >   document.documentElement.scrollWidth-20;
+        if(b   &&   window.event.clientY   <   0   ||   window.event.altKey)
+        {
+            alert("是关闭而非刷新");
+            window.event.returnValue   =   "是否关闭？";
+        }else{
+               alert("是刷新而非关闭");
+       }
+       return "关闭"
+  }
+  window.onclick = function(e){
+    console.log(e);
+  }
+  </script>
+</body>
+
+</html>

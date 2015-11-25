@@ -145,9 +145,9 @@ gulp.task('watchsass',function () {
             })
             .pipe(sourcemaps.init())
             .pipe(minifycss())
-            .pipe(autoprefixer({
-              browsers: 'last 2 versions'
-            }))
+            // .pipe(autoprefixer({
+            //   browsers: 'last 2 versions'
+            // }))
             .pipe(sourcemaps.write('./'))
             .pipe(gulp.dest(paths.distDir))
     })
@@ -160,9 +160,9 @@ gulp.task('sasscss', function () {
         })
         .pipe(sourcemaps.init())
         .pipe(minifycss())
-        .pipe(autoprefixer({
-          browsers: 'last 2 versions'
-        }))
+        // .pipe(autoprefixer({
+        //   browsers: 'last 2 versions'
+        // }))
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('dist/css'))
 })
@@ -209,7 +209,7 @@ gulp.task('copy', function () {
 
 // jade
 gulp.task('watchjade', function () {
-    gulp.watch('src/assets/**/*', function (event) {
+    gulp.watch('src/assets/**/*.jade', function (event) {
         var paths = watchPath(event,'src/','dist/')
 
         gutil.log(gutil.colors.green(event.type) + ' ' + paths.srcPath)
@@ -222,18 +222,38 @@ gulp.task('watchjade', function () {
             .pipe(gulp.dest(paths.distDir))
     })
 })
-
+// 编译jade
 gulp.task('jade', function () {
-    gulp.src('src/assets/**/*')
+    gulp.src('src/assets/**/*.jade')
         .pipe(jade({
           pretty: true
         }))
         .pipe(gulp.dest('dist/assets'))
 })
 
+// 监控 html
+gulp.task('watchhtml', function () {
+    gulp.watch('src/assets/**/*.html', function (event) {
+        var paths = watchPath(event,'src/','dist/')
+
+        gutil.log(gutil.colors.green(event.type) + ' ' + paths.srcPath)
+        gutil.log('Dist ' + paths.distPath)
+
+        gulp.src(paths.srcPath)
+            .pipe(gulp.dest(paths.distDir))
+    })
+})
+// 编译html
+gulp.task('html', function () {
+    gulp.src('src/assets/**/*.html')
+        .pipe(gulp.dest('dist/assets'))
+})
 
 
-gulp.task('init', ['uglifyjs', 'minifycss', 'sasscss', 'image', 'copy', 'jade'])
 
 
-gulp.task('default', ['watchjs', 'watchcss', 'watchsass', 'watchimage', 'watchcopy','watchjade'])
+
+gulp.task('init', ['uglifyjs', 'minifycss', 'sasscss', 'image', 'copy', 'jade','html'])
+
+
+gulp.task('default', ['watchjs', 'watchcss', 'watchsass', 'watchimage', 'watchcopy','watchjade','watchhtml'])
