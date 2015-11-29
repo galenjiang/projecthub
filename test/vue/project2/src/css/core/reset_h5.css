@@ -3,11 +3,11 @@
 	HTML5 Reset :: style.css
 	----------------------------------------------------------
 	We have learned much from/been inspired by/taken code where offered from:
-	
+
 	Eric Meyer					:: http://ericmeyer.com
 	HTML5 Doctor				:: http://html5doctor.com
 	and the HTML5 Boilerplate	:: http://html5boilerplate.com
-	
+
 -------------------------------------------------------------------------------*/
 
 /* Let's default this puppy out
@@ -18,10 +18,10 @@ html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquot
 	padding: 0;
 	border: 0;
 	outline: 0;
-	font-size: 100%;
+	font-size: 0.16rem;
 	vertical-align: baseline;
 	background: transparent;
-}									
+}
 
 article, aside, figure, footer, header, hgroup, nav, section {display: block;}
 
@@ -36,15 +36,15 @@ embed {max-width: 100%;}
 html, body {overflow: hidden; height: 100%;}
 body { display: -webkit-box;}
 
-/* we use a lot of ULs that aren't bulleted. 
+/* we use a lot of ULs that aren't bulleted.
 	don't forget to restore the bullets within content. */
 ul,menu {list-style: none;}
 
 blockquote, q {quotes: none;}
 
-blockquote:before, 
-blockquote:after, 
-q:before, 
+blockquote:before,
+blockquote:after,
+q:before,
 q:after {content: ''; content: none;}
 
 a {margin: 0; padding: 0; font-size: 100%; vertical-align: baseline; background: transparent; text-decoration: none;}
@@ -75,7 +75,7 @@ input[type="checkbox"] {vertical-align: bottom; *vertical-align: baseline;}
 select, input, textarea {font: 99% sans-serif;}
 
 table {font-size: inherit; font-size: 100%;}
- 
+
 /* Accessible focus treatment
 	people.opera.com/patrickl/experiments/keyboard/test */
 a:hover, a:active,input,select {outline: none;}
@@ -84,7 +84,7 @@ small {font-size: 85%;}
 
 strong, th {font-weight: bold;}
 
-td, td img {vertical-align: top;} 
+td, td img {vertical-align: top;}
 
 /* Make sure sup and sub don't screw with your line-heights
 	gist.github.com/413930 */
@@ -97,9 +97,9 @@ pre, code, kbd, samp {font-family: monospace, sans-serif;}
 
 /* hand cursor on clickable elements */
 .clickable,
-label, 
-input[type=button], 
-input[type=submit], 
+label,
+input[type=button],
+input[type=submit],
 button {cursor: pointer;}
 
 input:focus { outline: none;}
@@ -109,12 +109,12 @@ button, input, select, textarea {margin: 0; padding: 0;-webkit-appearance:none;b
 
 /* make buttons play nice in IE */
 button {width: auto; overflow: visible;}
- 
+
 
 /* let's clear some floats */
-.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }  
-.clearfix:after { clear: both; }  
-.clearfix { zoom: 1; }  
+.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
 
 
 
@@ -124,7 +124,7 @@ button {width: auto; overflow: visible;}
 /* new Linux- and Windows-friendly sans-serif font stack: http://mky.be/fontstack */
 body {font: 13px Helmet, Freesans, sans-serif;}
 
-/* using local fonts? make sure to read up on Paul Irish's 
+/* using local fonts? make sure to read up on Paul Irish's
 	Bulletproof @font-face syntax: http://mky.be/font-face/bulletproof/ */
 
 /* we like off-black for text */
@@ -155,16 +155,16 @@ mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: b
 
 /* Consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
 @media screen and (max-device-width: 480px) {
-	
-		
+
+
 }
 
 @media all and (orientation: portrait) {
-	
+
 }
 
 @media all and (orientation: landscape) {
-	
+
 }
 
 
@@ -189,11 +189,3 @@ input,textarea { -webkit-user-select: auto; -moz-user-select: auto;}
 * { -webkit-text-size-adjust: none;}
 * { font-weight: normal; font-style: normal;}
 *, *:after, *:before { -webkit-box-sizing: border-box;  -moz-box-sizing: border-box; box-sizing: border-box; padding: 0; margin: 0;}
-
-
-
-
-
-
-
-

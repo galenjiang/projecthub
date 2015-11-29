@@ -21,5 +21,10 @@ new vue({
   data: {
     name: "galen",
     mb: "13564071438"
+  },
+  methods: {
+    clickme: function(){
+      alert(this.name +　"是大傻蛋")
+    }
   }
 })

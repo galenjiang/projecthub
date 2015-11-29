@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimum-scale=1.0,maximum-scale=1.0,minimal-ui" />
+    <meta name="viewport" content="width=device-width,initial-scale=2.0,user-scalable=0,minimum-scale=2.0,maximum-scale=2.0,minimal-ui" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <script type="text/javascript">
       document.documentElement.style.fontSize = document.documentElement.clientWidth*100/750*2 + 'px';
-    </script>
+    </script> 
     <title></title>
     <link rel="stylesheet" href="../css/core/reset_h5.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="../css/index.css" media="screen" title="no title" charset="utf-8">
@@ -25,12 +25,13 @@
           <dt>手机：</dt>
           <dd><input v-model="mb" type="text" name="mb"></dd>
         </dl>
-        <div class="">
+        <div class="des">
           {{name}}
         </div>
-        <div class="">
+        <div class="des">
           {{mb}}
         </div>
+        <button type="button" v-on:click="clickme" name="button">点我</button>
       </div>
       <footer>
         footer
