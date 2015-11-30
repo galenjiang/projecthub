@@ -67,6 +67,11 @@
 	  data: {
 	    name: "galen",
 	    mb: "13564071438"
+	  },
+	  methods: {
+	    click: function(){
+	      alert("你好！")
+	    }
 	  }
 	})
 
