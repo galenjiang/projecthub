@@ -22,7 +22,7 @@ module.exports = {
   entry: getEntry(),
   output: {
     path: path.join(distDir, "js"),
-    publicPath: "./js/",
+    publicPath: "./",
     filename: "[name].js"
   },
   module: {

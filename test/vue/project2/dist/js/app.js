@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "./js/";
+/******/ 	__webpack_require__.p = "./";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -61,7 +61,7 @@
 	  }
 	  page.init();
 	})
-
+	 
 	new vue({
 	  el: "#content",
 	  data: {
@@ -69,8 +69,9 @@
 	    mb: "13564071438"
 	  },
 	  methods: {
-	    click: function(){
-	      alert("你好！")
+
+	    clickme: function(){
+	      alert(this.name +　"是大傻蛋")
 	    }
 	  }
 	})

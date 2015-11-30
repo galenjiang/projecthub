@@ -15,7 +15,7 @@ $(function(){
   }
   page.init();
 })
-
+ 
 new vue({
   el: "#content",
   data: {
@@ -23,8 +23,9 @@ new vue({
     mb: "13564071438"
   },
   methods: {
-    click: function(){
-      alert("你好！")
+
+    clickme: function(){
+      alert(this.name +　"是大傻蛋")
     }
   }
 })

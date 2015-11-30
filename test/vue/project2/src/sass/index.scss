@@ -1,6 +1,6 @@
 @charset "UTF-8";
-
 @import "./flex.scss";
+
 html,body{
   height: 100%;
   font-size: 10px;
@@ -10,6 +10,7 @@ html{
 }
 body{
   background: #ccc;
+  font-size: .16rem;
 }
 .wrapper{
   @include display-flex;
@@ -19,6 +20,7 @@ body{
 }
 header{
   height: 1rem;
+  font-size: 0.5rem;
   background-color: red;
 }
 .content{
@@ -37,10 +39,15 @@ header{
     margin-left: 1rem;
     background-color: orange;
     input{
-      background: #fff;
-      height: 1rem;
+      background: #0f0;
+      font-size: 0.30rem;
+      height: .9rem;
       width: 2rem;
     }
+  }
+  .des{
+    height: 0.6rem;
+    font-size: 0.5rem;
   }
 }
 footer{
