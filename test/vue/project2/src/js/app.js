@@ -1,3 +1,4 @@
+// var $ = require("jquery");
 $(function(){
   var scope = {
     index: 1
@@ -15,7 +16,7 @@ $(function(){
   }
   page.init();
 })
- 
+
 new vue({
   el: "#content",
   data: {
@@ -23,9 +24,8 @@ new vue({
     mb: "13564071438"
   },
   methods: {
-
     clickme: function(){
-      alert(this.name +　"是大傻蛋")
+      alert(this.name +　"真棒！");
     }
   }
 })

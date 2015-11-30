@@ -28,14 +28,14 @@ module.exports = {
   module: {
     //各种加载器，即让各种文件格式可用require引用
     loaders: [{
-      test: /\.css$/,
-      loader: "style-loader!css-loader"
-    }
-    // , {
-    //   test: /\.scss$/,
-    //   loader: "style-loader!csss-loader!less-loader"
-    // }
-  ]
+        test: /\.css$/,
+        loader: "style-loader!css-loader"
+      }
+      // , {
+      //   test: /\.scss$/,
+      //   loader: "style-loader!csss-loader!less-loader"
+      // }
+    ]
   },
   resolve: {
     //配置别名，在项目中可缩减引用路径
@@ -55,6 +55,17 @@ module.exports = {
       "$": "jquery",
       "vue": "vue"
     })
+    // 压缩慢，不用
+    // new webpack.optimize.UglifyJsPlugin({
+    //   compress: {
+    //     warnings: false
+    //   },
+    //   mangle: {
+    //    except: ['jquery', '$', 'exports', 'require','vue']
+    //  },
+    //  sourceMap: true
+    // })
+    // 合并公共文件
     // new webpack.optimize.CommonsChunkPlugin("commons.js",["/src/js/core/commons"])
   ]
 };

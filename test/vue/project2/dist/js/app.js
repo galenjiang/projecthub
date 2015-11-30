@@ -44,7 +44,8 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function($, vue) {$(function(){
+	/* WEBPACK VAR INJECTION */(function($, vue) {// var $ = require("jquery");
+	$(function(){
 	  var scope = {
 	    index: 1
 	  }
@@ -61,7 +62,7 @@
 	  }
 	  page.init();
 	})
-	 
+
 	new vue({
 	  el: "#content",
 	  data: {
@@ -69,9 +70,8 @@
 	    mb: "13564071438"
 	  },
 	  methods: {
-
 	    clickme: function(){
-	      alert(this.name +　"是大傻蛋")
+	      alert(this.name +　"真棒！");
 	    }
 	  }
 	})
