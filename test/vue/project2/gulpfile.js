@@ -9,6 +9,8 @@ var minifycss = require('gulp-minify-css')
 var jade = require('gulp-jade')
 var sass = require('gulp-ruby-sass')
 var imagemin = require('gulp-imagemin')
+// 报错
+var plumber = require('gulp-plumber');
 // webpack
 var webpack = require('webpack');
 var WebpackDevServer = require("webpack-dev-server");
@@ -213,6 +215,7 @@ gulp.task('watchjade', function () {
         gutil.log('Dist ' + paths.distPath)
 
         gulp.src(paths.srcPath)
+            .pipe(plumber())
             .pipe(jade({
               pretty: true
             }))
@@ -222,6 +225,7 @@ gulp.task('watchjade', function () {
 // 编译jade
 gulp.task('jade', function () {
     gulp.src('src/assets/**/*.jade')
+        .pipe(plumber())
         .pipe(jade({
           pretty: true
         }))

@@ -53,7 +53,7 @@ module.exports = {
   plugins: [
     new webpack.ProvidePlugin({
       "$": "jquery",
-      "vue": "vue"
+      "Vue": "vue"
     })
     // 压缩慢，不用
     // new webpack.optimize.UglifyJsPlugin({
