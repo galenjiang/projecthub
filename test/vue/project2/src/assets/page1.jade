@@ -16,15 +16,15 @@ html
       header 
         span(id="ex") a={{ a }}, b={{ b }}
       .content body
-        div(id="example")
-          template(id="child-template")
-            input(v-model="msg")
-            button(v-on:click="notify") Dispatch Event
-
-            div(id="events-example")
-            p Messages: {{ messages | json }}
-            child
-      
+        div
+          h1 This is my component!
+          slot
+            | This will only be displayed if there is no content
+            | to be distributed.
+            
+        my-component
+          p This is some original content
+          p This is some more original content
       footer tail
     
     script(type="text/javascript" src="../js/page1.js")

@@ -208,12 +208,12 @@ gulp.task('copy', function () {
 
 // watch jade
 gulp.task('watchjade', function () {
-    gulp.watch('src/assets/**/*.jade', function (event) {
+    gulp.watch('src/assets/**/*.jade', function (event,filename) {
         var paths = watchPath(event,'src/','dist/')
 
         gutil.log(gutil.colors.green(event.type) + ' ' + paths.srcPath)
         gutil.log('Dist ' + paths.distPath)
-
+        
         gulp.src(paths.srcPath)
             .pipe(plumber())
             .pipe(jade({

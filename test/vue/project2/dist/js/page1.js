@@ -69,13 +69,13 @@
 	  data: {
 	    messages: []
 	  },
-	  // 在创建实例时 `events` 选项简单地调用 `$on`
-	  events: {
-	    'child-msg': function (msg) {
-	      // 事件回调内的 `this` 自动绑定到注册它的实例上
+	  methods: {
+	    handleIt: function(msg){
 	      this.messages.push(msg)
+
 	    }
 	  }
+
 	})
 
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))

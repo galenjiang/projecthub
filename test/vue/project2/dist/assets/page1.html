@@ -15,15 +15,17 @@
     <div class="wrapper">
       <header> <span id="ex">a={{ a }}, b={{ b }}</span></header>
       <div class="content">body
-        <div id="example">
-          <template id="child-template">
-            <input v-model="msg">
-            <button v-on:click="notify">Dispatch Event</button>
-            <div id="events-example"></div>
-            <p>Messages: {{ messages | json }}</p>
-            <child></child>
-          </template>
+        <div>
+          <h1>This is my component!</h1>
+          <slot>
+            This will only be displayed if there is no content
+            to be distributed.
+          </slot>
         </div>
+        <my-component>
+          <p>This is some original content</p>
+          <p>This is some more original content</p>
+        </my-component>
       </div>
       <footer>tail</footer>
     </div>
