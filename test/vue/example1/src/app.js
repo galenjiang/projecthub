@@ -1,19 +1,20 @@
-Vue.directive('demo', {
-  bind: function () {
-    console.log('demo bound!')
-  },
-  update: function (value) {
-    console.log()
-  }
-})
-
-var demo = new Vue({
-  el: '#demo',
+new Vue({
+  el: "#app",
   data: {
-    msg: 'hello!'
+    index: "",
+    msg: [{
+      name: "a", age: 20, sex: "male"
+    }, {
+      name: "b", age: 30, sex: "male"
+    }, {
+      name: "c", age: 10, sex: "female"
+    },{
+      name: "abc", age: 20, sex: "male"
+    }]
+  },
+  methods: {
+    myCustomFilterFunction: function(){
+      return "index" + " in " + "'name'"
+    }
   }
-})
-
-var vm = new Vue({
-  el: "#app"
 })
