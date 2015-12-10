@@ -7,14 +7,14 @@
   * assets 放置html
   * js 放置js
 
-``├── dist``
-``│   ├── assets``
-``│   ├── js``
-``│   ├── css``
-``│   ├── images``
-``│   ├── fonts``
-``│   └── templ``
-``├── src``
+``├── dist``  
+``│   ├── assets``  
+``│   ├── js``  
+``│   ├── css``  
+``│   ├── images``  
+``│   ├── fonts``  
+``│   └── templ``  
+``├── src``  
 ``│   ├── assets``  
 ``│   ├── js``  
 ``│   ├── sass``  
