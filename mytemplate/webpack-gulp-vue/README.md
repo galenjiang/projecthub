@@ -8,24 +8,24 @@
   * js 放置js
 
 
-    >├── dist  
-    >│   ├── assets  
-    >│   ├── js  
-    >│   ├── css  
-    >│   ├── images  
-    >│   ├── fonts  
-    >│   └── templ  
-    >├── src  
-    >│   ├── assets  
-    >│   ├── js  
-    >│   ├── sass  
-    >│   ├── css  
-    >│   ├── images  
-    >│   ├── fonts  
-    >│   └── templ  
-    >├── node_modules  
-    >├── .sass-cache  
-    >├── package.json  
-    >├── gulpfile.js  
-    >├── webpack.config.js  
-    >└── README.md  
+    ├── dist  
+    │   ├── assets  
+    │   ├── js  
+    │   ├── css  
+    │   ├── images  
+    │   ├── fonts  
+    │   └── templ  
+    ├── src  
+    │   ├── assets  
+    │   ├── js  
+    │   ├── sass  
+    │   ├── css  
+    │   ├── images  
+    │   ├── fonts  
+    │   └── templ  
+    ├── node_modules  
+    ├── .sass-cache  
+    ├── package.json  
+    ├── gulpfile.js  
+    ├── webpack.config.js  
+    └── README.md  
