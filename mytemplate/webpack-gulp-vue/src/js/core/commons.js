@@ -1,4 +1,4 @@
 
 $(function(){
-  alert("公共文件执行!")
+  alert("欢迎来到vue的世界!")
 })

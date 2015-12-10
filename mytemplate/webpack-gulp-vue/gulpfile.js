@@ -149,7 +149,7 @@ gulp.task('sasscss', function() {
 gulp.task('watchsass', function() {
   gulp.watch('src/sass/**/*', function(event) {
     // 路径
-    var paths = watchPath(event, 'src/', 'dist/')
+    var paths = watchPath(event, 'src/sass/', 'dist/css/')
     // 打印变动路径
     gutil.log(colors.yellow(event.type) + ' ' + paths.srcPath);
     gutil.log(colors.green('to') + ' ' + paths.distPath);

@@ -3,11 +3,22 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimum-scale=1.0,maximum-scale=1.0,minimal-ui">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <title>vue</title>
-    <link rel="stylesheet" href="../css/index.css" media="screen" title="no title" charset="utf-8">
+    <script type="text/javascript">document.documentElement.style.fontSize = document.documentElement.clientWidth*100/750*2 + 'px';</script>
+    <link rel="stylesheet" href="../css/core/normalize.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="../css/page1.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <div>1dada</div>
+    <div class="wrapper">
+      <header>header</header>
+      <div class="content">
+        <div id="app">{{ msg }}</div>
+      </div>
+      <footer>tailer</footer>
+    </div>
     <script type="text/javascript" src="../js/page1.js"></script>
   </body>
 </html>
