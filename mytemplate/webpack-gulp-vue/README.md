@@ -8,6 +8,8 @@
   * js js
     * core 公共js
     * lib 第三方框架
+  * css css
+    * core 公共css
   * sass sass文件
 * gulpfile.js gulp配置文件
 * package.json node配置文件
