@@ -1,5 +1,6 @@
 # 由gulp主导，webpack为辅，搭的脚手架
 ## 里面综合由REM+新flex+旧box布局,sass,jade,Vue,jQuery等框架组成的一个项目结构
+### 入口 dist/assets/page1.html
 >├── dist  
 >│   ├── assets  
 >│   ├── js  
