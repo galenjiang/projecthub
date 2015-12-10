@@ -4,8 +4,16 @@
 ### 目录介绍
 * dist 项目输出路径
 * src 项目编译路径
-  * assets 放置html
-  * js 放置js
+  * assets html
+  * js js
+    * core 公共js
+    * lib 第三方框架
+  * sass sass文件
+* gulpfile.js gulp配置文件
+* package.json node配置文件
+* webpack.config.js webpack配置文件
+* README.md 说明文档
+
 
 ```
 ├── dist
