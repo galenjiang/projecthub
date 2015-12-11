@@ -7,8 +7,8 @@ var distDir = "dist/";
 function getEntry() {
   var jsPath = path.resolve(srcDir, "js");
   var dirs = fs.readdirSync(jsPath);
-  var matchs = [],
-    files = {};
+  var matchs = [];
+  var files = {};
   dirs.forEach(function(item) {
     matchs = item.match(/(.+)\.js$/);
     if (matchs) {
@@ -17,9 +17,9 @@ function getEntry() {
   });
   return files;
 }
-
+console.log(JSON.stringify(getEntry()))
 module.exports = {
-  devtool: "source-map", 
+  devtool: "source-map",
   entry: getEntry(),
   output: {
     path: path.join(distDir, "js"),
@@ -29,14 +29,19 @@ module.exports = {
   module: {
     //各种加载器，即让各种文件格式可用require引用
     loaders: [{
-        test: /\.css$/,
-        loader: "style-loader!css-loader"
-      }
-      // , {
-      //   test: /\.scss$/,
-      //   loader: "style-loader!csss-loader!less-loader"
-      // }
-    ]
+      test: /\.vue$/,
+      loader: 'vue.loader'
+    },{
+      test: /\.css$/,
+      loader: 'css-loader/style-loader'
+    },{
+      test: /\.(png|jpg|gif)$/,
+      loader: 'file?name=[name].[ext]?[hash]'
+    }]
+  },
+  babel: {
+    presets: ['es2015', 'stage-0'],
+    plugins: ['transform-runtime']
   },
   resolve: {
     //配置别名，在项目中可缩减引用路径
@@ -56,17 +61,26 @@ module.exports = {
       "$": "jquery",
       "Vue": "vue"
     })
-    // 压缩慢，不用
-    // new webpack.optimize.UglifyJsPlugin({
-    //   compress: {
-    //     warnings: false
-    //   },
-    //   mangle: {
-    //    except: ['jquery', '$', 'exports', 'require','vue']
-    //  },
-    //  sourceMap: true
-    // })
-    // 合并公共文件
-    // new webpack.optimize.CommonsChunkPlugin("commons.js",["/src/js/core/commons"])
   ]
 };
+// if (process.env.NODE_ENV === 'production') {
+//   module.exports.plugins = [
+//     new webpack.ProvidePlugin({
+//       "$": "jquery",
+//       "Vue": "vue"
+//     }),
+//     new webpack.DefinePlugin({
+//       'process.env': {
+//         NODE_ENV: '"production"'
+//       }
+//     }),
+//     new webpack.optimize.UglifyJsPlugin({
+//       compress: {
+//         warnings: false
+//       }
+//     }),
+//     new webpack.optimize.OccurenceOrderPlugin()
+//   ]
+// } else {
+//   module.exports.devtool = '#source-map'
+// }
