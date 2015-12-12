@@ -6,6 +6,7 @@
   <title>Document</title>
   <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"> -->
   <style media="screen" type="text/css">
+
 html, body, #editor {
   margin: 0;
   height: 100%;
@@ -38,17 +39,37 @@ textarea {
 code {
   color: #f66;
 }
+
   </style>
 </head>
 
 <body>
-  <div id="editor">
-    <textarea v-model="input" debounce="300"></textarea>
-    <div v-html="input | marked"></div>
+
+      <!--  父组件-->
+  <script type="x-template" id="parent" >
+    <input v-model="a" type="text" name="name">
+    <div class='parent' v-yield="a">
+      <child></child>
+    </div>
+  </script>
+  <!--  子组件-->
+  <script type="x-template" id="child">
+    <div class='child'>{{ a }}</div>
+  </script>
+
+
+  <div class="container">
+    <div class="col-md-6 col-md-offset-3">
+      <h1>Vue demo</h1>
+      <div id="app">
+        <parent>
+        </parent>
+      </div>
+    </div>
   </div>
 
 
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
+
   <script type="text/javascript" src="js/vue.min.js"></script>
   <script type="text/javascript" src=app.js></script>
 </body>
