@@ -1,19 +1,9 @@
-Vue.directive('demo', {
-  bind: function () {
-    console.log('demo bound!')
-  },
-  update: function (value) {
-    console.log()
-  }
-})
-
-var demo = new Vue({
-  el: '#demo',
+new Vue({
+  el: '#editor',
   data: {
-    msg: 'hello!'
+    input: '# hello'
+  },
+  filters: {
+    marked: marked
   }
-})
-
-var vm = new Vue({
-  el: "#app"
 })

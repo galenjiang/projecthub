@@ -4,14 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
-  <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"> -->
   <style media="screen" type="text/css">
 html, body, #editor {
   margin: 0;
   height: 100%;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  color: #333;
-}
+  font-family: 'Helvetica Neue', Arial, sans-serif;color: #333;
+} 
 
 textarea, #editor div {
   display: inline-block;
@@ -48,9 +46,20 @@ code {
   </div>
 
 
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
-  <script type="text/javascript" src="js/vue.min.js"></script>
-  <script type="text/javascript" src=app.js></script>
+  <script type="text/javascript" src="js/marked/marked.min.js"></script>
+  <script type="text/javascript" src="js/vue/vue.min.js"></script>
+  <script type="text/javascript">
+  new Vue({
+    el: '#editor',
+    data: {
+      input: '# hello'
+    },
+    filters: {
+      marked: marked
+    }
+  })
+
+  </script>
 </body>
 
 </html>
