@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>svg</title>
+  <!-- <link rel="stylesheet" href="./app.css" media="screen" title="no title" charset="utf-8"> -->
+  <style media="screen" type="text/css">
+
+  </style>
+</head>
+
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" id="svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="800">
+
+
+  </svg>
+
+
+  <script type="text/javascript" src="snap.svg-min.js"></script>
+  <script type="text/javascript">
+    var s = Snap("#svg");
+    var bigCircle = s.circle(150, 150, 100)
+    bigCircle.attr({
+      fill: "#ff0",
+      stroke: "#0f0",
+      strokeWidth: 10
+    });
+    var smallCircle = s.circle(100, 150, 70)
+    var discs = s.group(smallCircle, s.circle(200, 150, 70));
+    discs.attr({
+      fill: "#fff"
+    })
+    bigCircle.attr({
+      mask: discs
+    });
+    smallCircle.animate({
+      r: 50
+    }, 1000);
+    discs.select("circle:nth-child(2)").animate({
+      r: 50
+    }, 1000);
+    var p = s.path("M10-5-10,15M15,0,0,15M0-5-20,15").attr({
+      fill: "none",
+      stroke: "#bada55",
+      strokeWidth: 5
+    });
+    // To create pattern,
+    // just specify dimensions in pattern method:
+    p = p.pattern(0, 0, 10, 10);
+    bigCircle.attr({
+    fill: p
+  });
+  </script>
+</body>
+
+</html>
