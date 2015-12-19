@@ -1,3 +1,4 @@
+
 Vue.directive("yield",{
   bind: function(){
     alert("绑定")
