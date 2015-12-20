@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>amd</title>
+    <script type="text/javascript">
+      function A(fn){
+        console.log("a");
+        setTimeout(function(){
+          fn();
+        },0.01)
+      }
+      function B(){
+        console.log("b");
+      }
+      (function C(){
+        A(B);
+        // setTimeout(function(){
+        for(var i = 0 ; i < 1000000000; i++){
+          var j = i*i;
+        }
+          console.log("c");
+        // },1)
+      })()
+
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>
