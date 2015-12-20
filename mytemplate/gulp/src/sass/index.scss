@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+@import "./flex.scss";
+
+div {
+  @include justify-content-end;
+  @include flex-direction-column;
+}

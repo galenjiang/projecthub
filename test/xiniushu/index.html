@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style media="screen" type="text/css">
+    .div {
+      display: none;
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="div">
+
+  </div>
+
+  <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript">
+    var a = {
+      a: "",
+      b: {
+        x: 1,
+        y: function(){
+          var u = 0;
+          var v = function(){
+            alert("1")
+          };
+          v()
+        }
+      }
+    }
+    delete a.b.y.v;
+    console.log(a.b.y())
+  </script>
+</body>
+
+</html>
