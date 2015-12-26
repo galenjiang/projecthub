@@ -1,0 +1,1 @@
+{"version":3,"sources":["1.js"],"names":["a","alert"],"mappings":"AAAA,QAASA,KACPC,MAAM","file":"1.js","sourcesContent":["function a(){\r\n  alert(2222)\r\n}\r\n"],"sourceRoot":"/source/"}
