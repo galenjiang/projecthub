@@ -45,6 +45,30 @@
 /***/ function(module, exports) {
 
 	"use strict";
+	
+	$(function () {
+	  var page = {
+	    init: function init() {
+	      var dom = document.querySelector("#div");
+	      // dom.onclick = function(){
+	      //   alert(2)
+	      // }
+	
+	      console.log(dom.getAttribute("onclick"));
+	    },
+	    methods1: function methods1() {
+	      var _ref = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	
+	      var _ref$a = _ref.a;
+	      var a = _ref$a === undefined ? 0 : _ref$a;
+	      var _ref$b = _ref.b;
+	      var b = _ref$b === undefined ? 0 : _ref$b;
+	
+	      return a + b;
+	    }
+	  };
+	  page.init();
+	});
 
 /***/ }
 /******/ ]);
