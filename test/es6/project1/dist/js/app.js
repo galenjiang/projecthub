@@ -54,6 +54,7 @@
 	      //   alert(2)
 	      // }
 	
+	      alert();
 	      console.log(dom.getAttribute("onclick"));
 	    },
 	    methods1: function methods1() {
