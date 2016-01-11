@@ -49,21 +49,29 @@
 	$(function () {
 	  var page = {
 	    init: function init() {
-	      var dom = document.querySelector("#div");
-	      // dom.onclick = function(){
-	      //   alert(2)
-	      // }
-	
-	      console.log(dom.getAttribute("onclick"));
+	      var oDiv1 = document.querySelector("#div1");
+	      var oDiv2 = document.querySelector("#div2");
+	      document.addEventListener("readystatechange", function (event) {
+	        alert(document.readyState);
+	      }, false);
 	    },
 	    methods1: function methods1() {
 	      var _ref = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 	
 	      var _ref$a = _ref.a;
-	      var a = _ref$a === undefined ? 0 : _ref$a;
+	      var a = _ref$a === undefined ? 1 : _ref$a;
 	      var _ref$b = _ref.b;
-	      var b = _ref$b === undefined ? 0 : _ref$b;
+	      var b = _ref$b === undefined ? 1 : _ref$b;
 	
+	      return a + b;
+	    },
+	    methods2: function methods2() {
+	      var _ref2 = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	
+	      var _ref2$a = _ref2.a;
+	      var a = _ref2$a === undefined ? 0 : _ref2$a;
+	      var _ref2$b = _ref2.b;
+	      var b = _ref2$b === undefined ? 0 : _ref2$b;
 	      return a + b;
 	    }
 	  };
