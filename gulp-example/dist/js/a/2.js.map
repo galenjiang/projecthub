@@ -1,0 +1,1 @@
+{"version":3,"sources":["a/2.js"],"names":["haha","alert"],"mappings":"AAAA,QAASA,QACPC,MAAM","file":"a/2.js","sourcesContent":["function haha() {\r\n  alert(333333)\r\n}\r\n"],"sourceRoot":"/source/"}
