@@ -3,7 +3,7 @@ var path = require('path');
 var fs = require("fs");
 var srcDir = "src/";
 var distDir = "dist/";
-
+// get entry
 function getEntry() {
   var jsPath = path.resolve(srcDir, "js");
   var dirs = fs.readdirSync(jsPath);
@@ -17,12 +17,12 @@ function getEntry() {
   });
   return files;
 }
-
+// get global para
 var isProduction = function() {
   return process.env.NODE_ENV === 'production';
 };
 
-console.log(JSON.stringify(getEntry()))
+// console.log(JSON.stringify(getEntry()))
 module.exports = {
   devtool: "source-map",
   entry: getEntry(),
