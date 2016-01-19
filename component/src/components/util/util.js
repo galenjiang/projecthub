@@ -68,6 +68,7 @@ Util.prototype.ajax = function(options){
 }
 Util.prototype.alert = {
   show: function(o) {
+		require("./nd.base.css");
     var t = 0,
       popup = $("#_z_alert_");
     if (popup.length) {
