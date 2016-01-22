@@ -47,9 +47,9 @@ Util.prototype.ajax = function(options){
 			clearTimeout(timer);
 			if(xhr.status >= 200 && xhr.status < 300 || xhr.status == 304){//成功
 				if(options.dataType === "json"){
-					xhr.responseText = JSON.parse(xhr.responseText)
+					var oJson = JSON.parse(xhr.responseText)
 				}
-				options.success &&　options.success(xhr.responseText);
+				options.success &&　options.success(oJson);
 
 
 			} else {//失败
@@ -70,13 +70,12 @@ Util.prototype.alert = {
   show: function(o) {
 		require("./nd.base.css");
     var t = 0,
-      popup = $("#_z_alert_");
-    if (popup.length) {
-      popup.addClass("out");
+      var popup = document.querySelector("#_z_alert_");
+    if (popup) {
+      popup.classList.add("out");
       t = 200;
     }
     if (t == 0) {
-			console.log(this)
       util._alert.show(o);
     } else {
       setTimeout(function() {
@@ -86,8 +85,9 @@ Util.prototype.alert = {
     }
   },
   hide: function(cb) {
-    var popup = $("#_z_alert_");
-    popup.addClass("out").find(".popup .btns .y, .popup .btns .n").off();
+    var popup = document.querySelector("#_z_alert_");
+    popup.classList.add("out")
+		$(popup).find(".popup .btns .y, .popup .btns .n").off();
     if (typeof cb == "function") {
       cb();
     }
@@ -154,48 +154,61 @@ Util.prototype._alert = {
     return false;
   }
 };
+// 加载
+Util.prototype.ready = function(fn) {
+    if (document.readyState != 'loading') {
+      fn();
+    } else {
+      document.addEventListener('DOMContentLoaded', fn);
+    }
+  }
+// reload images
+Util.prototype.imgPreload = function(arr) {
+	arr.forEach((el) => {
+		console.log(el)
+		let oImg = document.createElement("img");
+		oImg.src = el
+	})
+}
+// 富媒体阻止滚动
+Util.prototype.preventMediaDefault = function(){
+	document.addEventListener('touchmove', function(e) {
+		e.preventDefault();
+	}, false);
+}
 
-
-
-
+// 设置cookie
+Util.prototype.setCookie = function(name, value, expires, path, domain, secure){
+	var today = new Date();
+		today.setTime(today.getTime());
+		if (expires) {
+				expires = expires * 1000 * 60 * 60 * 24;
+		}
+		var expires_date = new Date(today.getTime() + (expires));
+		document.cookie = name + '=' + escape(value) + ((expires) ? ';expires=' + expires_date.toGMTString() : '') + ((path) ? ';path=' + path : '') + ((domain) ? ';domain=' + domain : '') + ((secure) ? ';secure' : '');
+}
+// 删除cookie
+Util.prototype.deleteCookie = function(name, path, domain) {
+		if (exports.getCookie(name)){
+			document.cookie = name + '=' + ((path) ? ';path=' + path : '') + ((domain) ? ';domain=' + domain : '') + ';expires=Thu, 01-Jan-1970 00:00:01 GMT';
+		}
+}
+// 设置localstorage
+Util.prototype.setStorage = function(name, value){
+	localStorage.setItem(name, value);
+}
+// 获取localstorage
+Util.prototype.getStorage = function(name){
+	return localStorage.getItem(name);
+}
+// 删除localstorage
+Util.prototype.deleteStorage = function(name){
+	localStorage.removeItem(name);
+}
+// 删除所有localstorage
+Util.prototype.deleteAllStorage = function(){
+	localStorage.clear();
+}
 let util = new Util();
 
 export { util }
-
-// // 设置cookie
-// exports.setCookie = function(name, value, expires, path, domain, secure){
-// 	var today = new Date();
-// 		today.setTime(today.getTime());
-// 		if (expires) {
-// 				expires = expires * 1000 * 60 * 60 * 24;
-// 		}
-// 		var expires_date = new Date(today.getTime() + (expires));
-// 		document.cookie = name + '=' + escape(value) + ((expires) ? ';expires=' + expires_date.toGMTString() : '') + ((path) ? ';path=' + path : '') + ((domain) ? ';domain=' + domain : '') + ((secure) ? ';secure' : '');
-// }
-//
-// // 删除cookie
-// exports.deleteCookie = function(name, path, domain) {
-// 		if (exports.getCookie(name)){
-// 			document.cookie = name + '=' + ((path) ? ';path=' + path : '') + ((domain) ? ';domain=' + domain : '') + ';expires=Thu, 01-Jan-1970 00:00:01 GMT';
-// 		}
-// }
-//
-// // 获取localstorage
-// exports.getStorage = function(name){
-// 	return localStorage.getItem(name);
-// }
-//
-// // 设置localstorage
-// exports.setStorage = function(name, value){
-// 	localStorage.setItem(name, value);
-// }
-//
-// // 删除localstorage
-// exports.deleteStorage = function(name){
-// 	localStorage.removeItem(name);
-// }
-//
-// // 删除所有localstorage
-// exports.deleteAllStorage = function(){
-// 	localStorage.clear();
-// }
