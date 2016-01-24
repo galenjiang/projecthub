@@ -35,7 +35,7 @@ module.exports = {
     //各种加载器，即让各种文件格式可用require引用
     loaders: [{
       test: /\.(png|jpg|gif)$/,
-      loader: 'file?name=[name].[ext]?[hash]'
+      loader: 'file?name=img/[name].[ext]?[hash]'
     }, {
       test: /\.css$/,
       loader: 'style-loader!css-loader'
