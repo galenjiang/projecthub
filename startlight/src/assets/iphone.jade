@@ -1,0 +1,35 @@
+doctype
+html
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="Content-Type" content="text/html" charset="utf-8")
+    meta(name="format-detection" content="telephone=no")
+    meta(name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimum-scale=1.0,maximum-scale=1.0,minimal-ui")
+    meta(name="apple-mobile-web-app-status-bar-style" content="black")
+    title "疯"尚之夜
+    link(href="../css/reset_h5.css", rel="stylesheet", type="text/css" )
+    link(href="../css/app.css", rel="stylesheet", type="text/css" )
+    script(type="text/javascript").
+      document.documentElement.style.fontSize = document.documentElement.clientWidth*100/750 + 'px';
+  body
+    .wrapper
+
+      .page.pagePrizeDesc.active
+        span.back
+        a.getPrize(src="javascript:;") 立即领取
+        .title 
+        .titledesc 领取说明
+        .desc
+          | 1.实物类奖品请中奖人员携带手机在活动现场的工作人员处登记领取；</br>
+          | 2.现金奖请在2月5日（星期五）之前，凭等额发票在财务部出纳处登记领取；</br>
+          | 3.如有任何疑问，请咨询人力资源部。
+    
+      .page.pageCheck
+        .pop
+          a.close(src="javascript:;")
+          input.text(type="tel", placeholder="请输入核销码" maxlength="4")
+          a.confirm(src="javascript:;") 确认
+          
+            
+    script(src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js")  
+    script(src="../js/iphone.js") 

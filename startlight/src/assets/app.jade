@@ -1,0 +1,51 @@
+doctype
+html
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="Content-Type" content="text/html" charset="utf-8")
+    meta(name="format-detection" content="telephone=no")
+    meta(name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimum-scale=1.0,maximum-scale=1.0,minimal-ui")
+    meta(name="apple-mobile-web-app-status-bar-style" content="black")
+    title "疯"尚之夜
+    link(href="../css/reset_h5.css", rel="stylesheet", type="text/css" )
+    link(href="../css/app.css", rel="stylesheet", type="text/css" )
+    script(type="text/javascript").
+      document.documentElement.style.fontSize = document.documentElement.clientWidth*100/750 + 'px';
+  body
+    audio(id="audio")
+      source(src="./music.mp3")
+    .wrapper
+      .page.pageHome.active
+        span.title
+        a.rule(src="javascript:;") 活动规则
+        a.record(src="javascript:;") 获奖记录
+        a.start(src="javascript:;") 
+      .maskRule.mask#pageRule
+        .pop
+          a.close(src="javascript:;")
+          span.text 
+            | 1.本活动仅限星光68全体员工参与；</br>
+            | 2.扫描二维码，并输入手机号码，点击“确认”，方可参与摇奖；</br>
+            | 3.等待主持人通知可以摇奖时，点击“开始”，摇动手机；</br>
+            | 4.如获得奖品，点击“获奖记录”，按照“领取说明”领取奖品；</br>
+            | 5.本活动的最终解释权归星光68人力资源部所有。
+      .maskShake#pageShake
+        span.tip1
+        span.handshake
+      .maskGet.mask#get
+        .pop
+          a.check(src="javascript:;") 去查看
+          a.close(src="javascript:;")
+          span.tip1 您获得了
+            em.prizename
+            span !
+          span.tip2 快去领奖吧！
+      .maskSorry.mask#sorry
+        .pop
+          a.close(src="javascript:;")
+          span.tip1 您与奖品就差一点点的距离
+          span.tip2 再加把劲！就能摇出来了！
+      
+    script(src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js")  
+    script(src="../js/app.js") 
+ 
