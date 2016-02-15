@@ -34,21 +34,9 @@ module.exports = {
   module: {
     //各种加载器，即让各种文件格式可用require引用
     loaders: [{
-      test: /\.(png|jpg|gif)$/,
-      loader: 'file?name=img/[name].[ext]?[hash]'
-    }, {
-      test: /\.css$/,
-      loader: 'style-loader!css-loader'
-    }, {
-      test: /\.scss$/,
-      loader: 'style-loader!css-loader!sass-loader'
-    }, {
       test: /\.js$/,
       exclude: /node_modules/,
       loader: "babel-loader"
-    }, {
-      test: /\.scss$/,
-      loader: "sass-loader"
     }]
   },
   babel: {
@@ -64,22 +52,22 @@ module.exports = {
     root: "./"
   },
   externals: {
-    jquery: "jQuery"
+    // jquery: "jQuery"
   },
   plugins: [
-    new webpack.ProvidePlugin({
-      // "jQuery": "jQuery"
-    })
+    // new webpack.ProvidePlugin({
+    //   // "jQuery": "jQuery"
+    // })
   ]
 };
 
-if (isProduction()) {
-  plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      test: /\.js$/,
-      compress: {
-        warnings: false
-      },
-    })
-  );
-}
+// if (isProduction()) {
+//   plugins.push(
+//     new webpack.optimize.UglifyJsPlugin({
+//       test: /\.js$/,
+//       compress: {
+//         warnings: false
+//       },
+//     })
+//   );
+// }

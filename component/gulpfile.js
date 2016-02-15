@@ -20,7 +20,7 @@ var imagemin = require('gulp-imagemin')
 // 处理js
 var webpack = require("webpack")
 // webpack-dev-server
-var WebpackDevServer = require("webpack-dev-server")
+// var WebpackDevServer = require("webpack-dev-server")
   // 编译 html
 gulp.task('html', function() {
     gulp.src('src/assets/**/*.html')
