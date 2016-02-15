@@ -1,7 +1,7 @@
 var path = require('path');
 
 module.exports = {
-  entry: './entry.js',
+  entry: './src/entry.js',
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'bundle.js'
@@ -17,7 +17,9 @@ module.exports = {
   },
   externals: {
     React: "React",
-    ReactDOM: "ReactDOM"
+    ReactDOM: "ReactDOM",
+    marked: "marked",
+    $: "jQuery"
   },
   babel: {
     presets: ['es2015', 'stage-0', 'react'],
