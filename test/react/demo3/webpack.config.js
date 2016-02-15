@@ -17,7 +17,7 @@ module.exports = {
   },
   externals: {
     React: "React",
-    ReactDOM: "ReactDOM",
+    ReactDOM: "ReactDOM"
   },
   babel: {
     presets: ['es2015', 'stage-0', 'react'],
