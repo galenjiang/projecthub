@@ -61,21 +61,9 @@
 	  displayName: "CommentBox",
 	
 	  getInitialState: function getInitialState() {
-	    return { data: [] };
-	  },
-	  componentDidMount: function componentDidMount() {
-	    _$2.default.ajax({
-	      url: this.props.url,
-	      dataType: 'json',
-	      cache: false,
-	      success: function (data) {
-	        console.log(data);
-	        this.setState({ data: data });
-	      }.bind(this),
-	      error: function (xhr, status, err) {
-	        console.error(this.props.url, status, err.toString());
-	      }.bind(this)
-	    });
+	    return {
+	      data: []
+	    };
 	  },
 	  render: function render() {
 	    return React.createElement(
@@ -84,14 +72,52 @@
 	      React.createElement(
 	        "h1",
 	        null,
-	        "Comments"
+	        " Comments "
 	      ),
 	      React.createElement(_commentpartner.CommentList, { data: this.state.data }),
-	      React.createElement(_commentpartner.CommentForm, null)
+	      React.createElement(_commentpartner.CommentForm, { onCommentSubmit: this.handleCommentSubmit })
 	    );
+	  },
+	  componentDidMount: function componentDidMount() {
+	    this.loadCommentsFromServer();
+	    setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+	  },
+	  loadCommentsFromServer: function loadCommentsFromServer() {
+	    _$2.default.ajax({
+	      url: this.props.url,
+	      dataType: 'json',
+	      cache: false,
+	      success: function (data) {
+	        this.setState({
+	          data: data
+	        });
+	      }.bind(this),
+	      error: function (xhr, status, err) {
+	        console.error(this.props.url, status, err.toString());
+	      }.bind(this)
+	    });
+	  },
+	  handleCommentSubmit: function handleCommentSubmit(comment) {
+	    //  Todo: submit to the server and refresh the list
+	    _$2.default.ajax({
+	      url: this.props.url,
+	      dataType: 'json',
+	      type: 'POST',
+	      data: comment,
+	      success: function (data) {
+	        this.setState({
+	          data: data
+	        });
+	      }.bind(this),
+	      error: function (xhr, status, err) {
+	        console.error(this.props.url, status, err.toString());
+	      }.bind(this)
+	    });
 	  }
+	
 	});
-	ReactDOM.render(React.createElement(CommentBox, { url: "data.json" }), document.getElementById("example"));
+	
+	ReactDOM.render(React.createElement(CommentBox, { url: "data.json", pollInterval: "10000" }), document.getElementById("example"));
 
 /***/ },
 /* 1 */
@@ -113,6 +139,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	// 评论列表
 	var CommentList = React.createClass({
 	  displayName: "CommentList",
 	
@@ -132,21 +159,12 @@
 	    );
 	  }
 	});
-	var CommentForm = React.createClass({
-	  displayName: "CommentForm",
-	
-	  render: function render() {
-	    return React.createElement(
-	      "div",
-	      { className: "commentForm" },
-	      "Hello, world! I am a CommentForm."
-	    );
-	  }
-	});
+	// 评论详情 <h2>author</h2> <span></span>
 	var Comment = React.createClass({
 	  displayName: "Comment",
 	
 	  rawMarkup: function rawMarkup() {
+	    // this.props.children 获取tag包裹的html
 	    var rawMarkup = (0, _marked2.default)(this.props.children.toString(), { sanitize: true });
 	    return { __html: rawMarkup };
 	  },
@@ -162,6 +180,32 @@
 	      React.createElement("span", { dangerouslySetInnerHTML: this.rawMarkup() })
 	    );
 	  }
+	});
+	var CommentForm = React.createClass({
+	  displayName: "CommentForm",
+	
+	  render: function render() {
+	    return React.createElement(
+	      "form",
+	      { className: "commentForm", onSubmit: this.handleSubmit },
+	      React.createElement("input", { type: "text", placeholder: "Your name", ref: "author" }),
+	      React.createElement("input", { type: "text", placeholder: "Say something...", ref: "text" }),
+	      React.createElement("input", { type: "submit", value: "Post" })
+	    );
+	  },
+	  handleSubmit: function handleSubmit(e) {
+	    e.preventDefault();
+	    var author = this.refs.author.value.trim();
+	    var text = this.refs.text.value.trim();
+	    if (!author || !text) {
+	      return false;
+	    }
+	    this.props.onCommentSubmit({ author: author, text: text });
+	    this.refs.author.value = "";
+	    this.refs.text.value = "";
+	    return false;
+	  }
+	
 	});
 	
 	exports.CommentList = CommentList;

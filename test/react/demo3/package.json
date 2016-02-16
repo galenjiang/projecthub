@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack -d --watch --progress"
+    "build": "webpack -d --watch --progress "
   },
   "author": "",
   "license": "ISC",
