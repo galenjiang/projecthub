@@ -1,5 +1,6 @@
 import { CommentList, CommentForm } from "./commentpartner";
 import $ from "$";
+import styles from "./sass/app.css";
 let CommentBox = React.createClass({
   getInitialState: function() {
     return {
@@ -9,7 +10,7 @@ let CommentBox = React.createClass({
   render: function() {
     return (
       <div className = "commentBox">
-        <h1> Comments </h1>
+        <h1 className = { styles.background }> Comments </h1>
         <CommentList data = { this.state.data } />
         <CommentForm onCommentSubmit = {this.handleCommentSubmit} />
       </div>
