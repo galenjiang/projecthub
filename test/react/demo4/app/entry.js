@@ -15,7 +15,7 @@ let MessageBox = React.createClass({
     handleSubmit: function(e){
       e.preventDefault()
       let formData = {
-        input: this.refs.input.getDOMNode().value,
+        // input: this.refs.input.getDOMNode().value,
         select: this.refs.select.getDOMNode().value,
         radio: this.state.radioValue,
         checkValue: this.state.checkValue,
@@ -31,7 +31,7 @@ let MessageBox = React.createClass({
       let newArr = this.state.checkValue.slice();
       let newVal = e.target.value;
       let index = newArr.indexOf(newVal)
-      if( index == -1){
+      if( index === -1){
         newArr.push(newVal)
       }else{
         newArr.splice(index, 1)
@@ -41,7 +41,7 @@ let MessageBox = React.createClass({
     render: function() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <input type="text" ref={function(com){React.findDOMNode(com).focus()}} defaultValue={this.state.inputValue} onChange={this.handleInput} />
+                <input type="text" ref="input" defaultValue={this.state.inputValue} onChange={this.handleInput} />
                 <br />
                 <select ref="select" defaultValue={this.state.selectionValue} onChange={this.handleSelect}>
                   <option value="a">a</option>
