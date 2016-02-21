@@ -1,8 +1,21 @@
-import $ from "$";
+// import $ from "$";
 import styles from "./css/app.css";
 import "./css/normalize.css";
 
+let stateRecordMixin = {
+  componentWillMount: function(){
+    this.oldState = []
+  },
+  componentWillUpdate: function(nextProps, nextState){
+    this.oldState.push(nextState)
+  },
+  previousState: function(){
+    let index = this.oldState.length - 1;
+    return index == -1 ? {} : this.oldState[index]
+  }
+}
 let MessageBox = React.createClass({
+    mixins: [stateRecordMixin],
     getDefaultProps: function(){
         console.log("props")
         return {
@@ -12,35 +25,51 @@ let MessageBox = React.createClass({
     getInitialState: function(){
         console.log("state")
         return {
-            name: "galen"
+            count: 0
         }
     },
-    componentWillMount: function(){
-        console.log("willmount");
-        this.setState({name: "jack"});
+    shouldComponentUpdate: function(nextProps, nextState){
+      console.log("current", nextState.count);
+      return true;
     },
-    componentDidMount: function(){
-        console.log("didmount");
-        // console.log(this.getDOMNode())
-        console.log(React.findDOMNode(this))
-    },
-    componentWillUnmount: function(){
-        alert("you will try to kill me!!!")
-    },
-    killMe: function(){
-        console.log(this)
-        React.unmountComponentAtNode( this.getDOMNode() )
+    doUpdate: function(){
+      this.setState({count: this.state.count + 1});
+      console.log(this.getDOMNode())
+      console.log(this.previousState())
     },
     render: function(){
         console.log("render");
         return (
             <div>
-                <h1>你好： {this.state.name}</h1>
-                <button onClick={this.killMe}>删除</button>
+                <h1>计数： {this.state.count}</h1>
+
+                <button onClick={this.doUpdate}>加1</button>
+                <SubCount count={this.state.count} doUpdate={this.doUpdate} />
             </div>
         )
     }
 })
+
+let SubCount = React.createClass({
+  mixins: [stateRecordMixin],
+  getInitialState: function(){
+    return {
+      count: 0
+    }
+  },
+  componentWillReceiveProps: function(){
+    this.setState({count: this.props.count*2})
+  },
+  render: function(){
+    return (
+      <div>
+        <h1>{this.state.count}</h1>
+        <button onClick={this.props.doUpdate}>按下</button>
+      </div>
+    )
+  }
+})
+
 
 ReactDOM.render( <MessageBox name="galen" /> ,
     document.getElementById("app")
