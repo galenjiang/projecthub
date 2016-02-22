@@ -4,12 +4,13 @@ var isProduction = function () {
   return process.env.NODE_ENV === 'production';
 };
 
+
 module.exports = {
     entry: [
         './app/entry.js'
     ],
     output: {
-        path: path.join(__dirname, '/build/js'),
+        path: path.join(__dirname, 'build/js/'),
         filename: 'bundle.js',
         publicPath: "./"
     },
@@ -32,7 +33,11 @@ module.exports = {
             loader: 'url?name=fonts/[name].[ext]'
         }]
     },
-    
+    externals: {
+        React: "React",
+        ReactDOM: "ReactDOM",
+        $: "jQuery"
+    },
     devtool: isProduction()?null:'source-map',
     babel: {
         presets: ['es2015', 'stage-0', 'react'],

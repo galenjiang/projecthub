@@ -11,7 +11,7 @@ let stateRecordMixin = {
   },
   previousState: function(){
     let index = this.oldState.length - 1;
-    return index == -1 ? {} : this.oldState[index]
+    return index === -1 ? {} : this.oldState[index]
   }
 }
 let MessageBox = React.createClass({
