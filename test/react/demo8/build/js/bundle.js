@@ -81,7 +81,7 @@
 	      key: 1,
 	      title: "产品经理与程序员矛盾的本质是什么",
 	      description: "理性探讨，请勿撕逼。产品经理的主要工作是产品设计",
-	      voteCount: 10
+	      voteCount: 12
 	    }, {
 	      key: 2,
 	      title: "热爱编程是一种怎么样的体验",
