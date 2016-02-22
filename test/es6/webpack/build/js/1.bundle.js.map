@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./app/components/a.js"],"names":[],"mappings":";;;;;;;AAAA,SAAQ,CAAR,GAAY,YAAU;AACpB,WAAQ,GAAR,CAAY,SAAZ,EADoB;EAAV,C","file":"1.bundle.js","sourcesContent":["exports.a = function(){\r\n  console.log(\"bbb aaa\")\r\n}\r\n\n\n\n/** WEBPACK FOOTER **\n ** ./app/components/a.js\n **/"],"sourceRoot":""}
