@@ -15,7 +15,10 @@ module.exports = {
         publicPath: "js/"
     },
     resolve: {
-        extensions: ['', '.js', '.jsx']
+        extensions: ['', '.js', '.jsx'],
+        alias: {
+            // 'react': 'React'
+        }
     },
     module: {
         loaders: [{
