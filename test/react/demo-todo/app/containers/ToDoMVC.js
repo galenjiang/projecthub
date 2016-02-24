@@ -3,12 +3,19 @@ import ContentBody from "../components/ContentBody";
 import NavBar from "../components/NavBar";
 
 export default React.createClass({
-  setInitialSate
+  getInitialState: function(){
+    return {
+      todoLists: [
+        {key: 1,text: "hello, world"},
+        {key: 2,text: "hello, galen"}
+      ],
+    }
+  },
   render: function(){
     return (
       <div>
         <NavBar />
-        <ContentBody />
+        <ContentBody todoLists = {this.state.todoLists} />
       </div>
     )
   }

@@ -12,7 +12,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'build/js/'),
         filename: 'bundle.js',
-        publicPath: "./"
+        publicPath: "js/"
     },
     resolve: {
         extensions: ['', '.js', '.jsx']
@@ -20,7 +20,12 @@ module.exports = {
     module: {
         loaders: [{
             test: /\.js|jsx$/,
-            loaders: ['babel-loader']
+            exclude: /node_modules/,
+            loader: 'babel-loader',
+            query: {
+              presets: ['es2015', "stage-0", 'react'],
+              plugins: ['transform-runtime']
+            }
         },{
             test: /\.css$/,
             loader: 'style!css'

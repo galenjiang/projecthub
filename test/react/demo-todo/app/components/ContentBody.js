@@ -1,18 +1,21 @@
 import React from "react";
 import FormTitle from "./FormTitle"
+import TodoList from "./TodoList"
+import Summary from "./Summary"
 
 export default React.createClass({
   render: function(){
-    let todoLists = this.props.item.map(function(){
-      return <TodoList />
+    let mapTodoLists = this.props.todoLists.map(function(task){
+      return (
+        <TodoList key = {task.key} text = {task.text} />
+      )
     })
     return (
       <div className="row">
         <div className="col-md-4 col-md-offset-4">
           <FormTitle />
-
           <div className="todolist">
-            {todoLists}
+            {mapTodoLists}
             <Summary />
           </div>
         </div>

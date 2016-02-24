@@ -3,6 +3,7 @@ import styles from "./css/app.css";
 import ShowAddButton from "./components/ShowAddButton";
 import QuestionForm from "./components/QuestionForm";
 import QuestionList from "./components/QuestionList";
+import _ from "lodash";
 
 let QuestionApp = React.createClass({
   getInitialState: function(){
@@ -18,8 +19,39 @@ let QuestionApp = React.createClass({
       voteCount: 22
     }]
     return {
-      questions: questions
+      questions: questions,
+      formDisplayed: false
     }
+  },
+  onToggleForm: function(){
+    this.setState({
+      formDisplayed: !this.state.formDisplayed
+    })
+  },
+  onNewQuestion: function(newQuestion){
+    newQuestion.key = this.state.questions.length + 1;
+    let newQuestions = this.state.questions.concat( newQuestion );
+    this.sortQuestion( newQuestions );
+    this.setState({
+      questions: newQuestions
+    })
+  },
+  sortQuestion: function(questions){
+    questions.sort(function(a, b){
+      return b.voteCount - a.voteCount
+    })
+    return questions
+  },
+  onVote: function(key, newCount){
+    let questions = _.uniq(this.state.questions);
+    let index = _.findIndex(questions, function(qst){
+      return qst.key == key;
+    })
+    questions[index].voteCount = newCount;
+    questions = this.sortQuestion( questions );
+    this.setState({
+      questions: questions
+    })
   },
   render: function(){
     return (
@@ -27,12 +59,16 @@ let QuestionApp = React.createClass({
           <div className="jumbotron text-center">
             <div className="container">
               <h1>React问答</h1>
-              <ShowAddButton />
+              <ShowAddButton onToggleForm = {this.onToggleForm} />
             </div>
           </div>
           <div className="main container">
-            <QuestionForm />
-            <QuestionList questions = {this.state.questions} />
+            <QuestionForm
+              onNewQuestion = {this.onNewQuestion}
+              onToggleForm = {this.onToggleForm}
+              formDisplayed = {this.state.formDisplayed}
+               />
+            <QuestionList onVote = {this.onVote} questions = {this.state.questions} />
           </div>
       </div>
     )
