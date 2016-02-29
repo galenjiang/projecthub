@@ -13,7 +13,6 @@
   clear: both;
 }
 .status-del{
-
   text-decoration: line-through;
 }
 .desc-item{
@@ -22,7 +21,7 @@
   z-index: 3;
   background-color: #fff;
 }
-.status-del:hover{
+.desc-item:hover{
   z-index: 1;
 }
 .btn-del{
