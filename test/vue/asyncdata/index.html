@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">{{msg}}</div>
+
+    <script src="vue.js"></script>
+    <script src="vue-async-data.js"></script>
+    <script>
+        
+        new Vue({
+            mixins: [VueAsyncData],
+
+            el: "#app",
+
+            data: {
+                msg: 'no data...'
+            },
+
+            asyncData: function(resolve, reject){
+                alert()
+                setTimeout(function(){
+                    resolve({
+                        msg: 'hi'
+                    })
+                },3000)
+            }
+        })
+    </script>
+</body>
+</html>
