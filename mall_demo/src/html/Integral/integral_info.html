@@ -1,0 +1,131 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/integral/integral_info.css" />
+</block>
+<block name="content">
+    <div v-cloak class="mui-wrapper integralInfoPage mui-darkbg" id="integralInfo">
+        <!-- 分享 -->
+        <div v-touch:tap="share" transition="mui-fade" v-show="shareMaskStatus" class="mui-share">
+            <img src="__PUBLIC__/mall/images/share.png">
+        </div>
+        <header class="mui-header" id="header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">礼品详情</h1>
+                <a href="javascript:history.back()" class="mui-pull-left" id="back">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+                <a v-touch:tap="share" href="javascript:void(0)" class="mui-pull-right" id="share">
+                    <i class="mui-iconfont mui-icon-fenxiang"></i>
+                </a>
+            </div>
+        </header>
+        <section class="mui-body">
+            <img class="gift-picture" :src="infodata.img" alt="">
+            <div class="goods-title mui-line-bottom mui-padding-10">
+                <h2>{{infodata.name}}</h2>
+                <p class="score">
+                    <label>{{infodata.integral}}</label>
+                    <span>积分</span>
+                    <span class="market">市场价￥{{ infodata.marketprice }}</span>
+
+                </p>
+                <p class="pay">
+                    <span v-if="limit == 1" class="strict">限量{{ infodata.numbers }}件</span>
+                    <span class="money">支付{{ infodata.price }}元</span>
+                    <span v-if="infodata.isnumber" class="change">已有{{ infodata.isnumber }}人兑换</span>
+                </p>
+            </div>
+            <div v-if="infodata.introduce" class="goods-info mui-line-bottom mui-margin-10-0">
+                <div class="mui-block-title">
+                    <label class="mui-label">礼品简介</label>
+                    <a :href="'./index.php?m=Home&c=Integral&a=integral_comment&id='+ id +'&limit='+ limit +'&type=0'" class="detail mui-arrow-right">礼品详情</a>
+                </div>
+                <div class="goods-info-content mui-padding-10">
+                    <p class="mui-ellipsis-4">{{infodata.introduce}}</p>
+                </div>
+            </div>
+            <div v-if="infodata.know" class="goods-info mui-line-bottom mui-margin-10-0">
+                <div class="mui-block-title">
+                    <label class="mui-label">兑换规则</label>
+                </div>
+                <div class="goods-info-content mui-padding-10">
+                    <p class="">{{infodata.know}}</p>
+                </div>
+            </div>
+            <div v-if="commentdata.length" class="integral-commnet">
+                <div class="mui-block-title">
+                    <label class="mui-label">用户评论</label>
+                    <a :href="'./index.php?m=Home&c=Integral&a=integral_comment&id='+ id +'&limit='+ limit +'&type=1'" class="mui-arrow-right">全部评论</a>
+                </div>
+                <ul class="mui-comment">
+                    <li v-for="item in commentdata" class="mui-comment-cell">
+                        <img class="mui-comment-headerimg" :src="'.' + item.header_url">
+                        <div class="mui-comment-info">
+                            <div class="mui-comment-info-header">
+                                <label class="mui-comment-header-name">{{item.user_name}}</label>
+                                <span class="mui-comment-header-time">{{item.reply_time}}</span>
+                                <ul :class="'mui-stars mui-star-' + item.level">
+                                    <li class="mui-star"></li>
+                                    <li class="mui-star"></li>
+                                    <li class="mui-star"></li>
+                                    <li class="mui-star"></li>
+                                    <li class="mui-star"></li>
+                                </ul>
+                            </div>
+                            <div class="mui-comment-text">
+                                <p>{{item.content}}</p>
+                            </div>
+                            <ul class="mui-comment-photos">
+                                <li track-by="$index" v-for="el in item.img" class="mui-comment-photo">
+                                    <img :src="'.'+ el">
+                                </li>
+                            </ul>
+                            <div class="mui-comment-reply">
+                                <p v-if="item.replay">
+                                    <label><i class="mui-iconfont mui-icon-kefu"></i>客服回复：</label>
+                                    {{item.replay}}
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <footer v-cloak class="mui-footer mui-line-top mui-btns">
+            <a v-touch:tap="openPay" href="javascript:;" class="mui-btn mui-btn-yellow mui-btn-block mui-btn-big rightChange">立即兑换</a>
+        </footer>
+        <div v-cloak class="payment-mask" transition="mui-fade" v-show="payShow">
+            <div class="payment">
+                <a v-touch:tap="closePay" href="javascript:;" class="closePay">
+                    <i class="mui-iconfont mui-icon-guanbi"></i>
+                </a>
+                <div class="payment-title clearfix">
+                    <img src="" alt="">
+                    <div class="payment-title-body">
+                        <h4 class="mui-margin-top-10 mui-ellipsis-2">{{infodata.name}}</h4>
+                        <p><span class="score">{{infodata.integral}}</span><span class="score-name">积分</span><span class="price">支付{{infodata.price}}元</span></p>
+                    </div>
+                </div>
+                <div class="payment-count mui-line-top">
+                    <span class="payment-count-title">选择数量</span>
+                    <div class="payment-count-body">
+                        <span v-touch:tap="minus" class="minus" :class="{active: count == 1}">-</span>
+                        <span class="count">{{count}}</span>
+                        <span v-touch:tap="plus" class="plus">+</span>
+                    </div>
+                </div>
+                <div class="payment-detail mui-line-top">
+                    <div class="payment-detail-upper"><span>共{{count}}件礼品，合计积分：</span><span class="score">{{infodata.integral*count}}</span></div>
+                    <div class="payment-detail-lower">需支付金额（元）：<span class="price">{{infodata.price*count}}</span></div>
+                </div>
+                <footer class="mui-footer mui-line-top mui-btns">
+                    <a v-touch:tap="pay" href="javascript:;" class="mui-btn mui-btn-blue mui-btn-block mui-btn-big">立即支付</a>
+                </footer>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+    {:Widget('HomeShare/HomeShare',array())}
+    <script type="text/javascript" src="__PUBLIC__/mall/script/integral/integral_info.js"></script>
+</block>

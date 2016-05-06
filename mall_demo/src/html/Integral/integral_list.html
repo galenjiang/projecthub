@@ -1,0 +1,65 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/integral/integral_list.css?time=1" />
+</block>
+<block name="content">
+    <div v-cloak class="mui-wrapper integralListPage mui-darkbg" id="app">
+        <div v-show="!allowrefresh" class="mui-loading">
+            <span class="mui-loading-img"></span>
+        </div>
+        <header class="mui-header">
+            <div class="mui-bar">
+                <h1 class="mui-bar-title">积分商城</h1>
+                <a href="{:U('User/integral')}" class="mui-pull-left"><i class="mui-iconfont mui-icon-back"></i></a>
+                <a href="{:U('Home/home_search')}" class="mui-pull-right">
+                    <i class="mui-iconfont mui-icon-sousuo"></i>
+                </a>
+            </div>
+        </header>
+        <section v-cloak v-refresh :callback="getGiftList" :allowrefresh="allowrefresh" class="mui-body">
+            <div class="mui-overflow-scroll">
+                <div class="catelog-container mui-margin-top-20 clearfix" :style="catelogStyleObj">
+                    <div v-for="item in catelogList" class="catelog-item">
+                        <a :href="item.href" class="mui-catelog">
+                            <img class="mui-catelog-picture" :src="item.img"/>
+                            <p class="mui-catelog-title">{{item.name}}</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- 组件tabsImplict -->
+            <mui-tabs--implict
+                :tab-list="tablists"
+                :cur.sync="tabCur">
+            </mui-tabs--implict>
+
+            <div class="integral-lists">
+                <a v-for="item in giftList" :href="item.url" class="item">
+                    <mui-countdown
+                        v-if="item.endtime"
+                        :time="item.endtime"
+                    ></mui-countdown>
+                    <img class="item-img" :src="item.img" />
+                    <div class="item-title">
+                        <h4>{{item.name}}</h4>
+                        <div class="item-title-lower">
+                            <span class="number">{{ item.integral }}</span>
+                            <span class="score">积分</span>
+                            <span class="price">市场价：￥{{ item.marketprice }}</span>
+                            <span v-if="item.price != 0 && item.price" class="pay">支付{{ item.price }}元</span>
+                            <span class="limit" v-show="item.numbers">限量{{ item.numbers }}件</span>
+                        </div>
+                    </div>
+                </a>
+                <div v-show="!giftList.length">
+                    <h1 class="mui-text-center mui-margin-top-20">暂无数据</h1>
+                </div>
+
+            </div>
+
+        </section>
+    </div>
+</block>
+<block name="script">
+    <script src="__PUBLIC__/mall/script/integral/integral_list.js"></script>
+</block>

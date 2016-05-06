@@ -1,0 +1,50 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/activity/activity_detail.css" />
+</block>
+<block name="content">
+    <div v-cloak class="mui-wrapper mui-flex mui-darkbg" id="activity_detail_original">
+        <div v-touch:tap="share" transition="mui-fade" v-show="shareMaskStatus" class="mui-share">
+            <img src="__PUBLIC__/mall/images/share.png">
+        </div>
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">活动详情</h1>
+                <a href="javascript:history.back()" class="mui-pull-left"><i class="mui-iconfont mui-icon-back"></i></a>
+                <a v-touch:tap="share" class="myactivity mui-pull-right" href="javascript:;"><i class="mui-iconfont mui-icon-fenxiang"></i></a>
+            </div>
+        </header>
+        <section v-cloak class="mui-body">
+            <div class="banner mui-line-bottom">
+                <img class="brand" :src="activeinfo.img" alt="" />
+            </div>
+            <div class="subscript mui-flex mui-flex-veri mui-padding-20 mui-line-bottom">
+                <div class="detail-title mui-flex">
+                    <p class="mui-flex-auto">{{activeinfo.active_name}}</p>
+                </div>
+                <p class="mui-margin-top-5">活动时间：{{activeinfo.begin_time}} - {{activeinfo.end_time}}</p>
+            </div>
+            <div v-for="item in activeinfo.phone" class="mui-list-cell mui-margin-top-20 mui-flex-center-veri">
+                <i class="mui-iconfont mui-icon-dianhua mui-list-icon"></i>
+                <a :href="'tel:'+item">{{item}}</a>
+                <i class="mui-iconfont mui-icon-youjiantou"></i>
+            </div>
+            <div v-if="activeinfo.about" class="mui-block-title mui-block-title-quote mui-margin-top-20">
+                <label class="mui-label">活动介绍</label>
+            </div>
+            <div v-if="activeinfo.about" class="mui-list-cell mui-padding-20 mui-margin-bottom-20 mui-line-bottom">
+               {{{activeinfo.about}}}
+            </div>
+        </section>
+        <footer class="btn-participate mui-padding-0-20 mui-padding-10-0">
+            <a v-touch:tap="join" href="javascript:void(0)" class="mui-btn mui-btn-big mui-btn-block mui-margin-5-0" :class="{'mui-btn-yellow': !statusJoin}">{{statusJoin ? '已参加活动': '立即参与'}}</a>
+        </footer>
+    </div>
+</block>
+<block name="script">
+<script type="text/javascript">
+
+</script>
+    {:Widget('HomeShare/HomeShare',array())}
+    <script type="text/javascript" src="__PUBLIC__/mall/script/activity/activity_detail_original.js"></script>
+</block>

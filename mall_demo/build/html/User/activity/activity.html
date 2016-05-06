@@ -1,0 +1,36 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/user/activity/activity.css" />
+</block>
+<block name="content">
+    <div class="mui-wrapper mui-darkbg" id="app">
+        <header class="mui-header" id="header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">我参与的活动</h1>
+                <a href="{:U('User/user_center')}" class="mui-pull-left">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+            </div>
+        </header>
+        <div class="mui-tabs">
+            <mui-tabs :tab-list="tabList" :cur="0"></mui-tabs>
+        </div>
+        <section v-cloak v-refresh :allowrefresh="!loading" callback="getList" class="mui-body">
+            <div class="activity-use-list">
+                <div class="mui-list">
+                    <a :href="item.url" v-for="item in activityList" class="mui-list-cell mui-img">
+                        <img :src="item.thumbimg" class="mui-img-img activity-img-img">
+                        <div class="mui-img-body">
+                            <h2>{{item.active_name}}</h2>
+                            <p>时间:{{item.begin_time}} —— {{item.end_time}}</p>
+                        </div>
+                    </a>
+                </div>
+                <div v-if="activityList.length == 0" class="mui-text-center mui-margin-top-20">暂无数据</div>
+            </div>
+        </section>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/mall/script/user/activity/activity.js"></script>
+</block>

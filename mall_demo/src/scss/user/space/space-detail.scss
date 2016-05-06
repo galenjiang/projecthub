@@ -1,0 +1,53 @@
+.mui-list{
+	background-color:#f0f0f0;
+	.mui-list-cell{
+		background-color:#fff;
+		p{
+			color: #777; 
+		}
+		&.space-waring-info{
+			p{
+				text-align: center;
+				color:#eb5555;
+			}
+		}
+		.space-img-img{
+			width: 1.6rem;
+			height: 1.6rem;
+		} 
+	}
+}
+.mui-footer{
+	background-color:#fff;
+}
+// 优惠标签，例如团，减，折等字样
+.brand-label{
+	display: inline-block;
+	margin-left: 0.1rem;
+	margin-right: 0.1rem;
+	font-size: 0.24rem;
+	text-align:center;
+	color: #fff;
+	height: 0.4rem;
+	width: 0.4rem;
+	line-height: 0.4rem;
+	border-radius: 4px;
+	&:first-child{
+		margin-left: 0.4rem;
+	}
+	@at-root .brand-label-tuan{
+		background-color: #ff7940;
+	}
+	@at-root .brand-label-jian{
+		background-color: #49bf30;
+	}
+}
+//使用中和已完成的情况
+.space-use-detail,.space-success-detail{
+	.space-waring-info{
+		display:none;
+	}
+	.mui-footer{
+		display:none;
+	}
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="Keywords" content="智慧商场">
+    <meta name="Description" content="智慧商场">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimum-scale=1.0,maximum-scale=1.0" />
+    <title>智慧商场</title>
+    <script>
+        + function(b) {
+            var h = document.documentElement,
+                w = h.clientWidth;
+            h.style.fontSize = w / b + "px";
+        }(7.5);
+    </script>
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/common/reset.css" />
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/common/mui.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/wifi/wifi_success.css" />
+</head>
+
+<body ontouchstart>
+
+    <div class="mui-wrapper mui-flex mui-darkbg">
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">免费wifi</h1>
+                <a href="{:U('Wifi/wifi')}" class="disconect mui-pull-right">取消</a>
+                <a href="{:U('Wifi/wifi')}" class="mui-pull-left"><i class="mui-iconfont mui-icon-back"></i></a>
+            </div>
+        </header>
+        <section class="mui-body" id="wifi_success_bg">
+            <div class="banner">
+                <img src="__PUBLIC__/mall/images/test/ma4.jpg" alt="" />
+            </div>
+            <div class="weixin_success">
+                <img src="__PUBLIC__/mall/images/wifi_success.png" alt="">
+            </div>
+
+
+            <!--         <div class="status">
+          <i class="mui-iconfont mui-icon-chenggong"></i>
+          <br>
+          <span class="status-tips">WIFI连接成功</span>
+        </div> -->
+            <div class="mui-margin-20">
+                <a href="javascript:;" onclick="callWechatBrowser()" class="mui-btn mui-btn-primary mui-btn-big mui-btn-block mui-margin-5-0">立即上网</a>
+            </div>
+            <div class="mui-margin-20 readCheck">
+                <i class="mui-iconfont" v-touch:tap="checkRead" v-bind:class="classObj" style="font-size: 0.5rem; vertical-align: sub;"></i>我已同意《乐坊上网服务协议》
+            </div>
+        </section>
+    </div>
+
+    <!-- /CSS_JS -->
+    <script type="text/javascript" src="__PUBLIC__/mall/script/common/vue.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/mall/script/common/lodash.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/mall/script/common/vue-resource.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/mall/script/common/hammer.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/mall/script/common/vue-touch.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/mall/script/common/mui.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/mall/script/common/vue.component.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/mall/script/common/common.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/mall/script/common/swipe.js"></script>
+    <script type="text/javascript" src="https://wifi.weixin.qq.com/resources/js/wechatticket/wechatutil.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/mall/script/wifi/wifi_success.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/default/wechat/js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript">
+        function callWechatBrowser() {
+
+            var gw_ip = "{$client_data['gw_address']}";
+            //alert('asdf'+gw_ip);
+            var gw_port = "{$client_data['gw_port']}";
+            var user_mac = "{$client_data['mac']}";
+            var gw_interface_url = "http://" + gw_ip + ":" + gw_port + "/wifidog/useraccess?duration=30&mac=" + user_mac;
+            var gw_interface_url_gw = "http://" + gw_ip + ":" + gw_port + "/wifidog/thirdpartyap?duration=30";
+            if (gw_ip.length > 0 && gw_port.length > 0) {
+                $.ajax({
+                    type: "get",
+                    url: gw_interface_url,
+                    dataType: "json",
+                    async: false,
+                    success: function(data) {
+                        //console.log(data);
+                    },
+                    error: function(data) {
+                        //console.log(data);
+                    }
+                });
+                $.ajax({
+                    type: "GET",
+                    url: gw_interface_url_gw,
+                    dataType: "json",
+                    async: false,
+                    success: function(data) {
+                        // console.log(data);
+                    },
+                    error: function(data) {
+                        //console.log('请求失败');
+                    }
+                });
+            }
+
+            Wechat_GotoRedirect('{$rule["app_id"]}', '{$extend}', '{$timestamp}', '{$sign}', '{$rule["shop_id"]}', '{$auth_url}', '{$client_data["mac"]}', '');
+
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<head>
+    <meta name="Keywords"content="智慧商场">
+    <meta name="Description"content="智慧商场">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type"content="text/html; charset=utf-8">
+    <meta name="format-detection"content="telephone=no,email=no,date=no,address=no">
+    <meta name="viewport"content="width=device-width,initial-scale=1.0,user-scalable=0,minimum-scale=1.0,maximum-scale=1.0"/>
+    <title>智慧商场</title>
+    <script>
+    +function(b) {
+        var h = document.documentElement, w = h.clientWidth;
+        h.style.fontSize = w / b + "px";
+    }(7.5);
+    </script>
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/common/reset.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/common/mui.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/goods/goods-pay-success.css"/> 
+
+</head> 
+<body ontouchstart>  
+    <div class="mui-wrapper goodsPaySuccessPage">
+        <header class="mui-header" id="header">
+            <div class="mui-bar mui-line-bottom">
+                 <a href="javascript:history.back()" class="mui-pull-left" id="back">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+                <h1 class="mui-bar-title">购买成功</h1>
+            </div>
+        </header>
+        <section class="mui-body">
+            <i class="mui-iconfont mui-icon-roundcheck"></i>
+            <p class="mui-label">
+              恭喜你，商品购买成功
+            </p>
+            <div class="mui-btns">
+                <a href="goods-list.html" class="mui-btn mui-btn-primary mui-btn-block mui-btn-big mui-btn-outlined">返回商品列表</a>
+                <a href="{:U('User/order_list')}/html/user/order/order-list.html" class="mui-btn mui-btn-primary mui-btn-block mui-btn-big">查看订单</a>
+            </div>
+        </section>
+    </div>
+    
+    <script src="__PUBLIC__/mall/script/common/zepto.min.js"></script>
+     
+     
+</body>
+</html>

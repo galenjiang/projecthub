@@ -1,0 +1,21 @@
+.mui-list{
+	background-color:#f0f0f0;
+	.mui-list-detail{
+		background-color:#fff;
+		h2{
+			i{
+				color:#eb5555;
+			}
+		}
+		p{
+			font-size:0.28rem;
+		}
+		&:after{
+			color:#eb5555;
+			margin-right: 15px;
+		}
+	}
+}
+.mui-footer{
+	background-color:#fff;
+}

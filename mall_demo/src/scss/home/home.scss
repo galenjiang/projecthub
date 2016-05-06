@@ -1,0 +1,256 @@
+@import "../common/configure.scss";
+
+// 	flex兼容
+@mixin flexbox {
+	display: box;
+	display: flex;
+}
+
+//	flex垂直方向
+@mixin flexboxVertical {
+	box-orient: vertical;
+	flex-flow: column;
+}
+
+//	flex子元素自适应撑满
+@mixin flexAuto {
+	flex: 1;
+	box-flex: 1;
+}
+.homePage {
+	z-index: 9;
+}
+
+.mui-footer{
+	background-color: #fff;
+}
+.mui-icon-lefang{
+	font-size: .7rem!important;
+	&:before{
+		color: $yellowColor;
+	}
+}
+.mui-pull-right .mui-iconfont{
+	font-size: .35rem;
+	line-height: .5rem;
+	height: .5rem;
+}
+.mui-bar .mui-pull-right{
+	line-height: normal;
+	height: 1rem;
+}
+
+.mui-bar{
+	background-color: rgba(0, 0, 0, 0);
+
+	.mui-list-cell{
+		position:absolute;
+		&:active{
+			background: none;
+		}
+		&:after{
+			background: none;
+		}
+		height: 1.05rem;
+	}
+	.mui-img-img{
+		width: 0.5rem;
+		height: 0.5rem;
+		border-radius: 50%;
+	}
+}
+.mui-iconfont-big{
+	line-height: 1rem!important;
+}
+.logo-tip{
+	color: $goldenColor;
+	font-size: .20rem;
+}
+// 主菜单
+$functionMenuPosition: (brand: 0, member: 1, activity: 2, integral: 3, wifi: 4, mallMap: 5, park: 6, movie: 7);
+$positionWidth: 1.0rem;
+.functionMenu{
+	margin: 5px -30px -10px;
+	@each $header, $value in $functionMenuPosition{
+		.#{$header}{
+			background: url("../../images/icon_menu_#{$header}.png") 0 0 no-repeat;
+			background-size: 100% 100%;
+		}
+	}
+}
+
+.body-header{
+	padding: .44rem .75rem 5px;
+	background: url(../../images/background_home_banner.png);
+	background-size: 100%;
+}
+.mui-grids{
+	background-color: rgba(0,0,0,0)
+}
+// 热门活动
+.hot-activity{
+	background-color: $whiteColor;
+	@at-root .hot-activity-content{
+		@include flexbox;
+		h3{
+			line-height: 0.44rem;
+		}
+		p{
+			line-height: 0.36rem;
+		    color: #8f8f94;
+		    font-size: 0.28rem;
+		}
+	}
+	@at-root .hot-activity-push{
+		padding: 0.2rem;
+		height: 3.6rem;
+		img{
+			width: 50%;
+			display: block;
+			margin: 0.2rem auto 0 auto;;
+		}
+	}
+	@at-root .hot-activity-other{
+		@include flexAuto;
+		>.item{
+			height: 1.8rem;
+		}
+	}
+}
+.homePage{
+	transition: all .6s ease;
+	box-shadow: 0px 0px 10px 5px #ccc;
+	.mui-block-title{
+		position: relative;
+		&:before{
+			width: 0.06rem;
+			height: 50%;
+			content: " ";
+			background-color: #b01d23;
+			top: 25%;
+			left: 0;
+			position: absolute;
+			z-index: 9;
+		}
+	}
+	&.active{
+		transform: translateX(5rem);
+		.mui-body{
+			pointer-events: none;
+		}
+		.mask-tap{
+			pointer-events: auto;
+		}
+
+	}
+}
+
+.menu{
+	position: absolute;
+	width: 5.1rem;
+	height: 100%;
+}
+.menu-logo{
+	position: relative;
+	width: 5rem;
+	height: 3rem;
+}
+.menu-logo-img{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	width: 2.4rem;
+	height: 1.02rem;
+}
+// 热门商户
+.hot-brand{
+	overflow: hidden;
+	background-color: $whiteColor;
+	@at-root .hot-brand-content{
+		@include flexbox;
+		display: -webkit-box;
+		padding: 0.1rem 0.1rem 0.3rem 0.1rem;
+		margin-bottom: -0.16rem;
+		.mui-tv{
+			display: block;
+			.mui-tv-img{
+				width: 1.6rem;
+				height: 1.6rem;
+			}
+		}
+	}
+}
+.hot-activity{
+
+}
+
+
+.menu-nav-item{
+	color: $goldenColor;
+	&:active{
+		background-color: darken($whiteColor, 10%)
+	}
+}
+
+.banner-frame{
+	padding: {
+	}
+	width: 100%;
+	height: 2.72rem;
+}
+.caidan{
+	margin-left: -5px;
+}
+
+
+.swipe {
+	overflow: hidden;
+	visibility: hidden;
+	position: relative;
+}
+.swipe-wrap {
+	overflow: hidden;
+	position: relative;
+}
+.swipe-wrap > .figure {
+	display: inline-block;
+	float: left;
+	width: 100%;
+	position: relative;
+}
+.swipe-wrap img{
+	width: 100%;
+	height: 2.72rem;
+}
+
+.indicators{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: .2rem;
+}
+.indicator{
+    float: left;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: $whiteColor;
+    margin-right: .1rem;
+    &.active{
+        background-color: #0b75be;
+    }
+}
+
+
+
+.mask-tap{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}

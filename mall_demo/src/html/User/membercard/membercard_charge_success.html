@@ -1,0 +1,27 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/user/membercard/membercard_charge_success.css" />
+</block>
+<block name="content">
+    <div class="mui-wrapper mui-flex mui-darkbg">
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">提交成功</h1>
+                <a href="javascript:history.back();" class="mui-pull-left">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+            </div>
+        </header>
+        <section class="mui-body">
+            <div class="title">
+                <i class="mui-iconfont mui-icon-chenggong"></i>
+                <p class="tips-upper">恭喜您，积分充值成功</p>
+            </div>
+            <div class="submitframe mui-btns">
+                <a href="{:U('membercard_charge')}" class="mui-btn mui-btn-golden mui-btn-big mui-btn-block mui-btn-outlined mui-btn-outlined mui-margin-5-0">继续充值</a>
+                <a href="{:U('integral')}" class="mui-btn mui-btn-yellow mui-btn-big mui-btn-block mui-margin-5-0">查看我的积分</a>
+            </div>
+        </section>
+    </div>
+    <block name="script">
+    </block>

@@ -1,0 +1,30 @@
+$red: #e94646;
+$darkred: #b01d23;
+
+.item{
+  background-color: #fff;
+  .tips{
+    color: $red;
+  }
+}
+.showpic{
+  width: 1.75rem;
+  height: 1.75rem;
+}
+.item-content{
+  h2{
+    height: 1rem;
+  }
+}
+.score{
+  color: $red;
+}
+.number{
+  position: absolute;
+}
+.comment{
+  margin-left: 3.5rem;
+}
+.line-pos{
+  left: 33.33%
+}

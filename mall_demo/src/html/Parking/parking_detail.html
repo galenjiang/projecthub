@@ -1,0 +1,46 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/parking/parking_detail.css" />
+</block>
+<block name="content">
+    <div class="mui-wrapper goodsDetailPage mui-darkbg">
+        <header class="mui-header" id="header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">停车详情</h1>
+                <a href="javascript:history.back()" class="mui-pull-left" id="back">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+            </div>
+        </header>
+        <section class="mui-body">
+            <ul class="mui-list">
+                <li class="mui-list-cell">
+                    <h2 class="mui-flex-auto">车牌号</h2>
+                    <p>沪A90909</p>
+                </li>
+
+                <li class="mui-list-cell">
+                    <h2 class="mui-flex-auto">停车类型</h2>
+                    <p>金牌会员</p>
+                </li>
+                <li class="mui-list-cell">
+                    <h2 class="mui-flex-auto">停车位</h2>
+                    <p>C023</p>
+                </li>
+                <li class="mui-list-cell">
+                    <h2 class="mui-flex-auto">入场时间</h2>
+                    <p>2015-14-04 10:36:02</p>
+                </li>
+            </ul>
+        </section>
+        <div class="pay mui-list-cell">
+            <p class="mui-flex-auto">需支付停车费</p>
+            <p class="price">￥30.00</p>
+        </div>
+        <footer class="mui-footer mui-padding-15 mui-line-top">
+            <a href="{:U('parking_pay_detail')}" class="mui-btn mui-btn-primary mui-btn-middle mui-btn-block">支付停车费</a>
+        </footer>
+    </div>
+</block>
+<block name="script">
+</block>

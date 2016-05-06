@@ -1,0 +1,1 @@
+new Vue({el:"#wifi_success_bg",data:{classObj:{"mui-icon-weixuan":!0,"mui-icon-xuanzhong":!1}},methods:{checkRead:function(i){var n=this.classObj["mui-icon-weixuan"];n?this.classObj={"mui-icon-weixuan":!1,"mui-icon-xuanzhong":!0}:this.classObj={"mui-icon-weixuan":!0,"mui-icon-xuanzhong":!1},util.console.log(this.data)}}});

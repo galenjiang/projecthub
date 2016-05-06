@@ -1,0 +1,27 @@
+.mui-list{
+	background-color:#f0f0f0;
+	.mui-list-cell{
+		background-color:#fff; 
+		.setting-local{
+			position:relative;
+			label{
+				position:absolute;
+				right: 0;
+				color:#777;
+			}
+		}
+		.mui-arrow-right{
+			&:after{
+				color:#eb5555;
+			}
+		} 
+	} 
+}
+	
+.mui-footer{
+	background-color:#fff;
+}
+
+.setting-remove-login{
+	margin:1.0rem 0.8rem 0.2rem 0.8rem;
+}

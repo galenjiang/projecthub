@@ -1,0 +1,109 @@
+//活动
+.space-activity{
+	background-color: #fff;
+	padding: 0.3rem 0.4rem 0.3rem 0.4rem; 
+	>ul{
+		width: 100%;
+		position:relative;
+		>li{
+			position: relative;
+			margin-bottom: 0.2rem;
+			padding-left: 0.6rem;
+			font-size: 0.28rem;
+			&:after{
+				content: "";
+				width: 0.4rem;
+				height: 0.4rem;
+				background: url("/images/icon_check.png") 50% no-repeat;
+				background-size: cover;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		} 
+	}
+	.mui-arrow-up{
+		line-height:0.56rem;
+		height: 0.56rem;
+		font-size:0.28rem;
+		color:#eb5555;
+		&:after{
+			color:#eb5555;
+		}
+		&:active{
+			color:#333;
+		}
+	}
+}
+//场所标题
+.space-title{
+	background-color:#fff;
+	h2{
+		position:relative;
+		span{
+			position:absolute;
+			right:0;
+			label{
+				color:#eb5555;
+				font-weight:bold; 
+			}
+		}
+	}
+	p{
+		position:relative;
+		color:#777;
+		label{
+			position:absolute;
+			right:0;
+		}
+	}
+}
+ 
+.space-detail-menu{
+	>.mui-grid{
+		-webkit-flex-flow: initial;
+	    -ms-flex-flow: initial;
+	    flex-flow: initial; 
+		img{
+			width: 1.0rem;
+			height: 1.0rem;
+		}
+		label{
+			margin-left:0.2rem; 
+		}
+	}
+	>.mui-line-right{
+		&:after{
+			height: 60%;
+			top: 20%;
+		}
+	}
+}
+// 商场简介
+.space-info{
+	background-color: #fff;
+	@at-root .space-info-content{
+		color: #777777;
+		font-size: 0.32rem;
+		padding: 0.3rem 0.4rem 0.4rem 0.3rem;
+		>p{
+			text-align: justify;
+		}
+	}
+} 
+.mui-block-title{
+	position: relative;
+	&:before{
+		width: 0.06rem;
+		height: 50%;
+		content: " ";
+		background-color: #b01d23;
+		top: 25%;
+		left: 0;
+		position: absolute;
+		z-index: 9;
+	}
+}
+.mui-footer{
+	background-color:#fff;
+}

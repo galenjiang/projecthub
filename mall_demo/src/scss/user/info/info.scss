@@ -1,0 +1,62 @@
+@import "../../common/configure.scss";
+
+.face{
+  border-radius: 50%;
+}
+.list-info{
+  background-color: $grayColor;
+}
+.list-info-item{
+  background: #fff;
+  >.mui-icon-right{
+  	margin-left: 5px;
+  }
+}
+.list-info-item-content{
+  color: #ccc;
+}
+.mui-icon-youjiantou{
+  font-size: .5rem;
+  margin-left: 10px;
+}
+.infoPage{
+  // position: absolute;
+}
+.inputPage{
+  // position: absolute;
+  label{
+      display: block;
+  }
+}
+
+input{
+    text-indent: .4rem;
+}
+.save{
+  position: relative;
+  font-size: .3rem;
+}
+footer{
+    background-color: $whiteColor;
+}
+.input-body{
+    background-color: $whiteColor;
+}
+input[type=file]{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.head-frame{
+    position: relative;
+}
+input[type=date]{
+    line-height: 1.2rem;
+}
+.nickname{
+    background-color: $whiteColor!important;
+}

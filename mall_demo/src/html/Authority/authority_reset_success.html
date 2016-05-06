@@ -1,0 +1,28 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/authority/authority_reset_success.css" />
+</block>
+<block name="content">
+    <div class="mui-wrapper goodsPaySuccessPage">
+        <header class="mui-header" id="header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">重置成功</h1>
+                <a href="javascript:history.back()" class="mui-pull-left" id="back">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+            </div>
+        </header>
+        <section class="mui-body">
+            <i class="mui-iconfont mui-icon-chenggong"></i>
+            <p class="mui-label">
+                您修改的密码已生效，请使用新的密码登陆
+            </p>
+            <div class="mui-btns">
+                <a href="{:U('authority_login')}" class="mui-btn mui-btn-yellow mui-btn-block mui-btn-big">重新登陆</a>
+            </div>
+        </section>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/mall/script/authority/authority_reset_success.js"></script>
+</block>

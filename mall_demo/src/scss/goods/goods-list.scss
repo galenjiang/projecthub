@@ -1,0 +1,25 @@
+.goods-list-cell{
+	width: 3.7rem;
+	background-color: #fff;
+	float: left;
+	padding: 0;
+	margin-bottom: 0.10rem;
+
+	.mui-tv-img{
+		height: 3.70rem;
+		width: 3.70rem;
+	}
+	&:nth-child(odd){
+		margin-right: 0.05rem;
+	}
+	&:nth-child(even){
+		margin-left: 0.05rem;
+	}
+	.mui-label{
+		padding: 0.2rem;
+		text-align:left;
+		font-size: 0.30rem;
+		line-height: 0.40rem;
+		height: 0.8rem;
+	}
+}

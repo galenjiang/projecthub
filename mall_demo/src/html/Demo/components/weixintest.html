@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <head>
+        <meta name="Keywords" content="智慧商场">
+        <meta name="Description" content="智慧商场">
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimum-scale=1.0,maximum-scale=1.0" />
+        <title>智慧商场</title>
+
+        <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script src="__PUBLIC__/admin/default/assets/js/jquery-2.0.3.min.js"></script>
+    </head>
+
+    <body ontouchstart>
+        <button id="weixin" style="display: block;margin: 2em auto">微信接口测试</button>
+        <button id="upload" style="display: block;margin: 2em auto">上传接口测试</button>
+        <button id="getServices" style="display: block;margin: 2em auto">获取已上传的图片</button>
+
+        <button id="code" style="display: block;margin: 2em auto">微信到一扫</button>
+
+        <div id="img">
+
+        </div>
+    </body>
+    {:Widget('HomeShare/HomeShare',array())}
+    <script>
+        var btn = document.getElementById('weixin');
+        //定义images用来保存选择的本地图片ID，和上传后的服务器图片ID
+        var images = {
+            localId: [],
+            serverId: []
+        };
+
+
+        wx.ready(function() {
+            document.getElementById('code').onclick = function() {
+                    wx.scanQRCode({
+                        needResult: 0, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+                        scanType: ["qrCode", "barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+                        success: function(res) {
+                            //var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
+                        }
+                    });
+                }
+                // 在这里调用 API
+            btn.onclick = function() {
+                wx.chooseImage({
+                    success: function(res) {
+                        images.localId = res.localIds; //保存到images
+                        // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+                    }
+                });
+            }
+            document.getElementById('upload').onclick = function() {
+                var i = 0,
+                    len = images.localId.length;
+
+                function wxUpload() {
+                    wx.uploadImage({
+                        localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
+                        isShowProgressTips: 1, // 默认为1，显示进度提示
+                        success: function(res) {
+                            i++;
+                            //将上传成功后的serverId保存到serverid
+                            images.serverId.push(res.serverId);
+                            if (i < len) {
+                                wxUpload();
+                            }
+                        }
+                    });
+                }
+                wxUpload();
+            }
+
+            document.getElementById('getServices').onclick = function() {
+
+                alert(images.serverId);
+                $.ajax({
+                    type: 'get',
+                    url: './index.php?m=Home&c=Demo&a=getImg&MediaId=' + images.serverId,
+                    //data : {MediaId:images.serverId},
+                    dataType: 'json',
+                    success: function(d) {
+                        alert(d.info);
+                    },
+                    error: function(a) {
+                        alert(JSON.stringify(a));
+                    }
+                });
+
+                //alert(images.serverId);
+            }
+
+
+        });
+    </script>
+
+</html>

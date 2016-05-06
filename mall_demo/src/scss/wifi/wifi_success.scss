@@ -1,0 +1,29 @@
+@import "../common/configure.scss";
+.status{
+  text-align: center;
+  margin-top: 1rem;
+}
+.status-success{
+  display: inline-block;
+  width: 1.14rem;
+  height: 1.15rem;
+}
+.status-tips{
+  display: inline-block;
+  margin-top: .5rem;
+}
+.mui-icon-chenggong{
+  font-size: 1.5rem;
+}
+.mui-btn{
+  background-color: $blueColor;
+  &:active{
+    background-color: darken($blueColor, 10%);
+
+  }
+}
+.disconect{
+  color: $goldenColor;
+  font-size: 14px;
+  position: relative;
+}

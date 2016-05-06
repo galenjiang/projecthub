@@ -1,0 +1,54 @@
+.parking-this{
+	// height: 1.2rem;
+	background-color: #fff;
+	>a{
+		display:block;
+		color: #000;
+		&:after{
+			color: #eb5555;
+		}
+		>h2{
+			label{
+				color: #eb5555;
+			}
+		}
+	}
+	.mui-iconfont{
+		line-height: 1.2rem;
+		margin-right: 0.2rem;
+	}
+	&:active{
+		background-color:#f9f9f9;
+	}
+}
+.parking-licence {
+	background-color:#fff;
+	h2{
+		label{
+			font-weight:bold;
+			color:#eb5555;
+		}
+	}
+	a{
+		color:#eb5555;
+		&:after{
+			color:#eb5555; 
+		}
+	}
+}
+.parking-title{
+	text-align:center;
+	line-height:1.2rem;
+}
+.parking-record{
+	background-color:#fff;
+	a{
+		display: block;
+		&:after{
+			color:#eb5555; 
+		} 
+	} 
+	&:active{
+		background-color:#f9f9f9;
+	}
+}

@@ -1,0 +1,40 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/user/integral/integral.css" />
+</block>
+<block name="content">
+    <div class="mui-wrapper mui-darkbg" id="integral">
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">我的积分</h1>
+                <a href="{:U('Home/home')}" class="mui-pull-left">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+            </div>
+        </header>
+        <section class="mui-body">
+            <div class="score-chart">
+                <div class="circle-position">
+                    <mui-circle-progress :progress="cirecleProgressData.progress" :text-upper="cirecleProgressData.textUpper" :text-lower="cirecleProgressData.textLower"></mui-circle-progress>
+                </div>
+            </div>
+            <div class="mui-flex mui-grids mui-margin-20-0 mui-margin-0-10">
+                <a href="{:U('User/membercard_charge')}" class="mui-grid-3 mui-tv">
+                    <img class="mui-tv-img" src="__PUBLIC__/mall/images/icon_integral_charge.png" alt="">
+                    <p class="mui-label">积分充值</p>
+                </a>
+                <a href="{:U('Integral/integral_list')}" class="mui-grid-3 mui-tv">
+                    <img class="mui-tv-img" src="__PUBLIC__/mall/images/icon_integral_change.png" alt="">
+                    <p class="mui-label">积分兑换</p>
+                </a>
+                <a href="{:U('membercard_selfhelp')}" class="mui-grid-3 mui-tv">
+                    <img class="mui-tv-img" src="__PUBLIC__/mall/images/icon_check_upload.png" alt="">
+                    <p class="mui-label">小票上传</p>
+                </a>
+            </div>
+        </section>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/mall/script/user/integral/integral.js"></script>
+</block>

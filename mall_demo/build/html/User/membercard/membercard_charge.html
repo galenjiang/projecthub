@@ -1,0 +1,44 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/user/membercard/membercard_charge.css" />
+</block>
+<block name="content">
+    <div class="mui-wrapper mui-darkbg" id='membercard_charge'>
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">积分充值</h1>
+                <a href="{:U('User/integral')}" class="mui-pull-left">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+            </div>
+        </header>
+        <section v-cloak class="mui-body">
+            <!-- banner -->
+            <div id="slider" class="swipe">
+                <div class="swipe-wrap">
+                    <a v-for="item in bannerList" class="figure" :href="item.url">
+                        <img :src="item.img" />
+                    </a>
+                </div>
+            </div>
+
+            <div class="charge">
+                <p class="charge-title mui-padding-10-0 mui-line-bottom">请选择充值金额</p>
+                <ul class="charge-list mui-grids">
+                    <li v-for="item in list" class="mui-grid mui-grid-3" v-touch:tap="chargeType(item.id)">
+                        <div class="item" :class="{'active':item.id == chargeId}">
+                            <h3>{{item.price}}</h3>
+                            <p>充值{{item.integral}}积分</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <footer class="mui-padding-20">
+            <a v-touch:tap="pay" href="javascript:;" class="mui-btn mui-btn-blue mui-btn-big mui-btn-block mui-margin-5-0">确认充值</a>
+        </footer>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/mall/script/user/membercard/membercard_charge.js"></script>
+</block>

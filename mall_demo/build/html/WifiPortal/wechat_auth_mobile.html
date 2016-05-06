@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <title>微信连Wi-Fi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="https://wifi.weixin.qq.com/resources/css/style-simple-follow.css" />
+    <script type="text/javascript" src="https://wifi.weixin.qq.com/resources/js/wechatticket/wechatutil.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/default/wechat/js/jquery-1.8.0.min.js"></script>
+</head>
+
+<body class="mod-simple-follow">
+    <div class="mod-simple-follow-page">
+        <div class="mod-simple-follow-page__banner">
+            <img class="mod-simple-follow-page__banner-bg" src="https://wifi.weixin.qq.com/resources/images/background.jpg" alt="" />
+            <div class="mod-simple-follow-page__img-shadow"></div>
+            <div class="mod-simple-follow-page__logo">
+                <img class="mod-simple-follow-page__logo-img" src="https://wifi.weixin.qq.com/resources/images/t.weixin.logo.png" alt="" />
+                <p class="mod-simple-follow-page__logo-name"></p>
+                <p class="mod-simple-follow-page__logo-welcome">欢迎您</p>
+            </div>
+        </div>
+        <div class="mod-simple-follow-page__attention">
+            <p class="mod-simple-follow-page__attention-txt">欢迎使用微信连Wi-Fi</p>
+            <a class="mod-simple-follow-page__attention-btn" onclick="callWechatBrowser()">一键打开微信连Wi-Fi</a>
+        </div>
+    </div>
+
+</body>
+<!-- <script type="text/javascript" src="http://app.gwinfo.com:8060/wifidog/useraccess?duration=300"></script> -->
+<script type="text/javascript">
+    function callWechatBrowser() {
+        var gw_ip = "{$client_data['gw_address']}";
+        var gw_port = "{$client_data['gw_port']}";
+        var user_mac = "{$client_data['mac']}";
+        var gw_interface_url = "http://" + gw_ip + ":" + gw_port + "/wifidog/useraccess?duration=30&mac=" + user_mac;
+        var gw_interface_url_gw = "http://" + gw_ip + ":" + gw_port + "/wifidog/thirdpartyap?duration=30";
+        if (gw_ip.length > 0 && gw_port.length > 0) {
+            $.ajax({
+                type: "get",
+                url: gw_interface_url,
+                dataType: "json",
+                async: false,
+                success: function(data) {
+                    //console.log(data);
+                },
+                error: function(data) {
+                    //console.log(data);
+                }
+            });
+            $.ajax({
+                type: "GET",
+                url: gw_interface_url_gw,
+                dataType: "json",
+                async: false,
+                success: function(data) {
+                    // console.log(data);
+                },
+                error: function(data) {
+                    //console.log('请求失败');
+                }
+            });
+        }
+        Wechat_GotoRedirect('{$rule["app_id"]}', '{$extend}', '{$timestamp}', '{$sign}', '{$rule["shop_id"]}', '{$auth_url}', '{$client_data["mac"]}', '');
+
+
+    }
+</script>
+
+</html>

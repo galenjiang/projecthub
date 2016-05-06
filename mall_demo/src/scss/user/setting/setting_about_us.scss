@@ -1,0 +1,43 @@
+@import "../../common/configure.scss";
+.mui-body{
+	.setting-logo-img{
+		margin:1.1rem auto 0.4rem auto;
+		width:1.6rem;
+		height:1.6rem;
+	}
+}
+
+.mui-footer{
+	text-align:center;
+}
+.mui-list{
+    .mui-iconfont{
+        font-size: .44rem;
+        &::before{
+            color: $silverColor;
+        }
+    }
+    h2{
+        // font-size: .28rem;
+    }
+    label{
+        color: $silverColor;
+        // font-size: .24rem;
+    }
+}
+.about-lefang{
+    background-color: $grayColor;
+    h4{
+        text-align: center;
+        font-size: .32rem;
+    }
+}
+
+.img-title{
+    width: 4.5rem;
+    margin: 1rem auto .5rem;
+}
+
+#allmap{
+    position: relative;
+}

@@ -1,0 +1,15 @@
+$red: #e94646;
+$darkred: #b01d23;
+
+.getcard{
+  color: $red;
+  position: absolute; 
+  &::after{
+    color: $darkred;
+  }
+}
+
+.item-card{
+  width: 6.9rem;
+  height: 2.6rem;
+}

@@ -1,0 +1,1 @@
+new Vue({mixins:[Mui.vueMixinInit],el:"#userCenter",data:{userdata:{}},methods:{init:function(){this.updateUserInfo()}}});

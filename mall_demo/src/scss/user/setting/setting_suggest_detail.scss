@@ -1,0 +1,42 @@
+@import "../../common/configure.scss";
+
+.suggest-info{
+	background-color:#fff;
+	.suggest-info-detail{
+		h2{
+			margin-bottom:0.3rem;
+		}
+		p{
+			color:$silverColor;
+		}
+		ul{
+			li{
+				width:1.6rem;
+				height: 1.6rem;
+				display:block;
+				float: left;
+				margin:0.3rem 0.3rem 0.3rem 0;
+			}
+		}
+	}
+	.suggest-service {
+		h2{
+			color:#eb5555;
+			margin:0.3rem 0 0.3rem 0;
+			.mui-icon-emoji{
+				&:after{
+					color:#eb5555;
+				}
+			}
+		}
+		p{
+			color: #777;
+		}
+	}
+}
+.mui-icon-kefu{
+    font-size: .44rem;
+}
+.customer{
+    color: $goldenColor;
+}

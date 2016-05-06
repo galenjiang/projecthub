@@ -1,0 +1,35 @@
+<extend name="Base/base" />
+<block name="content">
+
+    <div class="mui-wrapper mui-flex mui-darkbg">
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <a href="javascript:history.back()" class="mui-pull-left">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+                <h1 class="mui-bar-title">领券</h1>
+            </div>
+        </header>
+
+        <section class="mui-body">
+            <div class="title mui-flex mui-flex-veri mui-flex-center-hori">
+                <p class="tips-upper">请输入领取优惠券或红包的串码</p>
+                <p class="tips-lower mui-margin-top-10">领取后会自动存入卡券包</p>
+            </div>
+            <div class="inputframe mui-line-bottom">
+                <div class="mui-form-row">
+                    <i class="mui-iconfont mui-icon-phone"></i>
+                    <input type="text" class="mui-form-input" placeholder="请输入串码" name="number" value="">
+                </div>
+            </div>
+            <div class="submitframe mui-margin-0-20">
+                <a href="javascript:void(0)" class="mui-btn mui-btn-primary mui-btn-big mui-btn-block mui-margin-5-0">立即领取</a>
+            </div>
+        </section>
+
+
+    </div>
+</block>
+<block name="script">
+    <link rel="stylesheet" href="/css/user/mallcard/mallcard-getcard.css" />
+</block>

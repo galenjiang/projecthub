@@ -1,0 +1,43 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/user/mallcard/mallcard_detail.css" />
+</block>
+<block name="content">
+    <div class="mui-wrapper mui-flex mui-darkbg" id="app">
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">商户卡券</h1>
+                <a href="javascript:history.back();" class="mui-pull-left">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+            </div>
+        </header>
+        <section v-cloak class="mui-body">
+            <div class="card">
+                <div class="card-images mui-padding-20 mui-line-bottom">
+                    <img :src="cardInfo.img" />
+                </div>
+                <div class="card-detail mui-padding-20-0 mui-padding-0-20">
+                    <p class="name mui-margin-bottom-10 mui-text-center">{{cardInfo.name}}</p>
+                    <p class="description mui-text-center">卡券码{{cardInfo.code}}</p>
+                    <p class="description mui-text-center">有效期：{{cardInfo.valid_begin}} - {{cardInfo.valid_end}}</p>
+                    <img class="qrcode" :src="cardInfo.codeimg">
+                </div>
+            </div>
+            <div class="rule">
+                <div class="mui-block-title mui-padding-20 mui-flex mui-flex-center-veri mui-line-bottom mui-margin-top-10">
+                    <h5 class="mui-label">使用规则</h5>
+                </div>
+                <p class="rule-body mui-padding-20">
+                      {{cardInfo.explain}}
+                </p>
+            </div>
+        </section>
+<!--         <div class="frame-button mui-margin-10">
+            <a href="javascript:void(0)" class="mui-btn mui-btn-yellow mui-btn-big mui-btn-block mui-margin-5-0">立即使用</a>
+        </div> -->
+    </div>
+</block>
+<block name="script">
+<script type="text/javascript" src="__PUBLIC__/mall/script/user/mallcard/mallcard_detail.js"></script>
+</block>

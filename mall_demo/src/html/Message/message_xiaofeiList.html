@@ -1,0 +1,36 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/message/message.css" />
+</block>
+<block name="content">
+    <div class="mui-wrapper mui-flex mui-darkbg scorepage" id="app" >
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">消费信息</h1>
+                <a href="javascript:history.back()" class="mui-pull-left">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+            </div>
+        </header>
+        <div v-cloak class="mui-body" v-refresh :callback="getList" :allowrefresh="allowrefresh" v-cloak>
+            <div class="mui-list">
+                <a href="javascript:void(0)" class="mui-list-cell mui-img" v-for="item in items">
+                    <div class="mui-img-body">
+                        <div class="mui-flex">
+                            <h1 class="mui-flex-auto">{{item.nameType}}</h1>
+                            <p style="color: #f00">{{item.integral}}</p>
+                        </div>
+                       <div class="mui-flex" style="color: #ccc">
+	                       	<p class="mui-label mui-ellipsis-1 mui-flex-auto">订单号<span>{{item.orderCard}}</span></p>
+	                       	<p>{{item.orderTime}}</p>
+                       </div>
+                    </div>
+                </a>
+            </div>
+            <div v-if="items.length == 0" class="mui-margin-top-20 mui-text-center">暂无数据</div>
+        </div>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/mall/script/message/message_xiaofeiList.js"></script>
+</block>

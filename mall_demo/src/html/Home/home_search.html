@@ -1,0 +1,100 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/home/home_search.css" />
+</block>
+<block name="content">
+
+    <div v-cloak v-touch:tap="hidehint" class="mui-wrapper" id="app">
+        <div v-show="loading" class="mui-loading">
+            <span class="mui-loading-img"></span>
+        </div>
+
+        <header class="mui-header" id="header">
+            <div class="mui-bar mui-flex" style="padding: 0.1rem">
+                <a href="javascript:history.back()" class="mui-pull-left" style="line-height: 0.8rem">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+                <div class="mui-pull-left mui-flex-auto" >
+                    <form @submit="search" action="#" class="mui-search" autocomplete="off" style="width: 100%; margin: 0">
+                       <!--  <i class="mui-iconfont mui-icon-sousuo"></i> -->
+                       <div class="searchType mui-pull-left" style="line-height: 0.8rem; margin-top: 0;">
+                           <div class="showType mui-margin-0-10" style="line-height: 0.8rem; position: relative;" v-touch:tap='checkType'>
+                                {{typeName}}
+                                <span class="iconBl"></span>
+                            </div>
+                       </div>
+                        <input class="mui-form-input search mui-pull-left" type="search" placeholder="搜索商户/活动/礼品" style="font-size: 14px; line-height: 0.8rem; text-align: left" v-model="dictionary">
+                   <!--      <a href="javascript:;" style="line-height: 0.9rem">
+                            <i class="mui-iconfont mui-icon-guanbi"></i>
+                        </a> -->
+                    </form>
+                </div>
+                <div class="mui-pull-right search_btn" style="line-height: 0.78rem;" v-touch:tap="search">
+                    搜索
+                </div>
+            </div>
+        </header>
+        <!-- searchList -->
+        <div class="typeList" v-show="orShow">
+            <span class="iconTop"></span>
+            <ul>
+                <li v-touch:tap="checkList('searchshop')">
+                    <i class="mui-iconfont mui-icon-shanghu"></i>
+                    <span>商户</span>
+                </li>
+                <li v-touch:tap="checkList('searchinter')">
+                    <i class="mui-iconfont mui-icon-jifen"></i>
+                    <span>积分</span>
+                </li>
+                <li v-touch:tap="checkList('searchactive')">
+                    <i class="mui-iconfont mui-icon-huodong"></i>
+                    <span>活动</span>
+                </li>
+            </ul>
+        </div>
+        <!-- content -->
+        <section v-show="searchList.length == 0" class="mui-body mui-padding-20">
+            <div class="mui-hotlabels">
+                <h6>热门搜索</h6>
+                <ul>
+                    <li v-touch:tap="favsearch(item.key,item.type)" v-for="item in favList" class="mui-label">{{item.key}}</li>
+                </ul>
+            </div>
+        </section>
+        <section class="mui-body" v-refresh :callback="getList" :allowrefresh="!loading">
+            <!-- 商铺 -->
+            <mui-show-picture
+                v-if="choose != 'searchinter'"
+                v-for="item in searchList"
+                :url="item.url"
+                :img="item.img"
+                :text-upper="item.textUpper"
+                :text-lower="item.textLower">
+            </mui-show-picture>
+            <!-- 积分 -->
+            <div class="integral-lists">
+                <a v-if="choose == 'searchinter'" v-for="item in searchList" :href="item.url" class="item">
+                    <mui-countdown
+                        v-if="item.endtime"
+                        :time="item.endtime"
+                    ></mui-countdown>
+                    <img class="item-img" :src="item.img" />
+                    <div class="item-title">
+                        <h4>{{item.name}}</h4>
+                        <div class="item-title-lower">
+                            <span class="number">{{ item.integral }}</span>
+                            <span class="score">积分</span>
+                            <span class="price">市场价：￥{{ item.marketprice }}</span>
+                            <span v-if="item.price != 0 && item.price" class="pay">支付{{ item.price }}元</span>
+                            <span class="limit" v-show="item.numbers">限量{{ item.numbers }}件</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </section>
+    </div>
+</block>
+<block name="script">
+<script type="text/javascript" src="__PUBLIC__/mall/script/home/home_search.js"></script>
+</block>

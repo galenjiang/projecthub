@@ -1,0 +1,40 @@
+@import "../common/configure.scss";
+.mui-wrapper {
+    >.mui-body {
+        overflow: hidden;
+        .mui-form {
+            width: 100%;
+            position: absolute;
+            padding: 0.6rem 0.8rem;
+            -webkit-transition: all 0.3s;
+        }
+    }
+}
+.mui-iconfont {
+    font-size: 0.48rem;
+    &::before {
+        color: $silverColor;
+    }
+}
+.next,
+.previous {
+    margin-top: 1.0rem;
+}
+.register {
+    margin-top: 20px;
+}
+input {
+    text-indent: 15px;
+}
+.mui-form-row:last-child:after {
+    background: url(../../images/line_bottom.png) 0 0 repeat-x;
+    background-size: 50px 1px;
+}
+.mui-icon-back{
+	&::before{
+		color: $goldenColor;
+	}
+}
+.getVerify{
+    width: 3rem;
+}

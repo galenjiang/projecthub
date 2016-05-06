@@ -1,0 +1,76 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/user/user_center.css" />
+</block>
+<block name="content">
+    <div class="mui-wrapper  mui-darkbg centerPage" id="userCenter">
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">会员中心</h1>
+                <a href="{:U('Home/home')}" class="mui-pull-left">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+                <a href="{:U('Message/message')}" class="mui-pull-right">
+                    <i class="mui-iconfont mui-icon-xinxi"></i>
+                </a>
+            </div>
+        </header>
+        <section class="mui-body" v-cloak>
+            <div class="center-header">
+                <a href="{:U('User/info')}" class="mui-flex mui-flex-center-veri mui-arrow-right mui-margin-right-10">
+                    <img :src="userdata.header_url" class="face mui-margin-0-15">
+                    <div class="mui-flex-auto">
+                        <p class="mui-label">{{ userdata.nickname }}</p>
+                        <p class="phone mui-label mui-margin-top-10">
+                            <i class="mui-iconfont mui-icon-shouji"></i>
+                            <span>{{ userdata.phone }}</span>
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="user-info mui-grids mui-margin-bottom-20">
+                <a href="javascript:;" class="mui-grid mui-grid-2 mui-line-right">
+                    <h2>会员卡号</h2>
+                    <p class="mui-label mui-margin-top-10">{{ userdata.card_no }}</p>
+                </a>
+                <a href="javascript:;" class="mui-grid mui-grid-2">
+                    <h2>当前积分</h2>
+                    <p class="mui-label mui-margin-top-10">{{ userdata.integral }}</p>
+                </a>
+            </div>
+            <div class="mui-grids mui-margin-bottom-20">
+                <div class="mui-line-bottom">
+                    <a href="{:U('membercard_right')}"  class="mui-grid mui-grid-3 mui-line-right">
+                        <i class="mui-iconfont mui-icon-quanyi"></i>
+                        <p class="mui-label">我的权益</p>
+                    </a>
+                    <a href="{:U('order_list')}" class="mui-grid mui-grid-3 mui-line-right ">
+                        <i class="mui-iconfont mui-icon-jifen"></i>
+                        <p class="mui-label">我的积分兑换</p>
+                    </a>
+                    <a href="{:U('activity')}" class="mui-grid mui-grid-3">
+                        <i class="mui-iconfont mui-icon-huodong"></i>
+                        <p class="mui-label">我的活动</p>
+                    </a>
+                </div>
+                <div class="">
+                    <a href="{:U('mallcard_list')}" class="mui-grid mui-grid-3 mui-line-right">
+                        <i class="mui-iconfont mui-icon-qianbao"></i>
+                        <p class="mui-label">我的卡券包</p>
+                    </a>
+                    <a href="{:U('parking')}" v-unfinished class="mui-grid mui-grid-3 mui-line-right">
+                        <i class="mui-iconfont mui-icon-tingche"></i>
+                        <p class="mui-label">我的停车记录</p>
+                    </a>
+                    <a href="{:U('brand')}" class="mui-grid mui-grid-3">
+                        <i class="mui-iconfont mui-icon-weiguanzhu"></i>
+                        <p class="mui-label">我的关注</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/mall/script/user/user_center.js"></script>
+</block>

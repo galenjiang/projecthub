@@ -1,0 +1,86 @@
+@import '../common/configure.scss';
+// 列表
+.user-info{
+  h2{
+    color:$goldenColor;
+  }
+  p{
+    color:$goldenColor;
+  }
+}
+.mui-iconfont{
+  &.mui-icon-quanyi{
+    &:before{
+      color: $yellowColor;
+    }
+  }
+  &.mui-icon-jifen{
+    &:before{
+      color: #b5b5b6;
+    }
+  }
+  &.mui-icon-huodong{
+
+  }
+  &.mui-icon-qianbao{
+
+  }
+  &.mui-icon-tingche{
+    &:before{
+      color: $blueColor;
+    }
+  }
+  &.mui-icon-weiguanzhu{
+    &:before{
+      color: $redColor;
+    }
+  }
+  // &:before{
+  //
+  // }
+
+}
+// 信息和设置的icon
+.center-icon{
+  position:absolute;
+  top:0.1rem;
+  .mui-iconfont{
+    font-size:0.6rem;
+  }
+  &.center-message{
+    left:0.15rem;
+  }
+  &.center-setting{
+    right:0.15rem;
+  }
+}
+.center-header {
+  position: relative;
+	height: 2.4rem;
+	background: url("../../images/background_user.jpg") 50% 50% no-repeat;
+	background-size: cover;
+}
+.phone{
+  vertical-align: middle;
+}
+.mui-arrow-right{
+    height: 100%;
+}
+.face{
+	display: inline-block;
+	border-radius: 50%;
+	border: .1rem solid #fff;
+	width: 1.6rem;
+	height: 1.6rem;
+}
+.icon-card{
+	width: .5rem;
+	height: .5rem;
+}
+
+.mui-icon-shouji{
+    font-size: .34rem;
+    &::before{
+        color: $blackColor;
+    }
+}

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <head>
+        <meta name="Keywords" content="智慧商场">
+        <meta name="Description" content="智慧商场">
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimum-scale=1.0,maximum-scale=1.0" />
+        <title>智慧商场</title>
+        <script>
+            + function(b) {
+                var h = document.documentElement,
+                    w = h.clientWidth;
+                h.style.fontSize = w / b + "px";
+            }(7.5);
+        </script>
+        <link rel="stylesheet" href="/css/common/reset.css" />
+        <link rel="stylesheet" href="/css/common/mui.css" />
+    </head>
+
+    <body ontouchstart>
+        <div class="mui-wrapper mui-darkbg">
+            <header class="mui-header" id="header">
+                <div class="mui-bar mui-line-bottom">
+                    <a href="index.html" class="mui-pull-left">
+                        <i class="mui-iconfont mui-icon-back"></i>
+                    </a>
+                    <h1 class="mui-bar-title">盒布局</h1>
+                </div>
+            </header>
+            <section class="mui-body">
+                <div class="block mui-padding-20">
+                    <p class="mui-label">水平盒布局mui-flex</p>
+                    <ul class="block-1 mui-flex">
+                        <li>内容1</li>
+                        <li>内容2</li>
+                        <li>内容3</li>
+                    </ul>
+                    <style type="text/css">
+                        .block-1 {
+                            width: 100%;
+                            background-color: #ff0;
+                        }
+
+                        .block-1>li {
+                            height: 30px;
+                        }
+
+                        .block-1>li:first-child {
+                            background-color: #991e0f;
+                        }
+
+                        .block-1>li:last-child {
+                            background-color: #805a55;
+                        }
+
+                        .block-1>li:nth-child(2) {
+                            background-color: #31f6b3;
+                        }
+                    </style>
+                </div>
+                <div class="block mui-padding-20">
+                    <p class="mui-label">水平盒布局mui-flex，
+                        <br>内容器平分撑满mui-flex-auto</p>
+                    <ul class="block-2 mui-flex">
+                        <li class="mui-flex-auto">内容1</li>
+                        <li class="mui-flex-auto">内容2</li>
+                        <li class="mui-flex-auto">内容3</li>
+                    </ul>
+                    <style type="text/css">
+                        .block-2 {
+                            width: 100%;
+                            background-color: #ff0;
+                        }
+
+                        .block-2>li {
+                            height: 30px;
+                            background-color: #f00;
+                        }
+
+                        .block-2>li:first-child {
+                            background-color: #991e0f;
+                        }
+
+                        .block-2>li:last-child {
+                            background-color: #805a55;
+                        }
+
+                        .block-2>li:nth-child(2) {
+                            background-color: #31f6b3;
+                        }
+                    </style>
+                </div>
+                <div class="block mui-padding-20">
+                    <p class="mui-label">垂直盒布局mui-flex、mui-flex-veri</p>
+                    <ul class="block-3 mui-flex mui-flex-veri">
+                        <li>内容1</li>
+                        <li>内容2</li>
+                        <li>内容3</li>
+                    </ul>
+                    <style type="text/css">
+                        .block-3 {
+                            width: 100%;
+                            background-color: #ff0;
+                        }
+
+                        .block-3>li {
+                            height: 30px;
+                            background-color: #f00;
+                        }
+
+                        .block-3>li:first-child {
+                            background-color: #991e0f;
+                        }
+
+                        .block-3>li:last-child {
+                            background-color: #805a55;
+                        }
+
+                        .block-3>li:nth-child(2) {
+                            background-color: #31f6b3;
+                        }
+                    </style>
+                </div>
+                <div class="block mui-padding-20">
+                    <p class="mui-label">垂直盒布局mui-flex、mui-flex-veri。某个内容器撑满mui-flex-auto</p>
+                    <ul class="block-4 mui-flex mui-flex-veri">
+                        <li>内容1</li>
+                        <li class="mui-flex-auto">内容2 mui-flex-auto</li>
+                        <li>内容3</li>
+                    </ul>
+                    <style type="text/css">
+                        .block-4 {
+                            width: 100%;
+                            background-color: #ff0;
+                            height: 200px;
+                        }
+
+                        .block-4>li {
+                            height: 30px;
+                            background-color: #f00;
+                        }
+
+                        .block-4>li:first-child {
+                            background-color: #991e0f;
+                        }
+
+                        .block-4>li:last-child {
+                            background-color: #805a55;
+                        }
+
+                        .block-4>li:nth-child(2) {
+                            background-color: #31f6b3;
+                        }
+                    </style>
+                </div>
+                <div class="block mui-padding-20">
+                    <p class="mui-label">水平居中</p>
+                    <ul class="block-5 mui-flex mui-flex-center-hori">
+                        <li>内容1</li>
+                        <li>内容2</li>
+                        <li>内容3</li>
+                    </ul>
+                    <style type="text/css">
+                        .block-5 {
+                            width: 100%;
+                            background-color: #ff0;
+                            height: 100px;
+                        }
+
+                        .block-5>li {
+                            height: 30px;
+                            background-color: #f00;
+                        }
+
+                        .block-5>li:first-child {
+                            background-color: #991e0f;
+                        }
+
+                        .block-5>li:last-child {
+                            background-color: #805a55;
+                        }
+
+                        .block-5>li:nth-child(2) {
+                            background-color: #31f6b3;
+                        }
+                    </style>
+                </div>
+                <div class="block mui-padding-20">
+                    <p class="mui-label">垂直居中</p>
+                    <ul class="block-6 mui-flex mui-flex-center-veri">
+                        <li>内容1</li>
+                        <li>内容2</li>
+                        <li>内容3</li>
+                    </ul>
+                    <style type="text/css">
+                        .block-6 {
+                            width: 100%;
+                            background-color: #ff0;
+                            height: 100px;
+                        }
+
+                        .block-6>li {
+                            height: 30px;
+                            background-color: #f00;
+                        }
+
+                        .block-6>li:first-child {
+                            background-color: #991e0f;
+                        }
+
+                        .block-6>li:last-child {
+                            background-color: #805a55;
+                        }
+
+                        .block-6>li:nth-child(2) {
+                            background-color: #31f6b3;
+                        }
+                    </style>
+                </div>
+                <div class="block mui-padding-20">
+                    <p class="mui-label">水平垂直居中</p>
+                    <ul class="block-7 mui-flex mui-flex-center-veri mui-flex-center-hori">
+                        <li>内容1</li>
+                        <li>内容2</li>
+                        <li>内容3</li>
+                    </ul>
+                    <style type="text/css">
+                        .block-7 {
+                            width: 100%;
+                            background-color: #ff0;
+                            height: 100px;
+                        }
+
+                        .block-7>li {
+                            height: 30px;
+                            background-color: #f00;
+                        }
+
+                        .block-7>li:first-child {
+                            background-color: #991e0f;
+                        }
+
+                        .block-7>li:last-child {
+                            background-color: #805a55;
+                        }
+
+                        .block-7>li:nth-child(2) {
+                            background-color: #31f6b3;
+                        }
+                    </style>
+                </div>
+                <div class="block mui-padding-20">
+                    <p class="mui-label">水平居右</p>
+                    <ul class="block-8 mui-flex mui-flex-end-hori">
+                        <li>内容1</li>
+                        <li>内容2</li>
+                        <li>内容3</li>
+                    </ul>
+                    <style type="text/css">
+                        .block-8 {
+                            width: 100%;
+                            background-color: #ff0;
+                            height: 100px;
+                        }
+
+                        .block-8>li {
+                            height: 30px;
+                            background-color: #f00;
+                        }
+
+                        .block-8>li:first-child {
+                            background-color: #991e0f;
+                        }
+
+                        .block-8>li:last-child {
+                            background-color: #805a55;
+                        }
+
+                        .block-8>li:nth-child(2) {
+                            background-color: #31f6b3;
+                        }
+                    </style>
+                </div>
+                <div class="block mui-padding-20">
+                    <p class="mui-label">垂直居底</p>
+                    <ul class="block-9 mui-flex mui-flex-end-veri">
+                        <li>内容1</li>
+                        <li>内容2</li>
+                        <li>内容3</li>
+                    </ul>
+                    <style type="text/css">
+                        .block-9 {
+                            width: 100%;
+                            background-color: #ff0;
+                            height: 100px;
+                        }
+
+                        .block-9>li {
+                            height: 30px;
+                            background-color: #f00;
+                        }
+
+                        .block-9>li:first-child {
+                            background-color: #991e0f;
+                        }
+
+                        .block-9>li:last-child {
+                            background-color: #805a55;
+                        }
+
+                        .block-9>li:nth-child(2) {
+                            background-color: #31f6b3;
+                        }
+                    </style>
+                </div>
+                <div class="block mui-padding-20">
+                    <p class="mui-label">右下角</p>
+                    <ul class="block-10 mui-flex mui-flex-end-veri mui-flex-end-hori">
+                        <li>内容1</li>
+                        <li>内容2</li>
+                        <li>内容3</li>
+                    </ul>
+                    <style type="text/css">
+                        .block-10 {
+                            width: 100%;
+                            background-color: #ff0;
+                            height: 100px;
+                        }
+
+                        .block-10>li {
+                            height: 30px;
+                            background-color: #f00;
+                        }
+
+                        .block-10>li:first-child {
+                            background-color: #991e0f;
+                        }
+
+                        .block-10>li:last-child {
+                            background-color: #805a55;
+                        }
+
+                        .block-10>li:nth-child(2) {
+                            background-color: #31f6b3;
+                        }
+                    </style>
+                </div>
+            </section>
+            <div class="mui-footer">
+                <a href="javascript:void(0)" class="mui-btn mui-btn-primary mui-btn-block mui-btn-noradius mui-btn-big">底部按钮</a>
+            </div>
+        </div>
+    </body>
+
+</html>

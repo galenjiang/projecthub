@@ -1,0 +1,58 @@
+<extend name="Base/base" />
+<block name="content">
+
+    <div class="mui-wrapper goodsPayPage mui-darkbg">
+        <header class="mui-header" id="header">
+            <div class="mui-bar mui-line-bottom">
+                <a href="javascript:history.back()" class="mui-pull-left" id="back">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+                <h1 class="mui-bar-title">在线支付</h1>
+            </div>
+        </header>
+        <section class="mui-body">
+            <div class="pay-content mui-line-bottom mui-padding-15">
+                <p>支付内容：订单</p>
+                <p>支付金额：
+                    <span>￥23444.00</span>
+                </p>
+            </div>
+            <div class="pay-content mui-line-bottom mui-padding-15 mui-margin-top-15">
+                <p>预约人姓名
+                    <label>王小明</label>
+                </p>
+                <p>联系电话
+                    <label>13245689965</label>
+                </p>
+                <p>预约日期
+                    <label>2016-01-20</label>
+                </p>
+                <p>预约时间
+                    <label>13:00-18:00</label>
+                </p>
+            </div>
+            <ul class="pay-list mui-list mui-margin-15-0">
+                <li class="mui-list-cell mui-img">
+                    <img src="__PUBLIC__/mall/images/icon_wechat.png" class="mui-img-img">
+                    <a href="javascript:void(0)">
+                  微信支付
+                </a>
+                    <div class="mui-check mui-check-radio mui-checked"></div>
+                </li>
+                <li class="mui-list-cell mui-img">
+                    <img src="__PUBLIC__/mall/images/icon_alipay.png" class="mui-img-img">
+                    <a href="javascript:void(0)">
+                  支付宝
+                </a>
+                    <div class="mui-check mui-check-radio"></div>
+                </li>
+            </ul>
+            <a href="space-pay-success.html" class="mui-btn mui-btn-primary mui-btn-big mui-btn-block">
+              立即支付
+            </a>
+        </section>
+    </div>
+</block>
+<block name="script">
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/space/space-pay.css" />
+</block>

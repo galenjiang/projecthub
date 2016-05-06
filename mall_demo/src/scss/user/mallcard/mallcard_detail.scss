@@ -1,0 +1,34 @@
+.card{
+  background-color: #fff;
+
+  .description{
+    color: #ccc;
+  }
+}
+
+.rule{
+  background-color: #fff;
+}
+.mui-block-title:before {
+    width: 0.06rem;
+    height: 50%;
+    content: " ";
+    background-color: #b09768;
+    top: 25%;
+    left: 0;
+    position: absolute;
+    z-index: 9;
+}
+.qrcode{
+    width: 2.7rem;
+    height: 2.7rem;
+    margin:{
+        top: .4rem;
+        left: auto;
+        right: auto;
+    }
+}
+.card-detail{
+    margin-bottom: .2rem;
+    padding-bottom: .7rem;
+}

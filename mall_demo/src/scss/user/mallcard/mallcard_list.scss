@@ -1,0 +1,9 @@
+$red: #e94646;
+$darkred: #b01d23;
+
+.getcard{
+  color: $red;
+  &::after{
+    color: $darkred;
+  }
+}

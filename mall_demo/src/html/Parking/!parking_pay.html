@@ -1,0 +1,42 @@
+<extend name="Base/base" />
+<block name="content">
+    
+    <div class="mui-wrapper goodsPayPage mui-darkbg">
+        <header class="mui-header" id="header">
+            <div class="mui-bar mui-line-bottom">
+                 <a href="javascript:history.back()" class="mui-pull-left" id="back">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+                <h1 class="mui-bar-title">在线支付</h1>
+            </div>
+        </header>
+        <section class="mui-body">
+            <div class="pay-content mui-line-bottom mui-padding-15">
+              <p><label>支付内容：</label>停车费</p>
+              <p><label>支付金额：</label><span>￥233.00</span></p>
+            </div>
+            <ul class="pay-list mui-list mui-margin-15-0">
+              <li class="mui-list-cell mui-img">
+                <img src="/images/icon_wechat.png" class="mui-img-img">
+                <a href="javascript:void(0)">
+                  微信支付
+                </a>
+                <div class="mui-check mui-check-radio mui-checked"></div>
+              </li>
+               <li class="mui-list-cell mui-img">
+                <img src="/images/icon_alipay.png" class="mui-img-img">
+                <a href="javascript:void(0)">
+                  支付宝
+                </a>
+                <div class="mui-check mui-check-radio"></div>
+              </li>
+            </ul>
+            <a href="parking-pay-success.html" class="mui-btn mui-btn-primary mui-btn-big mui-btn-block">
+              立即支付
+            </a>
+        </section>
+    </div>
+</block>
+<block name="script">
+<link rel="stylesheet" href="__PUBLIC__/mall/css/parking/parking-pay.css"/>
+</block>

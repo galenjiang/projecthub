@@ -1,0 +1,44 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/activity/activity_detail.css" />
+</block>
+<block name="content">
+    <div class="mui-wrapper mui-flex mui-darkbg" id="activitydetail" v-cloak>
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">预约报名</h1>
+                <a href="javascript:history.back()" class="mui-pull-left"><i class="mui-iconfont mui-icon-back"></i></a>
+                <a class="myactivity mui-pull-right" href="javascript:;"><i class="mui-iconfont mui-icon-fenxiang"></i></a>
+            </div>
+        </header>
+        <section class="mui-body" v-cloak>
+            <div class="banner mui-line-bottom">
+                <img class="brand" :src="img" alt="" />
+            </div>
+            <div class="subscript mui-flex mui-flex-veri mui-padding-20 mui-line-bottom">
+                <div class="detail-title mui-flex">
+                    <p class="mui-flex-auto">{{active_name}}</p>
+                </div>
+                <p class="mui-margin-top-5">活动时间：{{begin_time}}, {{end_time}}</p>
+            </div>
+            <div class="mui-list-cell mui-margin-top-20 mui-flex-center-veri">
+                <i class="mui-iconfont mui-icon-dianhua mui-list-icon"></i>
+                <a :href="'tel:'+phone">{{phone}}</a>
+                <i class="mui-iconfont mui-icon-youjiantou"></i>
+            </div>
+            <div class="mui-block-title mui-block-title-quote mui-margin-top-20">
+                <label class="mui-label">活动介绍</label>
+            </div>
+            <div class="mui-list-cell mui-padding-20 mui-margin-bottom-20 mui-line-bottom">
+                <div>{{{about}}}</div>
+            </div>
+        </section>
+        <footer class="btn-participate mui-padding-0-20 mui-padding-10-0">
+            <a v-touch:tap="join" href="javascript:;" class="mui-btn mui-btn-yellow mui-btn-big mui-btn-block mui-margin-5-0">预约报名</a>
+        </footer>
+
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/mall/script/activity/activity_detail.js"></script>
+</block>

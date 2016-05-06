@@ -1,0 +1,100 @@
+.brand-bar {
+  padding: 0.1025rem 10px;
+}
+.brand-list {
+  background-color: #fff;
+  .mui-img-body {
+    >h2 {
+      color: #333333;
+    }
+    p {
+      line-height: 0.55rem;
+      color: #777777;
+      font-size: 0.26rem;
+    }
+  }
+}
+.wrapper {
+  .mui-body {
+    padding-bottom: 0;
+  }
+}
+.mui-screen {
+  position: relative;
+  z-index: 9;
+}
+// 优惠标签，例如团，减，折等字样
+.brand-label {
+  display: inline-block;
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+  font-size: 0.24rem;
+  text-align: center;
+  color: #fff;
+  height: 0.4rem;
+  width: 0.4rem;
+  line-height: 0.4rem;
+  border-radius: 4px;
+  &:first-child {
+    margin-left: 0.4rem;
+  }
+  @at-root .brand-label-tuan {
+    background-color: #ff7940;
+  }
+  @at-root .brand-label-jian {
+    background-color: #49bf30;
+  }
+}
+// 头部地图按钮文字
+.brand-map {
+  color: #b01d23;
+  font-size: 0.3rem;
+  width: 1.0rem;
+}
+
+
+.brand-choice-floor,
+.brand-choice-sort {
+  padding: 0 0.2rem;
+  li {
+    padding: 0.15rem 0 0.15rem 10px;
+  }
+}
+
+
+.brand-type-more {
+  display: block;
+}
+.mui-tv {
+  display: block;
+  padding: 0.2rem;
+}
+.mui-tv-img {
+  margin: 0 auto;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+.mui-iconfont {
+  font-size: 0.44rem;
+}
+.brand-choice-type{
+  .mui-tv{
+    float: left;
+  }
+}
+
+.tag{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+}
+.mui-icon-tag{
+    margin-top: .2rem;
+}
+.tag-tuan{
+    background-color: #ff7940;
+}
+.tag-jian{
+    background-color: #49bf30;
+}

@@ -1,0 +1,55 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/parking/parking_detail_success.css" />
+</block>
+<block name="content">
+    <div class="mui-wrapper goodsDetailPage mui-darkbg">
+        <header class="mui-header" id="header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">停车详情</h1>
+                <a href="javascript:history.back()" class="mui-pull-left" id="back">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+            </div>
+        </header>
+        <section class="mui-body">
+            <div class="parking-info-warning mui-padding-20-0">
+                <h2 class="parking-title-red mui-margin-bottom-15">00:03:25</h2>
+                <p>结算后，请您在
+                    <label class="parking-title-red">15分钟</label>内离场
+                    <br/>如超时，则重新计入停车时间
+                    <br/>并需要在出口处补缴差额</p>
+            </div>
+            <ul class="mui-list">
+                <li class="mui-list-cell mui-margin-15-0 mui-flex-veri">
+                    <div class="mui-flex">
+                        <h2 class="mui-flex-auto">沪A90909</h2>
+                        <p class="">已结算</p>
+                    </div>
+                    <div class="mui-flex">
+                        <h2 class="parking-title-red mui-flex-auto">时长：01:20:29</h2>
+                        <h2 class="parking-title-red">￥ 30.00</h2>
+                    </div>
+                </li>
+                <li class="mui-list-cell">
+                    <h2 class="mui-flex-auto">车牌号</h2>
+                    <p class="parking-title-silver">沪A90909</p>
+                </li>
+                <li class="mui-list-cell">
+                    <h2 class="mui-flex-auto">入场时间</h2>
+                    <p class="parking-title-silver">2015-14-04 10:36:02</p>
+                </li>
+                <li class="mui-list-cell">
+                    <h2 class="mui-flex-auto">出场时间</h2>
+                    <p class="parking-title-silver">2015-14-04 10:36:02</p>
+                </li>
+                <li class="mui-list-cell">
+                    <h2 class="mui-flex-auto">车位号</h2>
+                    <p class="parking-title-silver">C023</p>
+                </li>
+            </ul>
+        </section>
+    </div>
+</block>
+<block name="script">
+</block>

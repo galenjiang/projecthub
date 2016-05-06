@@ -1,0 +1,89 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/user/setting/setting_about_us.css" />
+</block>
+<block name="content">
+    <div id="setting" style="position: relative;height: 100%">
+        <div v-cloak class="mui-wrapper">
+            <header class="mui-header">
+                <div class="mui-bar mui-line-bottom">
+                    <h1 class="mui-bar-title">关于我们</h1>
+                    <a href="javascript:history.back()" class="mui-pull-left">
+                        <i class="mui-iconfont mui-icon-back"></i>
+                    </a>
+                </div>
+            </header>
+            <!-- tab -->
+            <mui-tabs :tab-list="tabList" :cur="cur"></mui-tabs>
+            <!-- 关于我们 -->
+            <section class="mui-body" v-show="showMall == 0">
+                <div>
+                    <img :src="mallinfo.cover">
+                </div>
+                <ul class="mui-list">
+                    <li class="mui-list-cell mui-img">
+                        <img :src="mallinfo.logo_pic" class="mui-img-img setting-brand-img">
+                        <div class="mui-img-body mui-line-left mui-padding-left-10">
+                            <h4>{{mallinfo.name}}</h4>
+                            <p>{{mallinfo.provinceid}} {{mallinfo.areaid}}</p>
+                            <p>{{mallinfo.address}}</p>
+                        </div>
+                    </li>
+                    <li v-if="mallinfo.business_time" class="mui-list-cell mui-flex-center-veri">
+                        <i class="mui-iconfont mui-icon-shijian" style="width: 35px;"></i>
+                        <h2 class="mui-flex-auto" style="white-space: nowrap;">营业时间</h2>
+                        <label style="max-width: 150px;">{{mallinfo.business_time}}</label>
+                    </li>
+                    <li v-for="item in mallinfo.tel" class="mui-list-cell mui-flex-center-veri">
+                        <i class="mui-iconfont mui-icon-dianhua" style="width: 35px;"></i>
+                        <h2 class="mui-flex-auto">客服电话</h2>
+                        <label><a :href="'tel:'+ item">{{item}}</a></label>
+                    </li>
+                    <li v-if="mallinfo.traffic" class="mui-list-cell mui-flex-center-veri" v-touch:tap="tabMap">
+                 <!--    <li v-if="mallinfo.traffic" class="mui-list-cell mui-flex-center-veri"> -->
+                        <i class="mui-iconfont mui-icon-dizhi" style="width: 35px;"></i>
+                        <div class="mui-flex-auto">
+                            <h2>到达方式</h2>
+                            <label>{{mallinfo.traffic}}</label>
+                        </div>
+                        <i class="mui-iconfont mui-icon-youjiantou"></i>
+                       <!--  <a href="{:U('setting/about_map')}"><i class="mui-iconfont mui-icon-youjiantou"></i></a> -->
+                    </li>
+                    <li v-if="mallinfo.introduce" class="mui-list-cell">
+                        <i class="mui-iconfont mui-icon-xiaopiao" style="width: 35px;"></i>
+                        <div class="mui-flex-auto">
+                            <h2>商场简介</h2>
+                            <label class="mui-flex-auto">{{{mallinfo.introduce}}}</label>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            <!-- 关于乐坊 -->
+            <section class="mui-body mui-flex mui-flex-veri about-lefang" v-show="showMall == 1">
+                <div class="mui-flex-auto">
+                    <img class="img-title" src="./Public/mall/images/about_lf.png">
+                    <h4>乐坊生活广场</h4>
+                    <h4>V1.0</h4>
+                </div>
+                <footer class="mui-footer mui-padding-15">
+                    乐坊生活广场&nbsp;&nbsp;版权所有
+                </footer>
+            </section>
+        </div>
+        <!-- 地图页面 -->
+        <div v-cloak class="mui-wrapper" id="mapId" style="position: absolute;top: 0;left: 0;height: 100%" v-show="showMap">
+            <header class="mui-header">
+                <div class="mui-bar mui-line-bottom">
+                    <h1 class="mui-bar-title">地图</h1>
+                    <a v-touch:tap="tabMap" href="javascript:;" class="mui-pull-left">
+                        <i class="mui-iconfont mui-icon-back"></i>
+                    </a>
+                </div>
+            </header>
+            <div id="allmap"  style="position: absolute;top: 0;left: 0;width:100%;height: 100%"></div>
+        </div>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/mall/script/user/setting/setting_about_us.js"></script>
+</block>

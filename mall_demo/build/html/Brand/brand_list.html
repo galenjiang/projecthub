@@ -1,0 +1,73 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/brand/brand_list.css" />
+</block>
+<block name="content">
+    <div class="mui-wrapper brandPage" id="app">
+        <div v-show="!allowrefresh" class="mui-loading">
+            <span class="mui-loading-img"></span>
+        </div>
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">商户列表</h1>
+                <a href="{:U('Home/home')}" class="mui-pull-left"><i class="mui-iconfont mui-icon-back"></i></a>
+                <a href="{:U('Home/home_search')}" class="mui-pull-right"><i class="mui-iconfont mui-icon-sousuo"></i></a>
+            </div>
+        </header>
+        <mui-screen :screen-list="screenList" :cur.sync="cur">
+            <div class="mui-screen-list">
+                <div class="mui-screen-item">
+                    <div class="mui-screen-back"></div>
+                    <ul class="mui-screen-item-content brand-choice-floor mui-overflow-scroll">
+                        <li class="mui-line-bottom mui-flex mui-flex-center-veri" v-touch:tap="floorSearch('')">
+                            <i class="mui-iconfont mui-icon-xuanzhong" v-bind:style="{opacity: !floor? 1: 0}"></i>
+                            <span class="mui-margin-left-10">{{"全部"}}</span>
+                        </li>
+                        <li v-for="item in floorList" class="mui-line-bottom mui-flex mui-flex-center-veri" v-touch:tap="floorSearch(item.id)">
+                            <i class="mui-iconfont mui-icon-xuanzhong" v-bind:style="{opacity: item.id == floor? 1: 0}"></i>
+                            <span class="mui-margin-left-10">{{item.floor_name}} - {{item.floor_theme}}</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mui-screen-item">
+                    <div class="mui-screen-back"></div>
+                    <div class="mui-screen-item-content brand-choice-type mui-overflow-scroll">
+                        <a v-touch:tap="cateSearch('')" class="mui-tv mui-line-right mui-grid-4">
+                            <img class="mui-tv-img" src="__PUBLIC__/mall/images/160_160.jpg">
+                            <p class="mui-label">{{'全部'}}</p>
+                        </a>
+                        <a v-for="item in catalogList" v-touch:tap="cateSearch(item.id)" class="mui-tv mui-line-right mui-grid-4">
+                            <img class="mui-tv-img" :src="item.logo_pic">
+                            <p class="mui-label">{{item.name}}</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="mui-screen-item">
+                    <div class="mui-screen-back"></div>
+                    <ul class="mui-screen-item-content brand-choice-sort mui-overflow-scroll">
+                        <li class="mui-line-bottom" v-touch:tap="sortSearch(0)">默认排序</li>
+                        <li class="mui-line-bottom" v-touch:tap="sortSearch(1)">有团购/折扣/活动的商户</li>
+                        <li class="mui-line-bottom" v-touch:tap="sortSearch(2)">名称A-Z</li>
+                        <li class="mui-line-bottom" v-touch:tap="sortSearch(3)">名称Z-A</li>
+                    </ul>
+                </div>
+            </div>
+        </mui-screen>
+
+        <section v-cloak class="mui-body" v-refresh :callback="getShopList" :allowrefresh="allowrefresh">
+            <ul class="brand-list">
+                <mui-show-pic v-for="item in shopList" :url="item.url" :img="item.img" :text-upper="item.textUpper" :text-lower="item.textLower">
+                    <div class="tag">
+                        <i class="mui-icon-tag" v-for="tag in item.tags">
+                    <img class="tag-img" :src="tag.img">
+                </i>
+                    </div>
+                </mui-show-pic>
+            </ul>
+            <div class="mui-text-center mui-margin-top-20">暂无数据</div>
+        </section>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/mall/script/brand/brand_list.js"></script>
+</block>

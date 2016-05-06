@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="Keywords" content="智慧商场">
+    <meta name="Description" content="智慧商场">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimum-scale=1.0,maximum-scale=1.0" />
+    <title>智慧商场</title>
+    <script>
+        + function(b) {
+            var h = document.documentElement,
+                w = h.clientWidth;
+            h.style.fontSize = w / b + "px";
+        }(7.5);
+    </script>
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/common/reset.css" />
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/common/mui.css" />
+</head>
+
+<body ontouchstart>
+    <div v-refresh :callback="refresh" :allowrefresh="allowrefresh" class="mui-wrapper mui-overflow-scroll" id="app">
+        <!-- 摇一摇功能模块 -->
+        <!-- <button id="btn" v-touch:tap="hello" type="button" name="button">test</button> -->
+
+        <!-- banner -->
+        <!-- <mui-banner :bannerpics="bannerpics"></mui-banner> -->
+
+        <!-- tab -->
+        <mui-tabs :tablists="tablists"></mui-tabs>
+
+        <a href="{:U('Integral/integral_list')}" class="mui-tv">
+            <img class="mui-tv-img" src="" alt="" />
+            <p class="mui-label">今日新品</p>
+        </a>
+
+
+
+        <!-- <div class="">
+        111<br/>
+        111<br/>
+        111<br/>
+        111<br/>
+        111<br/>
+        111<br/>
+        111<br/>
+        111<br/>
+        111<br/>
+        111<br/>
+        111<br/>
+        222<br/>
+        222<br/>
+        222<br/>
+        222<br/>
+        222<br/>
+        222<br/>
+        222<br/>
+        222<br/>
+        222<br/>
+        222<br/>
+        222<br/>
+        222<br/>
+        111<br/>
+        111<br/>
+        111<br/>
+        111<br/>
+        111<br/>
+        111<br/>22<br/>
+        222<br/>
+        111<br/>
+        111<br/>
+        111<br/>
+        111<br/>
+        111<br/>
+        111<br/>22<br/>
+        222<br/>
+        111<br/>
+        111<br/>
+        111<br/>
+        111<br/>
+        111<br/>
+        111<br/>22<br/>
+        222<br/>
+        111<br/>
+        111<br/>
+        111<br/>
+        111<br/>
+        111<br/>
+        111<br/>22<br/>
+        222<br/>
+        111<br/>
+        111<br/>
+        111<br/>
+        111<br/>
+        111<br/>
+        111<br/>22<br/>
+        222<br/>
+        111<br/>
+        111<br/>
+        111<br/>
+        111<br/>
+        111<br/>
+        111<br/>
+      </div> -->
+    </div>
+
+
+    <script type="text/javascript" src="__PUBLIC__/mall/script/common/zepto.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/mall/script/common/vue.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/mall/script/common/hammer.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/mall/script/common/vue-touch.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/mall/script/common/mui.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            // // message
+            // $("#header").on("tap", function(){
+            //     Mui.message.alert({
+            //         msg: "提示内容"
+            //     }, function(ret){
+            //        Mui.message.confirm({
+            //             msg: "提示内容",
+            //             buttons: ["取消", "OK"]
+            //        }, function(ret){
+            //            if(ret.buttonIndex == 1){
+            //                 console.log("cancel");
+            //            }else if(ret.buttonIndex == 2){
+            //                 console.log("ok");
+            //            }
+            //        });
+            //     });
+            //     // Mui.message.toast({
+            //     //     msg: "测试测试测试",
+            //     //     duration: 1000,
+            //     //     callback: function(){
+            //     //         alert(1)
+            //     //     }
+            //     // });
+            // });
+            // // 日历
+            // var z = new Mui.calendar({
+            //   value: "2015/12/31",
+            //   showCalendar: true,
+            //   showCalendarWrapper: $("#test")[0]
+            // });
+
+            // // 摇一摇
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    // banner数据
+                    // bannerpics: [
+                    //   {url: "/images/test/1.jpg", link: "https://www.baidu.com"},
+                    //   {url: "/images/test/1.jpg", link: "https://www.baidu.com"},
+                    //   {url: "/images/test/1.jpg", link: "https://www.baidu.com"},
+                    // ],
+
+                    // tabs 数据
+                    tablists: [{
+                        name: "商场活动"
+                    }, {
+                        name: "商户活动"
+                    }, {
+                        name: "户外活动"
+                    }, ],
+                    allowrefresh: true,
+                },
+                components: {
+                    // "mui-banner": Mui.banner,
+                    "mui-tabs": Mui.tabs,
+                },
+                methods: {
+                    // 摇一摇功能
+                    // hello: function() {
+                    //   Mui.shakeInit(function() {
+                    //     alert("摇一摇结束！")
+                    //   });
+                    // },
+                    // 刷新
+                    refresh: function() {
+                        console.log(1)
+                    }
+                }
+            })
+        });
+    </script>
+
+</body>
+
+</html>

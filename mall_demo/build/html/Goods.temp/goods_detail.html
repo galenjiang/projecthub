@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<head>
+    <meta name="Keywords"content="智慧商场">
+    <meta name="Description"content="智慧商场">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type"content="text/html; charset=utf-8">
+    <meta name="format-detection"content="telephone=no,email=no,date=no,address=no">
+    <meta name="viewport"content="width=device-width,initial-scale=1.0,user-scalable=0,minimum-scale=1.0,maximum-scale=1.0"/>
+    <title>智慧商场</title>
+    <script>
+    +function(b) {
+        var h = document.documentElement, w = h.clientWidth;
+        h.style.fontSize = w / b + "px";
+    }(7.5);
+    </script>
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/common/reset.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/common/mui.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/goods/goods-detail.css"/> 
+
+</head> 
+<body ontouchstart>  
+    <div class="mui-wrapper goodsDetailPage  mui-darkbg">
+        <header class="mui-header" id="header">
+            <div class="mui-bar mui-line-bottom">
+                <a href="javascript:history.back()" class="mui-pull-left" id="back">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+                <h1 class="mui-bar-title">商品详情</h1> 
+                <a href="{:U('goods_shoppingcart')}" class="mui-pull-right cart" id="cart">
+                    <i class="mui-iconfont mui-icon-cart"></i> 
+                </a>
+                <a href="javascript:void(0)" class="mui-pull-right" id="share">
+                    <i class="mui-iconfont mui-icon-share"></i>
+                </a>
+            </div>
+        </header>
+        <div class="mui-tabs">
+            <ul class="mui-tab">
+              <li class="mui-tab-cell mui-tab-active">
+                  图文详情
+              </li>
+              <li class="mui-tab-cell">
+                  规格参数
+              </li>
+            </ul>
+            <div class="mui-tab-line"></div>
+        </div>
+        <section class="mui-body">
+            <div class="goods-detail-specifications">
+              <ul class="mui-list">
+                  <li class="mui-list-cell">
+                    <label class="mui-label">品牌</label>
+                    <span>bose</span>
+                  </li>
+                  <li class="mui-list-cell">
+                    <label class="mui-label">型号</label>
+                    <span>SoundSport 苹果版 灰白</span>
+                  </li>
+                  <li class="mui-list-cell">
+                    <label class="mui-label">佩戴方式</label>
+                    <span>bose</span>
+                  </li>
+              </ul>
+            </div>
+        </section>
+        <footer class="mui-footer mui-line-top mui-btns">
+            <a href="javascript:void(0)" class="mui-btn mui-btn-primary mui-btn-outlined mui-btn-big mui-btn-block shoppingCart">加入购入车</a>
+            <a href="goods-order.html" class="mui-btn mui-btn-primary mui-btn-block mui-btn-big rightBuy">立即购买</a>
+        </footer>
+    </div>
+    
+    <script src="__PUBLIC__/mall/script/common/zepto.min.js"></script>
+     
+     
+</body>
+</html>

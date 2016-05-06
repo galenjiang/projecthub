@@ -1,0 +1,53 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/message/message.css" />
+</block>
+<block name="content">
+    <div class="mui-wrapper mui-flex mui-darkbg scorepage">
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">消息中心</h1>
+                <a href="javascript:history.back()" class="mui-pull-left">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+            </div>
+        </header>
+        <div class="mui-body">
+            <div class="mui-list">
+                <a href="{:U('message_jifenList')}" class="mui-list-cell mui-img">
+                    <img src="__PUBLIC__/mall/images/message/icon_score.gif" class="mui-img-img">
+                    <div class="mui-img-body">
+                        <div class="mui-flex">
+                            <h1 class="mui-flex-auto">积分信息</h1>
+                        </div>
+                       <!--  <p class="mui-label mui-ellipsis-1">积分信息有变动</p> -->
+                    </div>
+                    <i class="mui-iconfont mui-icon-youjiantou" style="font-size: 0.4rem"></i>
+                </a>
+                <a href="{:U('message_xiaofeiList')}" class="mui-list-cell mui-img">
+                    <img src="__PUBLIC__/mall/images/message/icon_consumer.gif" class="mui-img-img">
+                    <div class="mui-img-body">
+                        <div class="mui-flex">
+                            <h1 class="mui-flex-auto">消费信息</h1>
+                        </div>
+                      <!--   <p class="mui-label mui-ellipsis-1">今日暂无消费记录</p> -->
+                    </div>
+                    <i class="mui-iconfont mui-icon-youjiantou" style="font-size: 0.4rem"></i>
+                </a>
+                <a href="{:U('message_detailList')}" class="mui-list-cell mui-img">
+                    <img src="__PUBLIC__/mall/images/message/icon_mall.gif" class="mui-img-img">
+                    <div class="mui-img-body">
+                        <div class="mui-flex">
+                            <h1 class="mui-flex-auto">商城资讯</h1>
+                        </div>
+                      <!--   <p class="mui-label mui-ellipsis-1">年底大促~~</p> -->
+                    </div>
+                    <i class="mui-iconfont mui-icon-youjiantou" style="font-size: 0.4rem"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/mall/script/message/message.js"></script>
+</block>

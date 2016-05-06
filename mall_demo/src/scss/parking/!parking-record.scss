@@ -1,0 +1,19 @@
+.mui-list{
+	.mui-list-cell{
+		h2{
+			position:relative;
+			span{
+				position:absolute;
+				right:0; 
+			}
+		} 
+		p{
+			color:#777;
+			position:relative;
+			span{
+				position:absolute;
+				right: 0;
+			}
+		}
+	}
+}

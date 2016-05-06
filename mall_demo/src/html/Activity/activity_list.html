@@ -1,0 +1,20 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/activity/activity_list.css" />
+</block>
+<block name="content">
+    <div class="mui-wrapper mui-flex mui-darkbg" id="app">
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">活动列表</h1>
+                <a href="{:U('Home/home')}" class="mui-pull-left"><i class="mui-iconfont mui-icon-back"></i></a>
+            </div>
+        </header>
+        <section class="mui-body" v-refresh :callback="getActivityList" :allowrefresh="allowrefresh">
+            <mui-show-picture v-for="item in activityList" :url="item.url" :img="item.img" :text-upper="item.textUpper" :text-lower="item.textLower"></mui-show-picture>
+        </section>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/mall/script/activity/activity_list.js"></script>
+</block>

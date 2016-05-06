@@ -1,0 +1,27 @@
+
+.mui-footer{
+	background-color:#fff;
+	.parking-info{
+		display:none;
+		h2{
+			text-align: center;
+		}
+		p{
+			text-align: center;
+			color:#e94646; 
+			font-weight:bold; 
+		}
+	}
+	.mui-arrow-right{
+		display:block;
+		h2{
+			font-weight:bold;
+			label{
+				color: #e94646;
+			}
+		}
+		&:after{
+			color: #e94646;
+		}
+	}
+}

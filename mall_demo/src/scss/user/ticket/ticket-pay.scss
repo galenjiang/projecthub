@@ -1,0 +1,34 @@
+.mui-btn{
+	width: 80%; 
+	margin-top: 1.0rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+.pay-content{
+	background-color: #fff;
+	>p{
+		line-height: 0.44rem;
+		position: relative;
+		>label{
+			position:absolute;
+			right:0; 
+			color:#777; 
+		}
+		>span{
+			color: #e94646;
+		}
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+}
+
+.pay-list{
+	.mui-img-img{
+		width: 0.6rem;
+		height: 0.6rem;
+	}
+	.mui-check{
+		right: 0;
+		left: auto;
+	}
+}

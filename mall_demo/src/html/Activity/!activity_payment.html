@@ -1,0 +1,64 @@
+<extend name="Base/base" />
+<block name="content">
+    <div class="mui-wrapper mui-flex mui-darkbg">
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <a href="javascript:history.back()" class="mui-pull-left"><i class="mui-iconfont mui-icon-back"></i></a>
+                <h1 class="mui-bar-title">支付预约订金</h1>
+            </div>
+        </header>
+        <section class="mui-body">
+            <div class="payment-title mui-padding-20">
+                <p>支付内容：订单123456789321</p>
+                <p>支付金额：
+                    <span class="price">￥233.00</span>
+                </p>
+            </div>
+
+            <ul class="payment-detail mui-list mui-margin-20-0">
+                <li class="mui-list-cell">
+                    <span class="mui-flex-auto">预约人姓名</span>
+                    <span>王小明</span>
+                </li>
+                <li class="mui-list-cell">
+                    <span class="mui-flex-auto">联系电话</span>
+                    <span>1356666666</span>
+                </li>
+                <li class="mui-list-cell">
+                    <span class="mui-flex-auto">预约日期</span>
+                    <span>2016-12-13</span>
+                </li>
+                <li class="mui-list-cell">
+                    <span class="mui-flex-auto">预约时间</span>
+                    <span>2016-12-13</span>
+                </li>
+            </ul>
+            <div class="payment-method mui-margin-20-0">
+                <p class="payment-method-title mui-margin-20-0">请选择支付方式</p>
+                <ul class="mui-list">
+                    <li class="mui-list-cell mui-img">
+                        <img class="mui-img-img" src="/images/activity/icon_wechat.gif" alt="" />
+                        <div class="mui-check mui-check-radio mui-checked mui-pull-right"></div>
+                        <a href="javascript:void(0)">微信支付</a>
+                    </li>
+                    <li class="mui-list-cell">
+                        <div class="mui-check mui-check-radio mui-checked mui-pull-right"></div>
+                        <a href="javascript:void(0)">使用积分抵扣</a>
+                    </li>
+                </ul>
+            </div>
+
+
+
+        </section>
+        <footer class="mui-padding-20">
+            <a href="{:U('Activity/activity_payment_success')}" class="mui-btn mui-btn-primary mui-btn-big mui-btn-block mui-margin-5-0">立即支付</a>
+        </footer>
+
+
+    </div>
+</block>
+<block name="script">
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/activity/activity-payment.css" />
+
+</block>

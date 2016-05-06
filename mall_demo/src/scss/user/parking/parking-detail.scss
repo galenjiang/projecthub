@@ -1,0 +1,32 @@
+.mui-list{
+	background-color:#f0f0f0;
+	.mui-list-cell{
+		background-color:#fff;
+		position:relative;
+		h2{
+			position:relative;
+			&.parking-info-red{ 
+				color:#e94646; 
+			}
+		}
+		>p{
+			position:relative;
+			color:#777;
+			&.parking-info-red{
+				color:#e94646; 
+			}
+		}
+		span{
+			position:absolute;
+			right:0;
+		}
+
+	}
+}
+.mui-footer{
+	background-color:#fff;
+	text-align:right;
+	label{
+		color:#e94646;  
+	}
+}

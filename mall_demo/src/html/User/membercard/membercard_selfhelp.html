@@ -1,0 +1,43 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/user/membercard/membercard_selfhelp.css" />
+</block>
+<block name="content">
+    <div class="mui-wrapper mui-darkbg" id="app">
+        <div v-if="!allowrefresh" class="mui-loading">
+            <span class="mui-loading-img"></span>
+        </div>
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">积分补录</h1>
+                <a href="{:U('User/integral')}" class="mui-pull-left">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+                <a href="{:U('membercard_rule_score')}" class="mui-pull-right btn-rule">规则说明</a>
+            </div>
+        </header>
+        <mui-tabs :tab-list="tabList" :cur="cur"></mui-tabs>
+        <section v-refresh :callback="getList" :allowrefresh="allowrefresh" v-cloak class="mui-body">
+            <div class="tick-list">
+                <!-- 小票 -->
+                <a :href="item.href" v-for="item in items" class="item mui-flex mui-flex-veri mui-padding-20 mui-line-bottom">
+                    <p class="item-title mui-flex">
+                        <span class="money mui-flex-auto">{{item.receipt_amount}}</span>
+                        <span class="status">{{item.des}}</span>
+                    </p>
+                    <p class="item-body mui-flex mui-padding-top-10">
+                        <span class="mui-flex-auto">小票票号：{{item.receipt_id}}</span>
+                        <span>{{item.consume_time}}</span>
+                    </p>
+                </a>
+            </div>
+            <p v-show="items.length == 0" class="mui-margin-top-20 mui-text-center">暂无数据</p>
+        </section>
+        <footer v-cloak class="mui-padding-20">
+            <a href="{:U('membercard_selfhelp_fill')}" class="mui-btn mui-btn-yellow mui-btn-big mui-btn-block mui-margin-5-0">填写小票信息</a>
+        </footer>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/mall/script/user/membercard/membercard_selfhelp.js"></script>
+</block>

@@ -1,0 +1,94 @@
+<extend name="Base/base" />
+<block name="content">
+
+    <div class="mui-wrapper brandPage mui-darkbg">
+        <header class="mui-header" id="header">
+            <div class="mui-bar mui-line-bottom mui-flex mui-flex-center-veri">
+                <a href="javascript:history.back()" class="mui-pull-left" id="back">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+                <h1 class="mui-bar-title">填写预定订单</h1>
+            </div>
+        </header>
+        <section class="mui-body">
+            <div class="space-appointment-title mui-padding-15 mui-margin-bottom-15">
+                <h2>商城技术中心会议室</h2>
+                <p>宴会/发布会/培训/年会</p>
+            </div>
+            <div class="mui-form mui-margin-bottom-15">
+                <div class="mui-form-row">
+                    <h2>预定人姓名</h2>
+                    <input class="mui-form-input" type="text" placeholder="请输手机号或者用户名" />
+                </div>
+                <div class="mui-form-row">
+                    <h2>预定人电话</h2>
+                    <input class="mui-form-input" type="tel" maxlength="11" placeholder="请输入您的手机号码" />
+                </div>
+                <div class="mui-form-row">
+                    <h2>预定日期</h2>
+                    <input class="mui-form-input" type="date" placeholder="请选择预定日期" />
+                </div>
+                <div class="mui-form-row">
+                    <h2>开始时间</h2>
+                    <div class="space-time-select mui-flex-auto mui-flex">
+                        <select placeholder="开始时间">
+                            <!-- <option value ='' selected>开始时间</option> -->
+                            <option value='8:00'>8:00</option>
+                            <option value='9:00'>9:00</option>
+                            <option value='10:00'>10:00</option>
+                        </select>
+                        <i class="mui-iconfont mui-icon-right"></i>
+                    </div>
+                </div>
+                <div class="mui-form-row">
+                    <h2>结束时间</h2>
+                    <div class="space-time-select mui-flex-auto mui-flex">
+                        <select placeholder="结束时间">
+                            <!-- <option value ='' selected>结束时间</option> -->
+                            <option value='8:00'>8:00</option>
+                            <option value='9:00'>9:00</option>
+                            <option value='10:00'>10:00</option>
+                        </select>
+                        <i class="mui-iconfont mui-icon-right"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="mui-margin-bottom-15 space-integral">
+                <div class="space-integral-list mui-flex mui-line-bottom mui-flex-center-veri">
+                    <h2 class="mui-flex-auto">使用积分抵扣</h2>
+                    <a href="javascript:void(0)" class="space-integral-icon "></a>
+                </div>
+                <div class="space-integral-list mui-flex mui-line-bottom mui-flex-center-veri">
+                    <h2 class="mui-flex-auto">可使用积分：
+                        <label>5000</label>
+                    </h2>
+                    <span>使用&nbsp;</span>
+                    <div class="input">
+                        <input type="tel" maxlength="5" value="5000" />
+                    </div>
+                    <span>&nbsp;积分</span>
+                </div>
+                <div class="space-integral-list mui-flex mui-line-bottom">
+                    <h2 class="mui-flex-auto">抵扣后剩余积分：
+                        <label>0</label>
+                    </h2>
+                    <p>抵扣：
+                        <label>￥50.00</label>
+                    </p>
+                </div>
+            </div>
+            <div class="mui-margin-bottom-15 mui-padding-15 space-appoint-money">
+                <h2>需支付预约定金
+                    <label>￥233.00</label>
+                </h2>
+            </div>
+
+        </section>
+        <footer class="mui-footer mui-padding-15 mui-line-top">
+            <a href="space-pay.html" class="mui-btn mui-btn-primary mui-btn-middle mui-btn-block">提交订单</a>
+        </footer>
+    </div>
+</block>
+<block name="script">
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/space/space-appointment.css" />
+</block>

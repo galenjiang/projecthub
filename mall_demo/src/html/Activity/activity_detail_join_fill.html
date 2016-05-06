@@ -1,0 +1,66 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/activity/activity_detail_join_fill.css" />
+</block>
+<block name="content">
+    <div class="mui-wrapper mui-flex mui-darkbg" id="app">
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">填写报名信息</h1>
+                <a href="javascript:history.back()" class="mui-pull-left"><i class="mui-iconfont mui-icon-back"></i></a>
+            </div>
+        </header>
+        <section v-cloak class="mui-body">
+            <div class="mui-form">
+                <div class="item mui-form-row">
+                    <div class="">
+                        <span class="item-label partinlabel">参与人数<em v-if="permoney != 0 && permoney && activityInfo.can_pay != 0">({{permoney}}元/人)</em></span>
+                    </div>
+                   <input class="mui-form-input" type="tel" placeholder="请输入参与人数" v-model="people" number>
+                </div>
+
+                <!-- <div class="item mui-form-row">
+                    <span class="item-label">您的姓名</span>
+                    <input class="mui-form-input" type="tel" placeholder="请输入您的姓名" v-model="name">
+                </div>
+                <div class="item mui-form-row">
+                    <span class="item-label">手机号码</span>
+                    <input class="mui-form-input" type="tel" placeholder="请输入您的手机号码" v-model="mobile">
+                </div> -->
+
+                <div v-for="item in activityInfo.countent" class="item mui-form-row">
+                    <span class="item-label">{{item.countent_name}}</span>
+                    <input class="mui-form-input" type="tel" :placeholder="'请输入' + item.countent_name" v-model="item.value">
+                </div>
+
+                <div v-if="permoney != 0 && permoney && activityInfo.integral == 1 && activityInfo.can_pay != 0" class="item mui-form-row">
+                    <span class="item-label mui-flex-auto">使用积分抵扣</span>
+                    <!-- <i class="mui-iconfont" v-touch:tap="checkRead" v-bind:class="classObj"  style="font-size: 0.5rem; vertical-align: sub;"></i> -->
+                    <div class="mui-margin-right-20">
+                        <mui-switch :on-change="disSwitch"></mui-switch>
+                    </div>
+                </div>
+
+                <div v-if="permoney != 0 && permoney && activityInfo.integral == 1 && activityInfo.can_pay != 0" class="mui-margin-top-10 mui-margin-left-15">当前剩余积分:<span>{{leftScore}}</span></div>
+                <div v-if="permoney != 0 && permoney && activityInfo.integral == 1 && activityInfo.can_pay != 0" class="mui-padding-10">
+                    <input class="score-fill active" :disabled="!switchStatus" type="tel" placeholder="请输入您要抵扣的积分" v-model="discount" maxlength=9>
+                    <label class="mui-pull-right">
+                        <span>积分抵扣：</span>
+                        <span class="disrmb">-￥{{dismoney}}</span>
+                    </label>
+                </div>
+
+            </div>
+            <div v-if="permoney != 0 && permoney && activityInfo.can_pay != 0" class="mui-list-cell mui-margin-top-20">
+                <span class="mui-flex-auto">实际支付</span>
+                <span class="cash">￥{{shouldpay}}</span>
+            </div>
+        </section>
+        <footer class="mui-padding-0-20 mui-padding-10-0 mui-line-top">
+            <a v-touch:tap="join" href="javascript:;" class="mui-btn mui-btn-yellow mui-btn-big mui-btn-block mui-margin-5-0">下一步</a>
+        </footer>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/mall/script/activity/activity_detail_join_fill.js"></script>
+</block>

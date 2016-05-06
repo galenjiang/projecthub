@@ -1,0 +1,66 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/brand/brand_detail.css" />
+</block>
+<block name="content">
+    <div v-cloak class="mui-wrapper brandDetailPage  mui-darkbg" id="brandDetail">
+        <header class="mui-header" id="header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">商户详情</h1>
+                <a href="javascript:history.back()" class="mui-pull-left" id="back">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+                <a href="javascript:void(0)" class="mui-pull-right">
+                    <i v-touch:tap="follow" class="mui-iconfont" :class="followObj"></i>
+                </a>
+            </div>
+        </header>
+        <section class="mui-body">
+            <div class="brand-title">
+                <div class="brand-cover">
+                    <img :src="shopinfo.image">
+                    <div class="brand-title-info">
+                        <img class="brand-info-logo" :src="shopinfo.logo">
+                        <h3 class="mui-ellipsis-1">{{shopinfo.name}}</h3>
+                    </div>
+                </div>
+
+            </div>
+            <div class="brand-activity mui-line-bottom">
+                <ul class="mui-margin-10">
+                    <li v-for="tag in shopinfo.tags" class="mui-flex mui-flex-center-veri">
+                        <i class="mui-icon-tag">
+                            <img class="tag-img" :src="tag.img">
+                        </i>
+                        <p>{{ tag.describe }}</p>
+                    </li>
+                </ul>
+            </div>
+            <section class="brand-menu">
+                <a href="javascript:;" class="mui-flex mui-flex-center-veri mui-padding-5 mui-line-bottom"><i class="mui-iconfont mui-icon-dizhi"></i><p class="mui-margin-left-10">{{ shopinfo.floor }}-{{ shopinfo.house_number }}</p></a>
+                <a v-for="item in shopinfo.phone" :href="'tel:' + item" class="mui-flex mui-flex-center-veri mui-padding-5 mui-line-bottom"><i class="mui-iconfont mui-icon-dianhua"></i><p class="mui-margin-left-10">{{ item  }}</p></a>
+            </section>
+            <div class="brand-info mui-margin-10-0">
+                <div v-if="shopinfo.description" class="mui-block-title mui-block-title-quote">
+                    <label class="mui-label">商户简介</label>
+                </div>
+                <div v-if="shopinfo.description" class="brand-info-content mui-padding-10 mui-margin-bottom-10">
+                    <p>{{{ shopinfo.description }}}</p>
+                </div>
+                <div v-if="shopinfo.goods.length" class="mui-block-title mui-block-title-quote">
+                    <label class="mui-label">推荐商品</label>
+                </div>
+                <ul v-if="shopinfo.goods" class="recommend">
+                    <li class="item" v-for="good in shopinfo.goods">
+                        <img class="item-picture" :src="'.' + good.goods_img" alt="">
+                        <p class="item-description">{{ good.goods_name }}</p>
+                    </li>
+
+                </ul>
+            </div>
+        </section>
+    </div>
+</block>
+<block name="script">
+    <script src="__PUBLIC__/mall/script/brand/brand_detail.js"></script>
+</block>

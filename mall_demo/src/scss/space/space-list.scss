@@ -1,0 +1,46 @@
+.mui-bar{
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-top: 0.1025rem;
+	padding-bottom: 0.1025rem;
+}
+.brand-list{
+	background-color: #fff;
+	h2{
+		color: #333333;
+	}
+	p{
+		line-height: 0.55rem;
+		color: #777777;
+		font-size: 0.26rem;
+		label{
+			font-size: 0.28rem;
+			color:#eb5555;
+			font-weight:bold; 
+		}
+	}
+	.space-info{
+		p{
+			text-align:right; 
+		}
+	}
+}
+.wrapper{
+	.mui-body{
+		padding-bottom: 0;
+	}
+}
+
+.mui-screen{
+	position: relative;
+	z-index: 9;
+}
+
+// 头部地图按钮文字
+.brand-map{
+	color: #b01d23;
+	font-size: 0.3rem;
+	width: 1.0rem;
+}
+
+

@@ -1,0 +1,230 @@
+@import "../common/configure.scss";
+
+.goodsInfoPage{
+	>.mui-body{
+		padding: 0;
+	}
+}
+.goods-title{
+	background: #fff;
+	.score{
+
+		label{
+			font-weight: bold;
+			color: $redColor;
+			font-size: 0.32rem;
+			position: relative;
+			line-height: 0.4rem;
+		}
+		span{
+			font-size: .26rem;
+			color: $silverColor;
+		}
+        .market{
+			display: inline-block;
+			font-size: .24rem;
+			line-height: .4rem;
+			height: .4rem;
+			color: $silverColor;
+			padding-left: .1rem;
+			padding-right: .1rem;
+			text-decoration: line-through;
+		}
+
+		margin-top: 0.1rem;
+	}
+	.pay{
+		.money, .strict{
+			display: inline-block;
+            margin-right: .1rem;
+			font-size: .24rem;
+			line-height: .4rem;
+			height: .4rem;
+			background-color: $goldenColor;
+			color: $whiteColor;
+			padding-left: .1rem;
+			padding-right: .1rem;
+		}
+        .strict{
+            background-color: $blueColor;
+        }
+
+		.change{
+			float: right;
+			display: inline-block;
+			font-size: .24rem;
+			line-height: .4rem;
+			height: .4rem;
+			color: $silverColor;
+			padding-left: .1rem;
+			padding-right: .1rem;
+		}
+	}
+}
+
+.goods-info{
+	background: #fff;
+}
+
+.mui-block-title{
+	position: relative;
+	&:before{
+		width: 0.06rem;
+		height: 50%;
+		content: " ";
+		background-color: $goldenColor;
+		top: 25%;
+		left: 0;
+		position: absolute;
+		z-index: 9;
+	}
+}
+.mui-iconfont{
+	font-size: .44rem;
+}
+.mui-footer{
+	background-color: #fff;
+}
+.mui-arrow-right{
+	color: $goldenColor;
+}
+//购物车图标
+.mui-bar{
+	.cart{
+		right: 40px;
+	}
+}
+
+.gift-picture{
+    width: 100%;
+    height: 3.2rem;
+}
+
+
+// 付款
+.payment-mask{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    background-color: rgba(0,0,0,0.6);
+}
+.payment{
+    position: absolute;
+    bottom: 0;
+    background-color: $whiteColor;
+    width: 100%;
+    .closePay{
+        position: absolute;
+        top: 0;
+        right: .1rem;
+        padding: 10px;
+        .mui-iconfont::before{
+            color: $silverColor;
+        }
+    }
+    @at-root #{&}-title{
+        padding: .2rem .3rem;
+        img{
+            float: left;
+            width: 1.6rem;
+            height: 1.6rem;
+        }
+        @at-root #{&}-body{
+            padding:{
+                left: 1.8rem;
+                right: .5rem;
+            }
+            h4{
+                height: 44px;
+            }
+            .price{
+                float: right;
+                // width: 1.4rem;
+                height: .4rem;
+                line-height: .4rem;
+                font-size: .24rem;
+                padding: {
+                    left: .1rem;
+                    right: .1rem;
+                }
+                margin-right: -.5rem;
+                background-color: $goldenColor;
+                color: #fff;
+            }
+            .score{
+                color: $redColor;
+            }
+            .score-name{
+                color: $silverColor;
+                padding-left: .2rem;
+            }
+        }
+    }
+    @at-root #{&}-count{
+        padding: .3rem;
+        @at-root #{&}-title{
+            line-height: .8rem;
+        }
+        @at-root #{&}-body{
+            float: right;
+            // width: 1.9rem;
+            // height: .55rem;
+            border: solid 1px $silverColor;
+            .minus{
+                &.active{
+                    color: $blackColor;
+                }
+                float: left;
+                width: .8rem;
+                height: .8rem;
+                line-height: .8rem;
+                font-size: .6rem;
+                text-align: center;
+                color: $redColor;
+            }
+            .count{
+                float: left;
+                text-align: center;
+                width: .8rem;
+                height: .8rem;
+                line-height: .8rem;
+                border: {
+                    left: solid 1px $silverColor;
+                    right: solid 1px $silverColor;
+                }
+            }
+            .plus{
+                float: left;
+                width: .8rem;
+                height: .8rem;
+                font-size: .6rem;
+                line-height: .8rem;
+                color: $redColor;
+                text-align: center;
+            }
+        }
+    }
+    @at-root #{&}-detail{
+        padding:{
+            top: .9rem;
+            bottom: .35rem;
+        }
+        @at-root #{&}-upper{
+            margin-bottom: .4rem;
+            margin-right: .2rem;
+            text-align: right;
+        }
+        @at-root #{&}-lower{
+            margin-right: .2rem;
+            text-align: right;
+        }
+        .price, .score{
+            color: $redColor;
+        }
+    }
+}
+.mui-icon-fenxiang{
+    width: 1rem;
+}

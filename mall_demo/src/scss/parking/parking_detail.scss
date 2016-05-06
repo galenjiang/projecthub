@@ -1,0 +1,32 @@
+@import "../common/configure.scss";
+.mui-list{
+	background-color:#f0f0f0;
+	.mui-list-cell{
+		background-color:#fff;
+		position:relative;
+		h2{
+			position:relative;
+			&.parking-title-red{
+				color:#e94646;
+			}
+		}
+		>p{
+			position:relative;
+			color:$silverColor;
+		}
+		span{
+			position:absolute;
+			right:0;
+		}
+
+	}
+}
+.mui-footer{
+	background-color:#fff;
+}
+.pay{
+	background-color: $whiteColor;
+}
+.price{
+	color: $redColor;
+}

@@ -1,0 +1,43 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/user/order/order_comment.css" />
+</block>
+<block name="content">
+    <div class="mui-wrapper mui-darkbg" id="orderComment">
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">评价礼品</h1>
+                <a href="javascript:history.back()" class="mui-pull-left">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+            </div>
+        </header>
+        <section class="mui-body">
+            <div class="star mui-flex mui-flex-center-veri mui-padding-20">
+                <p class="mui-flex-auto">礼品评分</p>
+                <div class="mui-flex">
+                    <p class="mui-margin-top-5">{{star}}星</p>
+                    <ul :class="'mui-stars mui-star-' + star">
+                        <li v-for="el in 5" v-touch:tap="editStar($index)" class="mui-star"></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="tips mui-margin-20">
+                礼品评价
+            </p>
+            <textarea class="comment-body mui-padding-20" rows="4" placeholder="请在此输入您对礼品的评价" v-model="comment"></textarea>
+            <p class="tips mui-margin-20">
+                上传照片
+            </p>
+            <div class="upload">
+                <mui-upload-picture :delete="false"></mui-upload-picture>
+            </div>
+        </section>
+        <footer class="mui-margin-20">
+            <a v-touch:tap="postComment" href="javascript:void(0)" class="mui-btn mui-btn-yellow mui-btn-big mui-btn-block mui-margin-5-0">提交评价</a>
+        </footer>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/mall/script/user/order/order_comment.js"></script>
+</block>

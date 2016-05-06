@@ -1,0 +1,25 @@
+@import "../common/configure.scss";
+
+ .mui-check{
+   left: auto;
+ }
+.mall-item{
+  p{
+    color: $blackColor;
+  }
+  &.active p{
+    color: $goldenColor;
+  }
+}
+.mall-item{
+  .mui-icon-xuanzhong{
+    opacity: 0;
+    font-size: 0;
+  }
+  &.active{
+    .mui-icon-xuanzhong{
+      opacity: 1;
+      font-size: 0.64rem;
+    }
+  }
+}

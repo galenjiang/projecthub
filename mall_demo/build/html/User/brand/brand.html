@@ -1,0 +1,36 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/user/brand/brand.css" />
+</block>
+<block name="content">
+    <div class="mui-wrapper goodsDetailPage mui-darkbg space-use-detail">
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">我的关注</h1>
+                <a href="{:U('User/user_center')}" class="mui-pull-left">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+            </div>
+        </header>
+        <section v-cloak class="mui-body" id="brand" v-refresh callback="getList" allowrefresh="allowrefresh">
+            <div class="mui-list">
+                <a v-for="item in list" class="mui-list-cell mui-img" :href="item.url">
+                    <img :src="item.logo" class="mui-img-img space-img-img">
+                    <div class="mui-img-body">
+                        <h2 class="mui-flex mui-flex-center-veri">
+                            {{item.name}}
+                            <i v-for="tag in item.tags" class="mui-icon-tag">
+                                <img class="tag-img" :src="tag.img">
+                            </i>
+                        </h2>
+                        <p>{{item.category}} {{item.floor}}-{{item.house_number}}</p>
+                    </div>
+                </a>
+            </div>
+            <div v-show="list.length ==0" class="mui-text-center mui-margin-top-20">暂无数据</div>
+        </section>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/mall/script/user/brand/brand.js"></script>
+</block>

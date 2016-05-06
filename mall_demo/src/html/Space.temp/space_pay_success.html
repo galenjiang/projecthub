@@ -1,0 +1,28 @@
+<extend name="Base/base" />
+<block name="content">
+
+    <div class="mui-wrapper goodsPaySuccessPage">
+        <header class="mui-header" id="header">
+            <div class="mui-bar mui-line-bottom">
+                <a href="javascript:history.back()" class="mui-pull-left" id="back">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+                <h1 class="mui-bar-title">购买成功</h1>
+            </div>
+        </header>
+        <section class="mui-body">
+            <i class="mui-iconfont mui-icon-roundcheck"></i>
+            <p class="mui-label">
+                恭喜你，场地预约成功
+            </p>
+            <div class="space-pay-btn">
+                <a href="{:U('User/space')}" class="mui-btn-big mui-btn mui-btn-block mui-btn-primary">
+                    查看我预定的场地
+                </a>
+            </div>
+        </section>
+    </div>
+</block>
+<block name="script">
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/space/space-pay-success.css" />
+</block>

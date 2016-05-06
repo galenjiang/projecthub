@@ -1,0 +1,50 @@
+.invoice {
+    background-color: #fff;
+}
+.invoice-photo {
+    float: left;
+    margin-left: .4rem;
+    margin-top: .4rem;
+    width: 1.20rem;
+    height: 1.20rem;
+}
+.mui-list {
+    background-color: #f0f0f0;
+}
+.mui-list-cell {
+    background-color: #fff;
+}
+.status-no {
+    background-color: #fff;
+    .status-title {
+        font-weight: bold;
+    }
+    .status-number {
+        color: red;
+    }
+    .status-time {
+        color: #ccc;
+    }
+}
+.status-success {
+    background-color: #fff;
+    .status-title {
+        font-weight: bold;
+    }
+    .status-number {
+        color: red;
+    }
+    .status-time-sumbit,
+    .status-time-audit {
+        color: #ccc;
+    }
+}
+.status-failed {
+    background-color: #fff;
+    .status-tips {
+        color: red;
+    }
+    .status-time {
+        color: #ccc;
+    }
+}

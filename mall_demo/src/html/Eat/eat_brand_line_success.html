@@ -1,0 +1,72 @@
+<extend name="Base/base" />
+<block name="content">
+    <div class="mui-wrapper mui-darkbg">
+        <header class="mui-header" id="header">
+            <div class="mui-bar mui-line-bottom">
+                <a href="{:U('Eat/eat_brand_line')}" class="mui-pull-left" id="back">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+                <h1 class="mui-bar-title">商户名称在线排队</h1>
+            </div>
+        </header>
+        <section class="mui-body">
+            <div class="subscription mui-margin-top-20">
+                <p class="upper-sub mui-text-center">曾先生您好，您当前的排号为</p>
+                <p class="lower-sub mui-text-center">4人座 21号</p>
+            </div>
+            <ul class="status mui-margin-20-0">
+                <li class="status-title mui-line-bottom">
+                    <span class="mui-grid mui-grid-4">餐桌类型</span>
+                    <span class="mui-grid mui-grid-4">等待桌数</span>
+                    <span class="mui-grid mui-grid-4">预计等待</span>
+                    <span class="mui-grid mui-grid-4">当前排号</span>
+                </li>
+                <li class="mui-line-bottom mui-flex mui-flex-center-veri">
+                    <p class="mui-grid mui-grid-4">
+                        <span>小桌</span>
+                        <span class="type">1-2人</span>
+                    </p>
+                    <p class="mui-grid mui-grid-4">
+                        <span class="number">4</span>
+                        <span>桌</span>
+                    </p>
+                    <span class="mui-grid mui-grid-4">25分钟</span>
+                    <span class="mui-grid mui-grid-4 sort">11</span>
+                </li>
+                <li class="mui-line-bottom mui-flex mui-flex-center-veri">
+                    <p class="mui-grid mui-grid-4">
+                        <span>小桌</span>
+                        <span class="type">1-2人</span>
+                    </p>
+                    <p class="mui-grid mui-grid-4">
+                        <span class="number">4</span>
+                        <span>桌</span>
+                    </p>
+                    <span class="mui-grid mui-grid-4">25分钟</span>
+                    <span class="mui-grid mui-grid-4 sort">11</span>
+                </li>
+                <li class="mui-line-bottom mui-flex mui-flex-center-veri">
+                    <p class="mui-grid mui-grid-4">
+                        <span>小桌</span>
+                        <span class="type">1-2人</span>
+                    </p>
+                    <p class="mui-grid mui-grid-4">
+                        <span class="number">4</span>
+                        <span>桌</span>
+                    </p>
+                    <span class="mui-grid mui-grid-4">25分钟</span>
+                    <span class="mui-grid mui-grid-4 sort">11</span>
+                </li>
+
+            </ul>
+
+        </section>
+        <footer class="mui-padding-20">
+            <a href="{:U('Eat/eat_brand_list')}" class="mui-btn mui-btn-primary mui-btn-big mui-btn-block mui-margin-5-0">取消排队</a>
+        </footer>
+    </div>
+</block>
+<block name="script">
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/eat/eat-brand-line.css" />
+
+</block>

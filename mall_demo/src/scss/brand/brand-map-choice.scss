@@ -1,0 +1,39 @@
+.brand-map-menu{
+	border-bottom:0.2rem solid #f0f0f0;
+	>.mui-grid{
+		img{
+			width: 1.0rem;
+			height: 1.0rem;
+		}
+	}
+	>.mui-line-right{
+		&:after{
+			height: 60%;
+			top: 20%;
+		}
+	}
+}
+.map-choice{
+	.map-choice-detail{
+		.map-choice-info{
+			h2{
+				width: 1.2rem;
+				text-align: center;
+			}
+			input{
+				height:1.2rem;
+				padding-left:0.3rem;
+				padding-right:0.3rem;
+			}
+		}
+	}
+	
+}
+
+.mui-icon-order{
+	margin-left:0.4rem;
+	font-size:0.5rem; 
+}
+.map-navigation-btn{
+	margin:1.0rem 0.8rem 0.2rem 0.8rem; 
+}

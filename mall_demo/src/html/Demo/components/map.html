@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <head>
+        <meta name="Keywords" content="智慧商场">
+        <meta name="Description" content="智慧商场">
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimum-scale=1.0,maximum-scale=1.0" />
+        <title>智慧商场</title>
+        <style>
+            * {
+                margin: 0;
+            }
+            .map{
+                height: 500px;
+            }
+        </style>
+        <script>
+            + function(b) {
+                var h = document.documentElement,
+                    w = h.clientWidth;
+                h.style.fontSize = w / b + "px";
+            }(7.5);
+        </script>
+
+    </head>
+
+    <body ontouchstart>
+        <div>地图</div>
+        <div class="map" id="map"></div>
+
+
+        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=RukHwN5grIG1lkOAeIRUWMsO"></script>
+        <script>
+            // 百度地图API功能
+            var map = new BMap.Map("map");
+            var point = new BMap.Point(121.3779550000,31.1821650000);
+
+            map.centerAndZoom(point, 15);
+            var marker = new BMap.Marker(point); // 创建标注
+            map.addOverlay(marker); // 将标注添加到地图中
+            marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+            map.enableScrollWheelZoom(true); //允许放大缩小
+        </script>
+    </body>
+
+</html>

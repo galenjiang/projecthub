@@ -1,0 +1,30 @@
+@import "../common/configure.scss";
+
+.mui-body{
+}
+.subscript{
+    background-color: #fff;
+}
+.subscript>p{
+  color: $silverColor;
+}
+
+.btn-participate{
+  background-color: #fff;
+}
+.mui-list-cell{
+    background-color: #fff;
+}
+.mui-block-title-quote::before{
+    background-color: $goldenColor;
+}
+.mui-icon-youjiantou{
+    font-size: .44rem;
+}
+.mui-icon-dianhua::before{
+    color: $silverColor;
+}
+.brand{
+    width: 100%;
+    height: 3.2rem;   
+}

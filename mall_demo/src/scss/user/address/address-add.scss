@@ -1,0 +1,25 @@
+.mui-pull-right{
+	color:#eb5555;
+}
+.mui-list{
+	background-color:#f0f0f0;
+	.mui-list-cell{
+		background-color:#fff;
+		h2{
+			margin-right:0.3rem;
+		}
+	}
+}
+.mui-icon-right{
+	color:#eb5555;
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+.mui-arrow-up{
+	&:after{
+		color:#eb5555;
+	}
+}
+.mui-footer{
+	background-color:#fff;
+}

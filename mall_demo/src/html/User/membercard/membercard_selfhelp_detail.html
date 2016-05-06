@@ -1,0 +1,69 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/user/membercard/membercard_selfhelp_detail.css" />
+</block>
+<block name="content">
+    <div v-cloak class="mui-wrapper mui-darkbg" id="app">
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">{{title}}</h1>
+                <a href="javascript:history.back()" class="mui-pull-left">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+            </div>
+        </header>
+        <section class="mui-body">
+            <ul class="mui-list">
+                <li class="item mui-list-cell">
+                    <span class="item-title mui-flex-auto">购物地点</span>
+                    <span class="item-body">{{list.mall}}</span>
+                </li>
+                <!-- <li class="item mui-list-cell">
+                    <span class="item-title mui-flex-auto">所在楼层</span>
+                    <span class="item-body">3F</span>
+                </li> -->
+                <li class="item mui-list-cell">
+                    <span class="item-title mui-flex-auto">店铺名称</span>
+                    <span class="item-body">{{list.shop_name}}</span>
+                </li>
+                <li class="item mui-list-cell">
+                    <span class="item-title mui-flex-auto">消费时间</span>
+                    <span class="item-body">{{list.consume_time}}</span>
+                </li>
+                <li class="item mui-list-cell">
+                    <span class="item-title mui-flex-auto">消费金额</span>
+                    <span class="item-body">￥{{list.receipt_amount}}</span>
+                </li>
+
+                <li class="invoice mui-padding-20 clearfix">
+                    <span>小票照片</span>
+                    <br>
+                    <img v-for="item in list.img" class="invoice-photo" :src="item"/>
+                </li>
+            </ul>
+        </section>
+        <footer v-if="status == 0" class="status-no mui-flex mui-flex-veri mui-flex-end-veri mui-padding-20 mui-line-top">
+            <!-- <p>
+                <span class="status-title">审核通过可获得积分：</span>
+                <span class="status-number">2333</span>
+            </p> -->
+            <p class="status-time">提交时间：{{list.create_time}}</p>
+        </footer>
+        <footer v-if="status == 1" class="status-success mui-flex mui-flex-veri mui-flex-end-veri mui-padding-20 mui-line-top">
+            <p>
+                <span class="status-title">获得积分：</span>
+                <span class="status-number">{{list.receipt_integral}}</span>
+            </p>
+            <p class="status-time-sumbit">提交时间：{{list.create_time}}</p>
+            <p class="status-time-audit">审核时间：{{list.audit_time}}</p>
+        </footer>
+        <footer v-if="status == 2" class="status-failed mui-flex mui-flex-veri mui-flex-end-veri mui-padding-20 mui-line-top">
+            <p class="status-tips">{{list.content}}</p>
+            <p class="status-time">提交时间：{{list.create_time}}</p>
+        </footer>
+
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/mall/script/user/membercard/membercard_selfhelp_detail.js"></script>
+</block>

@@ -1,0 +1,29 @@
+@import "../../common/configure.scss";
+
+.btn-rule{
+  color: $redColor;
+  position: relative;
+  &:active{
+    color: darken($redColor, 10%);
+  }
+}
+.tick-list{
+  background-color: #fff;
+}
+.item-title{
+	span{
+		display: block;
+	}
+}
+.money{
+  font-weight: bold;
+}
+.status{
+  color: $redColor;
+}
+.item-body{
+  color: #ccc;
+  span{
+  	display: block;
+  }
+}

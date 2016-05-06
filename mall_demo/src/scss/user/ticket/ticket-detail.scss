@@ -1,0 +1,93 @@
+$color:#777;
+$fontcolor:#333;
+$colorred:#e94646;
+
+.ticket-img-img{
+	width:1.2rem;
+	height:1.6rem;
+}
+.mui-img-body{
+	.ticket-detail-cinema{
+		color:$color;
+	}
+	.ticket-detail-time{
+		color:$colorred;
+	}
+}
+.mui-list{
+	background-color:#f0f0f0;
+	.mui-list-cell{
+		background-color:#fff;
+		>.mui-label{
+			color: #777777;
+		}
+		>span{
+			position: absolute;
+			right: 0.3rem;
+			color:$colorred;
+			font-weight:bold;
+		}
+	}
+}
+	
+
+.ticket-detail{
+	.ticket-detail-seat{
+		>label{
+			position:relative;
+			line-height: 0.5rem;
+			float: left;
+			margin: 5px 10px 0 0;
+			padding:3px 5px;
+			&:active{
+				color: $fontcolor;
+				background-color: #fff;
+			}
+			&.mui-btn-outlined{
+				color: $fontcolor;
+			}
+			&:after{
+				border: 1px solid $fontcolor;
+			}
+		}
+		
+	}
+}
+.ticket-qr{
+	background-color:#fff;
+	.ticket-qr-detail{
+		padding:0.4rem 0.3rem;
+		h2{
+			font-weight:bold;
+			color: $fontcolor;
+			label{
+				color:$colorred;
+			}
+		}
+	}
+	.ticket-qr-img{
+		width:3.65rem;
+		height:3.65rem;
+		display:block;
+		margin:10px auto;
+	}
+	.ticket-qr-txt{
+		text-align:center;
+	}
+}
+
+.ticket-overtime{
+	.mui-img-body{
+		.ticket-detail-time{
+			color:$color;
+		}
+	}
+	.mui-list-cell{
+		>span{
+			color:$color;
+		}
+	}
+	.ticket-qr{
+		display:none;
+	}
+}

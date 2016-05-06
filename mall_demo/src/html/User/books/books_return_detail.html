@@ -1,0 +1,51 @@
+<extend name="Base/base" />
+<block name="content">
+
+    <div class="mui-wrapper goodsDetailPage mui-darkbg">
+        <header class="mui-header" id="header">
+            <div class="mui-bar mui-line-bottom">
+                <a href="books.html" class="mui-pull-left" id="back">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+                <h1 class="mui-bar-title">已归还的书籍</h1>
+            </div>
+        </header>
+        <section class="mui-body">
+            <div class="books-list">
+                <ul class="mui-list">
+                    <li class="mui-list-cell mui-img mui-margin-bottom-15">
+                        <img src="/images/test/book.jpg" class="mui-img-img books-list-img">
+                        <div class="mui-img-body">
+                            <h2>岛上书店</h2>
+                            <p>作者:（美）加布瑞埃拉·泽文</p>
+                            <p>江苏凤凰文艺出版社</p>
+                        </div>
+                    </li>
+                    <li class="mui-list-cell">
+                        <h2 class="mui-flex-auto">消费积分</h2>
+                        <p class="books-info-red">200/天</p>
+                    </li>
+                    <li class="mui-list-cell">
+                        <h2 class="mui-flex-auto">借阅日期</h2>
+                        <p>2015-12-12</p>
+                    </li>
+                    <li class="mui-list-cell">
+                        <h2 class="mui-flex-auto">归还日期</h2>
+                        <p>2015-12-22</p>
+                    </li>
+                    <li class="mui-list-cell">
+                        <h2 class="mui-flex-auto books-info-red">补扣积分</h2>
+                        <p class="books-info-red">400</p>
+                    </li>
+                    <li class="mui-list-cell">
+                        <h2 class="mui-flex-auto">累计消费积分</h2>
+                        <p>2000</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</block>
+<block name="script">
+    <link rel="stylesheet" href="/css/user/books/books-return-detail.css" />
+</block>

@@ -1,0 +1,8 @@
+@import "../common/configure.scss";
+
+.mui-block-title-quote::before {
+    background-color: $goldenColor;
+}
+.content-body{
+    background-color: $whiteColor;
+}

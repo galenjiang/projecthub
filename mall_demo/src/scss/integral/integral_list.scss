@@ -1,0 +1,137 @@
+@import "../common/configure.scss";
+
+.wrapper{
+	>.body{
+		padding-bottom: 0;
+	}
+}
+.mui-pull-right .mui-iconfont{
+	font-size: .64rem;
+}
+.integralListPage{
+	background: url(../../images/background_home_banner.png);
+    background-size: 100%;
+}
+.my-integral{
+	background-color: #fff;
+}
+.integral-list-time{
+	color: #777777 !important;
+	font-size: 0.28rem !important;
+	margin-top: 0.1rem;
+}
+// 礼品列表样式
+.integral-lists{
+	.item{
+		position: relative;
+		display: block;
+		.item-img{
+			height: 3.4rem;
+		}
+		.item-title{
+			position: absolute;
+			bottom: 0;
+			height: .9rem;
+			width: 100%;
+			background-color: rgba(0,0,0,0.6);
+			color: #fff;
+			h4{
+				height: .4rem;
+				line-height: .4rem;
+				font-size: .28rem;
+				color: #fff;
+				text-indent: .2rem;
+			}
+			.item-title-lower{
+                position: relative;
+                padding: 2px;
+				height: .4rem;
+				line-height: .4rem;
+				text-indent: .2rem;
+				.number{
+					font-size: .32rem;
+					color: $redColor;
+				}
+				.score{
+					margin: 0 10px;
+					font-size: .24rem;
+					color: $silverColor;
+				}
+				.price{
+					font-size: .24rem;
+					color: $silverColor;
+					text-decoration: line-through;
+				}
+				.pay{
+					float: right;
+					padding-right: 10px;
+                    margin-right: 5px;
+					// width: 1.4rem;
+					height: .4rem;
+					font-size: .24rem;
+					background-color: $goldenColor;
+				}
+                .limit{
+					float: right;
+                    margin-right: 5px;
+					padding-right: 10px;
+					// width: 1.4rem;
+					height: .4rem;
+					font-size: .24rem;
+					background-color: $blueColor;
+				}
+			}
+		}
+	}
+}
+// 重置mui-tv样式
+.mui-tv-img{
+	width: 1rem;
+	height: 1rem;
+}
+// 限时抢图标
+.onsale{
+	position: absolute;
+	margin-left: .8rem;
+	margin-top: -.1rem;
+	z-index: 1;
+	width: .8rem;
+	height: .3rem;
+	line-height: .3rem;
+	text-align: center;
+	background:$redColor;
+	border-radius: 3px;
+	color: $whiteColor;
+	font-size: 0.2rem;
+}
+
+
+// .timelimit, .more{
+// 	float: left;
+// 	padding: 0 10px;
+// 	height: .3rem;
+// 	font-size: .2rem;
+// 	line-height: .3rem;
+// 	text-align: center;
+// 	background-color: $blueColor;
+// 	color: $whiteColor;
+// }
+// .timelimit{
+// 	margin-right: 10px;
+// }
+.catelog-container{
+    overflow: scroll;
+}
+.catelog-item{
+    float: left;
+    width: 1.5rem;
+    height: 1.75rem;
+    margin-left: .3rem;
+}
+.mui-wrapper{
+    overflow-x: hidden!important;
+    .mui-body{
+        overflow-x: hidden!important;
+
+    }
+}

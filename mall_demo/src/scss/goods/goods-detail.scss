@@ -1,0 +1,29 @@
+.goodsDetailPage{
+	>.body{
+		padding: 0;
+	}
+}
+
+// 规格
+.goods-detail-specifications{
+	.mui-list-cell{
+		>label{
+			color: #777777;
+		}
+		>span{
+			position: absolute;
+			right: 0.3rem;
+		}
+	}
+}
+
+.mui-footer{
+	background-color: #fff;
+}
+
+//购物车图标
+.mui-bar{
+	.cart{
+		right: 40px;
+	}
+}

@@ -1,0 +1,48 @@
+<extend name="Base/base" />
+<block name="content">
+    <div class="mui-wrapper brandCommentPage  mui-darkbg">
+        <header class="mui-header" id="header">
+            <div class="mui-bar mui-line-bottom">
+                <a href="javascript:history.back()" class="mui-pull-left" id="back">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+                <h1 class="mui-bar-title">评价商户</h1>
+            </div>
+        </header>
+        <section class="mui-body">
+            <div class="brand-comment-star mui-flex mui-flex-center-veri mui-padding-15  mui-margin-bottom-15">
+                <h2 class="mui-flex-auto">商户评分</h2>
+                <ul class="mui-stars mui-star-5">
+                    <li class="mui-star"></li>
+                    <li class="mui-star"></li>
+                    <li class="mui-star"></li>
+                    <li class="mui-star"></li>
+                    <li class="mui-star"></li>
+                </ul>
+                <p class="mui-margin-left-15">5星</p>
+            </div>
+            <div class="suggest-content mui-padding-15 mui-margin-bottom-15 mui-line-bottom">
+                <h2>请输入您遇到的问题或意见</h2>
+                <div class="textarea mui-flex mui-flex-center-veri suggest-border">
+                    <textarea placeholder="请输入您遇到的问题或意见" maxlength="200"></textarea>
+                    <!-- <i class=" mui-iconfont mui-icon-close"></i> -->
+                </div>
+            </div>
+            <div class="suggest-image mui-padding-15 mui-margin-bottom-15 mui-line-bottom">
+                <h2>上传照片</h2>
+                <ul class="suggest-image-info clearfix">
+                    <li class="suggest-image-info-img" style="background:url('__PUBLIC__/mall/images/test/6.jpg');background-size:cover;"></li>
+                    <li class="suggest-image-info-img suggest-image-info-upload"></li>
+                </ul>
+            </div>
+            <div class="mui-padding-15">
+                <a href="javascript:void(0)" class="mui-btn mui-btn-primary mui-btn-middle mui-btn-block">提交评价</a>
+            </div>
+        </section>
+    </div>
+</block>
+<block name="script">
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/brand/brand-comment-add.css" />
+
+
+</block>

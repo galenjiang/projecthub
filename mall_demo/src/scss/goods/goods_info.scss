@@ -1,0 +1,54 @@
+.goodsInfoPage{
+	>.mui-body{
+		padding: 0;
+	}
+}
+.goods-title{
+	background: #fff;
+	>p{
+		color: #e94646;
+		font-size: 0.32rem;
+		position: relative; 
+		line-height: 0.4rem;
+		>label{
+			font-weight: bold;
+		}
+		>span{
+			position: absolute;
+			right: 0.2rem;
+			color: #777777;
+			font-size: 0.24rem;
+			line-height: 0.4rem;
+		}
+		margin-top: 0.1rem;
+	}
+}
+
+.goods-info{
+	background: #fff;
+}
+
+.mui-block-title{
+	position: relative;
+	&:before{
+		width: 0.06rem;
+		height: 50%;
+		content: " ";
+		background-color: #b01d23;
+		top: 25%;
+		left: 0;
+		position: absolute;
+		z-index: 9;
+	}
+}
+
+.mui-footer{
+	background-color: #fff;
+}
+
+//购物车图标
+.mui-bar{
+	.cart{
+		right: 40px;
+	}
+}

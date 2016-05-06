@@ -1,0 +1,35 @@
+.goods-address{
+	height: 1.2rem;
+	background-color: #fff;
+	>a{
+		line-height: 1.2rem;
+		color: #000;
+		&:after{
+			color: #eb5555;
+		}
+	}
+	.mui-iconfont{
+		line-height: 1.2rem;
+		margin-right: 0.2rem;
+	}
+}
+
+
+// 订单统计
+.order-total{
+	height: 1.2rem;
+	padding-left: 0.3rem;
+	padding-right: 0.3rem;
+	text-align: right;
+	line-height: 1.2rem;
+	>span{
+		color: #eb5555;
+	}
+	>label{
+		color: #eb5555;
+	}
+}
+
+.mui-footer{
+	background-color: #fff;
+}

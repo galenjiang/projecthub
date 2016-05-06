@@ -1,0 +1,30 @@
+<extend name="Base/base" />
+<block name="content">
+
+    <div class="mui-wrapper mui-darkbg">
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <a href="javascript:history.back()" class="mui-pull-left">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+                <h1 class="mui-bar-title">我的二维码</h1>
+            </div>
+        </header>
+        <section class="mui-body">
+            <div class="barcode">
+                <img src="__PUBLIC__/mall/images/membercard/barcode.gif" alt="" />
+            </div>
+            <div class="qrcode mui-text-center">
+                <img src="__PUBLIC__/mall/images/membercard/qrcode.gif" alt="" />
+                <p class="mui-padding-top-10">每分钟自动更新</p>
+            </div>
+            <p class="mui-text-center mui-margin-top-20">会员卡号：1232566332458899</p>
+        </section>
+
+
+
+    </div>
+</block>
+<block name="script">
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/user/membercard/membercard-barcode.css" />
+</block>

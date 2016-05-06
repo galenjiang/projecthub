@@ -1,0 +1,51 @@
+@import "../common/configure.scss";
+
+.mui-list{
+	background-color:#f0f0f0;
+	.mui-list-cell{
+		background-color:#fff;
+		position:relative;
+		h2{
+			position:relative;
+			a{
+				position:absolute;
+				right: 0;
+				color:#777;
+				&:after{
+					color:#e94646;
+				}
+			}
+		}
+		>p{
+			position:relative;
+			color:#777;
+		}
+		span{
+			position:absolute;
+			right:0;
+		}
+		.parking-info-red{
+			color:$redColor;
+		}
+		.parking-info-silver{
+			color:$silverColor;
+		}
+
+	}
+}
+
+.mui-footer{
+	background-color:#fff;
+	.paking-money{
+		text-align: right;
+		label{
+			color:#e94646;
+		}
+	}
+}
+.mui-btn{
+	background-color: $blueColor;
+	&:active{
+		background-color: darken($blueColor,10%);;
+	}
+}

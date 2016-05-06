@@ -1,0 +1,26 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/user/mallcard/mallcard_list.css" />
+</block>
+<block name="content">
+    <div class="mui-wrapper mui-flex mui-darkbg" id="app">
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">我的卡券包</h1>
+                <a href="javascript:history.back();" class="mui-pull-left">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+            </div>
+        </header>
+        <mui-tabs :tab-list="tabList" :cur="0"></mui-tabs>
+        <section v-cloak class="mui-body" v-refresh :callback="getList" :allowrefresh="allowrefresh">
+            <div class="mui-margin-0-20">
+                <mui-coupon v-for="item in couponList" :uri="item.url" :img="item.img" :status="item.status"></mui-coupon>
+            </div>
+            <h2 v-show="couponList.length == 0" class="mui-margin-top-20 mui-text-center">暂无数据</h2>
+        </section>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/mall/script/user/mallcard/mallcard_list.js"></script>
+</block>

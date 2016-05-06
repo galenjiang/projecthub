@@ -1,0 +1,22 @@
+.mui-pull-right{
+	color:#eb5555;
+}
+.mui-list{
+	background-color:#f0f0f0;
+	.mui-list-cell{
+		background-color:#fff;
+		h2{
+			margin-right:0.3rem;
+		}
+	}
+}
+.address-remove-btn{
+	font-weight:bold;
+	color:#eb5555;
+	&:active{
+		background:#f9f9f9;
+	}
+}
+.mui-footer{
+	background-color:#fff;
+}

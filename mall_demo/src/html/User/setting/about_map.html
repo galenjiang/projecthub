@@ -1,0 +1,72 @@
+<!-- <extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/user/setting/setting_about_us.css" />
+</block>
+<block>
+	<div class="mui-wrapper" id="mapId" v-show="showMap" transition="mui-fade">
+	    <header class="mui-header">
+	        <div class="mui-bar mui-line-bottom">
+	            <h1 class="mui-bar-title">地图</h1>
+	            <a v-touch:tap="tabMap" href="javascript:;" class="mui-pull-left">
+	                <i class="mui-iconfont mui-icon-back"></i>
+	            </a>
+	        </div>
+	    </header>
+	    <div id="allmap" class="mui-body" width="100%"></div>
+	</div>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/mall/script/user/setting/setting_about_us.js"></script>
+</block>
+ -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="Keywords" content="乐坊商城">
+    <meta name="Description" content="乐坊商城">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimum-scale=1.0,maximum-scale=1.0" />
+    <title>乐坊商城</title>
+    <script>+ function(b) {var h = document.documentElement,w = h.clientWidth;h.style.fontSize = w / b + "px";}(7.5);</script>
+</head>
+<body ontouchstart>
+    <block name="content"></block>
+    <header class="mui-header">
+        <div class="mui-bar mui-line-bottom">
+            <h1 class="mui-bar-title">地图</h1>
+            <a v-touch:tap="tabMap" href="javascript:;" class="mui-pull-left">
+                <i class="mui-iconfont mui-icon-back"></i>
+            </a>
+        </div>
+    </header>
+	<div id="allmap" class="mui-body" width="100%"></div>
+
+
+	<script>
+		window.onload = function(){
+			util.console.log(this.userdata.current_mall_id)
+			var geoinfo = util.geo[_.findIndex(util.geo, function(el) {
+			    return el.id == this.userdata.current_mall_id;
+			}.bind(this))]
+			// 百度地图API功能
+			var map = new BMap.Map("allmap");
+			var point = new BMap.Point(geoinfo.longtitude, geoinfo.latitude);
+			map.centerAndZoom(point, 15);
+			var marker = new BMap.Marker(point); // 创建标注
+			map.addOverlay(marker); // 将标注添加到地图中
+			marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+			map.enableScrollWheelZoom(true); //允许放大缩小
+		}
+	</script>
+    <!-- /CSS_JS -->
+    <script type="text/javascript" src="__PUBLIC__/mall/script/common/vue.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/mall/script/common/hammer.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/mall/script/common/vue-touch.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/mall/script/common/mui.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=RukHwN5grIG1lkOAeIRUWMsO"></script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/user/setting/setting_suggest_list.css" />
+</block>
+<block name="content">
+    <div class="mui-wrapper goodsDetailPage mui-darkbg" id="setting_suggest_list">
+        <header class="mui-header" id="header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">反馈记录</h1>
+                <a href="javascript:history.back()" class="mui-pull-left" id="back">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+            </div>
+        </header>
+        <section v-cloak class="mui-body" v-refresh :callback="getList" :allowrefresh="allowrefresh">
+            <ul class="mui-list">
+                <li class="mui-list-cell" v-for='item in items'>
+                    <a :href="item.url">
+                        <p>{{item.time}}</p>
+                        <h2>{{item.title}}</h2>
+                    </a>
+                </li>
+            </ul>
+            <div v-if="items.length == 0" class="mui-margin-top-20 mui-text-center">暂无数据</div>
+        </section>
+    </div>
+</block>
+<block name="script">
+<script type="text/javascript" src="__PUBLIC__/mall/script/user/setting/setting_suggest_list.js"></script>
+</block>

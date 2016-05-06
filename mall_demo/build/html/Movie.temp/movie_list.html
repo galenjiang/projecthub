@@ -1,0 +1,58 @@
+<extend name="Base/base" />
+<block name="content">
+
+    <div class="mui-wrapper goodsDetailPage mui-darkbg">
+        <header class="mui-header" id="header">
+            <div class="mui-bar mui-line-bottom">
+                <a href="{:U('Home/home')}" class="mui-pull-left" id="back">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+                <h1 class="mui-bar-title">看电影</h1>
+            </div>
+        </header>
+        <div class="mui-tabs">
+            <ul class="mui-tab">
+                <li class="mui-tab-cell mui-tab-active">
+                    今日排片
+                </li>
+                <li class="mui-tab-cell">
+                    即将上映
+                </li>
+            </ul>
+            <div class="mui-tab-line mui-grid-2"></div>
+        </div>
+        <section class="mui-body">
+            <div class="movie-list-today">
+                <ul class="mui-list">
+                    <li class="mui-list-cell mui-img">
+                        <a href="movie-detail.html" class="mui-flex mui-flex-center-veri">
+                            <img src="__PUBLIC__/mall/images/test/ticket.jpg" class="mui-img-img movie-info-img">
+                            <div class="mui-img-body">
+                                <h2>神探夏洛克
+                                    <span class="movie-label movie-label-new">NEW</span>
+                                </h2>
+                                <p>古典英伦范、破解幽灵案</p>
+                                <p class="red">今天还剩余10场</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="mui-list-cell mui-img">
+                        <a href="movie-detail.html" class="mui-flex mui-flex-center-veri">
+                            <img src="__PUBLIC__/mall/images/test/ticket.jpg" class="mui-img-img movie-info-img">
+                            <div class="mui-img-body">
+                                <h2>神探夏洛克
+                                    <span class="movie-label movie-label-hot">HOT</span>
+                                </h2>
+                                <p>古典英伦范、破解幽灵案</p>
+                                <p class="red">今天还剩余10场</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</block>
+<block name="script">
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/movie/movie-list.css" />
+</block>

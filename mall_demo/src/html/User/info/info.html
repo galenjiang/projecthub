@@ -1,0 +1,89 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/user/info/info.css" />
+</block>
+<block name="content">
+    <div class="" id="page" v-cloak>
+        <div class="mui-wrapper mui-darkbg infoPage" id="info" v-show="infoShow" :transition="pageTransitonType">
+            <header class="mui-header">
+                <div class="mui-bar mui-line-bottom">
+                    <h1 class="mui-bar-title">我的资料</h1>
+                    <a href="javascript:history.back();" class="mui-pull-left">
+                        <i class="mui-iconfont mui-icon-back"></i>
+                    </a>
+                </div>
+            </header>
+            <section class="mui-body">
+                <ul class="list-info mui-list">
+                    <li class="head-frame list-info-item mui-list-cell mui-img">
+                        <a href="javascript:void(0)">头像</a>
+                        <img v-touch:tap="uploadHead" :src="userdata.header_url" class="face mui-img-img">
+                        <i class="mui-iconfont mui-icon-youjiantou"></i>
+                        <!-- <input type="file" v-el:headinput/> -->
+                    </li>
+                    <li class="list-info-item mui-list-cell mui-flex-center-veri mui-padding-20-0">
+                        <a href="javascript:void(0)">绑定手机</a>
+                        <span class="list-info-item-content">{{userdata.phone}}</span>
+                    </li>
+                    <li v-touch:tap="change('昵称')" class="list-info-item mui-list-cell mui-flex-center-veri mui-padding-20-0">
+                        <a href="javascript:void(0)">昵称</a>
+                        <span class="list-info-item-content">{{userdata.nickname}}</span>
+                        <i class="mui-iconfont mui-icon-youjiantou"></i>
+                    </li>
+                    <li v-touch:tap="change('性别')" class="list-info-item mui-list-cell mui-flex-center-veri mui-padding-20-0">
+                        <a href="javascript:void(0)">性别</a>
+                        <span class="list-info-item-content">{{sex}}</span>
+                        <i class="mui-iconfont mui-icon-youjiantou"></i>
+                    </li>
+                    <li v-touch:tap="change('出生年月')" class="list-info-item mui-list-cell mui-flex-center-veri mui-padding-20-0">
+                        <a href="javascript:void(0)">出生年月</a>
+                        <span class="list-info-item-content">{{userdata.birthday}}</span>
+                        <i class="mui-iconfont mui-icon-youjiantou"></i>
+                    </li>
+                    <li class="list-info-item mui-list-cell mui-flex-center-veri mui-margin-top-20">
+                        <a href="{:U('Authority/authority_reset')}">修改密码</a>
+                        <i class="mui-iconfont mui-icon-youjiantou"></i>
+                    </li>
+                </ul>
+            </section>
+        </div>
+        <div class="inputPage mui-wrapper mui-darkbg" :transition="slideTransitionType" v-show="inputShow">
+            <header class="mui-header">
+                <div class="mui-bar mui-line-bottom">
+                    <h1 class="mui-bar-title">{{type}}</h1>
+                    <a class="mui-pull-left" v-touch:tap="inputBack">
+                        <i class="mui-iconfont mui-icon-back"></i>
+                    </a>
+                </div>
+            </header>
+            <section class="mui-body">
+                <div class="input mui-line-bottom" v-bind:style="nicknameObj">
+                    <label class="mui-margin-20">请输入您的昵称</label>
+                    <input class="nickname mui-form-input" type="text" placeholder="输入昵称" v-model="changedNickname">
+                </div>
+                <div class="input mui-line-bottom" :style="sexObj">
+                    <label class="mui-margin-20">请输入您的性别</label>
+                    <div class="input-body mui-padding-20 mui-flex mui-flex-center-veri">
+                        <i class="mui-iconfont" v-touch:tap="change2male" :class="maleClassObj"></i>
+                        <label>男</label>
+                        <i class="mui-iconfont mui-icon-weixuan" v-touch:tap="change2female" :class="femaleClassObj"></i>
+                        <label>女</label>
+                    </div>
+                </div>
+                <div class="input mui-line-bottom" :style="birthdayObj">
+                    <label class="mui-margin-20">请输入您的出生日期</label>
+                    <input class="mui-form-input" type="date" placeholder="请输入时间" v-model="changedBirthday">
+                </div>
+            </section>
+            <footer class="mui-padding-20">
+                <a v-touch:tap="save" href="javascript:;" class="mui-btn mui-btn-yellow mui-btn-big mui-btn-block mui-margin-5-0">确认</a>
+            </footer>
+        </div>
+
+    </div>
+</block>
+<block name="script">
+    {:Widget('HomeShare/HomeShare',array('formMallId'=>'1'))}
+
+    <script src="__PUBLIC__/mall/script/user/info/info.js"></script>
+</block>

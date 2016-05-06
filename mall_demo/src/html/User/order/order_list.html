@@ -1,0 +1,55 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/user/order/order_list.css" />
+</block>
+<block name="content">
+    <div class="mui-wrapper mui-flex mui-darkbg" id="orderWaiting">
+        <div v-show="loading" class="mui-loading">
+            <span class="mui-loading-img"></span>
+        </div>
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">我的礼品订单</h1>
+                <a href="javascript:history.back();" class="mui-pull-left">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+            </div>
+        </header>
+        <mui-tabs :tab-list="tablist" :cur="0"></mui-tabs>
+        <section v-cloak class="waiting mui-body" v-refresh :callback="getList" :allowrefresh="!loading">
+            <ul>
+                <li v-for="item in list" class="mui-orderlist mui-line-bottom mui-margin-bottom-10">
+                    <div class="item-title mui-flex mui-flex-center-veri  mui-padding-0-20 mui-padding-10-0 mui-line-bottom">
+                        <p class="ordernumber mui-flex-auto">
+                            清单号：
+                            <span>{{ item.order_card }}</span>
+                        </p>
+                        <span class="tips">{{ item.type }}</span>
+                    </div>
+                    <div class="item-content  mui-img mui-line-bottom">
+                        <img :src="item.gift_img" class="mui-img-img showpic">
+                        <div class="mui-img-body">
+                            <h2>{{ item.gift_name }}</h2>
+                            <p class="mui-flex">
+                                积分：
+                                <span class="score mui-flex-auto">{{ item.gift_integral }}</span>
+                                <span class="number">x{{ item.order_number }}</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div v-if="status == 0" class="mui-padding-10 mui-line-bottom">提货码：{{ item.cancel_code }}</div>
+                    <div v-if="status != 2" class="buttons mui-margin-20 clearfix">
+                        <a v-touch:tap="cancel(item.order_card)" href="javascript:;" v-if="status == 0" class="mui-btn mui-btn-golden mui-btn-outlined mui-btn-big mui-pull-right">取消订单</a>
+                        <a :href="item.commentUrl" v-if="status == 1" class="mui-btn mui-btn-golden mui-btn-outlined mui-btn-big mui-pull-right">评价礼品</a>
+                    </div>
+                </li>
+                <div v-if="!list.length">
+                    <h1 class="mui-text-center mui-margin-top-20">暂无数据</h1>
+                </div>
+            </ul>
+        </section>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/mall/script/user/order/order_list.js"></script>
+</block>

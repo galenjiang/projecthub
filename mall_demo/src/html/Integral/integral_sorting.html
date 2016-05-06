@@ -1,0 +1,49 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/integral/integral_list.css" />
+</block>
+<block name="content">
+    <div v-cloak class="mui-wrapper integralListPage mui-darkbg" id="app">
+        <div v-show="!allowrefresh" class="mui-loading">
+            <span class="mui-loading-img"></span>
+        </div>
+        <header class="mui-header">
+            <div class="mui-bar">
+                <h1 class="mui-bar-title">{{type}}</h1>
+                <a href="{:U('Integral/integral_list')}" class="mui-pull-left">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+            </div>
+        </header>
+        <section v-refresh callback="refresh" allowrefresh="allowrefresh" class="mui-body">
+            <div class="integral-lists">
+                <!-- 遍历 -->
+                <a v-for="item in list" :href="item.href" class="item">
+                    <mui-countdown
+                        v-if="item.endtime"
+                        :time="item.endtime"
+                    ></mui-countdown>
+                    <img class="item-img" :src="item.coverimg" />
+                    <div class="item-title">
+                        <h4>{{item.name}}</h4>
+                        <div class="item-title-lower">
+                            <span class="number">{{item.integral}}</span>
+                            <span class="score">积分</span>
+                            <span class="price">市场价：￥{{item.marketprice}}</span>
+                            <span v-if="item.price != 0 && item.price" class="pay">支付{{item.price}}元</span>
+                            <span class="limit" v-show="item.numbers">限量{{ item.numbers }}件</span>
+                        </div>
+                    </div>
+                </a>
+                <div v-if="!list.length">
+                    <h1 class="mui-text-center mui-margin-top-20">暂无数据</h1>
+                </div>
+
+            </div>
+
+        </section>
+    </div>
+</block>
+<block name="script">
+    <script src="__PUBLIC__/mall/script/integral/integral_sorting.js"></script>
+</block>

@@ -1,0 +1,25 @@
+.list-question {
+  padding: 0.4rem;
+  background-color: #fff;
+  .question-title {
+    margin-bottom: 0.2rem;
+  }
+  .item {
+    position: relative;
+    padding: {
+      left: 0.4rem;
+      bottom: 0.25rem;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: .1rem;
+      left: 0.1rem;
+      width: 0.1rem;
+      height: 0.1rem;
+      border-radius: 0.05rem;
+      background-color: #000;
+    }
+  }
+}
+ 

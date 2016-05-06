@@ -1,0 +1,25 @@
+.mui-list{
+	background-color:#f0f0f0; 
+	.mui-list-cell{
+		background-color:#fff;
+		.books-list-img{
+			width:1.2rem; 
+			height:1.6rem;
+		}
+		h2{
+			position: relative;
+			label{
+				position:absolute;
+				color:#777777;
+				right:0;
+			}
+		}
+		p{
+			color:#777777;
+		}
+		.books-info-red{
+			color:#eb5555;
+		}
+	}
+}
+	

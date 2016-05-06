@@ -1,0 +1,40 @@
+@import "../../common/configure.scss";
+
+.head{
+  background-color: #fff;
+}
+.level-name, .level-score{
+  font-weight: bold;
+  color: $goldenColor;
+}
+.right{
+  background-color: #fff;
+}
+.mui-grid-3 img{
+  width: 1.03rem;
+  height: 1.03rem;
+}
+.right-title{
+  position: relative;
+  text-indent: 20px;
+  &::before{
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 60%;
+    top: 20%;
+    left: 0;
+    border-left: 6px solid $goldenColor;
+  }
+}
+
+.more-right{
+  background-color: #fff;
+}
+.rule{
+  color: $redColor;
+  position: relative;
+  &:active{
+    color: darken($redColor, 10%)
+  }
+}

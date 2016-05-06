@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <a href="javascript:;" id="a">点击支付</a>
+</body>
+<script type="text/javascript" src="__PUBLIC__/admin/default/assets/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript">
+    var jsparams = {}; //调用微信JS api 支付 function jsApiCall() { WeixinJSBridge.invoke( 'getBrandWCPayRequest', jsparams, function(res) { WeixinJSBridge.log(res.err_msg); alert(res.err_code + res.err_desc + res.err_msg); } ); } function callpay() { if (typeof
+    WeixinJSBridge == "undefined") {
+        if (document.addEventListener) {
+            document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+        } else if (document.attachEvent) {
+            document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+            document.attachEvent('onWeixinJSBridgeReady',
+                jsApiCall);
+        }
+    } else {
+        jsApiCall();
+    }
+    }
+    $('#a').click(function() {
+        $.ajax({
+            url: './index.php?m=AdminCommodity&c=Wxpay&a=wxpay',
+            dataType: 'text',
+            success: function(d) {
+                jsparams = JSON.parse(d);
+                console.log(jsparams) callpay();
+            }
+        })
+    })
+</script>
+
+</html>

@@ -1,0 +1,38 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/activity/activity_detail_shake.css" />
+</block>
+<block name="content">
+    <div class="mui-wrapper mui-flex mui-darkbg" id="shake">
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">活动详情</h1>
+                <a href="javascript:history.back()" class="mui-pull-left"><i class="mui-iconfont mui-icon-back"></i></a>
+                <a class="myactivity mui-pull-right" href="javascript:;"><i class="mui-iconfont mui-icon-phone"></i></a>
+            </div>
+        </header>
+        <section v-cloak class="mui-body">
+            <div class="post">
+                <img class="activeImg" :src="activityInfo.img" />
+            </div>
+            <div v-if="activityInfo.note" class="mui-block-title mui-block-title-quote mui-margin-top-20">
+                <label class="mui-label">活动介绍</label>
+            </div>
+            <p v-if="activityInfo.note" class="content-body mui-padding-20 mui-line-bottom">
+                {{{activityInfo.note}}}
+            </p>
+            <div v-if="activityInfo.about" class="mui-block-title mui-block-title-quote mui-margin-top-20">
+                <label class="mui-label">活动规则</label>
+            </div>
+            <p v-if="activityInfo.about" class="content-body mui-padding-20 mui-line-bottom">
+                {{{activityInfo.about}}}
+            </p>
+        </section>
+        <footer class="btn-participate mui-padding-0-20 mui-padding-10-0">
+            <a v-touch:tap="shake" href="javascript:;" class="mui-btn mui-btn-yellow mui-btn-big mui-btn-block mui-margin-5-0">点击开始或摇一摇手机</a>
+        </footer>
+    </div>
+</block>
+<block name="script">
+    <script src="__PUBLIC__/mall/script/activity/activity_detail_shake.js"></script>
+</block>

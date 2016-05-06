@@ -1,0 +1,47 @@
+@import "../common/configure.scss";
+
+.mui-list{
+	background-color:#f0f0f0;
+	.mui-list-cell{
+		background-color:#fff;
+		position:relative;
+		h2{
+			position:relative;
+			&.parking-title-red{
+				color:#e94646;
+			}
+		}
+		>p{
+			position:relative;
+			color:#777;
+			&.parking-title-red{
+				color:#e94646;
+			}
+		}
+		span{
+			position:absolute;
+			right:0;
+		}
+
+	}
+}
+//警告提示信息
+.parking-info-warning{
+	h2{
+		text-align: center;
+		color:#e94646;
+	}
+	p{
+		text-align:center;
+		label{
+			color:#e94646;
+		}
+	}
+}
+.mui-footer{
+	background-color:#fff;
+}
+
+.parking-title-silver{
+	color: $silverColor!important;
+}

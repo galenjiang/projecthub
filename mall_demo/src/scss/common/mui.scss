@@ -1,0 +1,2562 @@
+@import "./configure.scss";
+
+
+/*
+    是否需要重新修改
+*/
+/*
+@media screen and (max-width:320px) {
+    $fontSize: 14px;
+    body {
+        font-size: $fontSize;
+    }
+}
+@media screen and (min-width:321px) and (max-width:413px) {
+    $fontSize: 16px;
+    body {
+        font-size: $fontSize;
+    }
+}
+@media screen and (min-width:414px) and (max-width:639px) {
+    $fontSize: 17px;
+    body {
+        font-size: $fontSize;
+    }
+}
+@media screen and (min-width:640px) {
+    $fontSize: 18px;
+    body {
+        font-size: $fontSize;
+    }
+}
+*/
+
+
+// 	flex兼容
+@mixin flexbox {
+    // display: box;
+    // display: -webkit-box;
+    display: flex;
+    // display: -webkit-flex;
+}
+//	flex垂直方向
+@mixin flexboxVertical {
+    // box-orient: vertical;
+    // -webkit-box-orient: vertical;
+    flex-flow: column;
+    // -webkit-flex-flow: column;
+}
+//	flex子元素自适应撑满
+@mixin flexAuto {
+    // box-flex: 1;
+    // -webkit-box-flex: 1;
+    flex: 1;
+    // -webkit-flex: 1;
+}
+// flex兼容水平居中
+@mixin flexCenterHori {
+    // -webkit-box-pack: center;
+    // -webkit-justify-content: center;
+    justify-content: center;
+}
+// flex兼容水平居右
+@mixin flexEndHori {
+    // box-align: end;
+    // -webkit-box-align: end;
+    // flex-pack: end;
+    // -webkit-flex-pack: end;
+    justify-content: flex-end;
+    // -webkit-justify-content: flex-end;
+}
+// flex兼容垂直居中
+@mixin flexCenterVeri {
+    // box-align: center;
+    // -webkit-box-align: center;
+    align-items: center;
+    // -webkit-align-items: center;
+}
+// flex兼容垂直居底
+@mixin flexEndVeri {
+    // box-pack: end;
+    // -webkit-box-pack: end;
+    flex-align: end;
+    // -webkit-flex-align: end;
+    // align-items: flex-end;
+    // -webkit-align-items: flex-end;
+}
+// 水平反转
+@mixin flexHoriReverse {
+    // box-direction: reverse;
+    // -webkit-box-direction: reverse;
+    flex-direction: row-reverse;
+    // -webkit-flex-direction: row-reverse;
+}
+// touchaction 默写浏览器上面可以缩放，禁用
+@mixin touchAction {
+    touch-action: manipulation;
+}
+// 禁止选择
+@mixin userSelect {
+    user-select: none;
+}
+// 绝对定位百分百的窗口
+@mixin absWin {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    overflow: hidden;
+}
+html,
+body {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+}
+body {
+    background-color: $whiteColor;
+    color: #383635;
+}
+img {
+    width: 100%;
+    display: block;
+    max-width: 100%;
+}
+// 初始化button，select等样式
+textarea {
+    overflow: hidden;
+    resize: none;
+}
+button {
+    overflow: visible;
+    -webkit-appearance: none;
+}
+button,
+select {
+    text-transform: none;
+}
+button,
+input[type=text],
+input[type=radio],
+input[type=checkbox],
+optgroup,
+select,
+textarea {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: 0;
+    padding: 0;
+    outline: none;
+}
+//自定义padding
+@mixin paddingAll($top:0, $right: 0, $bottom: 0, $left: 0) {
+    padding: $top $right $bottom $left;
+}
+@mixin padding($top: 0, $left: 0) {
+    padding: $top $left;
+}
+//自定义圆角
+@mixin borderRadius($value: 4px) {
+    border-radius: $value;
+}
+// 清除浮动
+.clearfix {
+    zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden;
+}
+.clearfix:after {
+    clear: both;
+}
+// flex布局
+.mui-flex {
+    @include flexbox;
+}
+.mui-flex-veri {
+    @include flexboxVertical;
+}
+.mui-flex-auto {
+    @include flexAuto;
+}
+.mui-flex-center-hori {
+    @include flexCenterHori;
+}
+.mui-flex-end-hori {
+    @include flexEndHori;
+}
+.mui-flex-center-veri {
+    @include flexCenterVeri;
+}
+.mui-flex-end-veri {
+    @include flexEndVeri;
+}
+/************************ end *******************************/
+/**
+*	初始布局
+*	2016-01-26
+*/
+/************************* start ******************************/
+.mui-wrapper {
+    @include absWin;
+    @include flexbox;
+    @include flexboxVertical;
+    &.mui-darkbg {
+        background-color: $paperGray;
+    }
+    background-color: $paperWhite;
+    >.mui-header {
+        z-index: 99;
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+    }
+    >.mui-body {
+        width: 100%;
+        flex: 1;
+        @extend .mui-overflow-scroll;
+    }
+    >.mui-footer {
+        width: 100%;
+    }
+}
+/************************ end *******************************/
+/**
+*	文字大小 p & h1 ~ h6
+*	2016-01-04
+*/
+/************************* start ****************************/
+@mixin headerTitle {
+    font-size: 100%;
+    font-weight: 400;
+    color: $blackColor;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @include headerTitle;
+}
+$fontSize: (1: 0.8rem, 2: 0.64rem, 3: 0.56rem, 4: 0.48rem, 5: 0.4rem, 6: 0.32rem);
+@each $header,
+$value in $fontSize {
+    h#{$header} {
+        font-size: $value;
+        line-height: 1.1;
+        margin-bottom: .15rem;
+        @if $header == 5 {
+            font-weight: normal;
+        }
+        @else if $header == 6 {
+            font-weight: normal;
+        }
+    }
+}
+p{
+    line-height: 1.5;
+    font-size: 0.32rem;
+    margin-bottom: .3rem;
+}
+
+
+/************************* end *******************************/
+/**
+*	自动隐藏文字为省略号
+*	2016-01-04
+*	可以通过下面数组配置，目前只写了最多四列
+*/
+/************************* start ******************************/
+$ellipsis: (l1: 1, l2: 2, l3: 3, l4: 4);
+@each $header,
+$value in $ellipsis {
+    .mui-ellipsis-#{$value} {
+        @if $value == 1 {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        @else {
+            display: -webkit-box !important;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+            white-space: normal;
+            -webkit-line-clamp: $value;
+            -webkit-box-orient: vertical;
+        }
+    }
+}
+/************************ end *******************************/
+/**
+*	左右内padding
+*	2016-01-04
+*	目前支持5 10 15 20四个，可以在数组里面添加
+*	添加支持单个方向
+*/
+/************************* start ****************************/
+$paddingLeft: (5: 0.1rem, 10: 0.2rem, 15: 0.3rem, 20: 0.4rem);
+@each $header,
+$value in $paddingLeft {
+    .mui-padding-0-#{$header} {
+        padding-left: $value;
+        padding-right: $value;
+    }
+    .mui-padding-left-#{$header} {
+        padding-left: $value;
+    }
+    .mui-padding-right-#{$header} {
+        padding-right: $value;
+    }
+}
+/************************* end *******************************/
+/**
+*	上下内边距
+*	2016-01-15
+*	目前支持5 10 15 20四个，可以在数组里面添加
+*	支持单个方向上下
+*/
+/************************* start ****************************/
+$paddingRight: (5: 0.1rem, 10: 0.2rem, 15: 0.3rem, 20: 0.4rem);
+@each $header,
+$value in $paddingRight {
+    .mui-padding-#{$header}-0 {
+        padding-top: $value;
+        padding-bottom: $value;
+    }
+    .mui-padding-top-#{$header} {
+        padding-top: $value;
+    }
+    .mui-padding-bottom-#{$header} {
+        padding-bottom: $value;
+    }
+}
+/************************* end *******************************/
+/**
+*	全部内padding
+*	2016-01-04
+*	目前支持5 10 15 20四个，可以在数组里面添加
+*/
+/************************* start ****************************/
+$padding: (5: 0.1rem, 10: 0.2rem, 15: 0.3rem, 20: 0.4rem);
+@each $header,
+$value in $padding {
+    .mui-padding-#{$header} {
+        padding: $value;
+    }
+}
+/************************* end *******************************/
+/**
+*	左右外边距
+*	2016-01-04
+*	目前支持5 10 15 20四个，可以在数组里面添加
+*/
+/************************* start ****************************/
+$marginLeft: (5: 0.1rem, 10: 0.2rem, 15: 0.3rem, 20: 0.4rem);
+@each $header,
+$value in $marginLeft {
+    .mui-margin-0-#{$header} {
+        margin-left: $value;
+        margin-right: $value;
+    }
+    .mui-margin-left-#{$header} {
+        margin-left: $value;
+    }
+    .mui-margin-right-#{$header} {
+        margin-right: $value;
+    }
+}
+//上下外边距
+@each $header,
+$value in $marginLeft {
+    .mui-margin-#{$header}-0 {
+        margin-top: $value;
+        margin-bottom: $value;
+    }
+    .mui-margin-top-#{$header} {
+        margin-top: $value;
+    }
+    .mui-margin-bottom-#{$header} {
+        margin-bottom: $value;
+    }
+}
+/************************* end *******************************/
+/**
+*	全部外边距
+*	2016-01-04
+*	目前支持5 10 15 20四个，可以在数组里面添加
+*/
+/************************* start ****************************/
+$margin: (5: 0.1rem, 10: 0.2rem, 15: 0.3rem, 20: 0.4rem);
+@each $header,
+$value in $margin {
+    .mui-margin-#{$header} {
+        margin: $value;
+    }
+}
+/************************* end *******************************/
+/**
+*	文字对齐
+*	2016-01-04
+*/
+/************************* start ****************************/
+$textAlign: (left: left, center: center, right: right, justify: justify);
+@each $header,
+$value in $textAlign {
+    .mui-text-#{$header} {
+        text-align: $value;
+    }
+}
+/************************* end *******************************/
+/**
+*	区域内滚动
+*	2016-01-04
+*/
+/************************* start ****************************/
+.mui-overflow-scroll {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+}
+/************************* end *******************************/
+/**
+*	显示位置，左右
+*	2016-01-22
+*/
+/************************* start ****************************/
+.mui-pull {
+    float: none;
+    @extend .mui-text-center;
+    z-index: 9;
+    top: 0;
+    min-width: 50px;
+    padding: 0 10px 0 0;
+    &:active {
+        color: lighten($blackColor, 10%);
+    }
+}
+.mui-pull-left {
+    @extend .mui-pull;
+    float: left;
+}
+.mui-pull-right {
+    @extend .mui-pull;
+    float: right;
+}
+/************************* end *******************************/
+/**
+*	导航
+*	2016-01-04
+*/
+/************************* start ****************************/
+.mui-bar {
+    .mui-pull-left,
+    .mui-pull-right {
+        line-height: 1rem;
+    }
+    @extend .mui-line-bottom;
+    width: 100%;
+    position: relative;
+    z-index: 999;
+    height: 1.0rem;
+    color: $blackColor;
+    // @include flexbox;
+    @at-root .mui-bar-title {
+        position: absolute;
+        width: 100%;
+        @include flexAuto;
+        line-height: 1rem;
+        @extend .mui-text-center;
+        @extend .mui-ellipsis-1;
+        padding-left: 1.1rem;
+        padding-right: 1.1rem;
+    }
+    background-color: $whiteColor;
+    .mui-btn {
+        top: 0.225rem;
+        &.mui-pull-left {
+            left: 0.2rem;
+        }
+        &.mui-pull-right {
+            right: 0.2rem;
+        }
+        display: block;
+        @extend .mui-text-center;
+        position: absolute;
+        z-index: 9;
+        top: 0;
+        min-width: 50px;
+        padding: 0 10px;
+        line-height: 1.0rem;
+        &:active {
+            color: #b01d23;
+        }
+    }
+}
+.mui-bar .mui-iconfont {
+    font-size: 0.4rem;
+}
+.mui-bar-tab {
+    background-color: $whiteColor;
+    @include flexCenterVeri;
+    @at-root .mui-bar-tab-cell {
+        width: 100%;
+        height: 1.0rem;
+        position: relative;
+        @include flexbox;
+        @include flexAuto;
+        @include flexCenterVeri;
+        @include flexCenterHori;
+        @include flexboxVertical;
+        >.mui-label {
+            line-height: 0.36rem;
+            font-size: 0.26rem;
+            @extend .mui-ellipsis-1;
+            padding-right: 0;
+            position: relative;
+            height: auto;
+            color: #777777;
+        }
+        &.mui-bar-tab-active {
+            color: #e94646;
+            >.mui-label {
+                color: #e94646;
+            }
+            >.mui-iconfont {
+                color: #e94646;
+            }
+        }
+        .mui-iconfont {
+            font-size: 0.44rem;
+            line-height: 0.55rem;
+            height: auto;
+            color: #777777;
+        }
+        &:active {
+            .mui-iconfont {
+                color: #e94646;
+            }
+            .mui-label {
+                color: #e94646;
+            }
+        }
+    }
+}
+/************************* end *******************************/
+/**
+*	1像素的线
+*	2016-01-04
+*/
+/************************* start ****************************/
+$lineDir: (top: top, left: left, bottom: bottom, right: right);
+@each $header,
+$value in $lineDir {
+    .mui-line-#{$header} {
+        position: relative;
+        overflow: hidden;
+        &:after {
+            width: 100%;
+            height: 1px;
+            content: "";
+            position: absolute;
+            z-index: 9;
+            display: block;
+            pointer-events: none;
+            @if $value == top {
+                top: 0;
+                left: 0;
+                background: url(../../images/line_top.png) 0 0 repeat-x;
+                background-size: 50px 1px;
+            }
+            @else if $value == bottom {
+                bottom: 0;
+                left: 0;
+                background: url(../../images/line_bottom.png) 0 0 repeat-x;
+                background-size: 50px 1px;
+            }
+            @else if $value == left {
+                width: 1px;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background: url(../../images/line_left.png) 0 0 repeat-y;
+                background-size: 1px 50px;
+            }
+            @else {
+                width: 1px;
+                height: 100%;
+                top: 0;
+                right: 0;
+                background: url(../../images/line_right.png) 0 0 repeat-y;
+                background-size: 1px 50px;
+            }
+        }
+    }
+}
+/************************* end *******************************/
+/**
+* 按钮
+* 2015-12-30
+* 对于1px细边框，需要切图，通过border-image来实现或者通过after伪类通过缩放来做
+* 0.5px的只有在ios8及以上才支持
+* 安卓无法支持
+*/
+/********************* start **********************************/
+.mui-btn {
+    position: relative;
+    display: inline-block;
+    padding-left: 0.24rem;
+    padding-right: 0.24rem;
+    font-size: 0.30rem;
+    font-weight: 400;
+    @extend .mui-text-center;
+    background-color: #ecf0f1;
+    white-space: nowrap;
+    vertical-align: middle;
+    @include touchAction;
+    @include userSelect;
+    cursor: pointer;
+    @include borderRadius();
+    color: $silverColor;
+    outline: 0;
+    margin-bottom: 0;
+    border: 0;
+    line-height: 0.6rem;
+    &:active {
+        color: #ffffff;
+        background-color: #bdc3c7;
+    }
+    &.mui-btn-middle {
+        padding-top: 0.14rem;
+        padding-bottom: 0.14rem;
+        font-size: 0.32rem;
+    }
+    &.mui-btn-big {
+        padding-top: 0.18rem;
+        padding-bottom: 0.18rem;
+        font-size: 0.36rem;
+    }
+}
+.mui-btn-noradius {
+    border-radius: 0;
+}
+.mui-btn-block {
+    display: block;
+    width: 100%;
+    margin-bottom: 0;
+}
+.mui-btn .mui-iconfont {
+    margin-right: 0.12rem;
+}
+$btnStyle: (default: #bdc3c7,success: #27ae60, primary: #e94646, forbidden: #cccccc, blue: $blueColor, golden: $goldenColor, red: $redColor, yellow: $yellowColor, silver: $silverColor);
+@each $header,
+$value in $btnStyle {
+    .mui-btn-#{$header} {
+        @if $header == forbidden {
+            color: #ffffff;
+            pointer-events: none;
+            &.mui-btn-outlined {
+                color: #ececec;
+                background-color: $value;
+            }
+        }
+        @else {
+            color: #ffffff;
+            @at-root .mui-btn-#{$header}:active {
+                background-color: $value - 30;
+            }
+            @at-root .mui-btn-#{$header}.mui-btn-outlined {
+                color: $value;
+                &:after {
+                    border: 1px solid $value - 30;
+                }
+            }
+            @at-root .mui-btn-#{$header}.mui-btn-outlined:active {
+                background-color: $value;
+                color: #ffffff;
+            }
+        }
+        background-color: $value;
+        @at-root .mui-btn-outlined {
+            background: transparent;
+        }
+        &:after {
+            width: 200%;
+            height: 200%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: " ";
+            // border: 1px solid $value;
+            transform: scale(0.5) translateZ(0);
+            @include borderRadius(6px);
+            transform-origin: 0 0;
+            pointer-events: none;
+            z-index: 9;
+        }
+    }
+}
+/************************ end *******************************/
+/**
+* icon字体
+* 2015-12-31
+* 可以根据具体需要加载不同的字体
+*/
+/************************* start ****************************/
+/*图标*/
+@font-face {
+    font-family: "iconfont";
+    src: url(../../font/iconfont.ttf) format("truetype");
+}
+.mui-iconfont {
+    display: inline-block;
+    position: relative;
+    font-family: "iconfont" !important;
+    font-size: 0.64rem;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+.mui-iconfont:before {
+    font-size: inherit;
+    color: $goldenColor;
+    position: relative;
+}
+.mui-icon-guanbi:before {
+    content: "\e629";
+}
+.mui-icon-qianbao:before {
+    content: "\e628";
+}
+.mui-icon-weixuan:before {
+    content: "\e627";
+}
+.mui-icon-zuojiantou:before {
+    content: "\e623";
+}
+.mui-icon-yinliao:before {
+    content: "\e61f";
+}
+.mui-icon-xuanzhong:before {
+    content: "\e61d";
+}
+.mui-icon-yiguanzhu:before {
+    content: "\e61e";
+}
+.mui-icon-shangjiantou:before {
+    content: "\e626";
+}
+.mui-icon-chenggong:before {
+    content: "\e625";
+}
+.mui-icon-xinxi:before {
+    content: "\e61c";
+}
+.mui-icon-xinpin:before {
+    content: "\e61b";
+}
+.mui-icon-xiajiantou:before {
+    content: "\e622";
+}
+.mui-icon-youjiantou:before {
+    content: "\e620";
+}
+.mui-icon-zhaopian:before {
+    content: "\e621";
+}
+.mui-icon-tingche:before {
+    content: "\e617";
+}
+.mui-icon-weiguanzhu:before {
+    content: "\e618";
+}
+.mui-icon-wujiaoxing:before {
+    content: "\e619";
+}
+.mui-icon-xiaopiao:before {
+    content: "\e61a";
+}
+.mui-icon-sousuo:before {
+    content: "\e616";
+}
+.mui-icon-lefang:before {
+    content: "\e60d";
+}
+.mui-icon-huodong:before {
+    content: "\e60b";
+}
+.mui-icon-shuma:before {
+    content: "\e615";
+}
+.mui-icon-shouji:before {
+    content: "\e614";
+}
+.mui-icon-huiyuan:before {
+    content: "\e60a";
+}
+.mui-icon-shijian:before {
+    content: "\e613";
+}
+.mui-icon-quanyi:before {
+    content: "\e611";
+}
+.mui-icon-dianhua:before {
+    content: "\e605";
+}
+.mui-icon-wifi:before {
+    content: "\e60e";
+}
+.mui-icon-mima:before {
+    content: "\e610";
+}
+.mui-icon-jifen:before {
+    content: "\e60c";
+}
+.mui-icon-guanyu:before {
+    content: "\e609";
+}
+.mui-icon-shanghu:before {
+    content: "\e612";
+}
+.mui-icon-kefu:before {
+    content: "\e624";
+}
+.mui-icon-fenxiang:before {
+    content: "\e608";
+}
+.mui-icon-back:before {
+    content: "\e607";
+}
+.mui-icon-fankui:before {
+    content: "\e606";
+}
+.mui-icon-dizhi:before {
+    content: "\e60f";
+}
+.mui-icon-qiehuan:before {
+    content: "\e601";
+}
+.mui-icon-caidan:before {
+    content: "\e603";
+}
+.mui-icon-chongzhi:before {
+    content: "\e604";
+}
+.mui-icon-maohao:before {
+    content: "\e634";
+}
+.mui-icon-9:before {
+    content: "\e633";
+}
+.mui-icon-0:before {
+    content: "\e62a";
+}
+.mui-icon-1:before {
+    content: "\e62b";
+}
+.mui-icon-2:before {
+    content: "\e62c";
+}
+.mui-icon-3:before {
+    content: "\e62d";
+}
+.mui-icon-4:before {
+    content: "\e62e";
+}
+.mui-icon-5:before {
+    content: "\e62f";
+}
+.mui-icon-6:before {
+    content: "\e630";
+}
+.mui-icon-7:before {
+    content: "\e631";
+}
+.mui-icon-8:before {
+    content: "\e632";
+}
+
+
+
+.mui-icon-tag {
+    display: inline-block;
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
+    font-size: 0.24rem;
+    text-align: center;
+    color: #fff;
+    background-color: transparent;
+    height: 0.4rem;
+    width: 0.4rem;
+    line-height: 0.4rem;
+    border-radius: 4px;
+    .tag-img{
+        width: 100%;
+        height: 100%;
+    }
+}
+/************************* end ****************************/
+/**
+*	列表
+*	2016-01-04
+*/
+/************************* start ****************************/
+.mui-list {
+    position: relative;
+    background: $whiteColor;
+    list-style: none;
+    @at-root .mui-list-cell {
+        padding: 0.4rem 0.3rem;
+        overflow: hidden;
+        position: relative;
+        -webkit-touch-callout: none;
+        @include flexbox;
+        @extend .mui-line-bottom;
+        &:active {
+            background-color: darken($whiteColor, 10%);
+        }
+        >a {
+            @include flexAuto;
+            display: box;
+            display: -webkit-box;
+            display: flex;
+            &.mui-btn {
+                flex: none;
+            }
+        }
+        @at-root .mui-list-icon {
+            white-space: nowrap;
+            display: -webkit-box;
+            -webkit-box-align: center;
+            font-size: 0.5rem;
+            margin-right: 0.2rem;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            & + a {
+                padding-left: 0.6rem;
+            }
+        }
+        @at-root .mui-list-cell {
+            &:last-child {
+                &:after {
+                    background: none;
+                }
+            }
+        }
+    }
+}
+//列表里面有图文
+.mui-img {
+    @include flexbox;
+    @include flexCenterVeri;
+    @include padding(0.24rem, 0.3rem);
+    &.mui-list-reverse {
+        @include flexHoriReverse;
+        .mui-img-img {
+            margin-right: 0;
+            margin-left: 0.2rem;
+        }
+    }
+}
+.mui-img-img {
+    width: 1.2rem;
+    height: 1.2rem;
+    display: block;
+    overflow: hidden;
+    @include borderRadius(4px);
+    margin-right: 0.2rem;
+}
+.mui-img-body {
+    overflow: hidden;
+    @include flexAuto;
+    >h2 {
+        line-height: 0.52rem;
+    }
+    >p {
+        line-height: 0.44rem;
+        color: $silverColor;
+        font-size: 0.28rem;
+    }
+}
+.mui-border {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    &:after {
+        width: 200%;
+        height: 200%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform-origin: 0 0;
+        transform: scale(0.5) translateZ(0);
+        border: 1px solid $lineColor;
+        border-radius: 4px;
+        content: " ";
+    }
+}
+/************************* end *******************************/
+/**
+*	arrow箭头
+*	2016-01-04
+*/
+/************************* start ****************************/
+.mui-arrow {
+    position: relative;
+    overflow: hidden;
+}
+$arrowValue: (right: "\e620", up: "\e626");
+@each $header,
+$value in $arrowValue {
+    .mui-arrow-#{$header} {
+        @extend .mui-arrow;
+        padding-right: 0.4rem;
+        &:after {
+            font-family: "iconfont" !important;
+            font-size: inherit;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: 0.2px;
+            -moz-osx-font-smoothing: grayscale;
+            content: $value;
+            position: absolute;
+            right: 0;
+            color: inherit;
+            line-height: 1;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+}
+/************************* end *******************************/
+/**
+*	滚动banner
+*	2016-01-06
+*/
+/************************* start ****************************/
+.mui-banner {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    @at-root #{&}-pages {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        // transition: all 0.6s ease;
+    }
+    @at-root #{&}-page {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+        &.prev {
+            transform: translateX(-100%);
+            z-index: 9;
+        }
+        &.next {
+            transform: translateX(100%);
+            z-index: 9;
+        }
+        &.cur {
+            transform: translateX(0%);
+            z-index: 9;
+        }
+        &.trans {
+            transition: all 0.3s ease;
+        }
+    }
+    @at-root #{&}-indicator {
+        width: 100%;
+        position: absolute;
+        height: 0.8rem;
+        bottom: 0;
+        left: 0;
+        z-index: 9;
+        padding-left: 0.1rem;
+        padding-right: 0.1rem;
+        @include flexbox;
+        @include flexCenterVeri;
+        @at-root .mui-banner-indicator-dot {
+            display: block;
+            width: 0.2rem;
+            height: 0.2rem;
+            margin-left: 0.1rem;
+            margin-right: 0.1rem;
+            @include borderRadius(50%);
+            background-color: #fdfefb;
+            &.mui-banner-indicator-dot-active {
+                background-color: #f65c7a;
+            }
+        }
+    }
+}
+/************************* end *******************************/
+/**
+*	栅格
+*	2016-01-06
+*	最大支持6列,可以在数组中添加，但是太多列没有意义
+*/
+/************************* start ****************************/
+.mui-grids {
+    position: relative;
+    overflow: hidden;
+    @extend .clearfix;
+    background-color: #fff;
+    @extend .mui-padding-10;
+    @at-root .mui-grid {
+        position: relative;
+        float: left;
+        @include flexbox;
+        @include flexCenterVeri;
+        @include flexboxVertical;
+        @extend .mui-padding-10;
+        @at-root .mui-grid-img {
+            width: 1.0rem;
+            height: 1.0rem;
+            display: block;
+            margin-bottom: 0.15rem;
+        }
+        >p {
+            line-height: 0.44rem;
+            @extend .mui-ellipsis-1;
+            @extend .mui-text-center;
+            font-size: 0.28rem;
+        }
+        .mui-label {
+            padding-right: 0;
+        }
+    }
+}
+$gridWidth: (1: 100%, 2: 50%, 3: 33.33333333%, 4: 25%, 5: 20%, 6: 16.66666667%);
+@each $header,
+$value in $gridWidth {
+    .mui-grid-#{$header} {
+        width: $value;
+    }
+}
+/************************* end *******************************/
+/**
+*	label
+*	2016-01-06
+*/
+/************************* start ****************************/
+.mui-label {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    padding-right: 0.2rem;
+}
+/************************* end *******************************/
+/**
+*	左边名称，右边带箭头的title
+*	2016-01-06
+*/
+/************************* start ****************************/
+.mui-block-title {
+    position: relative;
+    overflow: hidden;
+    height: 1rem;
+    background-color: $whiteColor;
+    @include padding(0,0.3rem);
+    @extend .mui-line-bottom;
+    @include flexbox;
+    @include flexCenterVeri;
+    .mui-label {
+        @include flexAuto;
+        font-size: 0.38rem;
+        font-weight: 400;
+    }
+    a {
+        font-size: 0.28rem;
+        color: $goldenColor;
+        &:active {
+            color: #681418;
+        }
+    }
+    @at-root #{&}-quote {
+        &::before {
+            width: 0.06rem;
+            height: 50%;
+            content: " ";
+            background-color: $info;
+            top: 25%;
+            left: 0;
+            position: absolute;
+            z-index: 9;
+        }
+    }
+}
+/************************* end *******************************/
+/**
+*	上面图片，底下说明文字
+*	2016-01-06
+*/
+/************************* start ****************************/
+.mui-tv {
+    overflow: hidden;
+    @include paddingAll(0.1rem, 0.1rem, 0.1rem,0.1rem);
+    @include flexbox;
+    @include flexboxVertical();
+    @include flexCenterVeri();
+    @at-root .mui-tv-img {
+        display: block;
+        @include borderRadius(10px);
+        position: relative;
+        width: 1.6rem;
+        height: 1.6rem;
+        &:after {
+            width: 200%;
+            height: 200%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: scale(0.5);
+            content: " ";
+            border: solid 1px $lineColor;
+        }
+    }
+    .mui-label {
+        display: inline-block;
+        margin-top: 0.1rem;
+        font-size: 0.28rem;
+        line-height: 0.32rem;
+        @extend .mui-text-center;
+        padding-right: 0;
+        width: 1.6rem;
+    }
+}
+/************************* end *******************************/
+/**
+*	form表单
+*	2016-01-07
+*/
+/************************* start ****************************/
+textarea,
+input,
+select {
+    width: 100%;
+    -webkit-appearance: none;
+    -webkit-user-select: text;
+    line-height: 0.42rem;
+    -webkit-user-select: text;
+    background-color: #fff;
+    @include borderRadius();
+    border: none;
+    outline: none;
+}
+.mui-form {
+    position: relative;
+    background: #fff;
+    @at-root .mui-form-row {
+        @include flexbox;
+        @include flexCenterVeri;
+        width: 100%;
+        @extend .mui-line-bottom;
+        height: 1.2rem;
+        .mui-iconfont {
+            margin-right: 0.2rem;
+            color: #a5a5a5;
+        }
+        .mui-label {
+            @extend .mui-padding-0-15;
+        }
+        @at-root .mui-form-input {
+            font-size: 0.32rem;
+            display: block;
+            @include flexAuto;
+            height: 1.2rem;
+            &::-webkit-input-placeholer {
+                color: #777777;
+            }
+        }
+        &:last-child {
+            &:after {
+                background: none;
+            }
+        }
+        >.mui-btn {
+            margin-left: 0.2rem;
+        }
+    }
+    @at-root .mui-border {
+        &:after {
+            background: none;
+            border: 0;
+        }
+        .mui-form {
+            @extend .mui-padding-0-10;
+        }
+    }
+}
+/************************* end *******************************/
+/**
+*	热门标签
+*	2016-01-08
+*/
+/************************* start ****************************/
+.mui-hotlabels {
+    overflow: hidden;
+    >ul {
+        @extend .clearfix;
+        position: relative;
+        overflow: hidden;
+        >.mui-label {
+            border-radius: 0.4rem;
+            line-height: 0.8rem;
+            float: left;
+            padding-right: 0.40rem;
+            padding-left: 0.40rem;
+            margin-top: 0.20rem;
+            margin-right: 0.15rem;
+            min-width: 1.5rem;
+            overflow: auto;
+            color: $goldenColor;
+            @extend .mui-text-center;
+            &:after {
+                width: 200%;
+                height: 200%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 9;
+                border: solid 1px $goldenColor;
+                content: " ";
+                transform: scale(0.5);
+                transform-origin: 0 0;
+                pointer-events: none;
+                border-radius: 0.8rem;
+            }
+        }
+    }
+}
+/************************* end *******************************/
+/**
+*	搜索
+*	2016-01-08
+*/
+/************************* start ****************************/
+.mui-search {
+    @include flexbox;
+    position: relative;
+    overflow: hidden;
+    margin: 0.1rem 0;
+    height: 0.8rem;
+    width: 100%;
+    background: #f7f7f7;
+    &:after {
+        width: 200%;
+        height: 200%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        border: solid 1px $lineColor;
+        content: " ";
+        transform: scale(0.5);
+        transform-origin: 0 0;
+        pointer-events: none;
+        @include borderRadius();
+    }
+    .mui-iconfont {
+        height: 0.8rem;
+        line-height: 0.8rem;
+    }
+    .mui-form-input {
+        background: #f7f7f7;
+        height: 0.8rem;
+        padding-right: 0.2rem;
+    }
+    >.mui-iconfont {
+        color: #cacaca;
+        padding: 0 0.2rem;
+    }
+}
+/************************* end *******************************/
+/**
+*	分类筛选菜单
+*	2016-01-08
+*/
+/************************* start ****************************/
+.mui-screen {
+    position: relative;
+    overflow: hidden;
+    @include flexbox;
+    height: 1.0rem;
+    width: 100%;
+    background: #ffffff;
+    font-size: 0.32rem;
+    @extend .mui-line-bottom;
+    @at-root .mui-screen-cell {
+        .mui-iconfont {
+            transition: all 0.3s linear;
+        }
+        color: $blackColor;
+        &.active {
+            color: $goldenColor;
+            .mui-iconfont {
+                &::before {
+                    color: $goldenColor;
+                }
+                transform: rotate(180deg);
+            }
+        }
+        @include flexAuto;
+        width: 100%;
+        height: 1.0rem;
+        position: relative;
+        .mui-label {
+            height: 1.0rem;
+            line-height: 1.0rem;
+            text-align: center;
+            padding-right: 0;
+        }
+        &:after {
+            content: " ";
+            height: 50%;
+            top: 25%;
+            @extend .mui-line-right;
+        }
+        &:last-child {
+            &:after {
+                background: none;
+            }
+        }
+        .mui-iconfont:before {
+            color: $blackColor;
+        }
+    }
+}
+/************************* end *******************************/
+/**
+*	评论
+*	2016-01-18
+*/
+/************************* start ****************************/
+.mui-comment {
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+    font-size: 0.32rem;
+    @at-root .mui-comment-cell {
+        width: 100%;
+        position: relative;
+        @include flexbox;
+        @extend .mui-line-bottom;
+        @include paddingAll(0.2rem, 0.3rem, 0.2rem, 0.3rem);
+        &:last-child {
+            &:after {
+                background: none;
+            }
+        }
+        >.mui-comment-headerimg {
+            display: block;
+            width: 1.0rem;
+            height: 1.0rem;
+            background-color: #929ca1; //需要一张默认背景
+            @include borderRadius(50%);
+            margin-right: 0.2rem;
+        }
+        @at-root .mui-comment-info {
+            @include flexAuto;
+            @at-root .mui-comment-info-header {
+                height: 1.0rem;
+                position: relative;
+                @include flexbox;
+                @include flexboxVertical;
+                // @include flexCenterHori;
+                @at-root .mui-comment-header-name {
+                    display: block;
+                    padding-right: 0.8rem;
+                    @extend .mui-ellipsis-1;
+                    line-height: 0.48rem;
+                    font-size: 0.28rem;
+                    color: $blackColor;
+                }
+                @at-root .mui-comment-header-time {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    z-index: 9;
+                    color: #777777;
+                    font-size: 0.24rem;
+                }
+            }
+        }
+    }
+    @at-root .mui-comment-text {
+        @extend .mui-margin-5-0;
+    }
+    @at-root .mui-comment-photos {
+        overflow: hidden;
+        padding: 0 0 0.1rem;
+        margin-bottom: 0.1rem;
+        @extend .clearfix;
+    }
+    @at-root .mui-comment-photo {
+        width: 1.6rem;
+        height: 1.6rem;
+        float: left;
+        margin: 0.1rem 0.1rem 0 0;
+        >img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    @at-root .mui-comment-reply {
+        padding-bottom: 0.05rem;
+        >p {
+            word-break: break-all;
+            color: #777777;
+            >label {
+                color: $goldenColor;
+            }
+        }
+    }
+}
+/************************* end *******************************/
+/**
+*	星星
+*	2016-01-18
+*/
+/************************* start ****************************/
+$stars: (5: 5, 4: 4, 3: 3, 2: 2, 1: 1);
+.mui-stars {
+    @include flexbox;
+    @extend .mui-flex-center-veri;
+    height: 0.54rem;
+    >.mui-star {
+        height: 0.54rem;
+        width: 0.36rem;
+        margin: 0 0.08rem 0 0;
+        background: url(../../images/brand/icon_star_empty.png) 0 50% no-repeat;
+        background-size: 0.36rem;
+        &:active {
+            background: url(../../images/brand/icon_star_fill.png) 0 50% no-repeat;
+            background-size: 0.36rem;
+        }
+    }
+    @each $header,
+    $value in $stars {
+        @for $i from 1 through $value {
+            @at-root .mui-star-#{$header} .mui-star:nth-child(#{$i}) {
+                background: url(../../images/brand/icon_star_fill.png) 0 50% no-repeat;
+                background-size: 0.36rem;
+            }
+        };
+    };
+}
+/************************* end *******************************/
+/**
+*	商品列表
+*	2016-01-18
+*/
+/************************* start ****************************/
+.mui-goods {
+    overflow: hidden;
+    position: relative;
+    @extend .clearfix;
+    @at-root .mui-goods-cell {
+        @extend .mui-tv;
+        width: 3.7rem;
+        background-color: #fff;
+        float: left;
+        padding: 0;
+        margin-bottom: 0.10rem;
+        .mui-goods-cell-img {
+            height: 3.70rem;
+            width: 3.70rem;
+        }
+        &:nth-child(odd) {
+            margin-right: 0.05rem;
+        }
+        &:nth-child(even) {
+            margin-left: 0.05rem;
+        }
+        .mui-goods-cell-info {
+            padding: 0.2rem;
+            font-size: 0.3rem;
+            @extend .mui-line-top;
+            @at-root .mui-goods-cell-name {
+                line-height: 0.40rem;
+                height: 0.8rem;
+                display: block;
+                @extend .mui-ellipsis-2;
+            }
+        }
+        @at-root .mui-goods-sale {
+            position: relative;
+            line-height: 0.40rem;
+            margin-top: 0.1rem;
+            @at-root .mui-goods-cell-price {
+                color: #e94646;
+                font-size: 0.32rem;
+                font-weight: bold;
+            }
+            @at-root .mui-goods-cell-total {
+                position: absolute;
+                right: 0;
+                color: #777777;
+                font-size: 0.30rem;
+            }
+        }
+    }
+}
+/************************* end *******************************/
+/**
+*	tab页签
+*	2016-01-19
+*/
+/************************* start ****************************/
+.mui-tabs {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    @at-root .mui-tab {
+        width: 100%;
+        overflow: hidden;
+        background-color: $whiteColor;
+        @include flexbox;
+        @at-root .mui-tab-cell {
+            @include flexAuto;
+            height: 1.0rem;
+            width: 100%;
+            @extend .mui-text-center;
+            line-height: 1.0rem;
+            @extend .mui-line-right;
+            &::after {
+                content: '';
+                position: absolute;
+                width: 1px;
+                height: 0.5rem;
+                top: 0.25rem;
+                right: 0;
+                z-index: 9;
+            }
+            &:last-child {
+                &:after {
+                    background: none;
+                }
+            }
+            &.mui-tab-active {
+                color: $goldenColor;
+            }
+        }
+    }
+    @at-root .mui-tab-line {
+        transition: all 0.3s ease;
+        width: 50%;
+        height: 0.06rem;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: $goldenColor;
+        z-index: 10;
+        &.mui-grid-3 {
+            width: 33.333333%;
+        }
+        &.mui-grid-4 {
+            width: 25%;
+        }
+        &.mui-grid-5 {
+            width: 20%;
+        }
+    }
+    &.mui-borderRadius {
+        @extend .mui-padding-10;
+        @include borderRadius(5px);
+        .mui-tab-line {
+            display: none;
+        }
+        .mui-tab-cell {
+            height: 0.8rem;
+            line-height: 0.8rem;
+            &:after {
+                width: 1px;
+                height: 0.4rem;
+                position: absolute;
+                top: 0.2rem;
+                right: 0;
+                z-index: 9;
+            }
+        }
+    }
+}
+.mui-tabs--implict {
+    @include borderRadius();
+    @include flexbox;
+    margin: 0.3rem;
+    height: 0.6rem;
+    border: solid 1px $goldenColor;
+    overflow: hidden;
+    .mui-tab {
+        display: inline-block;
+        text-align: center;
+        line-height: 0.6rem;
+        color: $goldenColor;
+        &.active {
+            color: $whiteColor;
+            background-color: $goldenColor;
+        }
+    }
+}
+/************************* end *******************************/
+/**
+*	check状态
+*	2016-01-20
+*/
+/************************* start ****************************/
+.mui-check {
+    overflow: hidden;
+    position: absolute !important;
+    width: 45px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    @at-root .mui-check-radio {
+        &:after {
+            @include borderRadius(50%);
+            border: solid 1px #c9c9c9;
+            content: "";
+            position: absolute !important;
+            width: 18px;
+            height: 18px;
+            top: 50%;
+            left: 50%;
+            margin-left: -9px;
+            margin-top: -9px;
+        }
+        &.mui-checked {
+            &:after {
+                border: none;
+                background: url(../../images/icon_check.png) 50% no-repeat;
+                background-size: cover;
+            }
+        }
+    }
+}
+
+
+.mui-radio{
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 30px;
+    @at-root #{&}-icon{
+        position: relative;
+        width: 30px;
+        height: 30px;
+        font-size: 30px;
+        line-height: 30px;
+    }
+    @at-root #{&}-input{
+        position: absolute;
+        display: inline-block;
+        opacity: 0;
+        width: 30px;
+        height: 30px;
+        top: 0;
+        left: 0;
+    }
+    @at-root #{&}-label{
+        position: absolute;
+        top: 0;
+        line-height: 30px;
+    }
+}
+
+.mui-checkbox{
+
+}
+/************************* end *******************************/
+/**
+*	mui-btns 一行有多个按钮的
+*	2016-01-21
+*/
+/************************* start ****************************/
+.mui-btns {
+    width: 100%;
+    padding: 0.15rem;
+    overflow: hidden;
+    position: relative;
+    @include flexbox;
+    .mui-btn {
+        margin-left: 0.15rem;
+        margin-right: 0.15rem;
+        width: 100%;
+        @include flexAuto;
+    }
+}
+/************************* end *******************************/
+/**
+*	mui-modal 消息提示框
+*	2016-01-21
+*/
+/************************* start ****************************/
+.mui-modal {
+    @include absWin;
+    z-index: 999;
+    display: none;
+    @extend .mui-flex-veri;
+    @extend .mui-flex-center-veri;
+    @extend .mui-flex-center-hori;
+    @at-root .mui-modal-overlay {
+        @include absWin;
+        background-color: rgba(0, 0, 0, 0.35);
+        -webkit-transition: all 0.2s ease-out;
+        opacity: 0;
+    }
+    @at-root .mui-dialog {
+        z-index: 999;
+        position: relative;
+        overflow: hidden;
+        width: 5.4rem;
+        -webkit-transform: scale(1.4);
+        opacity: 0;
+        @include borderRadius(4px);
+        background-color: rgba(255, 255, 255, 0.95);
+        @at-root .mui-dialog-content {
+            min-height: 1.8rem;
+            @extend .mui-padding-20;
+            @at-root .mui-dialog-title {
+                font-size: 0.40rem;
+                color: #0b0b0b;
+                @extend .mui-text-center;
+                @extend .mui-ellipsis-1;
+                line-height: 0.50rem;
+            }
+            @at-root .mui-dialog-msg {
+                font-size: 0.32rem;
+                color: #3d4145;
+                line-height: 0.40rem;
+                @extend .mui-padding-top-10;
+                @extend .mui-flex;
+                @extend .mui-flex-center-hori;
+            }
+        }
+        @at-root .mui-dialog-buttons {
+            @extend .mui-flex;
+            @extend .mui-line-top;
+            border-radius: 0 0 5px 5px;
+            @at-root .mui-dialog-button {
+                @extend .mui-btn;
+                @extend .mui-btn-block;
+                @extend .mui-btn-big;
+                font-weight: 500;
+                color: #e94646;
+                background-color: rgba(0, 0, 0, 0);
+                &:active {
+                    background-color: #e0e0e0;
+                    color: #e94646;
+                }
+                &:first-child {
+                    border-radius: 0 0 0 5px;
+                }
+                &:last-child {
+                    border-radius: 0 0 5px 0;
+                }
+                &:nth-child(2) {
+                    @extend .mui-line-left;
+                }
+            }
+        }
+    }
+    &.mui-modal-show {
+        .mui-dialog {
+            -webkit-animation: messageAnimationIn 0.2s ease-out forwards;
+        }
+        >.mui-modal-overlay {
+            opacity: 1;
+        }
+    }
+    &.mui-modal-hide {
+        .mui-dialog {
+            -webkit-animation: messageAnimationOut 0.2s ease-out forwards;
+        }
+        >.mui-modal-overlay {
+            opacity: 0;
+        }
+    }
+    &.mui-flex {
+        @extend .mui-flex;
+    }
+    &.mui-toast {
+        pointer-events: none;
+        .mui-modal-overlay {
+            transition: none;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .mui-dialog {
+            background-color: rgba(0, 0, 0, 0.725);
+            width: auto;
+            border-radius: 3px;
+            pointer-events: none;
+            >.mui-dialog-msg {
+                color: #fff;
+                padding: 0.2rem 0.3rem;
+                font-size: 0.32rem;
+                font-weight: 400;
+                pointer-events: none;
+            }
+        }
+    }
+    @-webkit-keyframes messageAnimationIn {
+        0% {
+            -webkit-transform: scale(1.4,1.4);
+            opacity: 0;
+        }
+        75% {
+            -webkit-transform: scale(0.95,0.95);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scale(1,1);
+            opacity: 1;
+        }
+    }
+    @-webkit-keyframes messageAnimationOut {
+        0% {
+            -webkit-transform: scale(1, 1);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scale(0.95, 0.95);
+            opacity: 0;
+        }
+    }
+}
+/************************* end *******************************/
+/**
+*	mui-calendar 消息提示框
+*	2016-01-21
+*/
+/************************* start ****************************/
+.mui-calendar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    min-height: 6.3rem;
+    background-color: #fff;
+    display: none;
+    @extend .mui-line-top;
+    &.mui-calendar-show {
+        display: block;
+    }
+    @at-root .mui-calendar-toolbar {
+        width: 100%;
+        height: 1.05rem;
+        @extend .mui-flex;
+        @extend .mui-flex-center-hori;
+        .mui-label {
+            color: #e94646;
+            padding-right: 0;
+            text-align: center;
+        }
+    }
+    @at-root .mui-calendar-toolbar-h {
+        @extend .mui-flex;
+        width: 3rem;
+        margin: 0 10px;
+        font-size: 0.34rem;
+        >a {
+            width: 1.0rem;
+            line-height: 1.05rem;
+            display: block;
+            text-align: center;
+        }
+        >.mui-label {
+            width: 1.0rem;
+            line-height: 1.05rem;
+        }
+    }
+    @at-root .mui-calendar-weeks {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        font-size: 0.30rem;
+        color: #777777;
+        >ol {
+            width: 100%;
+            height: 0.75rem;
+            position: relative;
+            @extend .mui-flex;
+            @extend .mui-flex-center-hori;
+            @at-root .mui-calendar-weeks-day {
+                @extend .mui-flex-auto;
+                @extend .mui-text-center;
+                line-height: 0.75rem;
+            }
+        }
+        @extend .mui-line-bottom;
+    }
+    @at-root .mui-calendar-months {
+        position: relative;
+        height: 5.4rem;
+        @at-root .mui-calendar-months-wrapper {
+            width: 100%;
+            position: relative;
+            height: 5.4rem;
+        }
+        @at-root .mui-calendar-month {
+            width: 100%;
+            min-height: 5.4rem;
+            color: #333333;
+            font-size: 0.30rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform 0 cubic-bezier(0.1, 0.57, 0.1, 1);
+            @at-root .mui-calendar-month-current {
+                transform: translateX(0);
+            }
+            @at-root .mui-calendar-month-prev {
+                transform: translateX(-100%);
+            }
+            @at-root .mui-calendar-month-next {
+                transform: translateX(100%);
+            }
+            @at-root .mui-calendar-month-row {
+                @extend .mui-flex;
+                @extend .mui-flex-center-hori;
+                @extend .mui-line-bottom;
+                height: 0.9rem;
+                @at-root .mui-calendar-month-day {
+                    @extend .mui-flex-auto;
+                    @extend .mui-flex;
+                    @extend .mui-flex-center-hori;
+                    @extend .mui-flex-center-veri;
+                    >span {
+                        width: 0.7rem;
+                        height: 0.7rem;
+                        display: block;
+                        @extend .mui-text-center;
+                        line-height: 0.7rem;
+                    }
+                    &.mui-calendar-month-prevday {
+                        >span {
+                            color: #cccccc;
+                        }
+                    }
+                    &.mui-calendar-month-nextday {
+                        >span {
+                            color: #cccccc;
+                        }
+                    }
+                    &.mui-calendar-month-today {
+                        &:active {
+                            >span {
+                                background-color: #e3e3e3;
+                                border-radius: 50%;
+                                color: #fff;
+                            }
+                        }
+                        >span {
+                            background-color: #e3e3e3;
+                            border-radius: 50%;
+                            color: #fff;
+                        }
+                    }
+                    &:active {
+                        >span {
+                            background-color: #e3e3e3;
+                            border-radius: 50%;
+                        }
+                    }
+                    &.mui-calendar-month-selected {
+                        &:active {
+                            >span {
+                                background-color: #e94646;
+                                border-radius: 50%;
+                                color: #fff;
+                            }
+                        }
+                        >span {
+                            background-color: #e94646;
+                            border-radius: 50%;
+                            color: #fff;
+                        }
+                    }
+                }
+                &:last-child {
+                    &:after {
+                        background: none;
+                    }
+                }
+            }
+        }
+    }
+}
+/************************* end *******************************/
+/**
+*	mui-catelog
+*	2016-03-01
+*/
+/************************* start ****************************/
+
+.mui-catelog{
+    position: absolute;
+    width: 1.5rem;
+    height: 1.75rem;
+    @at-root #{&}-picture{
+        margin: 0 auto;
+        width: 1rem;
+        height: 1rem;
+    }
+    @at-root #{&}-title{
+        text-align: center;
+        font-size: .24rem;
+    }
+}
+
+
+/************************* end *******************************/
+/**
+*	mui-share share
+*	2016-03-01
+*/
+/************************* start ****************************/
+
+.mui-share{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 99999;
+}
+
+/************************* end *******************************/
+/**
+*	mui-shake 摇一摇
+*	2016-03-01
+*/
+/************************* start ****************************/
+.mui-shake {
+    position: absolute;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    .mui-shake-icon {
+        position: absolute;
+        width: 6rem;
+        height: 6rem;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        -webkit-animation: shake ease-in 0.6s alternate infinite;
+        animation: shake ease-in 0.6s alternate infinite;
+    }
+}
+// 摇一摇动画
+@-webkit-keyframes shake {
+    0% {
+        -webkit-transform: rotate(-30deg);
+        transform: rotate(-30deg);
+    }
+    // 50%{-webkit-transform: rotate(0deg);transform: rotate(0deg);}
+    100% {
+        -webkit-transform: rotate(30deg);
+        transform: rotate(30deg);
+    }
+}
+@keyframes shake {
+    0% {
+        -webkit-transform: rotate(-30deg);
+        transform: rotate(-30deg);
+    }
+    // 50%{-webkit-transform: rotate(0deg);transform: rotate(0deg);}
+    100% {
+        -webkit-transform: rotate(30deg);
+        transform: rotate(30deg);
+    }
+}
+/************************* end *******************************/
+/**
+*	图片展示
+*	2016-03-01
+*/
+/************************* start ****************************/
+.mui-show-picture {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 3.4rem;
+    img {
+        width: 100%;
+        height: 3.4rem;
+    }
+    .item-title {
+        position: absolute;
+        height: 0.8rem;
+        bottom: 0;
+        width: 100%;
+        background-color: rgba(0,0,0,0.5);
+        color: #fff;
+        h4 {
+            height: 0.4rem;
+            line-height: 0.4rem;
+            font-size: 0.28rem;
+            color: $whiteColor;
+        }
+        p {
+            height: 0.4rem;
+            line-height: 0.4rem;
+            font-size: 0.24rem;
+            color: $whiteColor;
+        }
+    }
+}
+/************************* end *******************************/
+/**
+*	圆形进度条
+*	2016-03-01
+*/
+/************************* start ****************************/
+.mui-circle-progress {
+    width: 140px;
+    height: 140px;
+    position: relative;
+    .right {
+        right: 0;
+    }
+    .left {
+        left: 0;
+    }
+    .circle-text {
+        position: absolute;
+        width: 100%;
+        margin-top: 0.6rem;
+        .title-upper {
+            text-align: center;
+            font-size: 30px;
+            color: $whiteColor;
+        }
+        .title-lower {
+            text-align: center;
+            font-size: 14px;
+            color: $whiteColor;
+        }
+    }
+    .circle-wrapper {
+        width: 70px;
+        height: 140px;
+        position: absolute;
+        top: 0;
+        overflow: hidden;
+    }
+    .circleProgress {
+        width: 140px;
+        height: 140px;
+        border: 5px solid transparent;
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+    }
+    .rightcircle {
+        border-top: 5px solid $lightBlueColor;
+        border-right: 5px solid $lightBlueColor;
+        right: 0;
+        transform: rotate(-135deg);
+    }
+    .leftcircle {
+        border-top: 5px solid $lightBlueColor;
+        border-right: 5px solid $lightBlueColor;
+        left: 0;
+        transform: rotate(-315deg);
+    }
+}
+/************************* end *******************************/
+/**
+*	orderlist
+*	2016-03-01
+*/
+/************************* start ****************************/
+.mui-orderlist {
+    background-color: #fff;
+    .tips {
+        color: $redColor;
+    }
+    .showpic {
+        width: 1.75rem;
+        height: 1.75rem;
+    }
+    .item-content {
+        h2 {
+            height: 1rem;
+        }
+    }
+    .score {
+        display: block;
+        color: $redColor;
+    }
+}
+/************************* end *******************************/
+/**
+*	upload
+*	2016-03-01
+*/
+/************************* start ****************************/
+.mui-upload-frame {
+    display: inline-block;
+    position: relative;
+    border: solid 1px $silverColor;
+    width: 1.4rem;
+    height: 1.4rem;
+    .mui-icon-guanbi{
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin:{
+            top: -.3rem;
+            right: -.1rem;
+        }
+    }
+    .mui-upload-pic {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    .mui-upload-input {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }
+    .mui-icon-zhaopian {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        width: 0.64rem;
+        height: 0.64rem;
+        &::before {
+            position: absolute;
+            color: $silverColor;
+            display: inline-block;
+            line-height: 0.64rem;
+            height: 0.64rem;
+        }
+    }
+}
+/************************* end *******************************/
+/**
+*	orderlist
+*	2016-03-01
+*/
+/************************* start ****************************/
+.mui-coupon {
+    display: block;
+    position: relative;
+    width: 6.7rem;
+    height: 2.6rem;
+    .card {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 6.7rem;
+        height: 2.6rem;
+    }
+    .status {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+/************************* end *******************************/
+/**
+*	mui-screen-list
+*	2016-03-01
+*/
+/************************* start ****************************/
+.mui-screen-list {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    width: 100%;
+    pointer-events: none;
+    .mui-screen-item {
+        pointer-events: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        .mui-screen-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            -webkit-transition: all 0.3s linear;
+            z-index: 1;
+            opacity: 0;
+        }
+        .mui-screen-item-content {
+            position: absolute;
+            z-index: 9;
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            transform: perspective(600px) rotateX(-90deg);
+            -webkit-transform: perspective(600px) rotateX(-90deg);
+            position: absolute;
+            width: 100%;
+            background-color: #fff;
+            transition: all 0.3s ease-out;
+            -webkit-transition: all 0.3s ease-out;
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            overflow: hidden;
+            transform-origin: center 0;
+            -webkit-transform-origin: center 0;
+            max-height: 5rem;
+        }
+        &.show {
+            .mui-screen-item-content {
+                overflow: auto;
+            }
+            pointer-events: auto;
+            .mui-screen-back {
+                opacity: 1;
+            }
+            .mui-screen-item-content {
+                transition: all 0.3s ease-out 0.3s;
+                -webkit-transition: all 0.3s ease-out 0.3s;
+                transform: perspective(600px) rotateX(0deg) translateZ(0);
+                -webkit-transform: perspective(600px) rotateX(0deg) translateZ(0);
+            }
+        }
+    }
+}
+/************************* end *******************************/
+/**
+* transition mui-tabview
+*	mui-tabview-enter
+*	mui-tabview-leave;
+*	2016-03-01
+*/
+/************************* start ****************************/
+.mui-tabview-l2r-transition {
+    transition: all 0.3s ease;
+    // transform: translateX(0%)
+}
+/* .expand-enter 定义进入的开始状态 */
+/* .expand-leave 定义离开的结束状态 */
+.mui-tabview-l2r-enter {
+    transform: translateX(100%);
+}
+.mui-tabview-l2r-leave {
+    transform: translateX(-100%);
+}
+
+
+
+.mui-tabview-r2l-transition {
+    transition: all 0.3s ease;
+    // transform: translateX(0%)
+}
+/* .expand-enter 定义进入的开始状态 */
+/* .expand-leave 定义离开的结束状态 */
+.mui-tabview-r2l-enter {
+    transform: translateX(-100%);
+}
+.mui-tabview-r2l-leave {
+    transform: translateX(100%);
+}
+
+.mui-fade-transition{
+    transition: all .6s ease;
+}
+.mui-fade{
+    @at-root #{&}-enter {
+        opacity: 0;
+    }
+    @at-root #{&}-leave {
+        opacity: 0;
+    }
+}
+
+
+/************************* end *******************************/
+/**
+* mui-countdown
+*	2016-03-01
+*/
+/************************* start ****************************/
+
+.mui-countdown{
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin-top: .2rem;
+    margin-right: .2rem;
+    .mui-iconfont{
+        margin-left: 1px;
+        font-size: .32rem;
+        &::after{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            transform: skewX(-10deg);;
+        }
+        &::before{
+            color: $whiteColor;
+            z-index: 99;
+        }
+    }
+}
+
+.mui-loading{
+    position: absolute;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    // background-color: rgba(0,0,0,0);
+    @at-root #{&}-img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        width: 1rem;
+        height: 1rem;
+        background: url(../../images/loading.gif) 50% 50% no-repeat;
+        background-size: 200% 200%;
+    }
+}
+/************************* end *******************************/
+/**
+* vue-switch
+*	2016-03-01
+*/
+/************************* start ****************************/

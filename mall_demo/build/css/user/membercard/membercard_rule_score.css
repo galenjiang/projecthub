@@ -1,0 +1,1 @@
+.list-question{padding:.4rem;background-color:#fff}.list-question .question-title{margin-bottom:.2rem}.list-question .item{position:relative;padding-left:.4rem;padding-bottom:.25rem}.list-question .item::after{content:"";position:absolute;top:.1rem;left:.1rem;width:.1rem;height:.1rem;border-radius:.05rem;background-color:#000}

@@ -1,0 +1,48 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/wifi/wifi.css" />
+</block>
+<block name="content">
+    <div class="mui-wrapper mui-flex mui-darkbg" id="wifi">
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">连接wifi</h1>
+                <a href="{:U('Home/home')}" class="mui-pull-left"><i class="mui-iconfont mui-icon-back"></i></a>
+            </div>
+        </header>
+        <section class="mui-body" id="wifi_bg">
+            <div id="slider" class="swipe">
+                <div class="swipe-wrap">
+                    <a v-for="item in bannerList" class="figure" :href="item.url">
+                        <img :src="item.img" />
+                    </a>
+                </div>
+                <ol class="indicators">
+                    <li v-for="item in bannerList" class="indicator" :class="{'active': $index == 0}"></li>
+                </ol>
+            </div>
+            <!-- weixin -->
+            <div class="weixin">
+                <img src="__PUBLIC__/mall/images/weixin_show.png" alt="" />
+            </div>
+            <div class="weixinTip">长按并识别二维码即可免费登录WiFi</div>
+            <!--         <div class="form mui-form mui-margin-20-0 mui-padding-20">
+          <div class="mui-form-row">
+            <i class="mui-iconfont mui-icon-shouji"></i>
+            <input class="mui-form-input" type="tel" placeholder="请输手机号码">
+          </div>
+          <div class="mui-form-row mui-margin-20-0">
+            <input class="mui-form-input mui-grid" type="tel" placeholder="请输入验证码">
+            <a href="javascript:void(0)" class="mui-btn mui-btn-golden mui-btn-outlined mui-btn-big">获取验证码</a>
+          </div>
+          <span class="tips">短信验证码已发送到13554879865</span>
+        </div>
+        <div class="mui-margin-20">
+          <a href="{:U('Wifi/wifi_success')}" class="mui-btn mui-btn-yellow mui-btn-big mui-btn-block mui-margin-5-0">免费上网</a>
+        </div> -->
+        </section>
+    </div>
+</block>
+<block name="script">
+    <script src="__PUBLIC__/mall/script/wifi/wifi.js"></script>
+</block>

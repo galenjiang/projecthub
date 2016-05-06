@@ -1,0 +1,132 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/integral/integral_comment.css" type="text/css" charset="utf-8">
+</block>
+<block name="content">
+    <div v-cloak class="mui-wrapper goodsCommentPage brandCommentPage mui-darkbg" id="integralComment">
+        <header class="mui-header" id="header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">礼品详情</h1>
+                <a href="javascript:history.back()" class="mui-pull-left">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+            </div>
+        </header>
+        <mui-tabs :tab-list="tablist" :cur="cur"></mui-tabs>
+        <section class="picture mui-body" v-show="cur == 0">
+            <div>{{{infodata.content}}}</div>
+            <div v-if="!infodata.content">
+                <h1 class="mui-text-center mui-margin-top-20">暂无详情</h1>
+            </div>
+
+        </section>
+        <!-- <section class="details mui-body" v-show="cur == 1">
+            <ul class="mui-list">
+                <li class="mui-list-cell">
+                    <p class="details-item-title mui-flex-auto">品牌</p>
+                    <p>bose</p>
+                </li>
+                <li class="mui-list-cell">
+                    <p class="details-item-title mui-flex-auto">型号</p>
+                    <p>苹果版 灰白</p>
+                </li>
+                <li class="mui-list-cell">
+                    <p class="details-item-title mui-flex-auto">类型</p>
+                    <p>耳机</p>
+                </li>
+                <li class="mui-list-cell">
+                    <p class="details-item-title mui-flex-auto">佩戴方式</p>
+                    <p>耳塞式</p>
+                </li>
+                <li class="mui-list-cell">
+                    <p class="details-item-title mui-flex-auto">颜色</p>
+                    <p>白色</p>
+                </li>
+                <li class="mui-list-cell">
+                    <p class="details-item-title mui-flex-auto">翻新类型</p>
+                    <p>全新</p>
+                </li>
+            </ul>
+        </section> -->
+        <section class="mui-body" v-show="cur == 1">
+            <div class="brand-comment">
+                <ul class="mui-comment">
+                    <li v-for="item in commentlist" class="mui-comment-cell">
+                        <img class="mui-comment-headerimg" :src="item.header_url">
+                        <div class="mui-comment-info">
+                            <div class="mui-comment-info-header">
+                                <label class="mui-comment-header-name">{{item.user_name}}</label>
+                                <span class="mui-comment-header-time">{{item.replay_time}}</span>
+                                <ul :class="'mui-stars mui-star-'+ item.level">
+                                    <li class="mui-star"></li>
+                                    <li class="mui-star"></li>
+                                    <li class="mui-star"></li>
+                                    <li class="mui-star"></li>
+                                    <li class="mui-star"></li>
+                                </ul>
+                            </div>
+                            <div class="mui-comment-text">
+                                <p>{{item.content}}</p>
+                            </div>
+                            <ul class="mui-comment-photos">
+                                <li v-for="el in item.img" Use track-by="$index" class="mui-comment-photo">
+                                    <img :src="el">
+                                </li>
+                            </ul>
+                            <div v-if="item.replay" class="mui-comment-reply">
+                                <p>
+                                    <label><i class="mui-iconfont mui-icon-kefu"></i>客服回复：</label>
+                                    {{item.replay}}
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <footer class="mui-padding-10">
+            <a v-touch:tap="openPay" href="javascript:;" class="mui-btn mui-btn-yellow mui-btn-block mui-btn-big rightChange">立即兑换</a>
+        </footer>
+        <div v-cloak class="payment-mask" v-show="payShow">
+            <div class="payment">
+                <a v-touch:tap="closePay" href="javascript:;" class="closePay">
+                    <i class="mui-iconfont mui-icon-guanbi"></i>
+                </a>
+                <div class="payment-title clearfix">
+                    <img src="" alt="">
+                    <div class="payment-title-body">
+                        <h4 class="mui-margin-top-10 mui-ellipsis-2">{{infodata.name}}</h4>
+                        <p>
+                            <span class="score">{{infodata.integral}}</span>
+                            <span class="score-name">积分</span>
+                            <span class="price">支付{{infodata.price}}元</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="payment-count mui-line-top">
+                    <span class="payment-count-title">选择数量</span>
+                    <div class="payment-count-body">
+                        <span v-touch:tap="minus" class="minus" :class="{active: count == 1}">-</span>
+                        <span class="count">{{count}}</span>
+                        <span v-touch:tap="plus" class="plus">+</span>
+                    </div>
+                </div>
+                <div class="payment-detail mui-line-top">
+                    <div class="payment-detail-upper">
+                        <span>共{{count}}件礼品，合计积分：</span>
+                        <span class="score">{{infodata.integral*count}}</span>
+                    </div>
+                    <div class="payment-detail-lower">需支付金额（元）：
+                        <span class="price">{{infodata.price*count}}</span>
+                    </div>
+                </div>
+                <footer class="mui-footer mui-line-top mui-btns">
+                    <a v-touch:tap="pay" href="javascript:;" class="mui-btn mui-btn-blue mui-btn-block mui-btn-big">立即支付</a>
+                </footer>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/mall/script/integral/integral_comment.js" /></script>
+</block>

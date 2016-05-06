@@ -1,0 +1,57 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/parking/parking_pay_detail.css" />
+</block>
+<block name="content">
+    <div class="mui-wrapper brandPage mui-darkbg">
+        <header class="mui-header" id="header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">确认金额</h1>
+                <a href="javascript:history.back()" class="mui-pull-left" id="back">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+            </div>
+        </header>
+        <section class="mui-body">
+            <ul class="mui-list">
+                <li class="mui-list-cell mui-flex-veri mui-margin-bottom-15">
+                    <h2>沪A90909
+                        <span>金额</span>
+                    </h2>
+                    <h2 class="parking-info-red">时长：1:32:23
+                        <span>￥13.00</span>
+                    </h2>
+                </li>
+                <li class="mui-list-cell">
+                    <h2 class="mui-flex-auto">积分抵扣</h2>
+                    <p class="parking-info-silver">200积分抵扣2小时</p>
+                    <p class="parking-info-red">￥ -10.00</p>
+                </li>
+
+                <li class="mui-list-cell">
+                    <h2 class="mui-flex-auto">金牌会员停车九折</h2>
+                    <p class="parking-info-red">￥ -3.00</p>
+                </li>
+                <li class="mui-list-cell">
+                    <h2 class="mui-flex-auto">消费满99免费30分钟</h2>
+                    <p class="parking-info-red">￥ -3.00</p>
+                </li>
+                <li class="mui-list-cell">
+                    <h2 class="mui-flex-auto">指定商户消费免费30分钟</h2>
+                    <p class="parking-info-red">￥ -3.00</p>
+                </li>
+            </ul>
+        </section>
+        <footer class="mui-footer mui-line-top">
+            <div class="paking-money mui-line-bottom mui-padding-20">
+                实际支付
+                <label>￥12.00</label>
+            </div>
+            <div class="footer-btn mui-padding-15">
+                <a href="{:U('parking_pay_success')}" class="mui-btn mui-btn-primary mui-btn-big mui-btn-block">提交确认</a>
+            </div>
+        </footer>
+    </div>
+</block>
+<block name="script">
+</block>

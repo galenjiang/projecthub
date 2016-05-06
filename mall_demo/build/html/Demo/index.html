@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="Keywords" content="乐坊商城">
+    <meta name="Description" content="乐坊商城">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+
+    <!-- 之前的设置，固定width=设备width  scale=1,rem:设计稿/100来计算，会产生1px -->
+    <!-- <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimum-scale=1.0,maximum-scale=1.0" /> -->
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>title</title>
+    <!-- <script>+ function(b) {var h = document.documentElement,w = h.clientWidth;h.style.fontSize = w / b + "px";}(7.5);</script> -->
+    <script>
+        (function(){
+            var docEl = document.documentElement,
+                fontEl = document.createElement('style'),
+                metaEl = document.querySelector('meta[name="viewport"]'),
+                dpr = window.devicePixelRatio || 1,
+
+                // 设计稿 375px*2/100 *rem = clientWidth*dpr
+                rem = docEl.clientWidth * dpr / 7.5,
+                scale = 1 / dpr;
+
+            // 设置meta viewport，进行缩放，达到高清效果
+            metaEl.setAttribute('content', 'width=' + docEl.clientWidth * dpr + ',initial-scale=' + scale + ',maximum-scale=' + scale + ', minimum-scale=' + scale + ',user-scalable=no');
+
+            // 设置data-dpr属性，留作的css hack之用
+            docEl.setAttribute('data-dpr', dpr);
+
+            // 动态写入样式
+            docEl.firstElementChild.appendChild(fontEl);
+            fontEl.innerHTML = 'html{font-size:' + rem + 'px!important;}';
+
+            // 给js调用的，某一dpr下rem和px之间的转换函数
+            var remUtil = {
+                rem2px: function(v) {
+                    v = parseFloat(v);
+                    return v * rem;
+                },
+                px2rem: function(v) {
+                    v = parseFloat(v);
+                    return v / rem;
+                },
+                dpr: dpr,
+                remValue: rem
+            }
+            window.rem = remUtil;
+
+        })()
+    </script>
+    <link rel="stylesheet" href="/css/common/reset.css" />
+    <link rel="stylesheet" href="/css/common/mui.css" />
+    <link rel="stylesheet" href="/css/common/vue-components.css" />
+<link rel="stylesheet" href="/css/demo/app.css">
+</head>
+<body ontouchstart>
+<div class="container">
+    <header>header</header>
+    <section class="content">
+        <div class="div1">
+            字体大小
+        </div>
+        <br>
+        <div class="div2">
+            <a href="javascript:;">a点击</a>
+            <p class="testp">p点击</p>
+            <h1>h1</h1>
+            <h2>h2</h2>
+            <h3>h3</h3>
+            <h4>h4</h4>
+            <h5>h5</h5>
+            <h6>h6</h6>
+        </div>
+        <div class="div3">
+
+
+        </div>
+        <p>内容</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p>内容</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p>内容</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p>内容</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p>内容</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p>内容</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p>内容</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p>内容</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p>内容</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p>内容</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p>内容</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p>内容</p>
+        <br>
+        <br>
+        <br>
+        <br>
+    </section>
+    <footer>footer</footer>
+</div>
+<script type="text/javascript" src="/js/common/vue.js"></script>
+<script type="text/javascript" src="/js/common/lodash.min.js"></script>
+<script type="text/javascript" src="/js/common/vue-resource.js"></script>
+<script type="text/javascript" src="/js/common/vue-async-data.js"></script>
+<script type="text/javascript" src="/js/common/hammer.js"></script>
+<script type="text/javascript" src="/js/common/vue-touch.js"></script>
+<script type="text/javascript" src="/js/common/mui.js"></script>
+<script type="text/javascript" src="/js/common/vue.component.js"></script>
+<script type="text/javascript" src="/js/common/configure.js"></script>
+<script type="text/javascript" src="/js/common/wechatapi.js"></script>
+<script type="text/javascript" src="/js/common/swipe.js"></script>
+<script src="/js/demo/app.js"></script>  
+<!-- <script src="/js/common/common.js"></script> -->
+</body>
+</html>

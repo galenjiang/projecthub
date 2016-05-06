@@ -1,0 +1,33 @@
+.parking-licence{ 
+	background-color:#fff;
+	.input{
+		position: relative;
+		height:0.7rem; 
+		border-radius:10px;
+		padding:0 0.3rem;
+		&:after{
+			width: 200%;
+		    height: 200%; 
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    content: " ";
+		    -webkit-transform: scale(0.5) translateZ(0);
+		    transform: scale(0.5) translateZ(0);
+		    border-radius: 6px;
+		    -webkit-transform-origin: 0 0;
+		    transform-origin: 0 0;
+		    pointer-events: none;
+		    z-index: 9;
+		    border: 1px solid #777; 
+		}
+		input{
+			display:block;
+			height:100%; 
+		}
+	}
+}
+
+.mui-footer{
+	background-color:#fff;
+}

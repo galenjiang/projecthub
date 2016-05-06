@@ -1,0 +1,48 @@
+@import "../brand/brand-list";
+
+// 在线排号
+.brand-list-order{
+	color: #b01d23;
+	width: 1.2rem;
+	height: 1.0rem;
+	>.mui-iconfont{
+		font-size: 0.5rem;
+	}
+	line-height: 0.7rem;
+	text-align: center;
+	padding-bottom: 0.3rem;
+	position: relative;
+	&:after{
+		width: 100%;
+		line-height: 0.3rem;
+		text-align: center;
+		font-size: 0.24rem;
+		content: "在线排号";
+		position: absolute;
+		bottom: 0;
+		left: 0;
+	}
+}
+
+
+.brand-label{
+	display: inline-block;
+	margin-left: 0.1rem;
+	margin-right: 0.1rem;
+	font-size: 0.24rem;
+	text-align:center;
+	color: #fff;
+	height: 0.4rem;
+	width: 0.4rem;
+	line-height: 0.4rem;
+	border-radius: 4px;
+	&:first-child{
+		margin-left: 0.4rem;
+	}
+	@at-root .brand-label-tuan{
+		background-color: #ff7940;
+	}
+	@at-root .brand-label-jian{
+		background-color: #49bf30;
+	}
+}

@@ -1,0 +1,50 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/user/membercard/membercard_right.css" />
+</block>
+<block name="content">
+    <div v-cloak class="mui-wrapper mui-darkbg" id="right">
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">会员特权</h1>
+                <a href="javascript:history.back()" class="mui-pull-left">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+                <a href="{:U('membercard_rule_right')}" class="mui-pull-right rule">规则说明</a>
+            </div>
+        </header>
+        <section class="mui-body">
+            <div class="head mui-padding-top-20 mui-margin-bottom-20 mui-text-center">
+                <h1 class="level">我的等级：
+                    <span class="level-name">{{userdata.rankname}}</span>
+                </h1>
+                <h3 class="level mui-padding-10">当前积分：
+                    <span class="level-score">{{userdata.integral}}</span>
+                </h3>
+                <!-- <div class="progress mui-margin-10">当前进度</div> -->
+            </div>
+            <div v-if="rightList.length" class="right mui-margin-bottom-20">
+                <div class="right-title mui-line-bottom mui-padding-10-0 ">我的特权</div>
+                <ul class="right-body mui-grids mui-padding-5-0">
+                    <li v-for="item in rightList" :class="{'mui-line-left': $index%3 != 0}" class="mui-grid mui-grid-3 mui-margin-bottom-20">
+                        <img :src="item.pic_path" alt="" />
+                        <p class="mui-label">{{item.name}}</p>
+                    </li>
+                </ul>
+            </div>
+            <div v-if="canGetRightList.length" class="more-right">
+                <div class="right-title mui-line-bottom mui-padding-10-0 ">更多特权</div>
+                <ul class="right-body mui-grids mui-padding-5-0">
+                    <li v-for="item in canGetRightList" :class="{'mui-line-left': $index%3 != 0}" class="mui-grid mui-grid-3 mui-margin-bottom-20">
+                        <img :src="item.pic_path" alt="" />
+                        <p class="mui-label">{{item.name}}</p>
+                    </li>
+
+                </ul>
+            </div>
+        </section>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/mall/script/user/membercard/membercard_right.js"></script>
+</block>

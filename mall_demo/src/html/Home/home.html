@@ -1,0 +1,113 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/home/home.css" />
+</block>
+<block name="content">
+    <div id="app">
+        <div v-if="loading" class="mui-loading">
+            <span class="mui-loading-img"></span>
+        </div>
+        <section class="menu mui-overflow-scroll">
+            <h1 class="menu-logo">
+                <img class="menu-logo-img" src="__PUBLIC__/mall/images/logo_home.jpg" />
+            </h1>
+            <div class="menu-nav">
+                <a href="{:U('User/user_center')}" class="menu-nav-item mui-flex mui-flex-center-veri mui-padding-10-0 mui-line-bottom" href="#">
+                    <i class="mui-iconfont mui-icon-huiyuan mui-margin-0-20"></i>
+                    <label>会员</label>
+                </a>
+                <a href="{:U('User/integral')}" class="menu-nav-item mui-flex mui-flex-center-veri mui-padding-10-0 mui-line-bottom" href="#">
+                    <i class="mui-iconfont mui-icon-jifen mui-margin-0-20"></i>
+                    <label>积分</label>
+                </a>
+                <a href="{:U('Parking/parking_info')}" v-unfinished class="menu-nav-item mui-flex mui-flex-center-veri mui-padding-10-0 mui-line-bottom" href="#">
+                    <i class="mui-iconfont mui-icon-tingche mui-margin-0-20"></i>
+                    <label>停车</label>
+                </a>
+                <a href="{:U('Activity/activity_list')}" class="menu-nav-item mui-flex mui-flex-center-veri mui-padding-10-0 mui-line-bottom" href="#">
+                    <i class="mui-iconfont mui-icon-huodong mui-margin-0-20"></i>
+                    <label>活动</label>
+                </a>
+                <a href="{:U('Brand/brand_list')}" class="menu-nav-item mui-flex mui-flex-center-veri mui-padding-10-0 mui-line-bottom" href="#">
+                    <i class="mui-iconfont mui-icon-shanghu mui-margin-0-20"></i>
+                    <label>商户</label>
+                </a>
+                <a href="{:U('home_change_mall')}" class="menu-nav-item mui-flex mui-flex-center-veri mui-padding-10-0 mui-line-bottom" href="#">
+                    <i class="mui-iconfont mui-icon-qiehuan mui-margin-0-20"></i>
+                    <label>切换商城</label>
+                </a>
+                <a href="{:U('User/setting_about_us')}" class="menu-nav-item mui-flex mui-flex-center-veri mui-padding-10-0 mui-line-bottom" href="#">
+                    <i class="mui-iconfont mui-icon-guanyu mui-margin-0-20"></i>
+                    <label>关于我们</label>
+                </a>
+                <a href="{:U('User/setting_suggest')}" class="menu-nav-item mui-flex mui-flex-center-veri mui-padding-10-0 mui-line-bottom" href="#">
+                    <i class="mui-iconfont mui-icon-fankui mui-margin-0-20"></i>
+                    <label>意见反馈</label>
+                </a>
+            </div>
+        </section>
+        <div :class="{'active': menuShow}" class="mui-wrapper homePage mui-darkbg" id="home">
+            <div class="mask-tap" v-touch:tap="collapseMenu"></div>
+            <header class="mui-header mui-padding-0-10" id="header">
+                <div class="mui-bar">
+                    <a v-touch:tap="tabMenu" href="javascript:;" class="mui-pull-left">
+                        <i class="mui-iconfont-big mui-iconfont mui-icon-lefang "></i>
+                    </a>
+                    <a v-touch:tap="tabMenu" class="caidan" href="javascript:;" class="mui-pull-left">
+                        <i class="mui-iconfont-big mui-iconfont mui-icon-caidan"></i>
+                    </a>
+                    <a href="{:U('home_search')}" class="mui-pull-right mui-flex mui-flex-center-hori mui-flex-veri mui-flex-center-veri">
+                        <i class="mui-iconfont mui-icon-sousuo"></i>
+                        <span class="logo-tip">搜索</span>
+                    </a>
+                    <a href="{:U('Wifi/wifi')}" class="mui-pull-right mui-flex mui-flex-center-hori mui-flex-veri mui-flex-center-veri">
+                        <i class="mui-iconfont mui-icon-wifi"></i>
+                        <span class="logo-tip">wifi</span>
+                    </a>
+                    <a href="{:U('home_change_mall')}" class="mui-pull-right mui-flex mui-flex-center-hori mui-flex-veri mui-flex-center-veri">
+                        <i class="mui-iconfont mui-icon-qiehuan"></i>
+                        <span class="logo-tip">切换商城</span>
+                    </a>
+                </div>
+            </header>
+            <section v-cloak class="mui-body">
+                <section class="body-header">
+                    <div class="swiper-container banner-frame" v-show="bannerList.length != 0">
+                        <div id="slider" class="swipe">
+                            <div class="swipe-wrap">
+                                <a v-for="item in bannerList" class="figure" :href="item.url">
+                                    <img :src="item.img" />
+                                </a>
+                            </div>
+                            <ol class="indicators">
+                                <li v-for="item in bannerList" class="indicator" :class="{'active': $index == 0}"></li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="mui-grids functionMenu">
+                        <a href="{:U('User/integral')}" class="mui-grid mui-grid-3">
+                            <span class="mui-grid-img integral"></span>
+                            <p>积分</p>
+                        </a>
+                        <a href="{:U('Parking/parking_info')}" v-unfinished class="mui-grid mui-grid-3">
+                            <span class="mui-grid-img park"></span>
+                            <p>停车</p>
+                        </a>
+                        <a href="{:U('User/user_center')}" class="mui-grid mui-grid-3">
+                            <span class="mui-grid-img member"></span>
+                            <p>会员</p>
+                        </a>
+                    </div>
+                </section>
+                <div class="hot-activity" v-refresh :allowrefresh="!loading" callback="getActivityList">
+                    <mui-show-picture v-for="item in activityList" :url="item.url" :img="item.img" :text-upper="item.textUpper" :text-lower="item.textLower">
+                    </mui-show-picture>
+                </div>
+            </section>
+        </div>
+    </div>
+</block>
+<block name="script">
+    {:Widget('HomeShare/HomeShare',array())}
+    <script type="text/javascript" src="__PUBLIC__/mall/script/home/home.js"></script>
+</block>

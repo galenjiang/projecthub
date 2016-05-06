@@ -1,0 +1,75 @@
+<extend name="Base/base" />
+<block name="content">
+
+    <div class="mui-wrapper goodsDetailPage mui-darkbg">
+        <header class="mui-header" id="header">
+            <div class="mui-bar mui-line-bottom">
+                <a href="address-detail.html" class="mui-pull-left" id="back">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+                <h1 class="mui-bar-title">编辑收货地址</h1>
+            </div>
+        </header>
+        <section class="mui-body">
+            <div class="address-list">
+                <ul class="mui-list">
+                    <li class="mui-list-cell">
+                        <h2>真实姓名</h2>
+                        <input type="type" class="mui-flex-auto " maxlength="20" placeholder="请输入您的真实姓名" autocapitalize="off" autocorrect="off" value="曾凤飞">
+                    </li>
+                    <li class="mui-list-cell">
+                        <h2>手机号码</h2>
+                        <input type="tel" class="mui-flex-auto " maxlength="11" placeholder="请输入您的手机号码" autocapitalize="off" autocorrect="off" value="13625454587">
+                    </li>
+                    <li class="mui-list-cell">
+                        <h2>所在省份</h2>
+                        <div class="address-select mui-flex-auto mui-flex">
+                            <select id="province" class="">
+                                <option value=''>请选择省份</option>
+                                <option value='北京市'>北京市</option>
+                                <option value='上海市' selected>上海市</option>
+                                <option value='江苏省'>江苏省</option>
+                            </select>
+                            <i class="mui-iconfont mui-icon-right"></i>
+                        </div>
+                    </li>
+                    <li class="mui-list-cell">
+                        <h2>所在地区</h2>
+                        <div class="mui-flex mui-flex-auto mui-flex-auto">
+                            <div class="address-select mui-flex-auto mui-flex mui-padding-right-10">
+                                <select id="province">
+                                    <option value=''>请选择城市</option>
+                                    <option value='上海市' selected>上海市</option>
+                                </select>
+                                <i class="mui-iconfont mui-icon-right"></i>
+                            </div>
+                            <div class="address-select mui-flex-auto mui-flex mui-line-left mui-padding-left-10">
+                                <select id="province">
+                                    <option value=''>请选择地区</option>
+                                    <option value='黄浦区' selected>黄浦区</option>
+                                    <option value='闸北区'>闸北区</option>
+                                    <option value='普陀区'>普陀区</option>
+                                </select>
+                                <i class="mui-iconfont mui-icon-right"></i>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="mui-list-cell">
+                        <h2>详细地址</h2>
+                        <input type="type" class="mui-flex-auto " maxlength="30" placeholder="请输入您的详细地址" autocapitalize="off" autocorrect="off" value="上海市黄浦区XX路xx号">
+                    </li>
+                    <li class="mui-list-cell">
+                        <h2>邮政编码</h2>
+                        <input type="tel" class="mui-flex-auto " maxlength="6" placeholder="请输入所在地的邮编" autocapitalize="off" autocorrect="off" value="000000">
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <footer class="mui-footer mui-padding-15 mui-line-top">
+            <a href="address.html" class="mui-btn mui-btn-primary mui-btn-middle mui-btn-block">确认修改</a>
+        </footer>
+    </div>
+</block>
+<block name="script">
+    <link rel="stylesheet" href="/css/user/address/address-add.css" />
+</block>

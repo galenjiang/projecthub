@@ -1,0 +1,53 @@
+@import "../common/configure.scss";
+
+.parking-info-today{
+	background-color:#fff;
+	.mui-arrow-right{
+		display:block;
+		h2{
+			label{
+				color:#e94646;
+			}
+		}
+		p{
+			color:$silverColor;
+		}
+	}
+} 
+.mui-list{
+	.mui-list-cell{
+		h2{
+			position:relative;
+			span{
+				position:absolute;
+				right:0;
+			}
+		}
+		p{
+			color:$silverColor;
+			position:relative;
+			span{
+				position:absolute;
+				right: 0;
+			}
+		}
+	}
+}
+
+.mui-block-title{
+	position: relative;
+	&:before{
+		width: 0.06rem;
+		height: 50%;
+		content: " ";
+		background-color: $goldenColor;
+		top: 25%;
+		left: 0;
+		position: absolute;
+		z-index: 9;
+	}
+}
+
+.price{
+	color: $redColor;
+}

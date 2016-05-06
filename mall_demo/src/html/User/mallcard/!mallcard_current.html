@@ -1,0 +1,47 @@
+<extend name="Base/base" />
+<block name="content">
+
+    <div class="mui-wrapper mui-flex mui-darkbg">
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <a href="/html/user/user-center.html" class="mui-pull-left">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+                <h1 class="mui-bar-title">我的卡券包</h1>
+                <a href="/html/user/mallcard/mallcard-getcard.html" class="mui-label mui-pull-right getcard">领券</a>
+            </div>
+        </header>
+        <div class="mui-tabs">
+            <ul class="mui-tab">
+                <li class="mui-tab-cell  mui-tab-active">
+                    当前卡券
+                </li>
+                <li class="mui-tab-cell">
+                    历史卡券
+                </li>
+            </ul>
+            <div class="mui-tab-line"></div>
+        </div>
+
+        <section class="mui-body">
+            <ul class="list-card mui-margin-0-20">
+                <li class="item mui-margin-10-0">
+                    <img class="item-card" src="/images/test/card.jpg" alt="" />
+                </li>
+                <li class="item mui-margin-10-0">
+                    <img class="item-card" src="/images/test/card.jpg" alt="" />
+                </li>
+                <li class="item mui-margin-10-0">
+                    <img class="item-card" src="/images/test/card.jpg" alt="" />
+                </li>
+                <li class="item mui-margin-10-0">
+                    <img class="item-card" src="/images/test/card.jpg" alt="" />
+                </li>
+
+            </ul>
+        </section>
+    </div>
+</block>
+<block name="script">
+    <link rel="stylesheet" href="/css/user/mallcard/mallcard-current.css" />
+</block>

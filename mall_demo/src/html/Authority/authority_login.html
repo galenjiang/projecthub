@@ -1,0 +1,36 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/authority/authority_login.css" />
+</block>
+<block name="content">
+    <div class="mui-wrapper loginPage" id="loginPage">
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">登录</h1>
+                <a href="javascript:history.back()" class="mui-pull-left">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+            </div>
+        </header>
+        <section class="mui-body">
+            <div class="mui-form loginFrom mui-margin-10-0">
+                <div class="mui-form-row">
+                    <i class="mui-iconfont mui-icon-huiyuan"></i>
+                    <input class="submit-item mui-form-input" type="tel" maxlength="11" placeholder="请输手机号" v-model="phone" />
+                </div>
+                <div class="mui-form-row mui-line-bottom">
+                    <i class="mui-iconfont mui-icon-mima"></i>
+                    <input class="submit-item mui-form-input" type="password" placeholder="请输入您的密码" v-model="password" />
+                </div>
+            </div>
+            <div class="forgotPasd clearfix">
+                <a href="{:U('authority_reset')}" class="forgotPasd-btn mui-btn mui-btn-default">忘记密码?</a>
+            </div>
+            <a href="javascript:;" v-touch:tap="login" class="mui-margin-20-0 mui-btn mui-btn-yellow mui-btn-block mui-btn-big" id="login">登录</a>
+            <a href="{:U('authority_register')}" class="mui-margin-20-0 mui-btn mui-btn-golden mui-btn-block mui-btn-outlined mui-btn-big" id="register">快速注册</a>
+        </section>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript" src="__PUBLIC__/mall/script/authority/authority_login.js"></script>
+</block>

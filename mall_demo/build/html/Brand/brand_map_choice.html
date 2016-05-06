@@ -1,0 +1,54 @@
+<extend name="Base/base" />
+<block name="content">
+    <div class="mui-wrapper brandPage">
+        <header class="mui-header" id="header">
+            <div class="mui-bar mui-line-bottom">
+                <a href="javascript:history.back()" class="mui-pull-left" id="back">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+                <h1 class="mui-bar-title">条件筛选</h1>
+            </div>
+        </header>
+        <section class="mui-body">
+            <ul class="brand-map-menu mui-grids">
+                <li class="mui-grid mui-grid-3 mui-tv mui-line-right">
+                    <img class="mui-tv-img" src="__PUBLIC__/mall/images/brand/icon_elevator.png">
+                    <label class="mui-label">电梯优先</label>
+                </li>
+                <li class="mui-grid mui-grid-3 mui-tv mui-line-right">
+                    <img class="mui-tv-img" src="__PUBLIC__/mall/images/brand/icon_escalator.png">
+                    <label class="mui-label">扶梯优先</label>
+                </li>
+                <li class="mui-grid mui-grid-3 mui-tv">
+                    <img class="mui-tv-img" src="__PUBLIC__/mall/images/brand/icon_walk.png">
+                    <label class="mui-label">步行</label>
+                </li>
+            </ul>
+            <div class="map-choice  mui-flex mui-flex-center-veri mui-padding-20">
+                <div class="map-choice-detail mui-flex-auto">
+                    <div class="map-choice-info mui-flex mui-flex-center-veri ">
+                        <h2>起点</h2>
+                        <div class="mui-flex-auto mui-line-bottom">
+                            <input type="text" placeholder="我的位置">
+                        </div>
+                    </div>
+                    <div class="map-choice-info mui-flex mui-flex-center-veri ">
+                        <h2>终点</h2>
+                        <div class="mui-flex-auto mui-line-bottom">
+                            <input type="text" placeholder="店铺位置">
+                        </div>
+                    </div>
+                </div>
+                <i class=" mui-iconfont mui-icon-order"></i>
+            </div>
+            <div class="map-navigation-btn">
+                <a href="javascript:void(0)" class="mui-btn mui-btn-primary mui-btn-big mui-btn-block">开始导航</a>
+            </div>
+        </section>
+    </div>
+</block>
+<block name="script">
+    <link rel="stylesheet" href="__PUBLIC__/mall/css/brand/brand-map-choice.css" />
+
+
+</block>

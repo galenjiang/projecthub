@@ -1,0 +1,32 @@
+{
+    "extends": "eslint:recommended",
+    "globals": {
+        "Vue": true,
+        "Mui": true,
+        "_": true,
+        "util": true,
+        "Swipe": true,
+        "wechat": true,
+        "wx": true,
+        "url": true,
+        "event": true,
+        "require": true,
+        /*dom,bom*/
+        "FormData": true,
+        "XMLHttpRequest": true,
+        "window": true,
+        "document": true,
+        "console": true,
+        "alert": true,
+        "localStorage": true,
+        "sessionStorage": true,
+        "setTimeout": true,
+        "setInterval": true
+    },
+    "rules": {
+        "no-redeclare": "warn",
+        "no-console": "warn",
+        "no-undef": "warn",
+        "no-unused-vars": "warn"
+    }
+}

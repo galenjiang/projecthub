@@ -1,0 +1,83 @@
+<extend name="Base/base" />
+<block name="content">
+
+    <div class="mui-wrapper mui-darkbg">
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <a href="/html/user/user-center.html" class="mui-pull-left">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+                <h1 class="mui-bar-title">我的会员卡</h1>
+                <a href="/html/user/membercard/membercard-rule-score.html" class="mui-label mui-pull-right btn-rule">规则说明</a>
+            </div>
+        </header>
+        <section class="mui-body">
+            <div class="brief mui-padding-20">
+                <a href="/html/user/membercard/membercard-right.html" class="title mui-flex mui-flex-center-veri">
+                    <div class="mui-flex-auto">
+                        <div>
+                            <p>我的等级：
+                                <span class="degree">银牌会员</span>
+                            </p>
+                            <p>我的积分：
+                                <span class="score">1500</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="priority mui-flex mui-flex-veri mui-flex-center-hori mui-padding-0-20 mui-line-left">
+                        <img class="priority-img" src="/images/user/membercard/priority.png">
+                        <p class="priority-label">会员特权</p>
+                    </div>
+                    <i class="mui-iconfont mui-icon-right"></i>
+                </a>
+                <div class="progress mui-flex">
+                    <span class="progress-tips">当前进度</span>
+                    <span class="progress-scale progress-scale1">0</span>
+                    <span class="progress-scale progress-scale2">100</span>
+                    <span class="progress-scale progress-scale3">800</span>
+                    <span class="progress-scale progress-scale4">1500</span>
+                    <span class="progress-scale progress-scale5">3000</span>
+                    <div class="progress-process progress-process1"></div>
+                    <div class="progress-process progress-process2"></div>
+                    <div class="progress-process progress-process3"></div>
+                    <div class="progress-process progress-process4"></div>
+                </div>
+                <div class="go2mall mui-margin-0-20 mui-margin-top-20">
+                    <a href="/html/integral/integral-list.html" class="mui-btn mui-btn-primary mui-btn-big mui-btn-block mui-margin-5-0">积分兑换</a>
+                </div>
+            </div>
+            <div class="record">
+                <ul class="mui-list">
+                    <li class="mui-list-cell  mui-flex-center-veri">
+                        <i class="mui-iconfont mui-icon-phone"></i>
+                        <a class="mui-padding-left-10" href="/html/user/membercard/membercard-selfhelp.html">自助积分</a>
+                        <i class="mui-iconfont mui-icon-right"></i>
+                    </li>
+                    <li class="mui-list-cell  mui-flex-center-veri">
+                        <i class="mui-iconfont mui-icon-phone"></i>
+                        <a class="mui-padding-left-10" href="/html/user/membercard/membercard-charge.html">积分充值</a>
+                        <i class="mui-iconfont mui-icon-right"></i>
+                    </li>
+                    <!-- <li class="mui-list-cell  mui-flex-center-veri">
+              <i class="mui-iconfont mui-icon-phone"></i>
+              <a class="mui-padding-left-10" href="/html/user/membercard/membercard-record.html">积分记录</a>
+              <i class="mui-iconfont mui-icon-right"></i>
+            </li>
+            <li class="mui-list-cell  mui-flex-center-veri mui-margin-top-20">
+              <i class="mui-iconfont mui-icon-phone"></i>
+              <a class="mui-padding-left-10" href="/html/user/membercard/membercard-barcode.html">我的二维码</a>
+              <i class="mui-iconfont mui-icon-right"></i>
+            </li> -->
+                </ul>
+            </div>
+
+        </section>
+
+
+
+    </div>
+
+</block>
+<block name="script">
+    <link rel="stylesheet" href="/css/user/membercard/membercard.css" />
+</block>

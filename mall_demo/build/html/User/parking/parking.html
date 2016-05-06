@@ -1,0 +1,40 @@
+<extend name="Base/base" />
+<block name="css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/mall/css/user/parking/parking.css" />
+</block>
+<block name="content">
+    <div class="mui-wrapper mui-darkbg">
+        <header class="mui-header">
+            <div class="mui-bar mui-line-bottom">
+                <h1 class="mui-bar-title">我的停车记录</h1>
+                <a href="javascript:history.back();" class="mui-pull-left" id="back">
+                    <i class="mui-iconfont mui-icon-back"></i>
+                </a>
+            </div>
+        </header>
+        <section class="mui-body">
+            <div class="parking-licence mui-flex mui-padding-15 mui-flex-center-veri">
+                <h2 class="mui-flex-auto">我的车牌号
+                    <br/>
+                    <label>沪A2333</label>
+                </h2>
+                <a href="parking-licence.html" class=" mui-arrow-right">修改绑定</a>
+            </div>
+            <div class="parking-this mui-line-bottom mui-padding-20 mui-flex mui-flex-center-veri mui-margin-15-0">
+                <a href="parking-detail.html" class="mui-arrow-right mui-flex-auto">
+                    <h2>你的车停在
+                        <label>C-032</label>
+                    </h2>
+                    <p>停车中 1:32:23</p>
+                </a>
+            </div>
+            <div class="parking-record mui-padding-20 mui-flex mui-flex-center-veri">
+                <a href="parking-record.html" class="mui-arrow-right mui-flex-auto">
+                    <h2>历史停车记录</h2>
+                </a>
+            </div>
+        </section>
+    </div>
+</block>
+<block name="script">
+</block>
