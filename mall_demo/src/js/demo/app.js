@@ -9,8 +9,11 @@ component2();
 */
 
 (function(window){
+    var document = window.document;
     var common = require('../common/common').common;
     var utils = require('../common/utils').utils;
     common.init();
-    utils.console.log(utils.dateFormat(Date.now(),"yyyy-MM-dd: h: mm"));
-})(window)
+
+
+
+})(window,document)

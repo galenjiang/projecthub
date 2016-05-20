@@ -24,9 +24,9 @@
         "setInterval": true
     },
     "rules": {
-        "no-redeclare": "warn",
-        "no-console": "warn",
-        "no-undef": "warn",
-        "no-unused-vars": "warn"
+        "no-redeclare": 1,
+        "no-console": 1,
+        "no-undef": 1,
+        "no-unused-vars": 1
     }
 }
