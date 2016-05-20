@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue-router</title>
+</head>
+
+<body>
+
+    <div class="container" id="app">
+        <div id="app">
+            <h1>Hello App!</h1>
+            <p>
+                <!-- 使用指令 v-link 进行导航。 -->
+                <a v-link="{ path: '/foo', name: 'page', params: { pageNum: 1 }}">Go to Foo</a>
+                <a v-link="{ path: '/bar' }">Go to Bar</a>
+                <a v-link="{ path: '/auth' }">Go to auth</a>
+            </p>
+            <!-- 路由外链 -->
+            <router-view></router-view>
+            <router-view></router-view>
+        </div>
+    </div>
+    
+    
+    <!--引用外部链接-->
+    <script src="js/common/vue.min.js"></script>
+    <script src="js/common/vue-router.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
