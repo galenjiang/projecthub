@@ -11,8 +11,8 @@ http.createServer(function(req,res){
 
     bodyParser(req,function(reqBody){
         var config = {
-            host: '127.0.0.1',
-            port: 8080,
+            host: '192.168.1.101',
+            port: 80,
             path: urlObj.path,
             method: req.method
         };
