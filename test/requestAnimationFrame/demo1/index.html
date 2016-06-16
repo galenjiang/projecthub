@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #SomeElementYouWantToAnimate{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="SomeElementYouWantToAnimate"></div>
+
+
+    <script>
+        var i = 0;
+        function run() {
+            i++;
+            if(i < 100)
+            requestAnimationFrame(run)
+
+        }
+
+
+
+
+
+
+
+                var lastTime = 0;
+
+                window.requestAnimationFrame = function(callback, element) {
+                    var currTime = new Date().getTime();
+                    var timeToCall = Math.max(0, 16.7 - (currTime - lastTime));
+                    console.log(timeToCall)
+                    var id = window.setTimeout(function() {
+                        callback(currTime + timeToCall);
+                    }, timeToCall);
+                    lastTime = currTime + timeToCall;
+                    return id;
+                };
+
+                requestAnimationFrame(run)
+
+
+    </script>
+</body>
+
+</html>

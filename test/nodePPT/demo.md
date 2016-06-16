@@ -21,10 +21,10 @@ var nameObj ={
         alert(this.name);
     },
     waitShowName : function(){
-        setTimeout(this.showName, 1000);
-        setTimeout(function(){
-            nameObj.showName()
-        }, 1000);
+        setTimeout(this.showName, 1000); // bob
+        // setTimeout(function(){ //tom
+        //     nameObj.showName()
+        // }, 1000);
   }
 };
 nameObj.waitShowName();
@@ -46,9 +46,9 @@ nameObj.waitShowName();
                      console.log(this);
                  }
              };
-             obj.foo();
+             obj.foo(); //obj
              var bar = obj.foo;
-             bar()
+             bar() //window
 ```
 
 
@@ -64,11 +64,15 @@ nameObj.waitShowName();
     });
 
 
-    function foo(fn){
-            fn.call({});
-        }
 
-    //el.addEventListener('click', bar, false);
+    el.addEventListener('click', bar, false);
+
+
+
+
+    function foo(fn){   //this绑定为el
+            fn.call({});
+    }
 ```
 
 
@@ -93,6 +97,46 @@ Bob.showName();    //Bob
 
 当然还有很多很多例子，
 涉及 new     还有es5中的 call,apply,bind,  以及es6中的() => {}
+
+[slide]
+```javascript
+
+var obj = {
+    foo: function() {
+        setTimeout(function(){
+            console.log(this)  //直接绑定this obj
+        }.bind(this))
+    }
+}
+
+obj.foo();
+
+
+var obj = {
+    foo: function() {
+        setTimeout(() => {
+            console.log(this)  //直接绑定this obj
+        })
+    }
+}
+
+obj.foo();
+
+var obj = {
+    foo: () => {
+        setTimeout(() => {
+            console.log(this)  //直接绑定this window
+        })
+    }
+}
+
+obj.foo(); //window
+
+```
+
+
+
+[slide]
 
 lambda表达式：  
 
