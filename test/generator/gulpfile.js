@@ -58,7 +58,7 @@ gulp.task('buildhtml', function() {
 
 // 监控 html
 gulp.task('watchhtml', function() {
-    return gulp.watch(path.join(SRC, SRCCONFIG['html'],'**/*.html'), function(event) {
+    return gulp.watch(path.join(SRC, SRCCONFIG['html'], '**/*.html'), function(event) {
         // 路径
         var paths = watchPath(event, path.join(SRC, SRCCONFIG['html']), path.join(TEMPLATEDIST, SRCCONFIG['html']));
         // 打印变动路径
@@ -105,18 +105,18 @@ gulp.task('watchsass', function() {
     })
 });
 
+
 // 编译 js
 gulp.task('buildjs', function() {
-
     return gulp.src(path.join(SRC, SRCCONFIG['js'], '**/*.js'))
         .pipe(plumber())
         .pipe(through2.obj(function(file, enc, next) {
-            browserify(file.path)
-                .bundle(function(err, res) {
-                    // assumes file.contents is a Buffer
-                    file.contents = res;
-                    next(null, file);
-                });
+            var b = browserify([file.path])
+            b.bundle(function(err, res) {
+                // assumes file.contents is a Buffer
+                file.contents = res;
+                next(null, file);
+            });
         }))
         // .pipe(uglify()) //压缩js
         .pipe(gulp.dest(path.join(STATICDIST, SRCCONFIG['js'])));
@@ -125,7 +125,7 @@ gulp.task('buildjs', function() {
 // 监控 js
 gulp.task('watchjs', function() {
 
-    return gulp.watch(path.join(SRC, SRCCONFIG['js'],'**/*.js'), function(event) {
+    return gulp.watch(path.join(SRC, SRCCONFIG['js'], '**/*.js'), function(event) {
         // 路径
         var paths = watchPath(event, path.join(SRC, SRCCONFIG['js']), path.join(STATICDIST, SRCCONFIG['js']));
         // 打印变动路径

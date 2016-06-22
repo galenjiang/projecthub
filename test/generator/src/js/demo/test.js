@@ -1,3 +1,6 @@
-var a = require('./components/a')
-a();
-alert() 
+// var a = require('./components/a')
+// a();
+
+loadjs(['components'],function(a){
+    a()
+})
