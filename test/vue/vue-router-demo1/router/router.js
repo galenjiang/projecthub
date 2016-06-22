@@ -3,6 +3,7 @@ var router = new VueRouter();
 router.map({
     '/page1':{
         component: Page1,
+        auth: true,
         subRoutes: {
             '/foo': {
                 component: Foo,

@@ -39,11 +39,11 @@ var Page1 = Vue.extend({
         '</ul>' +
         '<router-view transition="fade"></router-view></div>',
     ready: function() {
-        console.log(this.$route)
+        console.log(this.$route.auth)
+
     },
     route: {
         activate: function(transition) {
-            console.log('page1')
             transition.next()
         }
     }
@@ -58,7 +58,6 @@ var Page2 = Vue.extend({
     },
     route: {
         activate: function(transition) {
-            console.log('page2')
             transition.next()
         }
     }
