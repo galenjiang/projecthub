@@ -33,7 +33,9 @@
     "gulp-util": "^3.0.7",
     "gulp-watch-path": "^0.1.0",
     "imagemin-pngquant": "^4.2.0",
-    "through2": "^2.0.1"
+    "through2": "^2.0.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
     "babel-polyfill": "^6.9.1",
