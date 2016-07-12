@@ -13,8 +13,8 @@ var SRCCONFIG = {
 var path = require('path');
 var gulp = require('gulp');
 
-//引用自动刷新浏览器
-var browserSync = require('browser-sync');
+// //引用自动刷新浏览器
+// var browserSync = require('browser-sync');
 // 监控变动路径
 var watchPath = require('gulp-watch-path');
 
@@ -22,13 +22,13 @@ var watchPath = require('gulp-watch-path');
 var ejs = require('gulp-ejs');
 
 // browserify discarded
-// var browserify = require('gulp-browserify');
-var browserify = require('browserify');
-var through2 = require('through2');
+// // var browserify = require('gulp-browserify');
+// var browserify = require('browserify');
+// var through2 = require('through2');
 
 
 //js压缩
-var uglify = require('gulp-uglify');
+// var uglify = require('gulp-uglify');
 // webpack
 var webpack = require('webpack')
 
@@ -177,15 +177,16 @@ var webpackDevConfig = require("./build/webpack.dev.conf");
 gulp.task("webpack-dev-server", function(callback) {
 	// modify some webpack config options
 	var myConfig = Object.create(webpackDevConfig);
-	myConfig.devtool = "souce-map";
+	myConfig.devtool = "soucemap";
 	myConfig.debug = true;
 
 	// Start a webpack-dev-server
 	new WebpackDevServer(webpack(myConfig), {
-		publicPath: "/" + myConfig.output.publicPath,
+		publicPath: myConfig.output.publicPath,
 		stats: {
 			colors: true
-		}
+		},
+    hot: true
 	}).listen(8080, "localhost", function(err) {
 		if(err) throw new gutil.PluginError("webpack-dev-server", err);
 		gutil.log("[webpack-dev-server]", "http://localhost:8080/webpack-dev-server/index.html");
@@ -269,8 +270,8 @@ gulp.task('broswer-sync', function() {
 // }));
 
 // 直接编译到正式环境
-gulp.task('build', ['buildhtml',
-    // "broswer-sync",
+gulp.task('build', [
+    'buildhtml',
     'buildsass',
     'buildsass',
     'webpack',
@@ -281,7 +282,6 @@ gulp.task('build', ['buildhtml',
 
 // 监控编译目录，除了js外都单独编译，js由于依赖较多，全部编译
 gulp.task('watch', [
-    // "broswer-sync",
     'watchhtml',
     'watchsass',
     'webpack-dev-server',

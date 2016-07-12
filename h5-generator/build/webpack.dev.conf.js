@@ -1,11 +1,16 @@
 var path = require('path')
+var webpack = require('webpack')
 
 module.exports = {
     entry: {
-        test: "./src/js/test.js"
+        test: [
+          "webpack-dev-server/client?http://localhost:8080/",
+          "webpack/hot/dev-server",
+          "./src/js/test.js"
+        ]
     },
     output: {
-        publicPath: "http://localhost:8080/dist",
+        publicPath: "/public/",
         path: path.resolve('dist', 'js'),
         filename: "[name].js"
     },
@@ -14,5 +19,8 @@ module.exports = {
             test: /\.css$/,
             loader: "style!css"
         }]
-    }
+    },
+    plugins: [
+      new webpack.HotModuleReplacementPlugin()
+    ]
 };
