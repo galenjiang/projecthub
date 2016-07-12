@@ -19,7 +19,6 @@
         "sessionStorage": true,
         "setTimeout": true,
         "setInterval": true,
-
     },
     "rules": {
         # redeclare
