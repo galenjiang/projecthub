@@ -1,7 +1,7 @@
 {
-  "name": "generator",
+  "name": "h5-generator",
   "version": "1.0.0",
-  "description": "generator for gulp & browserify",
+  "description": "generator for gulp & webapck | browserify",
   "main": "index.js",
   "scripts": {
     "build": "gulp build",
@@ -29,7 +29,6 @@
     "gulp-plumber": "^1.1.0",
     "gulp-sass": "^2.1.1",
     "gulp-uglify": "^1.5.1",
-    "gulp-uglifycss": "^1.0.5",
     "gulp-util": "^3.0.7",
     "gulp-watch-path": "^0.1.0",
     "imagemin-pngquant": "^4.2.0",

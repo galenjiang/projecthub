@@ -3,6 +3,11 @@ var webpack = require('webpack')
 
 module.exports = {
     entry: {
+        common: [
+          "webpack-dev-server/client?http://localhost:8080/",
+          "webpack/hot/dev-server",
+          "./src/js/common.js"
+        ],
         test: [
           "webpack-dev-server/client?http://localhost:8080/",
           "webpack/hot/dev-server",
