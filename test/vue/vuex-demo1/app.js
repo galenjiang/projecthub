@@ -1,33 +1,36 @@
-var store = new Vuex.Store({
+// var store = new Vuex.Store({
 
-    state: {
-        count: 0
-    },
+//     state: {
+//         count: 0
+//     },
 
-    mutations: {
-        ADD: function (state, mutation) {
-            state.count = state.count + mutation.payload
-        }
-    }
+//     mutations: {
+//         ADD: function (state, mutation) {
+//             state.count = state.count + mutation.payload
+//         }
+//     }
 
-})
+// })
 
-var actions = {
-    add: function () {
-        store.dispatch({
-            type: 'ADD',
-            payload: 2
-        })
-    }
-}
+// var actions = {
+//     add: function () {
+//         store.dispatch({
+//             type: 'ADD',
+//             payload: 2
+//         })
+//     }
+// }
 
 
 
-var getCount = function () {
-    return store.state.count
-}
+// var getCount = function () {
+//     return store.state.count
+// }
 
-actions.add();
-actions.add();
-actions.add();
-console.log(getCount())
+// actions.add();
+// actions.add();
+// actions.add();
+// console.log(getCount())
+
+
+console.log(111)
