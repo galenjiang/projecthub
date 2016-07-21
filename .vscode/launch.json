@@ -1,0 +1,12 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "chrome debug",
+            "type": "chrome",
+            "request": "launch",
+            "target": "--remote-debugging-port=9222",
+            "file": "${workspaceRoot}/test/vue/vuex-demo1/index.html"
+        }
+    ]
+}

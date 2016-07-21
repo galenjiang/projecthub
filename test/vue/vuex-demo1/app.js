@@ -5,7 +5,7 @@ var store = new Vuex.Store({
     },
 
     mutations: {
-        ADD: function(state, mutation){
+        ADD: function (state, mutation) {
             state.count = state.count + mutation.payload
         }
     }
@@ -13,7 +13,7 @@ var store = new Vuex.Store({
 })
 
 var actions = {
-    add: function(){
+    add: function () {
         store.dispatch({
             type: 'ADD',
             payload: 2
@@ -23,7 +23,7 @@ var actions = {
 
 
 
-var getCount = function(){
+var getCount = function () {
     return store.state.count
 }
 
@@ -31,15 +31,3 @@ actions.add();
 actions.add();
 actions.add();
 console.log(getCount())
-
-
-
-var a = 'A';
-
-
-
-
-
-function aaa (param) {
-    return param
-}
