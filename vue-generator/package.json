@@ -42,7 +42,9 @@
     "babel-polyfill": "^6.9.1",
     "babel-runtime": "^6.9.2",
     "lodash": "^4.13.1",
+    "raf.js": "0.0.4",
     "sass-sandal": "^3.1.1",
-    "vue": "^1.0.26"
+    "vue": "^1.0.26",
+    "wind-dom": "0.0.3"
   }
 }

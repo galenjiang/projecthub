@@ -57,7 +57,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.loading = exports.toast = exports.MessageBox = undefined;
+	exports.Picker = exports.loading = exports.toast = exports.MessageBox = undefined;
 
 	var _MessageBox = __webpack_require__(2);
 
@@ -71,11 +71,16 @@
 
 	var _loading2 = _interopRequireDefault(_loading);
 
+	var _picker = __webpack_require__(96);
+
+	var _picker2 = _interopRequireDefault(_picker);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.MessageBox = _MessageBox2.default;
 	exports.toast = _toast2.default;
 	exports.loading = _loading2.default;
+	exports.Picker = _picker2.default;
 
 /***/ },
 /* 2 */
@@ -2953,6 +2958,929 @@
 	module.exports = {
 	    template: '<div v-show="loading" class="mui-loadEffect-wrap">' + '<div class="mui-loadEffect">' + '<div><span></span></div>' + '<div><span></span></div>' + '<div><span></span></div>' + '<div><span></span></div>' + '</div>' + '</div>'
 	};
+
+/***/ },
+/* 96 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _picker = __webpack_require__(97);
+
+	var _picker2 = _interopRequireDefault(_picker);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _picker2.default;
+
+/***/ },
+/* 97 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = {
+	    name: 'mt-picker',
+
+	    template: ' <div class="picker" :class="{ \'picker-3d\': rotateEffect }">' + '<div class="picker-toolbar" v-if="showToolbar"><slot></slot></div>' + '<div class="picker-items">' + '<picker-slot ' + 'v-for="slot in slots" ' + ':values="slot.values || []" ' + ':text-align="slot.textAlign || \'center\'" ' + ':visible-item-count="visibleItemCount" ' + ':class-name="slot.className" ' + ':flex="slot.flex" ' + ':value.sync="values[slot.valueIndex]" ' + ':rotate-effect="rotateEffect" ' + ':divider="slot.divider" ' + ':content="slot.content">' + '</picker-slot>' + '<div class="picker-center-highlight"></div>' + '</div>' + '</div>',
+
+	    props: {
+	        slots: {
+	            type: Array
+	        },
+	        showToolbar: {
+	            type: Boolean,
+	            default: false
+	        },
+	        visibleItemCount: {
+	            type: Number,
+	            default: 5
+	        },
+	        rotateEffect: {
+	            type: Boolean,
+	            default: false
+	        }
+	    },
+
+	    // 获取非divider的值，返回数组this.values
+	    beforeCompile: function beforeCompile() {
+	        var slots = this.slots || [];
+	        this.values = [];
+	        var values = this.values;
+	        var valueIndexCount = 0;
+	        slots.forEach(function (slot) {
+	            if (!slot.divider) {
+	                slot.valueIndex = valueIndexCount++;
+	                values[slot.valueIndex] = (slot.values || [])[0];
+	            }
+	        });
+	    },
+
+	    methods: {
+	        getSlot: function getSlot(slotIndex) {
+	            var slots = this.slots || [];
+	            var count = 0;
+	            var target;
+	            var children = this.$children;
+
+	            slots.forEach(function (slot, index) {
+	                if (!slot.divider) {
+	                    if (slotIndex === count) {
+	                        target = children[index];
+	                    }
+	                    count++;
+	                }
+	            });
+
+	            return target;
+	        },
+	        getSlotValue: function getSlotValue(index) {
+	            var slot = this.getSlot(index);
+	            if (slot) {
+	                return slot.value;
+	            }
+	            return null;
+	        },
+	        setSlotValue: function setSlotValue(index, value) {
+	            var slot = this.getSlot(index);
+	            if (slot) {
+	                slot.value = value;
+	            }
+	        },
+	        getSlotValues: function getSlotValues(index) {
+	            var slot = this.getSlot(index);
+	            if (slot) {
+	                return slot.values;
+	            }
+	            return null;
+	        },
+	        setSlotValues: function setSlotValues(index, values) {
+	            var slot = this.getSlot(index);
+	            if (slot) {
+	                slot.values = values;
+	            }
+	        },
+	        getValues: function getValues() {
+	            return this.values;
+	        },
+	        setValues: function setValues(values) {
+	            var slotCount = this.slotCount;
+	            values = values || [];
+	            if (slotCount !== values.length) {
+	                throw new Error('values length is not equal slot count.');
+	            }
+	            values.forEach(function (value, index) {
+	                this.setSlotValue(index, value);
+	            }.bind(this));
+	        }
+	    },
+
+	    events: {
+	        slotValueChange: function slotValueChange() {
+	            this.$emit('change', this, this.values);
+	        }
+	    },
+
+	    computed: {
+	        values: function values() {
+	            var slots = this.slots || [];
+	            var values = [];
+	            slots.forEach(function (slot) {
+	                if (!slot.divider) values.push(slot.value);
+	            });
+
+	            return values;
+	        },
+	        slotCount: function slotCount() {
+	            var slots = this.slots || [];
+	            var result = 0;
+	            slots.forEach(function (slot) {
+	                if (!slot.divider) result++;
+	            });
+	            return result;
+	        }
+	    },
+
+	    components: {
+	        PickerSlot: __webpack_require__(98)
+	    }
+	};
+
+/***/ },
+/* 98 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var draggable = __webpack_require__(99);
+	var translateUtil = __webpack_require__(100);
+	var windDom = __webpack_require__(101);
+	var addClass = windDom.addClass;
+	var removeClass = windDom.removeClass;
+	var once = windDom.once;
+	__webpack_require__(106);
+
+	var rotateElement = function rotateElement(element, angle) {
+	    if (!element) return;
+	    var transformProperty = translateUtil.transformProperty;
+
+	    element.style[transformProperty] = element.style[transformProperty].replace(/rotateX\(.+?deg\)/gi, '') + ' rotateX(' + angle + 'deg)';
+	};
+
+	var ITEM_HEIGHT = 36;
+	var VISIBLE_ITEMS_ANGLE_MAP = {
+	    3: -45,
+	    5: -20,
+	    7: -15
+	};
+
+	module.exports = {
+
+	    template: '  <div class="picker-slot {{classNames}}" :style="{ flex: flex }">' + '<div v-if="!divider" v-el:wrapper class="picker-slot-wrapper" :class="{ dragging: dragging }" :style="{ height: contentHeight + \'px\' }">' + '<div class="picker-item" v-for="itemValue in values" :class="{ \'picker-selected\': itemValue === value }">{{ itemValue }}</div>' + '</div>' + '<div v-if="divider">{{ content }}</div>' + '</div>',
+
+	    props: {
+	        values: {
+	            type: Array,
+	            default: function _default() {
+	                return [];
+	            }
+	        },
+	        value: {},
+	        visibleItemCount: {
+	            type: Number,
+	            default: 5
+	        },
+	        rotateEffect: {
+	            type: Boolean,
+	            default: false
+	        },
+	        divider: {
+	            type: Boolean,
+	            default: false
+	        },
+	        textAlign: {
+	            type: String,
+	            default: 'center'
+	        },
+	        flex: {},
+	        className: {},
+	        content: {}
+	    },
+
+	    data: function data() {
+	        return {
+	            dragging: false,
+	            animationFrameId: null
+	        };
+	    },
+
+	    computed: {
+	        classNames: function classNames() {
+	            var PREFIX = 'picker-slot-';
+	            var resultArray = [];
+
+	            if (this.rotateEffect) {
+	                resultArray.push(PREFIX + 'absolute');
+	            }
+
+	            var textAlign = this.textAlign || 'center';
+	            resultArray.push(PREFIX + textAlign);
+
+	            if (this.divider) {
+	                resultArray.push(PREFIX + 'divider');
+	            }
+
+	            if (this.className) {
+	                resultArray.push(this.className);
+	            }
+
+	            return resultArray.join(' ');
+	        },
+	        contentHeight: function contentHeight() {
+	            return ITEM_HEIGHT * this.visibleItemCount;
+	        },
+	        valueIndex: function valueIndex() {
+	            return this.values.indexOf(this.value);
+	        },
+	        dragRange: function dragRange() {
+	            var values = this.values;
+	            var visibleItemCount = this.visibleItemCount;
+
+	            return [-ITEM_HEIGHT * (values.length - Math.ceil(visibleItemCount / 2)), ITEM_HEIGHT * Math.floor(visibleItemCount / 2)];
+	        }
+	    },
+
+	    methods: {
+	        value2Translate: function value2Translate(value) {
+	            var values = this.values;
+	            var valueIndex = values.indexOf(value);
+	            var offset = Math.floor(this.visibleItemCount / 2);
+
+	            if (valueIndex !== -1) {
+	                return (valueIndex - offset) * -ITEM_HEIGHT;
+	            }
+	        },
+
+	        translate2Value: function translate2Value(translate) {
+	            translate = Math.round(translate / ITEM_HEIGHT) * ITEM_HEIGHT;
+	            var index = -(translate - Math.floor(this.visibleItemCount / 2) * ITEM_HEIGHT) / ITEM_HEIGHT;
+
+	            return this.values[index];
+	        },
+
+	        updateRotate: function updateRotate(currentTranslate, pickerItems) {
+	            if (this.divider) return;
+	            var dragRange = this.dragRange;
+	            var wrapper = this.$els.wrapper;
+
+	            if (!pickerItems) {
+	                pickerItems = wrapper.querySelectorAll('.picker-item');
+	            }
+
+	            if (currentTranslate === undefined) {
+	                currentTranslate = translateUtil.getElementTranslate(wrapper).top;
+	            }
+
+	            var itemsFit = Math.ceil(this.visibleItemCount / 2);
+	            var angleUnit = VISIBLE_ITEMS_ANGLE_MAP[this.visibleItemCount] || -20;
+
+	            [].forEach.call(pickerItems, function (item, index) {
+	                var itemOffsetTop = index * ITEM_HEIGHT;
+	                var translateOffset = dragRange[1] - currentTranslate;
+	                var itemOffset = itemOffsetTop - translateOffset;
+	                var percentage = itemOffset / ITEM_HEIGHT;
+
+	                var angle = angleUnit * percentage;
+	                if (angle > 180) angle = 180;
+	                if (angle < -180) angle = -180;
+
+	                rotateElement(item, angle);
+
+	                if (Math.abs(percentage) > itemsFit) {
+	                    addClass(item, 'picker-item-far');
+	                } else {
+	                    removeClass(item, 'picker-item-far');
+	                }
+	            });
+	        },
+
+	        planUpdateRotate: function planUpdateRotate() {
+	            var el = this.$els.wrapper;
+	            cancelAnimationFrame(this.animationFrameId);
+
+	            this.animationFrameId = requestAnimationFrame(function () {
+	                this.updateRotate();
+	            }.bind(this));
+
+	            once(el, translateUtil.transitionEndProperty, function () {
+	                this.animationFrameId = null;
+	                cancelAnimationFrame(this.animationFrameId);
+	            }.bind(this));
+	        },
+
+	        initEvents: function initEvents() {
+	            var el = this.$els.wrapper;
+	            var dragState = {};
+
+	            var velocityTranslate, velocityTime, prevTranslate, pickerItems;
+	            var _self = this;
+	            draggable(el, {
+	                start: function (event) {
+	                    cancelAnimationFrame(this.animationFrameId);
+	                    this.animationFrameId = null;
+	                    dragState = {
+	                        range: this.dragRange,
+	                        start: new Date(),
+	                        startLeft: event.pageX,
+	                        startTop: event.pageY,
+	                        startTranslateTop: translateUtil.getElementTranslate(el).top
+	                    };
+	                    pickerItems = el.querySelectorAll('.picker-item');
+	                }.bind(_self),
+
+	                drag: function (event) {
+	                    this.dragging = true;
+
+	                    dragState.left = event.pageX;
+	                    dragState.top = event.pageY;
+
+	                    var deltaY = dragState.top - dragState.startTop;
+	                    var translate = dragState.startTranslateTop + deltaY;
+
+	                    translateUtil.translateElement(el, null, translate);
+
+	                    velocityTranslate = translate - prevTranslate || translate;
+	                    velocityTime = Date.now();
+
+	                    prevTranslate = translate;
+
+	                    if (this.rotateEffect) {
+	                        this.updateRotate(prevTranslate, pickerItems);
+	                    }
+	                }.bind(_self),
+
+	                end: function () {
+	                    this.dragging = false;
+
+	                    var momentumRatio = 7;
+	                    var currentTranslate = translateUtil.getElementTranslate(el).top;
+	                    var duration = new Date() - dragState.start;
+
+	                    var momentumTranslate;
+	                    if (duration < 300) {
+	                        momentumTranslate = currentTranslate + velocityTranslate * momentumRatio;
+	                    }
+
+	                    var dragRange = dragState.range;
+
+	                    Vue.nextTick(function () {
+	                        var translate;
+	                        if (momentumTranslate) {
+	                            translate = Math.round(momentumTranslate / ITEM_HEIGHT) * ITEM_HEIGHT;
+	                        } else {
+	                            translate = Math.round(currentTranslate / ITEM_HEIGHT) * ITEM_HEIGHT;
+	                        }
+
+	                        translate = Math.max(Math.min(translate, dragRange[1]), dragRange[0]);
+
+	                        translateUtil.translateElement(el, null, translate);
+
+	                        this.value = this.translate2Value(translate);
+
+	                        if (this.rotateEffect) {
+	                            this.planUpdateRotate();
+	                        }
+	                    }.bind(this));
+
+	                    dragState = {};
+	                }.bind(_self)
+	            });
+	        },
+
+	        doOnValueChange: function doOnValueChange() {
+	            var value = this.value;
+	            var wrapper = this.$els.wrapper;
+
+	            translateUtil.translateElement(wrapper, null, this.value2Translate(value));
+	        },
+
+	        doOnValuesChange: function doOnValuesChange() {
+	            var el = this.$el;
+	            var items = el.querySelectorAll('.picker-item');
+	            [].forEach.call(items, function (item, index) {
+	                translateUtil.translateElement(item, null, ITEM_HEIGHT * index);
+	            }.bind(this));
+	            if (this.rotateEffect) {
+	                this.planUpdateRotate();
+	            }
+	        }
+	    },
+
+	    ready: function ready() {
+	        this.ready = true;
+
+	        if (!this.divider) {
+	            this.initEvents();
+	            this.doOnValueChange();
+	        }
+
+	        if (this.rotateEffect) {
+	            this.doOnValuesChange();
+	        }
+	    },
+
+	    watch: {
+	        values: function values(newVal) {
+	            if (this.valueIndex === -1) {
+	                this.value = (newVal || [])[0];
+	            }
+	            if (this.rotateEffect) {
+	                Vue.nextTick(function () {
+	                    this.doOnValuesChange();
+	                }.bind(this));
+	            }
+	        },
+	        value: function value() {
+	            this.doOnValueChange();
+	            if (this.rotateEffect) {
+	                this.planUpdateRotate();
+	            }
+	            this.$dispatch('slotValueChange', this);
+	        }
+	    }
+	};
+
+/***/ },
+/* 99 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var isDragging = false;
+	var supportTouch = 'ontouchstart' in window;
+
+	module.exports = function (element, options) {
+	  var moveFn = function moveFn(event) {
+	    if (options.drag) {
+	      options.drag(supportTouch ? event.changedTouches[0] || event.touches[0] : event);
+	    }
+	  };
+
+	  var endFn = function endFn(event) {
+	    if (!supportTouch) {
+	      document.removeEventListener('mousemove', moveFn);
+	      document.removeEventListener('mouseup', endFn);
+	    }
+	    document.onselectstart = null;
+	    document.ondragstart = null;
+
+	    isDragging = false;
+
+	    if (options.end) {
+	      options.end(supportTouch ? event.changedTouches[0] || event.touches[0] : event);
+	    }
+	  };
+
+	  element.addEventListener(supportTouch ? 'touchstart' : 'mousedown', function (event) {
+	    if (isDragging) return;
+	    document.onselectstart = function () {
+	      return false;
+	    };
+	    document.ondragstart = function () {
+	      return false;
+	    };
+
+	    if (!supportTouch) {
+	      document.addEventListener('mousemove', moveFn);
+	      document.addEventListener('mouseup', endFn);
+	    }
+	    isDragging = true;
+
+	    if (options.start) {
+	      event.preventDefault();
+	      options.start(supportTouch ? event.changedTouches[0] || event.touches[0] : event);
+	    }
+	  });
+
+	  if (supportTouch) {
+	    element.addEventListener('touchmove', moveFn);
+	    element.addEventListener('touchend', endFn);
+	    element.addEventListener('touchcancel', endFn);
+	  }
+	};
+
+/***/ },
+/* 100 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var docStyle = document.documentElement.style;
+	var engine;
+	var translate3d = false;
+
+	if (window.opera && Object.prototype.toString.call(opera) === '[object Opera]') {
+	  engine = 'presto';
+	} else if ('MozAppearance' in docStyle) {
+	  engine = 'gecko';
+	} else if ('WebkitAppearance' in docStyle) {
+	  engine = 'webkit';
+	} else if (typeof navigator.cpuClass === 'string') {
+	  engine = 'trident';
+	}
+
+	var cssPrefix = { trident: '-ms-', gecko: '-moz-', webkit: '-webkit-', presto: '-o-' }[engine];
+
+	var vendorPrefix = { trident: 'ms', gecko: 'Moz', webkit: 'Webkit', presto: 'O' }[engine];
+
+	var helperElem = document.createElement('div');
+	var perspectiveProperty = vendorPrefix + 'Perspective';
+	var transformProperty = vendorPrefix + 'Transform';
+	var transformStyleName = cssPrefix + 'transform';
+	var transitionProperty = vendorPrefix + 'Transition';
+	var transitionStyleName = cssPrefix + 'transition';
+	var transitionEndProperty = vendorPrefix.toLowerCase() + 'TransitionEnd';
+
+	if (helperElem.style[perspectiveProperty] !== undefined) {
+	  translate3d = true;
+	}
+
+	var getTranslate = function getTranslate(element) {
+	  var result = { left: 0, top: 0 };
+	  if (element === null || element.style === null) return result;
+
+	  var transform = element.style[transformProperty];
+	  var matches = /translate\(\s*(-?\d+(\.?\d+?)?)px,\s*(-?\d+(\.\d+)?)px\)\s*translateZ\(0px\)/g.exec(transform);
+	  if (matches) {
+	    result.left = +matches[1];
+	    result.top = +matches[3];
+	  }
+
+	  return result;
+	};
+
+	var translateElement = function translateElement(element, x, y) {
+	  if (x === null && y === null) return;
+
+	  if (element === null || element.style === null) return;
+
+	  if (!element.style[transformProperty] && x === 0 && y === 0) return;
+
+	  if (x === null || y === null) {
+	    var translate = getTranslate(element);
+	    if (x === null) {
+	      x = translate.left;
+	    }
+	    if (y === null) {
+	      y = translate.top;
+	    }
+	  }
+
+	  cancelTranslateElement(element);
+
+	  if (translate3d) {
+	    element.style[transformProperty] += ' translate(' + (x ? x + 'px' : '0px') + ',' + (y ? y + 'px' : '0px') + ') translateZ(0px)';
+	  } else {
+	    element.style[transformProperty] += ' translate(' + (x ? x + 'px' : '0px') + ',' + (y ? y + 'px' : '0px') + ')';
+	  }
+	};
+
+	var cancelTranslateElement = function cancelTranslateElement(element) {
+	  if (element === null || element.style === null) return;
+	  var transformValue = element.style[transformProperty];
+	  if (transformValue) {
+	    transformValue = transformValue.replace(/translate\(\s*(-?\d+(\.?\d+?)?)px,\s*(-?\d+(\.\d+)?)px\)\s*translateZ\(0px\)/g, '');
+	    element.style[transformProperty] = transformValue;
+	  }
+	};
+
+	module.exports = {
+	  transformProperty: transformProperty,
+	  transformStyleName: transformStyleName,
+	  transitionProperty: transitionProperty,
+	  transitionStyleName: transitionStyleName,
+	  transitionEndProperty: transitionEndProperty,
+	  getElementTranslate: getTranslate,
+	  translateElement: translateElement,
+	  cancelTranslateElement: cancelTranslateElement
+	};
+
+/***/ },
+/* 101 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var clazz = __webpack_require__(102);
+	var event = __webpack_require__(103);
+	var style= __webpack_require__(104);
+	var create = __webpack_require__(105);
+
+	module.exports = {
+	  on: event.on,
+	  off: event.off,
+	  once: event.once,
+	  getStyle: style.getStyle,
+	  setStyle: style.setStyle,
+	  removeClass: clazz.removeClass,
+	  addClass: clazz.addClass,
+	  hasClass: clazz.hasClass,
+	  create: create
+	};
+
+/***/ },
+/* 102 */
+/***/ function(module, exports) {
+
+	var trim = function (string) {
+	  return (string || '').replace(/^[\s\uFEFF]+|[\s\uFEFF]+$/g, '');
+	};
+
+	var hasClass = function (el, cls) {
+	  if (!el || !cls) return false;
+	  if (cls.indexOf(' ') != -1) throw new Error('className should not contain space.');
+	  if (el.classList) {
+	    return el.classList.contains(cls);
+	  } else {
+	    return (' ' + el.className + ' ').indexOf(' ' + cls + ' ') > -1;
+	  }
+	};
+
+	var addClass = function (el, cls) {
+	  if (!el) return;
+	  var curClass = el.className;
+	  var classes = (cls || '').split(' ');
+
+	  for (var i = 0, j = classes.length; i < j; i++) {
+	    var clsName = classes[i];
+	    if (!clsName) continue;
+
+	    if (el.classList) {
+	      el.classList.add(clsName);
+	    } else {
+	      if (!hasClass(el, clsName)) {
+	        curClass += ' ' + clsName;
+	      }
+	    }
+	  }
+	  if (!el.classList) {
+	    el.className = curClass;
+	  }
+	};
+
+	var removeClass = function (el, cls) {
+	  if (!el || !cls) return;
+	  var classes = cls.split(' ');
+	  var curClass = ' ' + el.className + ' ';
+
+	  for (var i = 0, j = classes.length; i < j; i++) {
+	    var clsName = classes[i];
+	    if (!clsName) continue;
+
+	    if (el.classList) {
+	      el.classList.remove(clsName);
+	    } else {
+	      if (hasClass(el, clsName)) {
+	        curClass = curClass.replace(' ' + clsName + ' ', ' ');
+	      }
+	    }
+	  }
+	  if (!el.classList) {
+	    el.className = trim(curClass);
+	  }
+	};
+
+	module.exports = {
+	  hasClass: hasClass,
+	  addClass: addClass,
+	  removeClass: removeClass
+	};
+
+/***/ },
+/* 103 */
+/***/ function(module, exports) {
+
+	var bindEvent = (function() {
+	  if(document.addEventListener) {
+	    return function(element, event, handler) {
+	      if (element && event && handler) {
+	        element.addEventListener(event, handler, false);
+	      }
+	    };
+	  } else {
+	    return function(element, event, handler) {
+	      if (element && event && handler) {
+	        element.attachEvent('on' + event, handler);
+	      }
+	    };
+	  }
+	})();
+
+	var unbindEvent = (function() {
+	  if(document.removeEventListener) {
+	    return function(element, event, handler) {
+	      if (element && event) {
+	        element.removeEventListener(event, handler, false);
+	      }
+	    };
+	  } else {
+	    return function(element, event, handler) {
+	      if (element && event) {
+	        element.detachEvent('on' + event, handler);
+	      }
+	    };
+	  }
+	})();
+
+	var bindOnce = function(el, event, fn) {
+	  var listener = function() {
+	    if (fn) {
+	      fn.apply(this, arguments);
+	    }
+	    unbindEvent(el, event, listener);
+	  };
+	  bindEvent(el, event, listener);
+	};
+
+	module.exports = {
+	  on: bindEvent,
+	  off: unbindEvent,
+	  once: bindOnce
+	};
+
+/***/ },
+/* 104 */
+/***/ function(module, exports) {
+
+	var SPECIAL_CHARS_REGEXP = /([\:\-\_]+(.))/g;
+	var MOZ_HACK_REGEXP = /^moz([A-Z])/;
+
+	function camelCase(name) {
+	  return name.
+	    replace(SPECIAL_CHARS_REGEXP, function(_, separator, letter, offset) {
+	      return offset ? letter.toUpperCase() : letter;
+	    }).
+	    replace(MOZ_HACK_REGEXP, 'Moz$1');
+	}
+
+	var ieVersion = Number(document.documentMode);
+	var getStyle = ieVersion < 9 ? function(element, styleName) {
+	  if (!element || !styleName) return null;
+	  styleName = camelCase(styleName);
+	  if (styleName === 'float') {
+	    styleName = 'styleFloat';
+	  }
+	  try {
+	    switch (styleName) {
+	      case 'opacity':
+	        try {
+	          return element.filters.item('alpha').opacity / 100;
+	        }
+	        catch (e) {
+	          return 1.0;
+	        }
+	        break;
+	      default:
+	        return ( element.style[styleName] || element.currentStyle ? element.currentStyle[styleName] : null );
+	    }
+	  } catch(e) {
+	    return element.style[styleName];
+	  }
+	} : function(element, styleName) {
+	  if (!element || !styleName) return null;
+	  styleName = camelCase(styleName);
+	  if (styleName === 'float') {
+	    styleName = 'cssFloat';
+	  }
+	  try {
+	    var computed = document.defaultView.getComputedStyle(element, '');
+	    return element.style[styleName] || computed ? computed[styleName] : null;
+	  } catch(e) {
+	    return element.style[styleName];
+	  }
+	};
+
+	var setStyle = function(element, styleName, value) {
+	  if (!element || !styleName) return;
+
+	  if (typeof styleName === 'object') {
+	    for (var prop in styleName) {
+	      if (styleName.hasOwnProperty(prop)) {
+	        setStyle(element, prop, styleName[prop]);
+	      }
+	    }
+	  } else {
+	    styleName = camelCase(styleName);
+	    if (styleName === 'opacity' && ieVersion < 9) {
+	      element.style.filter = isNaN(value) ? '' : 'alpha(opacity=' + value * 100 + ')';
+	    } else {
+	      element.style[styleName] = value;
+	    }
+	  }
+	};
+
+	module.exports = {
+	  getStyle: getStyle,
+	  setStyle: setStyle
+	};
+
+/***/ },
+/* 105 */
+/***/ function(module, exports) {
+
+	//TODO decide the api.
+	var create = function(config, refs) {
+	  if (!config) return null;
+	  var dom, childElement;
+
+	  if (typeof config === 'string') return document.createTextNode(config);
+
+	  if (config.tag) {
+	    dom = document.createElement(config.tag);
+	    for (var prop in config) {
+	      if (config.hasOwnProperty(prop)) {
+	        if (prop === 'content' || prop === 'tag') continue;
+	        if (prop === 'key' && refs) {
+	          var key = config[prop];
+	          if (key) {
+	            refs[key] = dom;
+	          }
+	          continue;
+	        }
+	        dom[prop] = config[prop];
+	      }
+	    }
+	    var content = config.content;
+	    if (content) {
+	      if (typeof content === 'string') {
+	        childElement = document.createTextNode(content);
+	        dom.appendChild(childElement);
+	      } else {
+	        if (!(content instanceof Array)) {
+	          content = [ content ];
+	        }
+	        for (var i = 0, j = content.length; i < j; i++) {
+	          var child = content[i];
+	          childElement = create(child, refs);
+	          dom.appendChild(childElement);
+	        }
+	      }
+	    }
+
+	  }
+	  return dom;
+	};
+
+	module.exports = create;
+
+/***/ },
+/* 106 */
+/***/ function(module, exports) {
+
+	/*
+	 * raf.js
+	 * https://github.com/ngryman/raf.js
+	 *
+	 * original requestAnimationFrame polyfill by Erik Möller
+	 * inspired from paul_irish gist and post
+	 *
+	 * Copyright (c) 2013 ngryman
+	 * Licensed under the MIT license.
+	 */
+
+	(function(window) {
+		var lastTime = 0,
+			vendors = ['webkit', 'moz'],
+			requestAnimationFrame = window.requestAnimationFrame,
+			cancelAnimationFrame = window.cancelAnimationFrame,
+			i = vendors.length;
+
+		// try to un-prefix existing raf
+		while (--i >= 0 && !requestAnimationFrame) {
+			requestAnimationFrame = window[vendors[i] + 'RequestAnimationFrame'];
+			cancelAnimationFrame = window[vendors[i] + 'CancelAnimationFrame'];
+		}
+
+		// polyfill with setTimeout fallback
+		// heavily inspired from @darius gist mod: https://gist.github.com/paulirish/1579671#comment-837945
+		if (!requestAnimationFrame || !cancelAnimationFrame) {
+			requestAnimationFrame = function(callback) {
+				var now = +new Date(), nextTime = Math.max(lastTime + 16, now);
+				return setTimeout(function() {
+					callback(lastTime = nextTime);
+				}, nextTime - now);
+			};
+
+			cancelAnimationFrame = clearTimeout;
+		}
+
+		// export to window
+		window.requestAnimationFrame = requestAnimationFrame;
+		window.cancelAnimationFrame = cancelAnimationFrame;
+	}(window));
+
 
 /***/ }
 /******/ ]);
