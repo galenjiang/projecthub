@@ -32,5 +32,6 @@
 // actions.add();
 // console.log(getCount())
 
+var a;
 
 console.log(111)
