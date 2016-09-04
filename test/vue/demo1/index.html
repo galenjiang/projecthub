@@ -2,7 +2,43 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
     <title>vue-demo</title>
+    <style>
+      .test{
+        width: 100px;
+        height: 100px;
+        background: red;
+      }
+      .fade-transtion{
+        height: auto;
+        transition: all 1s ease;
+      }
+      .fade-enter{
+        height: 0;
+      }
+      .fade-leave{
+        height: 0;
+      }
+
+
+          /* 必需 */
+    .expand-transition {
+      transition: all .3s ease;
+      height: 100px;
+      padding: 10px;
+      background-color: #eee;
+      overflow: hidden;
+    }
+
+    /* .expand-enter 定义进入的开始状态 */
+    /* .expand-leave 定义离开的结束状态 */
+    .expand-enter, .expand-leave {
+      height: 0;
+      padding: 0 10px;
+      opacity: 0;
+    }
+    </style>
   </head>
   <body>
     <div id="app">
@@ -13,10 +49,12 @@
       <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
       <label for="mike">Mike</label>
       <br>
-      <span>Checked names: {{ checkedNames | arr }}</span>
+      <span>Checked names: {{ checkedNames }}</span>
+      <br><button @click="change">123</button>
+      <div v-show="testShow" transition="expand" class="test"></div>
     </div>
 
-    <script type="text/javascript" src="node_modules/vue/dist/vue.min.js"></script>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/vue/1.0.14/vue.js"></script>
     <script type="text/javascript" src="./app.js"></script>
   </body>
 </html>
