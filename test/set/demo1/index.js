@@ -3,3 +3,4 @@ var set = new Set([NaN,null, undefined,NaN,null,undefined,{},{}])
 for (x in set) {
     console.log(x);
 }
+

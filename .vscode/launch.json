@@ -1,0 +1,31 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "chrome debug",
+            "type": "chrome",
+            "request": "launch",
+            "file": "${workspaceRoot}/test/vue/vuex-demo1/index.html"
+        },
+        {
+            "name": "node",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceRoot}/test/vue/vuex-demo1/app.js",
+            "stopOnEntry": false,
+            "args": [],
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": null,
+            "runtimeExecutable": null,
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "env": {
+                "NODE_ENV": "development"
+            },
+            "externalConsole": false,
+            "sourceMaps": false,
+            "outDir": null
+        }
+    ]
+}
