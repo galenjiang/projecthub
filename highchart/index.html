@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>highcharts</title>
+
+</head>
+
+<body>
+  <div style="width: 100px">
+    <!--<video autoplay src="http://mgcdn.videojj.com/51.mp4">
+      
+    </video>-->
+  </div>
+  <div id="app" style="width:100%; height:400px;"></div>
+
+
+  <script src="./node_modules/highcharts/highcharts.js"></script>
+  <!--<script src="http://code.highcharts.com/highcharts.js"></script>-->
+  <script>
+    var app = document.querySelector('#app');
+    var chartOption = {
+      chart: {
+            type: 'line'
+        },
+        title: {
+            text: 'Fruit Consumption'
+        },
+        xAxis: {
+            categories: ['111111111', '2222222222222', '333333333', '44444444444', '55555555555', '666666666666', '7777777777', '8888888888888', '99999999999', '101010101010101', '1111111111111', '12121211212121121212'],
+            labels: {
+              align: "center",
+              // autoRotation: [-90],
+              autoRotationLimit: 80,
+              // enabled: false,
+              // format: "{value}",
+              // formatter: undefined,
+              // maxStaggerLines: 100,
+              overflow: undefined,
+              padding: 5,
+              reserveSpace: true,
+              // rotation: 0,
+              // staggerLines: 6,
+              // step: 2,
+              style: { "color": "#666666", "cursor": "default", "fontSize": "11px" },
+              // useHTML: true,
+              x: 0,
+              y: null,
+              zIndex: 7,
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Fruit eaten'
+            }
+        },
+        series: [{
+            name: 'Jane',
+            data: [1, 0, 4, 1, 0, 4]
+        }, {
+            name: 'John',
+            data: [5, 7, 3, 1, 5, 8]
+        }]
+    }
+    var chart = Highcharts.chart('app', chartOption)
+    
+  </script>
+</body>
+
+</html>

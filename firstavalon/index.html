@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<div ms-controller="list">
+    <span ms-mouseover="changeUl(1)">公告</span>
+    <span ms-mouseover="changeUl(0)">媒体报道</span>
+    <a ms-href="'#!/'+ more_name">{{more_text}}</a>
+    <ul>
+        <li ms-repeat="infoList">
+            <a ms-href="'#!/'+ more_name + '/' + el.id" ms-attr-title="el.title">{{el.title}}</a>
+        </li>
+    </ul>
+</div>
+
+<!-- 引用avalon -->
+<script src="./js/avalon.js"></script>
+
+<!-- 定义avalon -->
+<script>
+  var gg=[
+    {"id":"1","title":"公告文章标题1"},
+    {"id":"2","title":"公告文章标题2"},
+    {"id":"3","title":"公告文章标题3"},
+    {"id":"4","title":"公告文章标题4"}
+    ];
+
+  var bd=[
+  {"id":"1","title":"媒体报道文章标题1"},
+  {"id":"2","title":"媒体报道文章标题2"},
+  {"id":"3","title":"媒体报道文章标题3"},
+  {"id":"4","title":"媒体报道文章标题4"}
+  ];
+
+    var vm = avalon.define({
+        $id: "list",
+        more_name: "gg",
+        more_text: "更多公告",
+        gg: gg,
+        bd: bd,
+        infoList:gg,
+        changeUl:function(flag){
+            if(flag){  //鼠标移过“公告”选项卡头部
+                vm.more_name = "gg";
+                vm.more_text = "更多公告";
+                vm.infoList = avalon.mix(true,[], vm.gg);
+            }else{  //鼠标移过“媒体报道”选项卡头部
+                vm.more_name = "bd";
+                vm.more_text = "更多报道";
+                vm.infoList = avalon.mix(true,[], vm.bd);
+            }
+        }
+    });
+    avalon.scan();
+</script>
+
+</body>
+</html>

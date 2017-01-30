@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<script type="text/javascript" src="q.min.js"></script>
+<script>
+
+function qFoo(text){
+    return Q.promise(function read(resolve,reject){
+        resolve(text*2)
+    })
+}
+
+function qbar(text){
+    return Q.promise(function read(resolve,reject){
+        resolve(text*text)
+    })
+}
+
+qFoo(2)
+    .then(function(res){
+        return qbar(res)
+    })
+    .then(function(res){
+    console.log(res)
+    })
+
+
+</script>
+
+</body>
+</html>

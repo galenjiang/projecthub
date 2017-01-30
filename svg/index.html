@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+  <meta charset="utf-8">
+  <title>svg</title>
+  <!-- <link rel="stylesheet" href="./app.css" media="screen" title="no title" charset="utf-8"> -->
+  <style media="screen" type="text/css">
+    body{
+      margin: 0;
+    }
+  </style>
+  <script type="text/javascript">
+    function sxx(string){
+      alert(string)
+    }
+  </script>
+</head>
+
+<body>
+  <svg id="svg" width="200" height="100"></svg>
+
+<input id="button" type="button" class="zxx_api_button" value="点击运行">
+  <script type="text/javascript" src="snap.svg-min.js"></script>
+  <script type="text/javascript">
+  var c = Snap("#svg").paper.circle(50,50,40).attr({ fill: "red" });
+
+document.getElementById("button").onclick = function() {
+    var now = mina.time();
+    var ani = mina(50, 150, now, now + 1000, mina.time, function(val) {
+        c.attr({
+            cx: val
+        });
+    }, mina.easeout);
+
+    console.dir(ani);
+    console.log(now)
+};
+  </script>
+</body>
+
+</html>

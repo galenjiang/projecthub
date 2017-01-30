@@ -1,0 +1,28 @@
+{
+  "sub":true,
+  "laxbreak":true,
+  "laxcomma":true,
+  "regexp":true,
+  "asi": true,
+  "browser": true,
+  "loopfunc":true,
+  "expr":true,
+  "node": true,
+  "esnext": true,
+  "bitwise": true,
+  "curly": true,
+  "immed": true,
+  "latedef": false,
+  "expr": true,
+  "eqeqeq": false,
+  "eqnull": false,
+  "newcap": true,
+  "noarg": true,
+  /*变量检查*/
+  "undef": false,
+  "proto": true,
+  "strict": false,
+  "smarttabs": true,
+  /*"esversion": 5,*/
+  "eqeqeq": true
+}

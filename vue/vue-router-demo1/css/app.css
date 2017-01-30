@@ -1,0 +1,36 @@
+ul::after{
+    content: '';
+    display: inline-block;
+    clear: both;
+}
+.nav{
+    list-style: none;
+    padding: 0 10px;
+    float: left;
+}
+.nav a.v-link-active{
+    background-color: #ccc;
+}
+.fade-transition{
+    transition: all 0.4s ease-out;
+}
+.fade-enter{
+    opacity: 0;
+}
+.fade-leave{
+    opacity: 0;
+}
+.page{
+    position: absolute;
+    width: 100%;
+    top: 0;
+}
+.page1{
+    background-color: #ccc;
+}
+.page2{
+    background-color: #e30;
+}
+.container{
+    position: relative;
+}
