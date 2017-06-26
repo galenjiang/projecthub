@@ -44,6 +44,8 @@
 
         // 自定义缓动
         Velocity.Easings.myCustomEasing = function(p, opts, tweenDelta) {
+          debugger
+            // p percentage, tweenDelata 差值
             // easeIn: function(t, b, c, d)  t 当前时间, b 初始值, c 差值, d 时间
             return Tween.Bounce.easeOut(p* opts.duration ,0,tweenDelta,1*opts.duration)/tweenDelta;
             // return Tween.Bounce.easeOut(p,0,tweenDelta,1)/tweenDelta;

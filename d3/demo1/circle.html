@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>three circle</title>
+</head>
+<body>
+
+  <svg width="720" height="120">
+    <circle cx="40" cy="60" r="10"></circle>
+    <circle cx="80" cy="60" r="10"></circle>
+    <circle cx="120" cy="60" r="10"></circle>
+  </svg>
+
+  <script src="lib/d3.js"></script>
+  <script>
+
+
+    const createCx = () => Math.random() * (720 - 30)
+    const createCy = () => Math.random() * (120 - 30)
+    const createR = () => Math.random() * 25 + 5
+
+    const data = [
+      { cx: createCx(), cy:createCy(), r:createR() },
+      { cx: createCx(), cy:createCy(), r:createR() },
+      { cx: createCx(), cy:createCy(), r:createR() },
+      { cx: createCx(), cy:createCy(), r:createR() },
+    ]
+
+    const circle = d3.selectAll('circle')
+      .attr('fill', 'steelblue')
+      .data(data)
+      .attr('cx', d => d.cx)
+      .attr('cy', d => d.cy)
+      .attr('r', d => d.r)
+
+    const changePosition = () => {
+      data.forEach(item => {
+        item.cx = createCx()
+        item.cy = createCy()
+        item.r = createR()
+      })
+
+      console.dir(data)
+    }
+    changePosition()
+
+    document.addEventListener('click', changePosition)
+  </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      /*overflow: hidden;*/
+    }
+    .chart rect {
+      fill: steelblue;
+    }
+
+    .chart text {
+      /*fill: white;*/
+      font: 10px sans-serif;
+      /*text-anchor: end;*/
+      text-anchor: middle;
+    }
+
+    .axis text {
+      font: 10px sans-serif;
+    }
+
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: #000;
+      shape-rendering: crispEdges;
+    }
+
+    .axis--x path {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+
+  <svg class="chart"></svg>
+
+  <script src="lib/d3.js"></script>
+  <script src="bar3.js"></script>
+</body>
+</html>
