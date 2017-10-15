@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="lib/jsoneditor.css" >
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+    <!-- <h1>{{title.name}}</h1> -->
+    <button @click="changeData">change</button>
+    <display-child :hello="title" ></display-child>
+    <input-child :name="title.name" :on-change="onChange"></input-child>
+    <div class="editor"></div>
+  </div>
+
+  <script src="lib/vue.js"></script>
+  <script src="lib/jsoneditor.js"></script>
+  <script>
+
+
+    const DisplayChild = {
+      props: {
+        hello: {
+          type: Object,
+          default: {
+            greeting: 'hello',
+            name: 'world'
+          }
+        }
+      },
+      template: '<h3>{{hello.greeting}}, {{hello.name}}</h3>'
+    }
+   const InputChild = {
+      props: {
+        name: {
+          type: String,
+          default: 'world'
+        },
+        onChange: {
+          type: Function,
+          default: () => {}
+        }
+      },
+      data: function() {
+        return {
+          myName: this.name
+        }
+      },
+      template: '<input type="text" v-model="myName" />',
+      watch: {
+        myName: function(value) {
+          this.onChange(value)
+        },
+        name: function() {
+          // this.myName = this.name
+        }
+      }
+    }
+    const instance = new Vue({
+      el: '#app',
+      components : {
+        'display-child': DisplayChild,
+        'input-child': InputChild
+      },
+      data: {
+        title: {
+          greeting: 'hello',
+          name: 'world'
+        }
+      },
+      methods: {
+        onChange: function(v) {
+          console.log(v)
+          this.title.name = v
+          this.editor.set(this.title)
+        },
+        changeData: function(v) {
+          this.title = {
+            greeting: 'greeting',
+            name: this.title.name
+          }
+        }
+      },
+      mounted() {
+
+        const editor = new JSONEditor(document.querySelector('.editor'), {
+          onChange: () => {
+            this.title = editor.get()
+          }
+        })
+        editor.set(this.title)
+        this.editor = editor
+      }
+    })
+  </script>
+</body>
+</html>

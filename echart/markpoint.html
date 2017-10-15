@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #app {
+      height: 500px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script src="lib/echarts.js"></script>
+  <script>
+    const container = document.querySelector('#app')
+    const myChart = echarts.init(container)
+    const now = Date.now()
+    const perMinute = 1000 * 60
+    const data = Array(20).fill(null).map((item, index) => {
+      return [now + index * perMinute, Math.round(Math.random() * 100)]
+    })
+
+    const dataArray = [11, 22, 33, 44, 55, 66]
+    option = {
+      xAxis: [
+        {
+          type: 'time',
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value'
+        }
+      ],
+      // series: [
+      //   {
+      //     type: 'bar',
+      //     data,
+      //     markPoint: {
+      //       // symbol: 'circle',
+      //       symbolSize: 50,
+      //       symbolPosition: 'end',
+      //       symbolOffset: [0, '-100%'],
+      //       data: data.map((item, index) => {
+      //         return {
+      //           value: item
+      //         }
+      //       })
+      //     }
+      //   }
+      // ]
+      // xAxis: {
+      //   type: 'category',
+      //   data: ['5', '6', '9', '13', '19', '33']
+      //   // 注意这里不建议写成 [5, 6, 9, 13, 19, 33]，否则不能被 markPoint / markLine 用『具体值』索引到。
+      // },
+      series: [{
+        type: 'bar',
+        data: data.map(item => [item[0] + perMinute * 5, item[1]]),
+        markPoint: { // markLine 也是同理
+          // data: [{
+          //   coord: [5, 33.4], // 其中 5 表示 xAxis.data[5]，即 '33' 这个元素。
+          //   // coord: ['5', 33.4] // 其中 '5' 表示 xAxis.data中的 '5' 这个元素。
+          //   // 注意，使用这种方式时，xAxis.data 不能写成 [number, number, ...]
+          //   // 而只能写成 [string, string, ...]
+          // }]
+          data: data.map((item, index) => ({
+            coord: [index, item[1]]
+          }))
+        }
+      }, {
+        type: 'bar',
+        data: data,
+        markPoint: { // markLine 也是同理
+          // data: [{
+          //   coord: [5, 33.4], // 其中 5 表示 xAxis.data[5]，即 '33' 这个元素。
+          //   // coord: ['5', 33.4] // 其中 '5' 表示 xAxis.data中的 '5' 这个元素。
+          //   // 注意，使用这种方式时，xAxis.data 不能写成 [number, number, ...]
+          //   // 而只能写成 [string, string, ...]
+          // }]
+          data: data.map((item, index) => ({
+            coord: [index, item[1]]
+          }))
+        }
+      }]
+    }
+
+    function render() {
+      return myChart.setOption(option, true)
+    }
+    render()
+    window.addEventListener('resize', function () {
+      myChart.resize()
+    })
+/********************************************************************************************************************************************************************************/
+  </script>
+</body>
+
+</html>

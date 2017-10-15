@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+    <button @click="change('A')">objectA</button>
+    <button @click="change('B')">objectB</button>
+    <button @click="change('C')">objectC</button>
+    <display-child :text="text" ></display-child>
+  </div>
+
+  <script src="vue.js"></script>
+  <script>
+
+
+    const DisplayChild = {
+      props: {
+        text: {
+          type: Object
+        }
+      },
+      watch: {
+        'text': (newVal, oldVal) => {
+          console.log('child watch text', newVal, oldVal)
+        }
+      },
+      beforeUpdate(...args) {
+        console.log('child beforeUpdate', args)
+      },
+      template: '<h3>{{text.greeting}}</h3>'
+    }
+
+    const instance = new Vue({
+      el: '#app',
+      components : {
+        'display-child': DisplayChild,
+      },
+      data: {
+        text: { greeting: 'A' }
+      },
+      methods: {
+        change(text) {
+          switch(text) {
+            case 'A': this.text = { greeting: 'A' }
+              break;
+            case 'B': this.text = { greeting: 'B' }
+              break;
+            case 'C': this.text = { greeting: 'C' }
+              break;
+          }
+        }
+      },
+      watch: {
+        'text': (newVal, oldVal) => {
+          console.log('parent watch text', newVal, oldVal)
+        }
+      },
+      beforeUpdate(...args) {
+        console.log('parent beforeUpdate', args)
+      },
+      mounted() {
+
+      }
+    })
+  </script>
+</body>
+</html>

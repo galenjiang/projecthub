@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>three.js demo</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      height: 100%;
+    }
+
+    #app {
+      height: 100%;
+      overflow: hidden;
+    }
+  </style>
+  <script src="lib/three.js"></script>
+  <script src="lib/OrbitControls.js"></script>
+  <script src="lib/dat.gui.js"></script>
+  <script src="lib/stats.min.js"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script>
+    (() => {
+      let app, renderer, scene, camera, stats, controls
+      let delta = 0
+      const clock = new THREE.Clock()
+      const geometry = Object.create(null)
+
+      const initThree = () => {
+        app = document.getElementById('app')
+
+        initRenderer()
+        initScene()
+        initCamera()
+        initStats()
+        initControls()
+
+      }
+
+      const initRenderer = () => {
+        renderer = new THREE.WebGLRenderer()
+        renderer.setSize(app.offsetWidth, app.offsetHeight)
+        app.appendChild(renderer.domElement)
+      }
+
+      const initScene = () => {
+        scene = new THREE.Scene()
+      }
+
+      const initCamera = () => {
+        camera = new THREE.PerspectiveCamera(90, app.offsetWidth / app.offsetHeight, 1, 5000)
+        camera.position.x = 500
+        camera.position.y = 500
+        camera.position.z = 500
+        camera.lookAt(new THREE.Vector3(0, 0, 0))
+      }
+
+      const initStats = () => {
+        stats = new Stats()
+        stats.showPanel(0)
+        app.appendChild(stats.dom)
+      }
+      const initControls = () => {
+        controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.addEventListener('change', render); // remove when using animation loop
+        // enable animation loop when using damping or autorotation
+        //controls.enableDamping = true;
+        //controls.dampingFactor = 0.25;
+        controls.enableZoom = true
+      }
+
+      const createHelper = () => {
+        const axisHelper = new THREE.AxisHelper(200)
+        scene.add(axisHelper)
+
+        const size = 2000;
+        const divisions = 50;
+
+        const gridHelper = new THREE.GridHelper(size, divisions);
+        scene.add(gridHelper);
+      }
+
+      const createCube = () => {
+        const boxGeo = new THREE.BoxGeometry(200, 200, 200)
+
+        for (let i = 0, len = boxGeo.faces.length; i < len; i += 2) {
+          const color = Math.random() * 0xffffff
+          boxGeo.faces[i].color = new THREE.Color(color)
+          boxGeo.faces[i + 1].color = new THREE.Color(color)
+        }
+        const material = new THREE.MeshBasicMaterial({ vertexColors: THREE.VertexColors })
+        const cube = new THREE.Mesh(boxGeo, material)
+        cube.position.y = 100
+        geometry.cube = cube
+        scene.add(cube)
+      }
+
+      const animate = () => {
+
+        // controls.update(); // required if controls.enableDamping = true, or if controls.autoRotate = true
+        stats.begin()
+
+        render()
+
+        stats.end()
+        requestAnimationFrame(animate)
+      }
+
+      const render = () => {
+        delta = clock.getDelta() + delta
+        geometry.cube.setRotationFromAxisAngle(new THREE.Vector3(1, 1, -1).normalize(), delta * Math.PI /4)
+        //  delta * Math.PI / 4
+        // geometry.cube.
+        renderer.render(scene, camera)
+      }
+
+      initThree()
+
+      createHelper()
+
+      createCube()
+
+      animate()
+
+    })()
+  </script>
+</body>
+
+</html>

@@ -5,7 +5,10 @@
   "main": "index.js",
   "dependencies": {
     "@tweenjs/tween.js": "^16.7.0",
-    "stats.js": "^0.17.0"
+    "dat.gui": "github:dataarts/dat.gui",
+    "normalize.css": "^7.0.0",
+    "stats.js": "^0.17.0",
+    "three": "^0.86.0"
   },
   "devDependencies": {},
   "scripts": {

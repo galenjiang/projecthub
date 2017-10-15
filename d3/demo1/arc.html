@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+    }
+    #svg {
+      width: 800px;
+      height: 450px;
+    }
+  </style>
+</head>
+<body>
+
+  <svg id="svg" viewBox="0 0 800 450">
+
+    <defs id="defs">
+      <clipPath id="clip">
+
+      </clipPath>
+
+      <filter id="gs">
+        <feGaussianBlur in="SourceGraphic" result="gass" stdDeviation="5" />
+        <feMerge>
+          <feMergeNode in="gass" />
+        </feMerge>
+      </filter>
+      <mask></mask>
+    </defs>
+    <circle cx="100" cy="100" r="50" fill-opacity="0" stroke="red" stroke-width="5" filter="url(#gs)" />
+  </svg>
+  <script src="lib/d3.js"></script>
+  <script>
+    const svg = d3.select('#svg')
+
+    const arc = d3.arc().outerRadius(100).innerRadius(0)
+    const endAngle = Math.PI * 2
+    var data = {startAngle: 0, endAngle: 0.1 * endAngle}
+
+    const defs = svg.select('defs')
+    defs.select('#clip')
+      .append('path')
+      .attr('d', arc(data))
+
+
+    svg.append('g')
+      .attr('transform', 'translate(400, 225)')
+      .append('path')
+      .attr('stroke', 'red')
+      .attr('stroke-width', '5')
+      .attr('filter', 'url(#gs)')
+      .attr('clip-path', 'url(#clip)')
+      .attr('fill-opacity', '0')
+      .attr('d', arc(data))
+
+  </script>
+</body>
+</html>

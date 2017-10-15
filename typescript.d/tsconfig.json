@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "noImplicitAny": true,
+    "target": "esnext",
+    "listFiles": true,
+    "listEmittedFiles":true,
+    "typeRoots": [
+			// "typings"
+		]
+  },
+  "files": [
+    "./src/index.ts"
+  ]
+  // "include": [
+  //   "./src/**/*"
+  // ]
+}

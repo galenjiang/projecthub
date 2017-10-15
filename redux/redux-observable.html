@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>redux</title>
+</head>
+
+<body>
+  <script src="lib/redux.js"></script>
+  <script src="lib/Rx.js"></script>
+  <script src="lib/redux-observable.js"></script>
+  <script>
+    // middleware logger
+    const logger = store => next => action => {
+      console.log('dispatching', action)
+      let result = next(action)
+      console.log('next state', store.getState())
+      return result
+    }
+    const crashReporter = store => next => action => {
+      try {
+        return next(action)
+      } catch (err) {
+        console.error('Caught an exception!', err)
+        // Raven.captureException(err, {
+        //   extra: {
+        //     action,
+        //     state: store.getState()
+        //   }
+        // })
+        // throw err
+      }
+    }
+
+    // action
+    const addCount = () => ({ type: 'ADD' })
+    const asyncAddCount = () => ({ type: 'ASYNCADD' })
+    const cancelAdd = () => ({ type: 'CANCELADD' })
+    const minusCount = () => ({ type: 'MINUS' })
+    // epic
+    const asyncAddCountEpic = action$ => {
+      return action$.ofType('ASYNCADD')
+        .delay(1000)
+        .map(() => addCount())
+        .takeUntil(action$.ofType('CANCELADD'))
+        // race来执行cancel后的
+        // .race(
+        //   action$.ofType('CANCELADD')
+        //     .take(1)
+        // )
+    }
+    // reduce
+    const count = (count = 0, action) => {
+      switch (action.type) {
+        case 'ADD':
+          return count + 1
+        case 'MINUS':
+          throw Error('custom errors in minus actions')
+        default:
+          return count
+      }
+    }
+    const loading = (loading = false, action) => {
+      switch (action.type) {
+        case 'ASYNCADD':
+          return true
+        case 'CANCELADD':
+          return false
+        default:
+          return loading
+      }
+    }
+
+    const rootReduce = Redux.combineReducers({ count, loading })
+    const rootEpic = ReduxObservable.combineEpics(asyncAddCountEpic)
+    const epicMiddleware = ReduxObservable.createEpicMiddleware(rootEpic)
+    // store
+    const store = Redux.createStore(
+      rootReduce,
+      { count: 0, loading: false },
+      Redux.applyMiddleware(epicMiddleware, logger, crashReporter)
+    )
+    store.dispatch(addCount())
+    store.dispatch(asyncAddCount())
+    setTimeout(() => store.dispatch(cancelAdd()), 500)
+
+    // 测试错误
+    // store.dispatch(minusCount())
+  </script>
+</body>
+
+</html>

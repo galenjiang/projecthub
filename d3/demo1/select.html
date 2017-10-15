@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .title {
+      fill: red;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <svg id="svg"></svg>
+  <script src="lib/d3.js"></script>
+  <script>
+    const svg = d3.selectAll('#svg')
+    svg.attr('width', 1000)
+    svg.attr('height', 500)
+
+    let matrix = [
+      { name: 0, value: [0,1,2,3] },
+      { name: 1, value: [1,2,3,4] },
+      { name: 2, value: [2,3,4,5] },
+      { name: 3, value: [3,4,5,6] }
+    ]
+
+    function increase(matrix) {
+      return matrix.map(el => ({
+        name: el.name + 1,
+        value: el.value.map(item => item + 1)
+      }))
+    }
+
+    function update(data) {
+
+      // update existing row
+      let rows = svg.selectAll('.row').data(matrix)
+      rows.select('.title')
+        .text(d => d.name)
+
+      const texts_in_existing_row = rows.select('.body')
+        .selectAll('.text')
+        .data(d => d.value)
+
+      texts_in_existing_row.text(d => d)
+
+      texts_in_existing_row
+        .enter()
+        .append('text')
+        .attr('class', 'text')
+        .attr('transform', (d, i) => `translate(${i * 10}, 0)`)
+        .attr('x', 0)
+        .attr('y', 0)
+        .attr('dy', 30)
+        .text(d => d)
+
+      texts_in_existing_row.exit().remove()
+
+
+      // new row
+      const newRows = rows.enter().append('g')
+      newRows.attr('class', 'row')
+        .attr('transform', (d, i) => {
+          return `translate(0, ${i * 50})`
+        })
+
+      const titles = newRows.append('text')
+        .attr('class', 'title')
+        .text(d => d.name)
+        .attr('x', 0)
+        .attr('y', 0)
+        .attr('dy', 40)
+
+      const texts = newRows.append('g')
+        .attr('class', 'body')
+        .attr('transform', `translate(100, 0)`)
+        .selectAll('text')
+        .data(d => d.value)
+
+      texts.enter()
+        .append('text')
+        .attr('class', 'text')
+        .attr('transform', (d, i) => `translate(${i * 50}, 0)`)
+        .attr('x', 0)
+        .attr('y', 0)
+        .attr('dy', 30)
+        .text(d => d)
+
+
+
+    }
+
+    update(matrix)
+
+    // console.log(newTexts)
+    document.addEventListener('click', function() {
+      matrix = increase(matrix)
+      update(matrix)
+    })
+
+  </script>
+</body>
+</html>

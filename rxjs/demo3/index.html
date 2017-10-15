@@ -5,14 +5,33 @@
     <title>Rx</title>
 </head>
 <body>
-    <button class="refresh">refresh</button>
-    <button class="delete">del</button>
+    <!-- <button class="refresh">refresh</button> -->
+    <!-- <button class="delete">del</button> -->
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <script src="./rx.all.js"></script>
     <script src="../node_modules/lodash/lodash.js"></script>
-    <script src="./app.js"></script>
+    <!-- <script src="./app.js"></script> -->
+    <script>
+var subject = new Rx.AsyncSubject()
+
+subject.subscribe({
+  next: (v) => console.log('observerA: ' + v)
+})
+
+subject.next(1)
+subject.next(2)
+subject.next(3)
+subject.next(4)
+
+subject.subscribe({
+  next: (v) => console.log('observerB: ' + v)
+})
+
+subject.next(5)
+subject.complete()
+</script>
 
 </body>
 </html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+
+    @keyframes rotate {
+      0% { transform: rotateY(0deg) rotateX(90deg); }
+      100% { transform: rotateY(360deg) rotateX(90deg); }
+    }
+    .container {
+      width: 500px;
+      height: 500px;
+    }
+    .box {
+      overflow: hidden;
+      perspective: 100px;
+      width: 100px;
+      height: 150px;
+    }
+    .circle {
+      position: absolute;
+      left: 25px;
+      bottom: 0;
+      width: 50px;
+      height: 50px;
+      background: url(img/circle.png) no-repeat 50%;
+      background-size: cover;
+      transform: rotateX(90deg);
+      animation: 3s linear 1s infinite rotate;
+    }
+    .symbol {
+      position: absolute;
+      left: 25px;
+      top: 0%;
+      width: 50px;
+      height: 150px;
+      background: url(img/symbol.png) no-repeat 50%;
+      background-size: cover;
+      transition: all 1s linear 1s;
+    }
+    .symbol.hidden {
+      top: 100%;
+    }
+    .label {
+      position: absolute;
+      left: 25px;
+      top: 10px;
+      overflow: hidden;
+      width: 50px;
+      line-height: 25px;
+      transition: width 1s linear 2s;
+    }
+    .label.close {
+       width: 0px;
+    }
+    .text {
+      border: 1px solid green;
+      height: 25px;
+      line-height: 25px;
+    }
+
+    g {
+      overflow: hidden;
+      perspective: 100px;
+    }
+    circle {
+      transform: rotateX(90deg);
+      animation: 3s linear 1s infinite rotate;
+    }
+  </style>
+</head>
+<body>
+
+
+  <div>
+    <div class="box">
+      <div class="circle"></div>
+      <div class="symbol hidden">
+        <div class="label close">
+          <div class="text">上海</div>
+        </div>
+      </div>
+    </div>
+    <svg>
+      <g>
+        <image xlink:href="img/sleep.gif" x="0" y="0" height="150px" width="50px"/>
+        <circle cx="50" cy="50" r="50" />
+      </g>
+    </svg>
+  </div>
+  <script>
+    const symbol = document.querySelector('.symbol')
+    const label = document.querySelector('.label')
+
+    setTimeout(() => {
+      symbol.classList.remove('hidden')
+      label.classList.remove('close')
+    })
+
+  </script>
+</body>
+</html>

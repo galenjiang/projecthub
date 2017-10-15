@@ -198,7 +198,6 @@ function drawObject() {
   cubeContainer.add( sphere );
 
 
-
   this.cubeContainer = cubeContainer
   this.scene.add(cubeContainer)
 }

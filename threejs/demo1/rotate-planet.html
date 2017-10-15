@@ -4,24 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>basic</title>
+  <title>rotate-planet</title>
+  <link rel="stylesheet" href="css/normalize.css">
   <style>
+    * {
+      box-sizing: border-box;
+    }
     html, body {
       height: 100%;
-      margin: 0;
+
     }
     #app {
       position: absolute;
       height: 100%;
       width: 100%;
     }
+
   </style>
 </head>
 <body>
   <canvas id="app"></canvas>
 
   <script src="lib/three.js"></script>
+  <script src="lib/OrbitControls.js"></script>
   <script src="lib/Tween.js"></script>
-  <script src="basic.js"></script>
+  <script src="lib/stats.min.js"></script>
+  <script src="lib/dat.gui.min.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="rotate-planet.js"></script>
 </body>
 </html>

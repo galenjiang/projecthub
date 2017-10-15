@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    svg {
+      width: 500px;
+    }
+  </style>
+</head>
+
+<body>
+  <svg viewBox="-100 -100 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="cpu_svg_circle_1_gradient" x1="0" y1="0" x2="0" y2="1">
+        <stop stop-opacity="0" stop-color="#00d8ec" offset="0%"></stop>
+        <stop stop-opacity="1" stop-color="#00d8ec" offset="100%"></stop>
+      </linearGradient>
+      <clipPath id="cpu_svg_circle_1_clip_path">
+        <rect x="0" y="-100" width="100" height="200"></rect>
+      </clipPath>
+      <radialGradient id="cpu_svg_body_gradient">
+        <stop stop-opacity="0" stop-color="#00a2ff" offset="60%"></stop>
+        <stop stop-opacity="0.3" stop-color="#00a2ff" offset="97%"></stop>
+        <stop stop-opacity="0" stop-color="white" offset="100%"></stop>
+      </radialGradient>
+      <radialGradient id="cpu_svg_body_light_gradient" cx="0.25" cy="0.25" r="0.45" fx="0.1" fy="0.1">
+        <stop stop-opacity="1" stop-color="white" offset="10%"></stop>
+        <stop stop-opacity="0.5" stop-color="#00a2ff" offset="15%"></stop>
+        <stop stop-opacity="0" stop-color="#00a2ff" offset="100%"></stop>
+      </radialGradient>
+      <filter id="cpu_svg_body_shadow_filter" x="-100" y="-100" width="200" height="200">
+        <feColorMatrix result="lightedOut" in="SourceGraphic" type="matrix" values="2 0 0 0 0
+          0 2 0 0 0
+          0 0 2 0 0
+          0 0 0 2 0"></feColorMatrix>
+        <feOffset result="offOut" in="lightedOut" dx="0" dy="6"></feOffset>
+        <feGaussianBlur in="offOut" stdDeviation="5"></feGaussianBlur>
+      </filter>
+      <linearGradient id="cpu_svg_body_shadow_gradient" x1="0" y1="0" x2="0" y2="1">
+        <stop stop-opacity="0" stop-color="#00d8ec" offset="50%"></stop>
+        <stop stop-opacity="1" stop-color="#00d8ec" offset="100%"></stop>
+      </linearGradient>
+      <mask id="cpu_svg_body_shadow_mask">
+        <rect x="-100" y="-100" width="200" height="200" fill="url(#cpu_svg_body_shadow_gradient)"></rect>
+      </mask>
+    </defs>
+    <circle r="95" fill="none" stroke="#00a2ff" stroke-width="1" stroke-opacity="0.4"></circle>
+    <g class="rotate-clockwise">
+      <circle r="95" fill="none" stroke="url(#cpu_svg_circle_1_gradient)" stroke-width="1" clip-path="url(#cpu_svg_circle_1_clip_path)"></circle>
+      <g transform="translate(0,95)">
+        <title>star</title>
+        <path class="rotate-clockwise" fill="url(#memeny_svg_pointer_star_gradient)" d="m1.98312,4.95107l-2.14209,-3.73357l-2.82408,3.14873l1.89919,-3.88537l-3.91614,-1.09158l4.03905,-0.1514l-1.09173,-4.23788l2.14209,3.73357l2.82408,-3.14873l-1.89919,3.88537l3.91614,1.09158l-4.03905,0.1514l1.09173,4.23788z"></path>
+      </g>
+    </g>
+    <circle r="85" fill="url(#cpu_svg_body_gradient)" stroke="none" filter="url(#cpu_svg_body_shadow_filter)" mask="url(#cpu_svg_body_shadow_mask)"></circle>
+    <circle r="85" fill="url(#cpu_svg_body_gradient)" stroke="none"></circle>
+    <circle r="85" fill="url(#cpu_svg_body_light_gradient)" stroke="none"></circle>
+  </svg>
+</body>
+
+</html>

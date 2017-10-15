@@ -10,13 +10,15 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setClearColor(0x3F3F3F)
 renderer.setSize(vw, vh)
 
+// scene
+const scene = new THREE.Scene()
+
 // camera
 const camera = new THREE.PerspectiveCamera(90, vw / vh, 1, 2000)
 camera.position.set(800, 450, 500)
-camera.lookAt(new THREE.Vector3(0,0,0));
+console.log(scene.position)
+camera.lookAt(scene.position)
 
-// scene
-const scene = new THREE.Scene()
 
 // light
 const light = new THREE.DirectionalLight(0xffffff, 0.6)
@@ -54,6 +56,7 @@ const clickHandler = function(e) {
   const wh = window.innerHeight
   //We create a 2D vector
   vector = new THREE.Vector2();
+  debugger
   //We set its position where the user clicked and we convert it to a number between -1 & 1
   console.log(2 * (e.clientX / ww) - 1, 1 - 2 * (e.clientY / wh))
   vector.set(

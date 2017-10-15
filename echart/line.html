@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #app {
+      height: 500px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script src="lib/echarts.js"></script>
+  <script>
+    const container = document.querySelector('#app')
+    const myChart = echarts.init(container)
+    data = [[120, 132, 101, 134, 90, 230, 210, 120, 132, 101, 134, 90, 230, 210, 100], [120, 132, 101, 134, 90, 230, 210, 120, 132, 101, 134, 90, 230, 210, 100]]
+    option = {
+      title: {
+        text: '堆叠\n区域图',
+        // textAlign: 'center',
+        subtext: 'hello',
+        // left: 'center'
+      },
+      // tooltip: {
+      //   trigger: 'axis',
+      //   axisPointer: {
+      //     type: 'cross',
+      //     label: {
+      //       backgroundColor: '#6a7985'
+      //     }
+      //   }
+      // },
+      // legend: {
+      //   orient: 'vertical',
+      //   data: [ {
+      //     name: '邮件营销',
+      //     icon: '',
+      //     textStyle: {
+      //       color: 'green'
+      //     }
+      //   }, '联盟广告', '视频广告', '直接访问', '搜索引擎'],
+        // selectedMode: 'single'
+      //   tooltip: {
+      //     show: true
+      //   },
+      // },
+      grid: [
+        {
+          x: '7%', y: '7%', width: '10%', height: '10%'
+        },
+        // {
+        //   x2: '7%', y: '7%', width: '38%', height: '38%'
+        // },
+      ],
+      xAxis: [
+        {
+          type: 'category',
+          gridIndex: 0,
+          boundaryGap: false,
+          data: new Array(15).fill(null),
+          axisLabel: false,
+          axisTick: {
+            show: false,
+            alignWithLabel: true,
+            interval: 2
+          }
+        },
+        {
+          type: 'category',
+          position: 'top',
+          gridIndex: 0,
+          axisLine: {
+            onZero: false,
+          },
+          boundaryGap: true,
+          data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+          axisTick: {
+              show: false
+              // alignWithLabel: true,
+              // interval: 2
+            },
+        },
+        {
+          type: 'category',
+          position: 'bottom',
+          gridIndex: 0,
+          axisLine: {
+            onZero: false,
+          },
+          interval: 1,
+          splitLine: {
+            show: true,
+            interval: 0
+          },
+          boundaryGap: true,
+          data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+          axisTick: {
+            show: true
+            // alignWithLabel: true,
+            // interval: 2
+          }
+        }
+      ],
+      yAxis: [
+        // {
+        //   show: true,
+        //   gridIndex: 0,
+        //   type: 'value',
+        // },
+        {
+          show: true,
+          gridIndex: 0,
+          type: 'value',
+          // name: 'hello yaxis',
+          // nameLocation: 'middle',
+          // nameRotate: 0,
+          // inverse: true
+          // min: 100,
+          // max: 250,
+          // scale: true,
+          // interval: 100
+          // silent: true,
+          // triggerEvent: true,
+          // axisLine: {
+          //   // show: false
+          //   onZero: true
+          // }
+          axisTick: {
+          //   // show: false
+          //   alignWidthLabel: true
+            // interval: 2
+          },
+          axisLabel: {
+            // show: true,
+            // interval: 2
+            // margin: -200,
+            // textStyle: {
+            //   fontSize: 120,
+            // },
+            // formatter: '{value} kg',
+            // showMinLabel: null
+          },
+          axisPointer: {
+            // show: true,
+            // type: 'shadow',
+            // snap: true,
+            // label: {
+            //   show: false
+            // }
+            // triggerTooltip: false,
+            // status: false,
+            // handle: {
+            //   show: true
+            // }
+          }
+        }
+      ],
+      series: [
+        {
+          name: '邮件营销',
+          type: 'line',
+          // stack: '总量',
+          xAxisIndex: 0,
+          yAxisIndex: 0,
+          // areaStyle: { normal: {} },
+          data: data[0],
+          // animation: false,
+          // animationEasing: 'linear',
+          // areaStyle: {
+          //   normal: {
+          //     color: {
+          //       type: 'linear',
+          //       x: 0,
+          //       y: 0,
+          //       x2: 0,
+          //       y2: 1,
+          //       colorStops: [{
+          //         offset: 0, color: 'red'
+          //       }, {
+          //         offset: 1, color: 'blue'
+          //       }]
+          //     }
+          //   }
+          // }
+        },
+        // {
+        //   name: '联盟广告',
+        //   type: 'line',
+        //   xAxisIndex: 1,
+        //   yAxisIndex: 1,
+        //   // stack: '总量',
+        //   // areaStyle: { normal: {} },
+        //   data: data[1]
+        // },
+      ]
+    }
+    function render() {
+      return myChart.setOption(option, true)
+    }
+    render()
+
+    // setInterval(() => {
+    //   data[0].shift()
+    //   data[1].shift()
+    //   data[0].push(Math.round(Math.random() * 250))
+    //   data[1].push(Math.round(Math.random() * 250))
+
+    //   myChart.setOption(option)
+    // }, 5000)
+    window.addEventListener('resize', function () {
+      myChart.resize()
+    })
+/********************************************************************************************************************************************************************************/
+  </script>
+</body>
+
+</html>

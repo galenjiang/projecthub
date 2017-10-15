@@ -1,0 +1,16 @@
+{
+  "name": "nodeppt-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "nodeppt": "^1.4.5"
+  },
+  "scripts": {
+    "start": "nodeppt start -p 8080 -d ./ -H 127.0.0.1 -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      /* background-color: #000; */
+    }
+    svg {
+      border: 1px solid red;
+      width: 500px;
+      /* height: 100px; */
+    }
+  </style>
+</head>
+<body>
+
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
+    <defs>
+      <g id="flowerGroup" >
+        <image id="flower"
+          x="100" y="100" width="200" height="200"
+          xlink:href="img/logo-vue.png"
+        />
+      </g>
+      <text id="text" font-size="30" x="50" y="50">hello</text>
+      <filter id="gscombine">
+        <feGaussianBlur in="SourceAlpha" result="blur" stdDeviation="5" />
+        <feOffset in="blur" result="offsetBlur" dx="4" dy="4" />
+        <feMerge>
+          <feMergeNode in="offsetBlur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+      <filter id="matrix">
+        <!-- <feColorMatrix
+          type="matrix"
+          values="0 0 0 0   0
+                 0 0 0 0   0
+                 0 0 0 1   1
+                 0 0 0 1   0"
+        /> -->
+        <!-- <feColorMatrix
+          type="hueRotate"
+          values="360"
+        /> -->
+        <feColorMatrix
+          type="saturate"
+          values="0.5"
+        />
+        <feColorMatrix
+          type="luminanceToAlpha"
+        />
+        <feGaussianBlur result="coloredBlur" stdDeviation="0" />
+        <feMerge>
+          <feMergeNode in="coloredBlur" />
+          <!-- <feMergeNode in="SourceGraphic" /> -->
+        </feMerge>
+      </filter>
+      <filter id="img">
+        <feImage xlink:href="img/js.png" result="js"/>
+        <feGaussianBlur in="SourceAlpha" result="blur" stdDeviation="5" />
+        <feOffset in="blur" result="offsetBlur" dx="4" dy="4" />
+        <feMerge>
+          <feMergeNode in="js" />
+          <feMergeNode in="offsetBlur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+     <use xlink:href="#flower" filter="url(#img)" />
+    <!-- <use xlink:href="#text" filter="url(#matrix)" /> -->
+
+  </svg>
+</body>
+</html>
