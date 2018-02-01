@@ -1,14 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>DD</title>
 	<link rel="stylesheet" href="style.css">
-</head>
-<body>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+		html,
+		body {
+			margin: 0;
+		}
 
-	<script src="app.js"></script>
+		body {
+			/* height: 1000px; */
+			position: relative;
+		}
+
+		.container {
+			position: relative;
+			border: 1px solid #000;
+			margin: 10px;
+			padding: 10px;
+			width: 700px;
+			height: 500px;
+		}
+
+		.box {
+			position: absolute;
+			left: 5px;
+			top: 5px;
+			border: 2px solid #000;
+			/* margin: 5px; */
+			/* padding: 20px; */
+			width: 100px;
+			height: 100px;
+			background-color: tomato;
+			user-select: none;
+			cursor: move;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div id="box" class="box">
+			draggable box
+		</div>
+	</div>
+
+	<script>
+
+		init()
+		function init() {
+			const el = document.getElementById('box')
+			const parent = el.parentNode
+			drag(el, parent)
+		}
+
+		function drag(el, container) {
+			box.style.width = `${el.offsetWidth}px`
+			box.style.height = `${el.offsetHeight}px`
+			box.style.left = `${el.left}`
+			box.style.top = `${el.top}`
+			el.style.left = 0
+			el.style.top = 0
+
+
+			// TODO: box-sizing: border-box是边界不同，需要重新评估
+			const parentRect = container.getBoundingClientRect()
+			const parentStyle = getComputedStyle(container)
+			const containerLeft = parentRect.left + Number.parseInt(parentStyle.borderLeftWidth, 10)
+			const containerRight = parentRect.right - Number.parseInt(parentStyle.borderRightWidth, 10)
+			const containerWidth = containerRight - containerLeft // TODO: 或者用rect.width 减掉左右两个border宽度
+			const containerTop = parentRect.top + Number.parseInt(parentStyle.borderTopWidth, 10)
+			const containerBottom = parentRect.bottom - Number.parseInt(parentStyle.borderBottomWidth, 10)
+			const containerHeight = containerBottom - containerTop // TODO: 同上
+
+			const boxWidth = box.offsetWidth
+			const boxHeight = box.offsetHeight
+			const maxX = containerWidth - boxWidth
+			const maxY = containerHeight - boxHeight
+
+			box.addEventListener('mousedown', onMouseDown)
+
+			function onDragStart() {
+				console.log('drag')
+			}
+
+			function onMouseDown(event) {
+				console.log('mousedown')
+				const fromX = event.pageX
+				const fromY = event.pageY
+				// box 初始位置
+				const boxX = box.offsetLeft
+				const boxY = box.offsetTop
+				let initTransform = getComputedStyle(box).transform
+				initTransform = initTransform === 'none' ? '' : initTransform
+				const transformArray = initTransform.split(',')
+				const initTranslateX = Number.parseInt(transformArray[4], 10) || 0
+				const initTranslateY = Number.parseInt(transformArray[5], 10) || 0
+				window.addEventListener('mousemove', onMouseMove)
+				window.addEventListener('mouseup', onMouseUp)
+
+
+				function onMouseMove(event) {
+					const toX = event.pageX
+					const toY = event.pageY
+					const deltaX = toX - fromX
+					const deltaY = toY - fromY
+
+
+					let translateX = initTranslateX + deltaX
+					let translateY = initTranslateY + deltaY
+					if (boxX + translateX < 0) {
+						translateX = - boxX
+					}
+					if (boxX + translateX > maxX) {
+						translateX = maxX - boxX
+					}
+					if (boxY + translateY < 0) {
+						translateY = - boxY
+					}
+					if (boxY + translateY > maxY) {
+						translateY = maxY - boxY
+					}
+
+					box.style.transform = `translate(${translateX}px, ${translateY}px)`
+				}
+				function onMouseUp(event) {
+					window.removeEventListener('mousemove', onMouseMove)
+					window.removeEventListener('mouseup', onMouseUp)
+				}
+				return false
+
+
+			}
+		}
+
+		function resize(box) {
+
+		}
+
+
+	</script>
 </body>
+
 </html>
